@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/myduck/static/css/main.e6c13ad2.css",
+    "main.js": "/myduck/static/js/main.68500049.js",
+    "index.html": "/myduck/index.html",
+    "main.e6c13ad2.css.map": "/myduck/static/css/main.e6c13ad2.css.map",
+    "main.68500049.js.map": "/myduck/static/js/main.68500049.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.68500049.js"
+  ]
+}
