@@ -1,0 +1,13 @@
+.chatContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.chatEntry {
+  border: 1px solid orange;
+  border-radius: 5px;
+  padding: 0.5rem;
+  line-height: 1.5rem;
+  background-color: ivory;
+}

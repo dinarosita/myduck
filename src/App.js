@@ -1,10 +1,8 @@
+import Layout from "./components/layout/Layout";
 
 function App() {
   return (
-    <div>
-        <h1>Welcome to MyDuck
-        </h1>
-    </div>
+    <Layout></Layout>
   );
 }
 

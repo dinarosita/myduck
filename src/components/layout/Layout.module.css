@@ -1,0 +1,12 @@
+.body {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bodyBulk {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
