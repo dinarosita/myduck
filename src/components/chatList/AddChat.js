@@ -11,7 +11,7 @@ export default function AddChat() {
   }
 
   function addNewChat(event) {
-    // event.preventDefault();
+    event.preventDefault();
     const enteredTitle = titleRef.current.value ? titleRef.current.value : "Quack quack";
     const chatData = {
       title: enteredTitle,
