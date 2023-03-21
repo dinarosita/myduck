@@ -5,14 +5,13 @@ import classes from "./AddChat.module.css";
 export default function AddChat() {
   const [isButton, setIsButton] = useState(true);
   const titleRef = useRef();
-  const history = useHistory();
 
   function showBox() {
     setIsButton(false);
   }
 
   function addNewChat(event) {
-    event.preventDefault();
+    // event.preventDefault();
     const enteredTitle = titleRef.current.value ? titleRef.current.value : "Quack quack";
     const chatData = {
       title: enteredTitle,
@@ -26,7 +25,6 @@ export default function AddChat() {
       },
     }).then(() => {
       setIsButton(true);
-      history.replace("/");
     });
   }
 
