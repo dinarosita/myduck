@@ -1,0 +1,32 @@
+.addChat {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.addChat form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.addChat .buttons {
+    display: flex;
+    flex-direction: row;
+    gap: .5rem
+}
+
+.addChat input,
+.addChat input:active,
+.addChat input:focus {
+  line-height: 1.2rem;
+  color: saddlebrown;
+  /* font-weight: bold; */
+  border: 1px solid darkorange;
+  /* border-radius: 5px; */
+  outline: none !important;
+  /* padding: 0.5rem; */
+  box-sizing: border-box;
+  background-color: white;
+  /* text-align: end; */
+}

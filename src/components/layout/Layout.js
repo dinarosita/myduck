@@ -1,17 +1,17 @@
 import React from "react";
-import ChatRoom from "./ChatRoom";
 import classes from "./Layout.module.css";
-import SideBar from "./SideBar";
+import Navigation from "./Navigation";
 
-import TopBar from "./TopBar";
+import Header from "./Header";
+import ChatWindow from "./ChatWindow";
 
 export default function Layout() {
   return (
-    <body className={classes.body}>
-      <TopBar />
+    <body>
+      <Header />
       <div className={classes.bodyBulk}>
-        <SideBar />
-        <ChatRoom />
+        <Navigation />
+        <ChatWindow />
       </div>
     </body>
   );

@@ -1,0 +1,34 @@
+.addMessage {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.addMessage label {
+  color: darkorange;
+  font-weight: bold;
+  display: block;
+}
+
+.addMessage textarea,
+.addMessage textarea:active,
+.addMessage textarea:focus {
+  width: 100%;
+  height: 10rem;
+  line-height: 1.5rem;
+  font-family: inherit;
+  font-size: inherit;
+  color: saddlebrown;
+  border: 1px solid darkorange;
+  border-radius: 5px;
+  outline: none !important;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  /* background-color: ivory; */
+  /* text-align: end; */
+}
+
+.addMessage button {
+    display: block;
+    margin-left: auto;
+}
