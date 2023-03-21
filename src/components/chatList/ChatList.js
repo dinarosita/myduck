@@ -36,14 +36,12 @@ export default function ChatList() {
   return (
     <div className={classes.chatList}>
       <h2>Chat topics</h2>
-      <div>
-        <ul>
+      <div className={classes.chatButtons}>
           {loadedChats.length
             ? loadedChats.map((chat) => {
-                return <li>{chat.title}</li>;
+                return <button>{chat.title}</button>;
               })
             : "Create your first chat!"}
-        </ul>
       </div>
     </div>
   );

@@ -22,3 +22,9 @@ ol {
   color: ivory;
   font-weight: 600;
 }
+
+.chatButtons {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}

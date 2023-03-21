@@ -32,9 +32,9 @@ export default function AddChat() {
 
   return (
     <div className={classes.addChat}>
-      <h3>Start a new chat?</h3>
+      <h3>New topic?</h3>
       {isButton ? (
-        <button onClick={showBox}>New chat</button>
+        <button onClick={showBox}>Start a new chat</button>
       ) : (
         <form>
           <label htmlFor="title">Enter chat title:</label>
