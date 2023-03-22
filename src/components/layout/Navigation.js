@@ -1,13 +1,29 @@
 import React from "react";
 import AddChat from "../chatList/AddChat";
-import ChatList from "../chatList/ChatList";
+import ChatHistory from "../chatList/ChatHistory";
 import classes from "./Navigation.module.css";
 
 
-export default function Navigation() {
+export default function Navigation(props) {
+    if (props.isLoading) {
+        return (
+            <nav>
+                <h2>Loading chats...</h2>
+            </nav>
+        )
+    }
+
+    if (!props.loadedChats.length) {
+        return (
+            <nav>
+                <AddChat noChat="true" />
+            </nav>
+        )
+    }
+
   return (
-    <nav>
-      <ChatList />
+    <nav>        
+      <ChatHistory loadedChats={props.loadedChats} />
       <AddChat />
     </nav>
   );

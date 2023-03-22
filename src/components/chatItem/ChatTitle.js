@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function ChatTitle() {
+export default function ChatTitle(props) {
   return (
     <div>
-      <h2>Favourite: why use context</h2>
+      <h2>{props.title}</h2>
     </div>
   )
 }

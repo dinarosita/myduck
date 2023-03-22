@@ -6,7 +6,8 @@ const DummyChat = ["the favourite thing, i don't understand why it's not just as
 export default function Messages() {
   return (
     <div className={classes.messages}>
-      {DummyChat.map (e => <div className={classes.addMessage}>{e}</div>)}
+        Under construction
+      {/* {DummyChat.map (e => <div className={classes.addMessage}>{e}</div>)} */}
     </div>
   )
 }

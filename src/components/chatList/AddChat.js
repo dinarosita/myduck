@@ -1,8 +1,10 @@
 import React, { useRef, useState } from "react";
-import { useHistory } from "react-router-dom";
 import classes from "./AddChat.module.css";
 
-export default function AddChat() {
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
+
+export default function AddChat(props) {
   const [isButton, setIsButton] = useState(true);
   const titleRef = useRef();
 
@@ -12,10 +14,10 @@ export default function AddChat() {
 
   function addNewChat(event) {
     event.preventDefault();
-    const enteredTitle = titleRef.current.value ? titleRef.current.value : "Quack quack";
+
     const chatData = {
-      title: enteredTitle,
-      messages: [],
+      title: titleRef.current.value ? titleRef.current.value : null,
+      createdAt: firebase.firestore.Timestamp.now(),
     };
     fetch("https://myduck-fb785-default-rtdb.firebaseio.com/chats.json", {
       method: "POST",
@@ -25,17 +27,20 @@ export default function AddChat() {
       },
     }).then(() => {
       setIsButton(true);
+      window.location.reload(false);
     });
   }
 
+  const sectionTitle = props.noChat ? "Let's get started!" : "New topic?";
+
   return (
     <div className={classes.addChat}>
-      <h3>New topic?</h3>
+      <h3>{sectionTitle}</h3>
       {isButton ? (
         <button onClick={showBox}>Start a new chat</button>
       ) : (
         <form>
-          <label htmlFor="title">Enter chat title:</label>
+          <label htmlFor="title">Submit chat title:</label>
           <input id="title" type="text" ref={titleRef} />
           <div className={classes.buttons}>
             <button>Cancel</button>
