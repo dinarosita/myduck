@@ -1,6 +1,6 @@
 import React from "react";
-import AddChat from "../chatList/AddChat";
-import ChatHistory from "../chatList/ChatHistory";
+import AddChat from "../navigation/AddChat";
+import ChatHistory from "../navigation/ChatHistory";
 import classes from "./Navigation.module.css";
 
 

@@ -1,20 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import classes from "./ChatHistory.module.css";
+import { ChatContext } from "../layout/Layout";
 
 export default function ChatHistory(props) {
-  function formatTimestamp(timestamp) {
-    const date = new Date(timestamp.seconds * 1000).toDateString();
-    const time = new Date(timestamp.seconds * 1000).toLocaleTimeString()
-    return `${date} at ${time}`;
-  }
+  const selectedChat = useContext(ChatContext);
+
   return (
     <div className={classes.chatHistory}>
       <h2>Chat history</h2>
       <div className={classes.chatButtons}>
         {props.loadedChats.reverse().map((chat) => {
           return (
-            <button>
-              {chat.title ? chat.title : formatTimestamp(chat.createdAt)}
+            <button key={chat.id}>
+              {chat.title ? chat.title : "Untitled Quack"}
             </button>
           );
         })}

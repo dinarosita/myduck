@@ -9,6 +9,13 @@ nav {
 
 }
 
-nav h2 {
-  color: darkorange;
+nav h2, h3 {
+  color: chocolate;
+}
+
+nav button {
+    border-radius: 50px;
+    padding-right: .8rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }

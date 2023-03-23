@@ -32,8 +32,11 @@ ol {
 
 .chatButtons button {
     background-color: inherit;
+    color: chocolate;
+    font-weight: normal;
+
 }
 
 .chatButtons button:hover {
-    background-color: orange;
+    background-color: peachpuff;
 }

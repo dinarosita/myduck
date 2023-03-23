@@ -20,7 +20,7 @@
 .addChat input:active,
 .addChat input:focus {
   line-height: 1.2rem;
-  color: saddlebrown;
+  color: chocolate;
   /* font-weight: bold; */
   border: 1px solid darkorange;
   /* border-radius: 5px; */

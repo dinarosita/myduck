@@ -1,0 +1,22 @@
+.chatTitle {
+  background-color: lightyellow;
+  padding: 0.5rem;
+  border-radius: 50px;
+  border: orange 5px double;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.chatTitle * {
+  text-align: center;
+  color: darkorange;
+}
+
+.chatTitle h2 {
+    font-size: x-large;
+}
+
+.chatTitle .timestamp {
+  font-size: small;
+}
