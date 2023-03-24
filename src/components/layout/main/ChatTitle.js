@@ -1,7 +1,14 @@
 import React, { useContext } from "react";
+import { AllChatsContext, MainChatIdContext } from "../Layout";
 import classes from "./ChatTitle.module.css";
 
 export default function ChatTitle(props) {
+  const allChats = useContext(AllChatsContext);
+  const mainChatId = useContext(MainChatIdContext);
+
+  const mainChat = allChats.find((chat) => chat.id === mainChatId)
+
+
   function formatTimestamp(timestamp) {
     const date = new Date(timestamp.seconds * 1000).toDateString();
     const time = new Date(timestamp.seconds * 1000).toLocaleTimeString();
@@ -10,8 +17,10 @@ export default function ChatTitle(props) {
 
   return (
     <div className={classes.chatTitle}>
-      <h2>{props.chat.title ? props.chat.title : "Untitled Quacks"}</h2>
-      <div className={classes.timestamp}>Created: {formatTimestamp(props.chat.createdAt)}</div>
+      <h2>{mainChat.title ? mainChat.title : "Untitled Quacks"}</h2>
+      <div className={classes.timestamp}>
+        Created: {formatTimestamp(mainChat.createdAt)}
+      </div>
     </div>
   );
 }

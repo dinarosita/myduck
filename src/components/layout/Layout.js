@@ -1,22 +1,18 @@
 import React, { useEffect, useState } from "react";
-import classes from "./Layout.module.css";
-import Navigation from "./Navigation";
-
 import Header from "./Header";
 import Main from "./Main";
+import Navigation from "./Navigation";
+import LoadingPage from "./specialPages/LoadingPage";
 
-export const ChatIdContext = React.createContext();
-export const SetChatIdContext = React.createContext();
+import classes from "./Layout.module.css";
+
+export const AllChatsContext = React.createContext();
+export const MainChatIdContext = React.createContext();
 
 export default function Layout() {
   const [isLoading, setIsLoading] = useState(true);
-  const [chats, setChats] = useState([]);
-  const [chatId, setChatId] = useState();
-
-  const [mainChatId, setMainChatId] = useState("1111")
-  function Callback (childData) {
-    return setMainChatId(childData)
-  }
+  const [allChats, setAllChats] = useState ([]);
+  const [mainChatId, setMainChatId] = useState (null);
 
   useEffect(() => {
     setIsLoading(true);
@@ -26,6 +22,7 @@ export default function Layout() {
       })
       .then((data) => {
         const chats = [];
+
         for (const key in data) {
           const chat = {
             id: key,
@@ -33,24 +30,29 @@ export default function Layout() {
           };
           chats.push(chat);
         }
+
         setIsLoading(false);
-        setChats(chats);
-        setChatId(chats[chats.length - 1].id);
+        setAllChats(chats);
+        if (chats.length) {
+            setMainChatId(chats[chats.length-1].id)
+        }
       });
   }, []);
 
-  
-
+  if (isLoading) {
+    return <LoadingPage />
+  }
   return (
     <body>
       <Header />
-      <ChatIdContext.Provider value={chatId}>
-      MainChatId: {mainChatId}
-        <div className={classes.bodyBulk}>
-            <Navigation isLoading={isLoading} chats={chats} handleCallback={Callback} />
-          <Main isLoading={isLoading} chats={chats} />
-        </div>
-      </ChatIdContext.Provider>
+      <AllChatsContext.Provider value={allChats}>
+        <MainChatIdContext.Provider value={mainChatId}>
+          <div className={classes.mainbody}>
+            <Navigation />
+            <Main />
+          </div>
+        </MainChatIdContext.Provider>
+      </AllChatsContext.Provider>
     </body>
   );
 }

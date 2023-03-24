@@ -1,10 +1,13 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import classes from "./AddChat.module.css";
 
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
+import { AllChatsContext, MainChatIdContext } from "../Layout";
 
-export default function AddChat(props) {
+export default function AddChat() {
+  const allChats = useContext(AllChatsContext);
+  const mainChatId = useContext(MainChatIdContext);
   const [isButton, setIsButton] = useState(true);
   const titleRef = useRef();
 
@@ -30,12 +33,8 @@ export default function AddChat(props) {
       window.location.reload(false);
     });
   }
-
-  const sectionTitle = props.noChat ? "Let's get started!" : "New topic?";
-
   return (
     <div className={classes.addChat}>
-      <h3>{sectionTitle}</h3>
       {isButton ? (
         <button onClick={showBox}>Start a new chat</button>
       ) : (

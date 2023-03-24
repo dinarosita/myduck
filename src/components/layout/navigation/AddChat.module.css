@@ -1,8 +1,3 @@
-.addChat {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-}
 
 .addChat form {
     display: flex;
@@ -21,12 +16,8 @@
 .addChat input:focus {
   line-height: 1.2rem;
   color: chocolate;
-  /* font-weight: bold; */
   border: 1px solid darkorange;
-  /* border-radius: 5px; */
   outline: none !important;
-  /* padding: 0.5rem; */
   box-sizing: border-box;
   background-color: white;
-  /* text-align: end; */
 }

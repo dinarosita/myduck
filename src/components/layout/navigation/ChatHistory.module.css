@@ -1,28 +1,8 @@
 .chatHistory {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
-
-.chatHistory ul,
-ol {
-  padding: 0;
-  list-style-type: none;
-}
-
-.chatHistory li {
-  margin-bottom: 0.5rem;
-  border: 1px solid orange;
-  border-radius: 5px;
-  padding: 0.3rem;
-}
-
-.activeChat {
-  background-color: darkorange;
-  color: ivory;
-  font-weight: 600;
-}
-
 .chatButtons {
     display: flex;
     flex-direction: column;

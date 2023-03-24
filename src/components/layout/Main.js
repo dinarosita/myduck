@@ -1,31 +1,26 @@
 import React, { useContext } from "react";
-import Messages from "../chatWindow/Messages";
-import AddMessage from "../chatWindow/AddMessage";
-import ChatTitle from "../chatWindow/ChatTitle";
-import classes from "./Main.module.css";
-import { ChatIdContext } from "./Layout";
+import { AllChatsContext, MainChatIdContext } from "./Layout";
 
-export default function Main(props) {
-  const chatId = useContext(ChatIdContext);
-  const chat = props.chats.find((chat) => chat.id === chatId);
-  if (props.isLoading) {
+import classes from "./Main.module.css";
+import ChatTitle from "./main/ChatTitle";
+import Messages from "./main/Messages";
+import AddMessage from "./main/AddMessage";
+
+
+import WelcomeMessage from "./specialPages/WelcomeMessage";
+
+export default function Main() {
+  const allChats = useContext(AllChatsContext);
+  const mainChatId = useContext(MainChatIdContext);
+
+  if (!allChats.length) {
     return (
-      <main>
-        <h2>Loading Chats...</h2>
-      </main>
-    );
-  } else if (!chatId) {
-    return (
-      <main>
-        <h2>Welcome to MyDuck!</h2>
-      </main>
+      <WelcomeMessage />
     );
   }
-  return (
-    <main>
-      <ChatTitle chat={chat} />
-      <Messages chat={chat} />
-      <AddMessage chat={chat} />
-    </main>
-  );
+  return <main>
+    <ChatTitle />
+    <Messages />
+    <AddMessage />
+  </main>;
 }
