@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import AddChat from "../navigation/AddChat";
 import ChatHistory from "../navigation/ChatHistory";
 import classes from "./Navigation.module.css";
 
 
 export default function Navigation(props) {
+    const [mainchatid, setMainChatId] = useState("0000")
     if (props.isLoading) {
         return (
             <nav>
@@ -13,7 +14,7 @@ export default function Navigation(props) {
         )
     }
 
-    if (!props.loadedChats.length) {
+    if (!props.chats.length) {
         return (
             <nav>
                 <AddChat noChat="true" />
@@ -21,9 +22,16 @@ export default function Navigation(props) {
         )
     }
 
+    
+  function Callback (childData) {
+    return setMainChatId(childData)
+  }
+
+    
   return (
     <nav>        
-      <ChatHistory loadedChats={props.loadedChats} />
+        {props.handleCallback(mainchatid)}
+      <ChatHistory chats={props.chats} handleCallback={Callback}/>
       <AddChat />
     </nav>
   );

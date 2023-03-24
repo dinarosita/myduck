@@ -5,12 +5,18 @@ import Navigation from "./Navigation";
 import Header from "./Header";
 import Main from "./Main";
 
-export const ChatContext = React.createContext();
+export const ChatIdContext = React.createContext();
+export const SetChatIdContext = React.createContext();
 
 export default function Layout() {
   const [isLoading, setIsLoading] = useState(true);
-  const [loadedChats, setLoadedChats] = useState([]);
-  const [selectedChat, setSelectedChat] = useState(null);
+  const [chats, setChats] = useState([]);
+  const [chatId, setChatId] = useState();
+
+  const [mainChatId, setMainChatId] = useState("1111")
+  function Callback (childData) {
+    return setMainChatId(childData)
+  }
 
   useEffect(() => {
     setIsLoading(true);
@@ -28,20 +34,23 @@ export default function Layout() {
           chats.push(chat);
         }
         setIsLoading(false);
-        setLoadedChats(chats);
-        setSelectedChat(chats[chats.length-1]);
+        setChats(chats);
+        setChatId(chats[chats.length - 1].id);
       });
   }, []);
+
+  
 
   return (
     <body>
       <Header />
-      <ChatContext.Provider value={selectedChat}>
+      <ChatIdContext.Provider value={chatId}>
+      MainChatId: {mainChatId}
         <div className={classes.bodyBulk}>
-          <Navigation isLoading={isLoading} loadedChats={loadedChats} />
-          <Main isLoading={isLoading} loadedChats={loadedChats} />
+            <Navigation isLoading={isLoading} chats={chats} handleCallback={Callback} />
+          <Main isLoading={isLoading} chats={chats} />
         </div>
-      </ChatContext.Provider>
+      </ChatIdContext.Provider>
     </body>
   );
 }
