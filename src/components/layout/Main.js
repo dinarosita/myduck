@@ -3,11 +3,11 @@ import { AllChatsContext, MainChatIdContext } from "./Layout";
 
 import classes from "./Main.module.css";
 import ChatTitle from "./main/ChatTitle";
-import Messages from "./main/Messages";
 import AddMessage from "./main/AddMessage";
 
 
 import WelcomeMessage from "./specialPages/WelcomeMessage";
+import MessageHistory from "./main/MessageHistory";
 
 export default function Main() {
   const allChats = useContext(AllChatsContext);
@@ -20,7 +20,7 @@ export default function Main() {
   }
   return <main>
     <ChatTitle />
-    <Messages />
+    <MessageHistory />
     <AddMessage />
   </main>;
 }

@@ -48,7 +48,7 @@ export default function Layout() {
       <AllChatsContext.Provider value={allChats}>
         <MainChatIdContext.Provider value={mainChatId}>
           <div className={classes.mainbody}>
-            <Navigation />
+            <Navigation/>
             <Main />
           </div>
         </MainChatIdContext.Provider>

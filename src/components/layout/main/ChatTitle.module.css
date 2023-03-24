@@ -1,7 +1,9 @@
 .chatTitle {
-  background-color: lightyellow;
+  background-color: papayawhip;
   padding: 0.5rem;
   border-radius: 50px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   border: darkorange 5px double;
   display: flex;
   flex-direction: column;
