@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
-import Main from "./Main";
-import Navigation from "./Navigation";
-import LoadingPage from "./specialPages/LoadingPage";
-
-import classes from "./Layout.module.css";
+import LoadingPage from "../specialPages/LoadingPage";
+import Content from "./Content";
 
 export const AllChatsContext = React.createContext();
-export const MainChatIdContext = React.createContext();
 
 export default function Layout() {
   const [isLoading, setIsLoading] = useState(true);
-  const [allChats, setAllChats] = useState ([]);
-  const [mainChatId, setMainChatId] = useState (null);
+  const [allChats, setAllChats] = useState([]);
+  const [latestId, setLatestId] = useState(null);
+  const [fetchTrigger, setFetchTrigger] = useState(true)
+
+  function requestFetch(){
+    setFetchTrigger(prev => !prev)
+  }
 
   useEffect(() => {
     setIsLoading(true);
@@ -33,25 +34,20 @@ export default function Layout() {
 
         setIsLoading(false);
         setAllChats(chats);
-        if (chats.length) {
-            setMainChatId(chats[chats.length-1].id)
-        }
+        setLatestId(chats[chats.length - 1].id);
       });
-  }, []);
+  }, [fetchTrigger]);
+
 
   if (isLoading) {
-    return <LoadingPage />
+    return <LoadingPage />;
   }
+
   return (
     <body>
       <Header />
       <AllChatsContext.Provider value={allChats}>
-        <MainChatIdContext.Provider value={mainChatId}>
-          <div className={classes.mainbody}>
-            <Navigation/>
-            <Main />
-          </div>
-        </MainChatIdContext.Provider>
+        <Content latestId={latestId}  requestFetch={requestFetch}  />
       </AllChatsContext.Provider>
     </body>
   );

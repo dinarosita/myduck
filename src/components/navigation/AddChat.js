@@ -1,13 +1,10 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import classes from "./AddChat.module.css";
 
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
-import { AllChatsContext, MainChatIdContext } from "../Layout";
 
-export default function AddChat() {
-  const allChats = useContext(AllChatsContext);
-  const mainChatId = useContext(MainChatIdContext);
+export default function AddChat(props) {
   const [isButton, setIsButton] = useState(true);
   const titleRef = useRef();
 
@@ -30,20 +27,25 @@ export default function AddChat() {
       },
     }).then(() => {
       setIsButton(true);
-      window.location.reload(false);
+      props.requestFetch();
     });
+  }
+
+  function handleCancel () {
+    setIsButton(true)
   }
   return (
     <div className={classes.addChat}>
       {isButton ? (
         <button onClick={showBox}>Start a new chat</button>
       ) : (
-        <form>
+        <form onSubmit={addNewChat}>
           <label htmlFor="title">Submit chat title:</label>
           <input id="title" type="text" ref={titleRef} />
+          <input type="submit" hidden="true" />
           <div className={classes.buttons}>
-            <button>Cancel</button>
-            <button onClick={addNewChat}>Submit</button>
+            <button onClick={handleCancel}>Cancel</button>
+            <button type="submit">Submit</button>
           </div>
         </form>
       )}

@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -9,33 +9,65 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 * {
-    margin: 0;
+  margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    color: chocolate;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: chocolate;
 }
 
 button {
-    border: 1px solid darkorange;
-    border-radius: 5px;
-    padding: .25rem 0.5rem;
-    box-sizing: border-box;
-    background-color: papayawhip;
-    color: darkorange;
-    font-weight: bold;
-    width: fit-content;
-  }
-  button:hover {
-      background-color: orange;
-      color: ivory;
-  }
-  
-  button:active {
-      transform: scale(0.95);
-  }
+  border: 1px solid darkorange;
+  border-radius: 5px;
+  padding: 0.25rem 0.5rem;
+  box-sizing: border-box;
+  background-color: papayawhip;
+  color: darkorange;
+  font-weight: bold;
+  width: fit-content;
+}
+button:hover {
+  background-color: orange;
+  color: ivory;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+body {
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+main {
+  border: 3px solid darkorange;
+  border-radius: 5px;
+  padding: 0.5rem;
+  flex: 0.8;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+nav {
+  border: 3px solid darkorange;
+  border-radius: 5px;
+  flex: 0.2;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

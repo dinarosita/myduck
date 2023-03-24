@@ -1,6 +1,4 @@
 import React from "react";
-import classes from "../Main.module.css";
-
 
 export default function WelcomeMessage() {
   return (

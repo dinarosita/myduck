@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
-import { AllChatsContext, MainChatIdContext } from "../Layout";
+import { MainChatIdContext } from "../layout/Content";
+import { AllChatsContext } from "../layout/Layout";
 import classes from "./ChatTitle.module.css";
 
-export default function ChatTitle(props) {
+export default function ChatTitle() {
   const allChats = useContext(AllChatsContext);
   const mainChatId = useContext(MainChatIdContext);
 
-  const mainChat = allChats.find((chat) => chat.id === mainChatId)
-
+  const mainChat = allChats.find((chat) => chat.id === mainChatId);
 
   function formatTimestamp(timestamp) {
     const date = new Date(timestamp.seconds * 1000).toDateString();

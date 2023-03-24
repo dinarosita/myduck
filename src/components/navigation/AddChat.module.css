@@ -11,6 +11,10 @@
     gap: .5rem
 }
 
+.addChat button {
+    border-radius: 0;
+}
+
 .addChat input,
 .addChat input:active,
 .addChat input:focus {

@@ -1,26 +1,51 @@
-import React, { useContext } from "react";
-import { AllChatsContext, MainChatIdContext } from "./Layout";
+import React, { useContext, useEffect, useState } from "react";
+import AddMessage from "../chatWindow/AddMessage";
+import ChatTitle from "../chatWindow/ChatTitle";
+import { MainChatIdContext } from "./Content";
+import MessageHistory from "../chatWindow/MessageHistory";
 
-import classes from "./Main.module.css";
-import ChatTitle from "./main/ChatTitle";
-import AddMessage from "./main/AddMessage";
-
-
-import WelcomeMessage from "./specialPages/WelcomeMessage";
-import MessageHistory from "./main/MessageHistory";
+export const ChatMessagesContext = React.createContext();
 
 export default function Main() {
-  const allChats = useContext(AllChatsContext);
   const mainChatId = useContext(MainChatIdContext);
+  const [isLoading, setIsLoading] = useState(true);
+  const [allMessages, setAllMessages] = useState([]);
+  const [fetchTrigger, setFetchTrigger] = useState(false)
+ 
+  useEffect(() => {
+    setIsLoading(true);
+    fetch(
+      `https://myduck-fb785-default-rtdb.firebaseio.com/chats/${mainChatId}/messages.json`
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        const dataMessages = [];
+        for (const key in data) {
+          const message = {
+            id: key,
+            ...data[key],
+          };
+          dataMessages.push(message);
+        }
+        setIsLoading(false);
+        setAllMessages(dataMessages);
+      });
+  }, [mainChatId, fetchTrigger]);
 
-  if (!allChats.length) {
-    return (
-      <WelcomeMessage />
-    );
+  function renderFetch () {
+    setFetchTrigger(prev => !prev)
   }
-  return <main>
-    <ChatTitle />
-    <MessageHistory />
-    <AddMessage />
-  </main>;
+
+
+  return (
+    <ChatMessagesContext.Provider value={allMessages}>
+      <main>
+        <ChatTitle />
+        <MessageHistory isLoading={isLoading} />
+        <AddMessage renderFetch={renderFetch} />
+      </main>
+    </ChatMessagesContext.Provider>
+  );
 }
