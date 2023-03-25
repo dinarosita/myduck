@@ -37,7 +37,7 @@ export default function AddChat(props) {
   return (
     <div className={classes.addChat}>
       {isButton ? (
-        <button onClick={showBox}>Start a new chat</button>
+        <button onClick={showBox} className={classes.addButton}>Start a new chat</button>
       ) : (
         <form onSubmit={addNewChat}>
           <label htmlFor="title">Submit chat title:</label>
