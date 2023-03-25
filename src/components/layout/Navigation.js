@@ -12,7 +12,8 @@ export default function Navigation(props) {
       <h2>{allChats.length ? "Chat history" : "Let's quack"}</h2>
       {allChats.length ? (
         <>
-          <ChatHistory handleCallback={props.handleCallback} />
+          <ChatHistory 
+          />
           <h3>New topic?</h3>
         </>
       ) : (

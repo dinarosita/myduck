@@ -7,7 +7,7 @@ import classes from "./ChatHistory.module.css";
 export default function ChatHistory(props) {
 
   const allChats = useContext(AllChatsContext);
-  const mainChatId = useContext(MainChatIdContext)
+  const { mainChatId, setMainChatId } = useContext(MainChatIdContext);
   
   const mainChatStyle = {
     fontWeight: "bold",
@@ -29,7 +29,8 @@ export default function ChatHistory(props) {
             <button
               key={chat.id}
               style={styleMainChat(chat.id)}
-              onClick={() => props.handleCallback(chat.id)}
+              onClick={() => setMainChatId(chat.id)}
+
             >
               {chat.title ? chat.title : "Untitled Quacks"}
             </button>
