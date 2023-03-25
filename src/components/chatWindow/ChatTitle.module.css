@@ -16,9 +16,45 @@
 }
 
 .chatTitle h2 {
-    font-size: x-large;
+  font-size: x-large;
 }
 
 .chatTitle .timestamp {
   font-size: small;
+}
+
+.titleEditForm,
+.titleEditForm:focus,
+.titleEditForm:active {
+  max-width: 90%;
+  margin: auto;
+  font-size: large;
+  background-color: ivory;
+  border: orange solid 1px;
+  border-radius: 5px;
+  font-weight: inherit;
+  line-height: inherit;
+  font-style: inherit;
+}
+.chatHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.pencil {
+  display: block;
+  margin-left: auto;
+  color: chocolate;
+  border: none;
+  background-color: inherit;
+  font-weight: inherit;
+}
+
+.pencil:hover {
+  background-color: inherit;
+  color: inherit;
+}
+
+.littlePencil {
+    font-size: small;
 }

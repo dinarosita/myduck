@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { MainChatIdContext } from "../layout/Content";
 import { AllChatsContext } from "../layout/Layout";
 import classes from "./ChatTitle.module.css";
@@ -16,10 +16,14 @@ export default function ChatTitle() {
   }
 
   return (
-    <div className={classes.chatTitle}>
-      <h2>{mainChat.title ? mainChat.title : "Untitled Quacks"}</h2>
-      <div className={classes.timestamp}>
-        Created: {formatTimestamp(mainChat.createdAt)}
+    <div>
+      <div className={classes.chatTitle}>
+        <h2>{mainChat.title ? mainChat.title : "Untitled Quacks"}</h2>
+
+        <div className={classes.timestamp}>
+          <div>Created: {formatTimestamp(mainChat.createdAt)}</div>
+          <div>Last update:</div>
+        </div>
       </div>
     </div>
   );

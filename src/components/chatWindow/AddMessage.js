@@ -56,6 +56,7 @@ export default function AddMessage() {
       });
   }
 
+
   return (
     <form className={classes.addMessage}>
       <label htmlFor="entry">Add new message</label>
@@ -64,6 +65,12 @@ export default function AddMessage() {
         ref={messageRef}
         value={fieldtext}
         onChange={handleFieldtext}
+        onKeyDown={(event) => {
+          if (event.keyCode === 13) {
+            event.preventDefault();
+            event.target.value += "\n";
+          }
+        }}
         required
       />
       <button onClick={addNewMessage}>Submit</button>
