@@ -9,13 +9,10 @@ export const MainChatIdContext = React.createContext();
 export default function Content(props) {
   const [mainChatId, setMainChatId] = useState(props.latestId);
 
-
   return (
     <MainChatIdContext.Provider value={{ mainChatId, setMainChatId }}>
       <section className={classes.content}>
-        <Navigation
-          requestFetch={props.requestFetch}
-        />
+        <Navigation />
         {mainChatId ? <Main /> : <WelcomeMessage />}
       </section>
     </MainChatIdContext.Provider>

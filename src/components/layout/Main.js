@@ -9,8 +9,7 @@ export const ChatMessagesContext = React.createContext();
 export default function Main() {
   const { mainChatId } = useContext(MainChatIdContext);
   const [isLoading, setIsLoading] = useState(true);
-  const [allMessages, setAllMessages] = useState([]);
-  const [fetchTrigger, setFetchTrigger] = useState(false);
+  const [chatMessages, setChatMessages] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -30,20 +29,19 @@ export default function Main() {
           dataMessages.push(message);
         }
         setIsLoading(false);
-        setAllMessages(dataMessages);
+        setChatMessages(dataMessages);
       });
-  }, [mainChatId, fetchTrigger]);
+  }, [mainChatId]);
 
-  function renderFetch() {
-    setFetchTrigger((prev) => !prev);
-  }
+
 
   return (
-    <ChatMessagesContext.Provider value={allMessages}>
+    <ChatMessagesContext.Provider value={{ chatMessages, setChatMessages }}>
       <main>
         <ChatTitle />
         <MessageHistory isLoading={isLoading} />
-        <AddMessage renderFetch={renderFetch} />
+        <AddMessage 
+        />
       </main>
     </ChatMessagesContext.Provider>
   );

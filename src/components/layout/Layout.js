@@ -9,11 +9,6 @@ export default function Layout() {
   const [isLoading, setIsLoading] = useState(true);
   const [allChats, setAllChats] = useState([]);
   const [latestId, setLatestId] = useState(null);
-  const [fetchTrigger, setFetchTrigger] = useState(true)
-
-  function requestFetch(){
-    setFetchTrigger(prev => !prev)
-  }
 
   useEffect(() => {
     setIsLoading(true);
@@ -36,8 +31,7 @@ export default function Layout() {
         setAllChats(chats);
         setLatestId(chats[chats.length - 1].id);
       });
-  }, [fetchTrigger]);
-
+  }, []);
 
   if (isLoading) {
     return <LoadingPage />;
@@ -46,8 +40,8 @@ export default function Layout() {
   return (
     <body>
       <Header />
-      <AllChatsContext.Provider value={{allChats, setAllChats}}>
-        <Content latestId={latestId}  requestFetch={requestFetch}  />
+      <AllChatsContext.Provider value={{ allChats, setAllChats }}>
+        <Content latestId={latestId} />
       </AllChatsContext.Provider>
     </body>
   );

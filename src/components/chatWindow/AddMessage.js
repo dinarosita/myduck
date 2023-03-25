@@ -3,9 +3,11 @@ import classes from "./AddMessage.module.css";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import { MainChatIdContext } from "../layout/Content";
+import { ChatMessagesContext } from "../layout/Main";
 
-export default function AddMessage(props) {
-  const {mainChatId} = useContext(MainChatIdContext);
+export default function AddMessage() {
+  const { setChatMessages } = useContext(ChatMessagesContext);
+  const { mainChatId } = useContext(MainChatIdContext);
   const [fieldtext, setFieldtext] = useState("");
 
   function handleFieldtext(event) {
@@ -30,10 +32,28 @@ export default function AddMessage(props) {
           "Content-Type": "application/json",
         },
       }
-    ).then(() => {
-      props.renderFetch();
-      setFieldtext("");
-    });
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        updateLocalMessages(data.name);
+        setFieldtext("");
+      });
+  }
+
+  function updateLocalMessages(messageId) {
+    fetch(
+      `https://myduck-fb785-default-rtdb.firebaseio.com/chats/${mainChatId}/messages/${messageId}.json`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        const latestMessage = {
+          id: messageId,
+          ...data,
+        };
+        setChatMessages((prevChatMessages) =>
+          prevChatMessages.concat(latestMessage)
+        );
+      });
   }
 
   return (

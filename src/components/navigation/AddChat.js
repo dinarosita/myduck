@@ -1,10 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import classes from "./AddChat.module.css";
 
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
+import { AllChatsContext } from "../layout/Layout";
 
 export default function AddChat(props) {
+  const { setAllChats } = useContext(AllChatsContext);
   const [isButton, setIsButton] = useState(true);
   const titleRef = useRef();
 
@@ -25,19 +27,39 @@ export default function AddChat(props) {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then(() => {
-      setIsButton(true);
-      props.requestFetch();
-    });
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        updateLocalChats(data.name);
+        setIsButton(true);
+      });
   }
 
-  function handleCancel () {
-    setIsButton(true)
+  function updateLocalChats(chatId) {
+    fetch(
+      `https://myduck-fb785-default-rtdb.firebaseio.com/chats/${chatId}.json`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        const latestChat = {
+          id: chatId,
+          ...data,
+        };
+        setAllChats((prevAllChats) =>
+        prevAllChats.concat(latestChat)
+        );
+      });
+  }
+
+  function handleCancel() {
+    setIsButton(true);
   }
   return (
     <div className={classes.addChat}>
       {isButton ? (
-        <button onClick={showBox} className={classes.addButton}>Start a new chat</button>
+        <button onClick={showBox} className={classes.addButton}>
+          Start a new chat
+        </button>
       ) : (
         <form onSubmit={addNewChat}>
           <label htmlFor="title">Submit chat title:</label>

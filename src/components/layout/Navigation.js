@@ -4,7 +4,7 @@ import ChatHistory from "../navigation/ChatHistory";
 import { AllChatsContext } from "../layout/Layout";
 import classes from "./Navigation.module.css";
 
-export default function Navigation(props) {
+export default function Navigation() {
   const {allChats} = useContext(AllChatsContext);
 
   return (
@@ -19,7 +19,7 @@ export default function Navigation(props) {
       ) : (
         <></>
       )}
-      <AddChat requestFetch={props.requestFetch} />
+      <AddChat />
     </nav>
   );
 }
