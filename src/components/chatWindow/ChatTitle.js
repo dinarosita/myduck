@@ -4,7 +4,7 @@ import { AllChatsContext } from "../layout/Layout";
 import classes from "./ChatTitle.module.css";
 
 export default function ChatTitle() {
-  const allChats = useContext(AllChatsContext);
+  const { allChats } = useContext(AllChatsContext);
   const { mainChatId } = useContext(MainChatIdContext);
 
   const mainChat = allChats.find((chat) => chat.id === mainChatId);

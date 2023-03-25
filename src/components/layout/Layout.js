@@ -46,7 +46,7 @@ export default function Layout() {
   return (
     <body>
       <Header />
-      <AllChatsContext.Provider value={allChats}>
+      <AllChatsContext.Provider value={{allChats, setAllChats}}>
         <Content latestId={latestId}  requestFetch={requestFetch}  />
       </AllChatsContext.Provider>
     </body>

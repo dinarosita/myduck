@@ -5,7 +5,7 @@ import { AllChatsContext } from "../layout/Layout";
 import classes from "./Navigation.module.css";
 
 export default function Navigation(props) {
-  const allChats = useContext(AllChatsContext);
+  const {allChats} = useContext(AllChatsContext);
 
   return (
     <nav className={classes.navigation}>

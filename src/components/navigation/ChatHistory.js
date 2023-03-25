@@ -6,7 +6,7 @@ import classes from "./ChatHistory.module.css";
 
 export default function ChatHistory(props) {
 
-  const allChats = useContext(AllChatsContext);
+const {allChats} = useContext(AllChatsContext);
   const { mainChatId, setMainChatId } = useContext(MainChatIdContext);
   
   const mainChatStyle = {

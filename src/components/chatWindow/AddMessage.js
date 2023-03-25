@@ -5,7 +5,7 @@ import "firebase/compat/firestore";
 import { MainChatIdContext } from "../layout/Content";
 
 export default function AddMessage(props) {
-  const mainChatId = useContext(MainChatIdContext);
+  const {mainChatId} = useContext(MainChatIdContext);
   const [fieldtext, setFieldtext] = useState("");
 
   function handleFieldtext(event) {

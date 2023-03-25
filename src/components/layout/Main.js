@@ -7,11 +7,11 @@ import MessageHistory from "../chatWindow/MessageHistory";
 export const ChatMessagesContext = React.createContext();
 
 export default function Main() {
-  const mainChatId = useContext(MainChatIdContext);
+  const { mainChatId } = useContext(MainChatIdContext);
   const [isLoading, setIsLoading] = useState(true);
   const [allMessages, setAllMessages] = useState([]);
-  const [fetchTrigger, setFetchTrigger] = useState(false)
- 
+  const [fetchTrigger, setFetchTrigger] = useState(false);
+
   useEffect(() => {
     setIsLoading(true);
     fetch(
@@ -34,10 +34,9 @@ export default function Main() {
       });
   }, [mainChatId, fetchTrigger]);
 
-  function renderFetch () {
-    setFetchTrigger(prev => !prev)
+  function renderFetch() {
+    setFetchTrigger((prev) => !prev);
   }
-
 
   return (
     <ChatMessagesContext.Provider value={allMessages}>
