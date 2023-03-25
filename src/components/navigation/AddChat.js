@@ -1,18 +1,29 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import classes from "./AddChat.module.css";
 
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import { AllChatsContext } from "../layout/Layout";
+import { MainChatIdContext } from "../layout/Content";
 
 export default function AddChat(props) {
   const { setAllChats } = useContext(AllChatsContext);
-  const [isButton, setIsButton] = useState(true);
+  const { setMainChatId } = useContext(MainChatIdContext);
   const titleRef = useRef();
 
-  function showBox() {
-    setIsButton(false);
-  }
+  const [showStartButton, setShowStartButton] = useState(true);
+  const [showInputForm, setShowInputForm] = useState(false);
+
+  const handleStartButton = () => {
+    setShowStartButton(false);
+    setShowInputForm(true);
+  };
+
+  useEffect(() => {
+    if (titleRef.current) {
+      titleRef.current.focus();
+    }
+  }, [showInputForm]);
 
   function addNewChat(event) {
     event.preventDefault();
@@ -31,7 +42,8 @@ export default function AddChat(props) {
       .then((response) => response.json())
       .then((data) => {
         updateLocalChats(data.name);
-        setIsButton(true);
+        setShowStartButton(true);
+        setShowInputForm(false);
       });
   }
 
@@ -45,22 +57,23 @@ export default function AddChat(props) {
           id: chatId,
           ...data,
         };
-        setAllChats((prevAllChats) =>
-        prevAllChats.concat(latestChat)
-        );
+        setAllChats((prevAllChats) => prevAllChats.concat(latestChat));
+        setMainChatId(chatId);
       });
   }
 
   function handleCancel() {
-    setIsButton(true);
+    setShowStartButton(true);
+    setShowInputForm(false);
   }
   return (
     <div className={classes.addChat}>
-      {isButton ? (
-        <button onClick={showBox} className={classes.addButton}>
-          Start a new chat
+      {showStartButton && (
+        <button onClick={handleStartButton} className={classes.addButton}>
+          Start new chat
         </button>
-      ) : (
+      )}
+      {showInputForm && (
         <form onSubmit={addNewChat}>
           <label htmlFor="title">Submit chat title:</label>
           <input id="title" type="text" ref={titleRef} />
