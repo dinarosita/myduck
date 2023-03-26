@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import ChatCollectionContext from "../context/ChatCollectionContext"
-import classes from "./Header.module.css";
+// import classes from "./Header.module.css";
 
 
 const TAGLINES = [
@@ -31,7 +31,7 @@ export default function Header(props) {
   return (
     <header>
       <h1>MyDuck</h1>
-      <div className={classes.tagline}>{TAGLINES[9]}</div>
+      <div>{TAGLINES[9]}</div>
     </header>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import ChatCollectionContext from "../../context/ChatCollectionContext";
 import MainChatContext from "../../context/MainChatContext";
-import classes from "./ChatTitle.module.css";
+// import classes from "./ChatTitle.module.css";
 
 export default function ChatTitle() {
 
@@ -31,10 +31,10 @@ export default function ChatTitle() {
 
   return (
     <div>
-      <div className={classes.chatTitle}>
+      <div>
         <h2>{title}</h2>
 
-        <div className={classes.chatTag}>
+        <div>
           <div>{tag}</div>
         </div>
       </div>

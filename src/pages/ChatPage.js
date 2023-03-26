@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import classes from "./ChatPage.module.css"
+// import classes from "./ChatPage.module.css"
 import Header from "../layout/Header"
 import Navigation from "../layout/Navigation"
 import Main from "../layout/Main"
@@ -9,14 +9,14 @@ export default function ChatPage() {
 
     const { isLoading } = useContext(ChatCollectionContext);
 
-    if (isLoading) return     <div className={classes.page}>
+    if (isLoading) return <div>
     <Header />
   </div>;
 
   return (
-    <div className={classes.page}>
+    <div>
       <Header />
-      <div className={classes.content}>
+      <div>
         <Navigation />
         <Main />
       </div>

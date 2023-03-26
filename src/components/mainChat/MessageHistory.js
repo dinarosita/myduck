@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import MainChatContext from "../../context/MainChatContext";
-import classes from "./MessageHistory.module.css";
+// import classes from "./MessageHistory.module.css";
 
 export default function MessageHistory() {
   const { messageList, id } = useContext(MainChatContext);
@@ -8,9 +8,9 @@ export default function MessageHistory() {
     return <div></div>;
   }
   return (
-    <div className={classes.messages}>
+    <div>
       {messageList.map((msg) => (
-        <div key={msg.id} className={classes.messageBubble}>
+        <div key={msg.id}>
           {msg.message}
         </div>
       ))}

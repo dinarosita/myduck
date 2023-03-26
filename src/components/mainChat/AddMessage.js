@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
-import classes from "./AddMessage.module.css";
+// import classes from "./AddMessage.module.css";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import MainChatContext from "../../context/MainChatContext";
@@ -56,7 +56,7 @@ export default function AddMessage() {
   }
 
   return (
-    <form className={classes.addMessage}>
+    <form>
       {/* <label htmlFor="entry">Add new message</label> */}
       <textarea
         id="entry"

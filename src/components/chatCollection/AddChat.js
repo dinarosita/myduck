@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import classes from "./AddChat.module.css";
+// import classes from "./AddChat.module.css";
 
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
@@ -62,9 +62,9 @@ export default function AddChat() {
   }
 
   return (
-    <div className={classes.addChat}>
+    <div>
       {showButton && (
-        <button onClick={toggleForm} className={classes.addButton}>
+        <button onClick={toggleForm}>
           Start new chat
         </button>
       )}
@@ -73,7 +73,7 @@ export default function AddChat() {
           <label htmlFor="title">Submit chat title:</label>
           <input id="title" type="text" ref={titleRef} />
           <input type="submit" hidden="true" />
-          <div className={classes.buttons}>
+          <div>
             <button onClick={toggleForm}>Cancel</button>
             <button type="submit">Submit</button>
           </div>
