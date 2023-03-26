@@ -17,22 +17,21 @@ const TAGLINES = [
 ];
 
 export default function Header(props) {
-  const { mainChatId } = useContext(ChatCollectionContext);
-  const [tagline, setTagline] = useState(
-    "The quick Queen of Quincy and her quacking quackeroo"
-  );
+//   const { mainChatId } = useContext(ChatCollectionContext);
+//   const [tagline, setTagline] = useState(""
+//   );
 
-  useEffect(() => {
-    setTagline(TAGLINES[Math.floor(Math.random() * TAGLINES.length)]);
-    return () => {
-      setTagline(null);
-    };
-  }, [mainChatId]);
+//   useEffect(() => {
+//     setTagline(TAGLINES[Math.floor(Math.random() * TAGLINES.length)]);
+//     return () => {
+//       setTagline("");
+//     };
+//   }, [mainChatId]);
 
   return (
     <header>
-      <h1>{props.text ? props.text : "MyDuck"}</h1>
-      <div className={classes.tagline}>{tagline}</div>
+      <h1>MyDuck</h1>
+      <div className={classes.tagline}>{TAGLINES[9]}</div>
     </header>
   );
 }

@@ -1,13 +1,12 @@
 .chatTitle {
-  background-color: papayawhip;
+  /* background-color: papayawhip; */
   padding: 0.5rem;
-  /* border-radius: 50px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0; */
-  border: darkorange 5px double;
+  /* border: darkorange 5px double; */
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  height: fit-content;
+  border-bottom: darkorange 3px double;
 }
 
 .chatTitle * {
@@ -19,7 +18,7 @@
   font-size: x-large;
 }
 
-.chatTitle .timestamp {
+.chatTitle .chatTag {
   font-size: small;
 }
 
@@ -29,7 +28,7 @@
   max-width: 90%;
   margin: auto;
   font-size: large;
-  background-color: ivory;
+  background-color: white;
   border: orange solid 1px;
   border-radius: 5px;
   font-weight: inherit;
@@ -56,5 +55,5 @@
 }
 
 .littlePencil {
-    font-size: small;
+  font-size: small;
 }

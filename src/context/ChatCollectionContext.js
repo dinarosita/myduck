@@ -11,8 +11,7 @@ const ChatCollectionContext = React.createContext({
 export function ChatCollectionContextProvider(props) {
   const [chatList, setChatList] = useState([]);
   const [mainChatId, setMainChatId] = useState(null);
-  const [mainChatTitle, setMainChatTitle] = useState(null);
-  const [mainChatCreatedAt, setMainChatCreatedAt] = useState({});
+  
 
   const [isLoading, setIsLoading] = useState(true);
 

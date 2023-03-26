@@ -3,9 +3,9 @@ import MainChatContext from "../../context/MainChatContext";
 import classes from "./MessageHistory.module.css";
 
 export default function MessageHistory() {
-    const {messageList, isLoading} = useContext(MainChatContext)
-  if (isLoading) {
-    return <div>Loading messages...</div>;
+  const { messageList, id } = useContext(MainChatContext);
+  if (!id) {
+    return <div></div>;
   }
   return (
     <div className={classes.messages}>
@@ -13,7 +13,7 @@ export default function MessageHistory() {
         <div key={msg.id} className={classes.messageBubble}>
           {msg.message}
         </div>
-      )).reverse()}
+      ))}
     </div>
   );
 }

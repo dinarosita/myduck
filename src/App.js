@@ -5,10 +5,6 @@ import ChatPage from "./pages/ChatPage";
 import ChatCollectionContext from "./context/ChatCollectionContext"
 
 export default function App() {
-  const { isLoading, mainChatId } = useContext(ChatCollectionContext);
-
-  if (isLoading) return <LoadingPage />;
-  if (!mainChatId) return <WelcomePage />;
 
   return <ChatPage />;
 }

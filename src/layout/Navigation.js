@@ -9,7 +9,7 @@ export default function Navigation() {
 
   if (!mainChatId)
     return (
-      <nav className={classes.navigation}>
+      <nav className={classes.navigation} >
         <h2>Let's quack!</h2>
         <AddChat />
       </nav>

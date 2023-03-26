@@ -5,7 +5,7 @@ import "firebase/compat/firestore";
 import MainChatContext from "../../context/MainChatContext";
 
 export default function AddMessage() {
-    const {id, setMessageList} = useContext(MainChatContext)
+  const { id, setMessageList } = useContext(MainChatContext);
   const [textvalue, setTextValue] = useState("");
 
   function handleTextValue(event) {
@@ -48,19 +48,20 @@ export default function AddMessage() {
           id: messageId,
           ...data,
         };
-        setMessageList((prevList) =>
-          prevList.concat(latestMessage)
-        );
+        setMessageList((prevList) => prevList.concat(latestMessage));
       });
   }
-
+  if (!id) {
+    return <div></div>;
+  }
 
   return (
     <form className={classes.addMessage}>
-      <label htmlFor="entry">Add new message</label>
+      {/* <label htmlFor="entry">Add new message</label> */}
       <textarea
         id="entry"
         ref={messageRef}
+        placeholder="Quack here..."
         value={textvalue}
         onChange={handleTextValue}
         onKeyDown={(event) => {

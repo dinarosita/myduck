@@ -7,7 +7,7 @@ export default function ChatHistory() {
 
   const mainChatStyle = {
     fontWeight: "bold",
-    color: "ivory",
+    color: "white",
     backgroundColor: "orange",
   };
 

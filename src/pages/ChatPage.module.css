@@ -3,6 +3,11 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+
+  height: calc(100vh - 10px);
+  margin: 5px;
+  width: auto;
+  box-sizing: border-box;
 }
 
 .content {
@@ -10,8 +15,6 @@
   flex-direction: row;
   gap: 0.5rem;
   font-size: 0.9rem;
+  flex-grow: 1;
+  overflow-y: auto;
 }
-
-
-
-

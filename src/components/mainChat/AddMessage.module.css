@@ -1,7 +1,11 @@
 .addMessage {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  height: fit-content;
+  padding: 10px;
+  border-top: darkorange 3px double;
+  /* border-collapse: collapse; */
 }
 
 .addMessage label {
@@ -14,21 +18,43 @@
 .addMessage textarea:active,
 .addMessage textarea:focus {
   width: 100%;
-  height: 8rem;
+  height: 5rem;
   line-height: 1.5rem;
   font-family: inherit;
   font-size: inherit;
-  color: saddlebrown;
+  color: chocolate;
   border: 1px solid darkorange;
   border-radius: 5px;
+  border-bottom-right-radius: 0;
   outline: none !important;
-  padding: 0.5rem;
+  padding: 0.2rem 0.5rem;
   box-sizing: border-box;
-  /* background-color: ivory; */
+  /* background-color: white; */
   /* text-align: end; */
 }
 
+textarea::placeholder {
+    color: darkorange;
+    font-weight: bold;
+  }
+  
 .addMessage button {
-    display: block;
-    margin-left: auto;
+  display: block;
+  margin: 0;
+  margin-left: auto;
+  background-color: inherit;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  border-top: none;
+}
+
+.addMessage button:hover,
+.addMessage button:active,
+.addMessage button:focus {
+    background-color: orange;
+    color:white;
+}
+
+.addMessage button:focus {
+    outline: none;
 }
