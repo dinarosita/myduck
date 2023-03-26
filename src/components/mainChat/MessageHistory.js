@@ -1,20 +1,19 @@
 import React, { useContext } from "react";
-import { ChatMessagesContext } from "../layout/Main";
+import MainChatContext from "../../context/MainChatContext";
 import classes from "./MessageHistory.module.css";
 
-export default function MessageHistory(props) {
-  const {chatMessages} = useContext(ChatMessagesContext);
-
-  if (props.isLoading) {
+export default function MessageHistory() {
+    const {messageList, isLoading} = useContext(MainChatContext)
+  if (isLoading) {
     return <div>Loading messages...</div>;
   }
   return (
     <div className={classes.messages}>
-      {chatMessages.map((msg) => (
+      {messageList.map((msg) => (
         <div key={msg.id} className={classes.messageBubble}>
           {msg.message}
         </div>
-      ))}
+      )).reverse()}
     </div>
   );
 }

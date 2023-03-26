@@ -14,7 +14,7 @@
 .addMessage textarea:active,
 .addMessage textarea:focus {
   width: 100%;
-  height: 10rem;
+  height: 8rem;
   line-height: 1.5rem;
   font-family: inherit;
   font-size: inherit;

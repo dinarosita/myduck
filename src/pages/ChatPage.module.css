@@ -1,0 +1,17 @@
+.page {
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+
+
+

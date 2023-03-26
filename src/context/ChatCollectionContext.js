@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
 
-const ChatContext = React.createContext({
+const ChatCollectionContext = React.createContext({
   chatList: [],
+  setChatList: () => {},
   mainChatId: null,
+  setMainChatId: () => {},
   isLoading: true,
 });
 
-export function ChatContextProvider(props) {
+export function ChatCollectionContextProvider(props) {
   const [chatList, setChatList] = useState([]);
   const [mainChatId, setMainChatId] = useState(null);
+  const [mainChatTitle, setMainChatTitle] = useState(null);
+  const [mainChatCreatedAt, setMainChatCreatedAt] = useState({});
+
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -16,7 +21,7 @@ export function ChatContextProvider(props) {
     const abortController = new AbortController();
 
     fetch("https://myduck-fb785-default-rtdb.firebaseio.com/chats.json", {
-      signal: abortController.signal, // pass the signal to the fetch request
+      signal: abortController.signal,
     })
       .then((response) => {
         return response.json();
@@ -48,15 +53,17 @@ export function ChatContextProvider(props) {
 
   const context = {
     chatList: chatList,
+    setChatList: setChatList,
     mainChatId: mainChatId,
+    setMainChatId: setMainChatId,
     isLoading: isLoading,
   };
 
   return (
-    <ChatContext.Provider value={context}>
+    <ChatCollectionContext.Provider value={context}>
       {props.children}
-    </ChatContext.Provider>
+    </ChatCollectionContext.Provider>
   );
 }
 
-export default ChatContext;
+export default ChatCollectionContext;

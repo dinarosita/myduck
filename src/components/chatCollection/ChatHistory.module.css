@@ -26,3 +26,9 @@
   color: chocolate;
   /* font-weight: bold; */
 }
+
+.mainButton {
+  fontweight: bold;
+  color: ivory;
+  background-color: orange;
+}

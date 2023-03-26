@@ -3,51 +3,50 @@ import classes from "./AddChat.module.css";
 
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
-import { AllChatsContext } from "../layout/Layout";
-import { MainChatIdContext } from "../layout/Content";
+import ChatCollectionContext from "../../context/ChatCollectionContext";
 
-export default function AddChat(props) {
-  const { setAllChats } = useContext(AllChatsContext);
-  const { setMainChatId } = useContext(MainChatIdContext);
+export default function AddChat() {
+  const { setChatList, setMainChatId } = useContext(ChatCollectionContext);
+
   const titleRef = useRef();
 
-  const [showStartButton, setShowStartButton] = useState(true);
-  const [showInputForm, setShowInputForm] = useState(false);
+  const [showButton, setShowButton] = useState(true);
+  const [showForm, setShowForm] = useState(false);
 
-  const handleStartButton = () => {
-    setShowStartButton(false);
-    setShowInputForm(true);
+  const toggleForm = () => {
+    setShowButton((prevButton) => !prevButton);
+    setShowForm((prevForm) => !prevForm);
   };
 
   useEffect(() => {
     if (titleRef.current) {
       titleRef.current.focus();
     }
-  }, [showInputForm]);
+  }, [showForm]);
 
-  function addNewChat(event) {
+  function postNewChat(event) {
     event.preventDefault();
 
-    const chatData = {
+    const chatMeta = {
       title: titleRef.current.value ? titleRef.current.value : null,
       createdAt: firebase.firestore.Timestamp.now(),
     };
+
     fetch("https://myduck-fb785-default-rtdb.firebaseio.com/chats.json", {
       method: "POST",
-      body: JSON.stringify(chatData),
+      body: JSON.stringify(chatMeta),
       headers: {
         "Content-Type": "application/json",
       },
     })
       .then((response) => response.json())
       .then((data) => {
-        updateLocalChats(data.name);
-        setShowStartButton(true);
-        setShowInputForm(false);
+        updateLocalList(data.name);
+        toggleForm();
       });
   }
 
-  function updateLocalChats(chatId) {
+  function updateLocalList(chatId) {
     fetch(
       `https://myduck-fb785-default-rtdb.firebaseio.com/chats/${chatId}.json`
     )
@@ -57,29 +56,25 @@ export default function AddChat(props) {
           id: chatId,
           ...data,
         };
-        setAllChats((prevAllChats) => prevAllChats.concat(latestChat));
+        setChatList((prevAllChats) => prevAllChats.concat(latestChat));
         setMainChatId(chatId);
       });
   }
 
-  function handleCancel() {
-    setShowStartButton(true);
-    setShowInputForm(false);
-  }
   return (
     <div className={classes.addChat}>
-      {showStartButton && (
-        <button onClick={handleStartButton} className={classes.addButton}>
+      {showButton && (
+        <button onClick={toggleForm} className={classes.addButton}>
           Start new chat
         </button>
       )}
-      {showInputForm && (
-        <form onSubmit={addNewChat}>
+      {showForm && (
+        <form onSubmit={postNewChat}>
           <label htmlFor="title">Submit chat title:</label>
           <input id="title" type="text" ref={titleRef} />
           <input type="submit" hidden="true" />
           <div className={classes.buttons}>
-            <button onClick={handleCancel}>Cancel</button>
+            <button onClick={toggleForm}>Cancel</button>
             <button type="submit">Submit</button>
           </div>
         </form>

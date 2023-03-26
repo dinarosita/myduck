@@ -2,32 +2,30 @@ import React, { useContext, useRef, useState } from "react";
 import classes from "./AddMessage.module.css";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
-import { MainChatIdContext } from "../layout/Content";
-import { ChatMessagesContext } from "../layout/Main";
+import MainChatContext from "../../context/MainChatContext";
 
 export default function AddMessage() {
-  const { setChatMessages } = useContext(ChatMessagesContext);
-  const { mainChatId } = useContext(MainChatIdContext);
-  const [fieldtext, setFieldtext] = useState("");
+    const {id, setMessageList} = useContext(MainChatContext)
+  const [textvalue, setTextValue] = useState("");
 
-  function handleFieldtext(event) {
-    setFieldtext(event.target.value);
+  function handleTextValue(event) {
+    setTextValue(event.target.value);
   }
 
   const messageRef = useRef();
 
-  function addNewMessage(event) {
+  function postNewMessage(event) {
     event.preventDefault();
 
-    const chatData = {
+    const chatMeta = {
       message: messageRef.current.value,
       createdAt: firebase.firestore.Timestamp.now(),
     };
     fetch(
-      `https://myduck-fb785-default-rtdb.firebaseio.com/chats/${mainChatId}/messages.json`,
+      `https://myduck-fb785-default-rtdb.firebaseio.com/chats/${id}/messages.json`,
       {
         method: "POST",
-        body: JSON.stringify(chatData),
+        body: JSON.stringify(chatMeta),
         headers: {
           "Content-Type": "application/json",
         },
@@ -36,13 +34,13 @@ export default function AddMessage() {
       .then((response) => response.json())
       .then((data) => {
         updateLocalMessages(data.name);
-        setFieldtext("");
+        setTextValue("");
       });
   }
 
   function updateLocalMessages(messageId) {
     fetch(
-      `https://myduck-fb785-default-rtdb.firebaseio.com/chats/${mainChatId}/messages/${messageId}.json`
+      `https://myduck-fb785-default-rtdb.firebaseio.com/chats/${id}/messages/${messageId}.json`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -50,8 +48,8 @@ export default function AddMessage() {
           id: messageId,
           ...data,
         };
-        setChatMessages((prevChatMessages) =>
-          prevChatMessages.concat(latestMessage)
+        setMessageList((prevList) =>
+          prevList.concat(latestMessage)
         );
       });
   }
@@ -63,17 +61,17 @@ export default function AddMessage() {
       <textarea
         id="entry"
         ref={messageRef}
-        value={fieldtext}
-        onChange={handleFieldtext}
+        value={textvalue}
+        onChange={handleTextValue}
         onKeyDown={(event) => {
-          if (event.keyCode === 13) {
+          if (event.key === 13) {
             event.preventDefault();
             event.target.value += "\n";
           }
         }}
         required
       />
-      <button onClick={addNewMessage}>Submit</button>
+      <button onClick={postNewMessage}>Submit</button>
     </form>
   );
 }
