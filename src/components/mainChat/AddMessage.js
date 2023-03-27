@@ -61,7 +61,8 @@ export default function AddMessage() {
       <textarea
         id="entry"
         ref={messageRef}
-        placeholder="Quack here..."
+        className="border border-orange-500 border-opacity-50 focus:border-orange-600 focus:outline-none focus:ring-1 focus:ring-orange-600 focus:ring-opacity-50 rounded-md py-2 px-4 text-orange-600 placeholder-orange-400 resize-none w-full"
+        placeholder="Quack quack..."
         value={textvalue}
         onChange={handleTextValue}
         onKeyDown={(event) => {
@@ -72,7 +73,12 @@ export default function AddMessage() {
         }}
         required
       />
-      <button onClick={postNewMessage}>Submit</button>
+      <button
+        onClick={postNewMessage}
+        className="border border-orange-500 border-opacity-50 text-orange-500 hover:bg-orange-500 hover:text-white active:bg-orange-500 active:text-white rounded-md py-1 px-2"
+      >
+        Submit
+      </button>
     </form>
   );
 }

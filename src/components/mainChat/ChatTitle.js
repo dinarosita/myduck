@@ -4,7 +4,6 @@ import MainChatContext from "../../context/MainChatContext";
 // import classes from "./ChatTitle.module.css";
 
 export default function ChatTitle() {
-
   const { id, chatMeta } = useContext(MainChatContext);
   const [title, setTitle] = useState(" ");
   const [tag, setTag] = useState(" ");
@@ -30,14 +29,9 @@ export default function ChatTitle() {
   }, [id]);
 
   return (
-    <div>
-      <div>
-        <h2>{title}</h2>
-
-        <div>
-          <div>{tag}</div>
-        </div>
-      </div>
+    <div className="flex flex-col items-center justify-center border-b border-orange-500">
+        <h2 className="text-xl font-bold text-orange-500 uppercase">{title}</h2>
+        <div className="text-sm text-orange-500">{tag}</div>
     </div>
   );
 }

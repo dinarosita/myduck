@@ -8,9 +8,9 @@ export default function MessageHistory() {
     return <div></div>;
   }
   return (
-    <div>
+    <div className="flex flex-col gap-1 items-end">
       {messageList.map((msg) => (
-        <div key={msg.id}>
+        <div key={msg.id} className="border border-orange-300 p-4 text-brown inline-block">
           {msg.message}
         </div>
       ))}

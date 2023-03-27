@@ -64,18 +64,37 @@ export default function AddChat() {
   return (
     <div>
       {showButton && (
-        <button onClick={toggleForm}>
+        <button
+          onClick={toggleForm}
+          className="border border-orange-500 border-opacity-50 text-orange-500 hover:bg-orange-500 hover:text-white active:bg-orange-500 active:text-white rounded-md py-1 px-2"
+        >
           Start new chat
         </button>
       )}
       {showForm && (
         <form onSubmit={postNewChat}>
-          <label htmlFor="title">Submit chat title:</label>
-          <input id="title" type="text" ref={titleRef} />
+          {/* <label htmlFor="title">Submit chat title:</label> */}
+          <input
+            id="title"
+            type="text"
+            ref={titleRef}
+            placeholder="Chat title..."
+            className="border border-orange-500 border-opacity-50 focus:border-orange-600 focus:outline-none focus:ring-1 focus:ring-orange-600 focus:ring-opacity-50 rounded-md py-1 px-2 text-orange-600 placeholder-orange-400 w-full"
+          />
           <input type="submit" hidden="true" />
           <div>
-            <button onClick={toggleForm}>Cancel</button>
-            <button type="submit">Submit</button>
+            <button
+              onClick={toggleForm}
+              className="border border-orange-500 border-opacity-50 text-orange-500 hover:bg-orange-500 hover:text-white active:bg-orange-500 active:text-white rounded-md py-1 px-2"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="border border-orange-500 border-opacity-50 text-orange-500 hover:bg-orange-500 hover:text-white active:bg-orange-500 active:text-white rounded-md py-1 px-2"
+            >
+              Submit
+            </button>
           </div>
         </form>
       )}

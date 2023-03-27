@@ -16,10 +16,10 @@ export default function Navigation() {
     );
 
   return (
-    <nav>
-      <h2>Chat history</h2>
+    <nav className="flex flex-col gap-4">
+      <h2 className="text-xl font-bold text-orange-500 uppercase">Chat history</h2>
       <ChatHistory />
-      <h3>New topic?</h3>
+      {/* <h3>New topic?</h3> */}
       <AddChat />
     </nav>
   );
