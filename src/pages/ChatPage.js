@@ -14,9 +14,9 @@ export default function ChatPage() {
   </div>;
 
   return (
-    <div>
+    <div className="flex flex-col">
       <Header />
-      <div>
+      <div className="flex flex-row">
         <Navigation />
         <Main />
       </div>

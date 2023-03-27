@@ -30,7 +30,7 @@ export default function Header(props) {
 
   return (
     <header>
-      <h1>MyDuck</h1>
+      <h1 className="text-3xl font-bold underline">MyDuck</h1>
       <div>{TAGLINES[9]}</div>
     </header>
   );
