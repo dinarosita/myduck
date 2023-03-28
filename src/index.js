@@ -4,8 +4,8 @@ import "./index.css";
 import App from "./App";
 
 import { BrowserRouter } from "react-router-dom";
-import { ChatListContextProvider } from "./context/ChatListContext";
-import { MainChatContextProvider } from "./context/MainChatContext";
+import { ChatListContextProvider } from "./contexts/ChatListContext";
+import { MainChatContextProvider } from "./contexts/MainChatContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

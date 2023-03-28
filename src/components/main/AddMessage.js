@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
-import MainChatContext from "../../context/MainChatContext";
+import MainChatContext from "../../contexts/MainChatContext";
 
 export default function AddMessage() {
   const { id, setMessageList } = useContext(MainChatContext);

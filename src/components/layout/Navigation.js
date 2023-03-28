@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import AddChat from "../navigation/AddChat";
 import ChatHistory from "../navigation/ChatHistory";
-import ChatListContext from "../../context/ChatListContext";
+import ChatListContext from "../../contexts/ChatListContext";
 
 export default function Navigation() {
   const { mainChatId } = useContext(ChatListContext);

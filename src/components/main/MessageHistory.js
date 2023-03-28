@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import MainChatContext from "../../context/MainChatContext";
+import MainChatContext from "../../contexts/MainChatContext";
 
 export default function MessageHistory() {
   const { messageList, id } = useContext(MainChatContext);
@@ -7,7 +7,7 @@ export default function MessageHistory() {
     return <div></div>;
   }
   return (
-    <div className="flex flex-col items-end gap-1 p-1 border-b border-orange-500">
+    <div className="flex flex-col items-end gap-1 p-1 border-b border-orange-500 whitespace-pre-wrap">
       {messageList.map((msg) => (
         <div
           key={msg.id}

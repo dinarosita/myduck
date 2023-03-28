@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
-import ChatListContext from "../../context/ChatListContext";
+import ChatListContext from "../../contexts/ChatListContext";
 
 export default function AddChat() {
   const { setChatList, setMainChatId } = useContext(ChatListContext);

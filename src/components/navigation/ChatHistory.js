@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import ChatListContext from "../../context/ChatListContext";
+import ChatListContext from "../../contexts/ChatListContext";
 
 export default function ChatHistory() {
   const { chatList, mainChatId, setMainChatId } = useContext(ChatListContext);
@@ -18,7 +18,7 @@ export default function ChatHistory() {
   return (
     <div className="flex flex-col justify-start gap-1">
       <h2 className="text-lg font-bold uppercase text-orange-500 ">My chats</h2>
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-1 whitespace-normal">
         {chatList
           .map((chat) => (
             <button
