@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply break-words text-primary;
+}
+
+:focus {
+  @apply outline-none ring-1 ring-orange-500;
+}
+
+.btn {
+  @apply border-orange-500  text-sm text-orange-500;
+}
+
+.btn:hover {
+  @apply bg-orange-100 text-orange-550;
+}
+
+.btn:active {
+  @apply bg-orange-350 text-white;
+}
+
+.inp {
+  @apply block w-full break-words border border-orange-500  px-1 py-0 text-base text-orange-800 placeholder-orange-400 placeholder-orange-350 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-orange-500;
+}

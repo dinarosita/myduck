@@ -1,13 +1,16 @@
-import React, { useContext } from "react";
-import LoadingPage from "./pages/LoadingPage";
-import WelcomePage from "./pages/WelcomePage";
-import ChatPage from "./pages/ChatPage";
-import ChatCollectionContext from "./context/ChatCollectionContext"
-
+import React from "react";
+import Header from "./components/layout/Header";
+import Navigation from "./components/layout/Navigation";
+import Main from "./components/layout/Main";
 
 export default function App() {
-const {isLoading} = useContext(ChatCollectionContext)
-
-if (isLoading) return <LoadingPage />
-  return <ChatPage />;
+  return (
+    <div className="mx-auto flex h-screen flex-col border-1 border-orange-400">
+      <Header />
+      <div className="flex grow">
+        <Navigation />
+        <Main />
+      </div>
+    </div>
+  );
 }

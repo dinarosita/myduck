@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import ChatCollectionContext from "./ChatCollectionContext";
+import ChatListContext from "./ChatListContext";
 
 const MainChatContext = React.createContext({
   id: null,
@@ -10,7 +10,7 @@ const MainChatContext = React.createContext({
 });
 
 export function MainChatContextProvider(props) {
-  const { mainChatId, chatList } = useContext(ChatCollectionContext);
+  const { mainChatId, chatList } = useContext(ChatListContext);
 
   const [messageList, setMessageList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

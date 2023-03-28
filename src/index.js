@@ -4,16 +4,16 @@ import "./index.css";
 import App from "./App";
 
 import { BrowserRouter } from "react-router-dom";
-import { ChatCollectionContextProvider } from "./context/ChatCollectionContext";
+import { ChatListContextProvider } from "./context/ChatListContext";
 import { MainChatContextProvider } from "./context/MainChatContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <ChatCollectionContextProvider>
+  <ChatListContextProvider>
     <MainChatContextProvider>
       <BrowserRouter>
-        <App />
+        <App/>
       </BrowserRouter>
     </MainChatContextProvider>
-  </ChatCollectionContextProvider>
+  </ChatListContextProvider>
 );

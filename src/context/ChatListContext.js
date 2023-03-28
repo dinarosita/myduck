@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const ChatCollectionContext = React.createContext({
+const ChatListContext = React.createContext({
   chatList: [],
   setChatList: () => {},
   mainChatId: null,
@@ -8,7 +8,7 @@ const ChatCollectionContext = React.createContext({
   isLoading: true,
 });
 
-export function ChatCollectionContextProvider(props) {
+export function ChatListContextProvider(props) {
   const [chatList, setChatList] = useState([]);
   const [mainChatId, setMainChatId] = useState(null);
   
@@ -59,10 +59,10 @@ export function ChatCollectionContextProvider(props) {
   };
 
   return (
-    <ChatCollectionContext.Provider value={context}>
+    <ChatListContext.Provider value={context}>
       {props.children}
-    </ChatCollectionContext.Provider>
+    </ChatListContext.Provider>
   );
 }
 
-export default ChatCollectionContext;
+export default ChatListContext;

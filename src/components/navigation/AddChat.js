@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-// import classes from "./AddChat.module.css";
 
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
-import ChatCollectionContext from "../../context/ChatCollectionContext";
+import ChatListContext from "../../context/ChatListContext";
 
 export default function AddChat() {
-  const { setChatList, setMainChatId } = useContext(ChatCollectionContext);
+  const { setChatList, setMainChatId } = useContext(ChatListContext);
 
   const titleRef = useRef();
 
@@ -62,36 +61,38 @@ export default function AddChat() {
   }
 
   return (
-    <div>
+    <div className="flex flex-col gap-1">
+      <h3 className="text-lg font-bold uppercase text-orange-500 ">
+        New chat
+      </h3>
       {showButton && (
         <button
           onClick={toggleForm}
-          className="border border-orange-500 border-opacity-50 text-orange-500 hover:bg-orange-500 hover:text-white active:bg-orange-500 active:text-white rounded-md py-1 px-2"
+          className="rounded-r-2xl border border-orange-200 px-2 py-1 text-base text-sm  uppercase text-white text-left font-bold bg-orange-350 "
         >
-          Start new chat
+          Start here
         </button>
       )}
       {showForm && (
-        <form onSubmit={postNewChat}>
-          {/* <label htmlFor="title">Submit chat title:</label> */}
+        <form onSubmit={postNewChat} className="flex flex-col gap-1">
           <input
             id="title"
             type="text"
             ref={titleRef}
             placeholder="Chat title..."
-            className="border border-orange-500 border-opacity-50 focus:border-orange-600 focus:outline-none focus:ring-1 focus:ring-orange-600 focus:ring-opacity-50 rounded-md py-1 px-2 text-orange-600 placeholder-orange-400 w-full"
+            className="inp rounded-tr-xl"
           />
           <input type="submit" hidden="true" />
-          <div>
+          <div className="flex gap-1">
             <button
               onClick={toggleForm}
-              className="border border-orange-500 border-opacity-50 text-orange-500 hover:bg-orange-500 hover:text-white active:bg-orange-500 active:text-white rounded-md py-1 px-2"
+              className="btn border px-2 py-0 text-sm"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="border border-orange-500 border-opacity-50 text-orange-500 hover:bg-orange-500 hover:text-white active:bg-orange-500 active:text-white rounded-md py-1 px-2"
+              className="btn flex-1 rounded-br-xl border px-2 py-0 text-sm"
             >
               Submit
             </button>
