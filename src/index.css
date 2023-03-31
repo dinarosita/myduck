@@ -2,6 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  @apply text-amber-900 bg-slate-50 bg-opacity-50;
+}
+
+body {
+  @apply container min-h-screen sm:min-w-min;
+}
+
+.text-title {
+    @apply text-amber-600 font-semibold;
+}
+
+@layer base {
+    h1 {
+        @apply text-title text-2xl font-bold uppercase;
+    }
+    h2 {
+        @apply text-title text-lg uppercase;
+    }
+    h3 {
+        @apply text-title text-lg;
+    }
+    h4 {
+        @apply text-title text-base;
+    }
+}
+
+
+/* 
 body {
   @apply break-words text-primary;
 }
@@ -25,3 +54,8 @@ body {
 .inp {
   @apply block w-full break-words border border-orange-500  px-1 py-0 text-base text-orange-800 placeholder-orange-400 placeholder-orange-350 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-orange-500;
 }
+
+.bdr-main {
+    @apply border-orange-400;
+} */
+
