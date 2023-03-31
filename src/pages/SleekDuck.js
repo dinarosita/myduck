@@ -7,7 +7,7 @@ import SnapFlexWrapper from "../sleekduck/SnapFlexWrapper";
 
 export default function SleekDuck() {
   return (
-    <Box level="h2" title="Wrappers">
+    <Box level="h2" title="UI Wrappers">
       <p>Handy wrappers involving styling and functionalities.</p>
       <p>Location: src &gt; wrappers.</p>
       <ButtonWrapper />

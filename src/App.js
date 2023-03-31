@@ -9,13 +9,13 @@ export default function App() {
   return (
     <Layout>
       <Switch>
-        <Route path="/" exact>
+        <Route path="/myduck" exact>
           <MyDuck />
         </Route>
-        <Route path="/sleekduck">
+        <Route path="/myduck/sleekduck">
           <SleekDuck />
         </Route>
-        <Route path="/tailwind">
+        <Route path="/myduck/tailwind">
           <Tailwind />
         </Route>
       </Switch>
