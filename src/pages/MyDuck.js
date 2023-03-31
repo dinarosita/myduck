@@ -4,7 +4,7 @@ import Main from "../components/layout/Main";
 
 export default function MyDuck() {
   return (
-    <div className="flex grow">
+    <div className="flex grow gap-2">
       <Navigation />
       <Main />
     </div>

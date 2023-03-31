@@ -8,14 +8,14 @@ export default function Navigation() {
 
   if (!mainChatId)
     return (
-      <nav >
+      <nav className="border-r border-gold-ml p-2 pr-4">
         <h2>Let's quack!</h2>
         <AddChat />
       </nav>
     );
 
   return (
-    <nav className="flex flex-col gap-6 w-1/5 border-r border-orange-500 p-1">
+    <nav className="border-r border-gold-ml p-2 pr-4">
       <ChatHistory />
       <AddChat />
     </nav>

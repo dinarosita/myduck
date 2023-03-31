@@ -62,13 +62,13 @@ export default function AddChat() {
 
   return (
     <div className="flex flex-col gap-1">
-      <h3 className="text-lg font-bold uppercase text-orange-500 ">
+      <h3 className="text-lg font-bold uppercase text-gold-500 ">
         New chat
       </h3>
       {showButton && (
         <button
           onClick={toggleForm}
-          className="rounded-r-2xl border border-orange-200 px-2 py-1 text-base text-sm  uppercase text-white text-left font-bold bg-orange-350 "
+          className="rounded-r-2xl border border-gold-200 px-2 py-1 text-base text-sm  uppercase text-white text-left font-bold bg-gold-300 "
         >
           Start here
         </button>

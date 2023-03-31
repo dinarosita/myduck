@@ -15,7 +15,7 @@ export default function Box(props) {
 
   const boxBorder = props.noborder? "" : "border"
 
-  const boxClass = `border-amber-300 m-2 p-2 ${boxBorder} ${props.addStyle}`;
+  const boxClass = `border-gold-300 m-2 p-2 ${boxBorder} ${props.addStyle}`;
 
   if (!props.collapse) {
     return (
@@ -30,7 +30,7 @@ export default function Box(props) {
     <div className={boxClass}>
       <button onClick={toggleView} className="flex items-baseline space-x-2">
         <BoxTitle level={props.level} title={props.title} />
-        <p className="text-title">{arrow}</p>
+        <p className="title">{arrow}</p>
       </button>
       {!isHidden && <div>{props.children}</div>}
     </div>

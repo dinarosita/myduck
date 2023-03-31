@@ -1,37 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from "../../wrappers/Button";
-
-const TAGLINES = [
-  "Quack quack!",
-  "Talk to me!",
-  "Quack with me!",
-  "Doo doo doo...",
-  "Quackers not crackers",
-  "Let's brainstorm!",
-  "Spill it...",
-  "Talking to yourself?",
-  "Your newest best friend",
-  "The quick Queen of Quincy and her quacking quackeroo",
-];
+import logo from "../../img/logo128.png";
 
 export default function Header() {
   return (
-    <header className="w-full border-b border-orange-400 p-1">
-      <div className="flex flex-row items-baseline justify-between">
-        <h1 className="text-3xl font-bold uppercase text-orange-500">
-          <Link to="/myduck">MyDuck</Link>
-        </h1>
+    <header className="border-b border-gold-ml p        -2 ">
+      <div className="flex flex-row items-center justify-between">
+        <Link to="/myduck" className="btn border-0 flex flex-row items-center gap-2">
+          <img className="h-10 w-10 " src={logo} alt="MyDuck logo" />
+          <h1>MyDuck</h1>
+        </Link>
+
         <nav className="flex flex-row gap-2">
           <Link to="/myduck/sleekduck" className="btn">
-            <Button>SleekDuck</Button>
+            SleekDuck
           </Link>
-          <Button>
-            <Link to="/myduck/tailwind">Tailwind</Link>
-          </Button>
+
+          <Link to="/myduck/tailwind" className="btn">
+            Tailwind
+          </Link>
         </nav>
       </div>
-      <p className="text-l font-normal text-orange-500">{TAGLINES[9]}</p>
     </header>
   );
 }

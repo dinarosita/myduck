@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./img/logo128.png";
+import logo from "../img/logo128.png";
 import Box from "../wrappers/Box";
 
 export default function Responsive() {

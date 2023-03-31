@@ -7,7 +7,7 @@ export default function Main() {
 
 
   return (
-    <main className="flex-1 p-1">
+    <main className="flex flex-col p-2 gap-2">
       <ChatTitle />
       <MessageHistory />
       <AddMessage />

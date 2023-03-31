@@ -7,11 +7,11 @@ export default function MessageHistory() {
     return <div></div>;
   }
   return (
-    <div className="flex flex-col items-end gap-1 p-1 border-b border-orange-500 whitespace-pre-wrap">
+    <div className="flex grow flex-col gap-2 py-2 pr-8 whitespace-pre-wrap">
       {messageList.map((msg) => (
         <div
           key={msg.id}
-          className="inline-block border border-orange-200  px-2 py-1 rounded-l-2xl"
+          className="w-fit border border-gold-ml  px-2 py-1 pr-8 rounded-r-3xl"
         >
           {msg.message}
         </div>

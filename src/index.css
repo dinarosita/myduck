@@ -2,60 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  @apply text-amber-900 bg-slate-50 bg-opacity-50;
-}
-
-body {
-  @apply container min-h-screen sm:min-w-min;
-}
-
-.text-title {
-    @apply text-amber-600 font-semibold;
-}
-
 @layer base {
-    h1 {
-        @apply text-title text-2xl font-bold uppercase;
-    }
-    h2 {
-        @apply text-title text-lg uppercase;
-    }
-    h3 {
-        @apply text-title text-lg;
-    }
-    h4 {
-        @apply text-title text-base;
-    }
+  html {
+    @apply bg-slate-50 bg-opacity-50 text-gold-d;
+  }
+
+  body {
+    @apply container mx-2 mx-auto min-h-screen sm:min-w-min;
+  }
+  .title {
+    @apply font-bold text-gold-m;
+  }
+  h1 {
+    @apply title text-3xl uppercase;
+  }
+  h2 {
+    @apply title text-xl uppercase;
+  }
+  h3 {
+    @apply title text-xl;
+  }
+  h4 {
+    @apply title text-lg;
+  }
+  h5,
+  h6 {
+    @apply title;
+  }
+  *:focus {
+    @apply outline-none ring-2 ring-gold-ml  ring-offset-2;
+  }
+
+  .btn {
+    @apply w-fit rounded-full border border-gold-ml px-3 py-0.5  text-sm font-semibold text-gold-m hover:border-transparent hover:bg-gold-ml hover:text-white;
+  }
 }
-
-
-/* 
-body {
-  @apply break-words text-primary;
-}
-
-:focus {
-  @apply outline-none ring-1 ring-orange-500;
-}
-
-.btn {
-  @apply border-orange-500  text-sm text-orange-500;
-}
-
-.btn:hover {
-  @apply bg-orange-100 text-orange-550;
-}
-
-.btn:active {
-  @apply bg-orange-350 text-white;
-}
-
-.inp {
-  @apply block w-full break-words border border-orange-500  px-1 py-0 text-base text-orange-800 placeholder-orange-400 placeholder-orange-350 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-orange-500;
-}
-
-.bdr-main {
-    @apply border-orange-400;
-} */
-

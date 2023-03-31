@@ -2,35 +2,25 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    // screens: {
-    //   sm: "480px",
-    //   // => @media (min-width: 640px) { ... }
-
-    //   md: "547px",
-    //   // => @media (min-width: 768px) { ... }
-
-    //   lg: "768px",
-    // //   // => @media (min-width: 1024px) { ... }
-
-    //   xl: "1024px",
-    // //   // => @media (min-width: 1280px) { ... }
-
-    //   "2xl": "1680px",
-    //   // => @media (min-width: 1536px) { ... }
-    // },
     extend: {
       colors: {
-        primary: "#B34700",
-        orange: {
-          150: "#FFE5B4",
-          250: "#FFC57D",
-          350: "#FFA047",
-          450: "#FF7C12",
-          550: "#E66400",
-          650: "#B34700",
-          750: "#802800",
-          850: "#4D0A00",
-          950: "#1A0000",
+        gold: {
+          50: "#FFF2E1",
+          100: "#FEE4C3",
+          200: "#FED59F",
+          "l": "#FED59F",
+          300: "#FDC377",
+          400: "#FDAD45",
+          "ml": "#FDAD45",
+          500: "#FC9204",
+          600: "#E88503",
+          "m": "#E88503",
+          700: "#D47903",
+          800: "#BA6B02",
+          "md": "#BA6B02",
+          900: "#9C5902",
+          950: "#6F3F01",
+          "d": "#6F3F01",
         },
       },
     },

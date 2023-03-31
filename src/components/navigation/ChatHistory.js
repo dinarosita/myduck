@@ -5,19 +5,19 @@ export default function ChatHistory() {
   const { chatList, mainChatId, setMainChatId } = useContext(ChatListContext);
 
   const chatStyle =
-    "rounded-r-2xl  border  px-1 py-1 text-left text-base text-orange-500 hover:bg-orange-100 hover:text-orange-550 active:bg-orange-350 active:text-white";
+    "rounded-r-full  font-bold  px-2 text-left  hover:bg-gold-50 hover:text-gold-600 active:bg-gold-300 active:text-white hover:border hover:border-gold-m";
 
   const mainStyle =
-    " text-white bg-orange-350 border-orange-300 hover:bg-orange-350 hover:text-white font-bold";
+    "bg-gold-50 text-gold-600 border border-gold-m bg-gold-50 hover:border-2";
 
-  const regularStyle = " text-orange-550 border-1 border-orange-300";
+  const regularStyle = " border-gold-m text-gold-m";
 
   const selectClass = (id) =>
     chatStyle + (id === mainChatId ? mainStyle : regularStyle);
 
   return (
     <div className="flex flex-col justify-start gap-1">
-      <h2 className="text-lg font-bold uppercase text-orange-500 ">My chats</h2>
+      <h2>My chats</h2>
       <div className="flex flex-col gap-1 whitespace-normal">
         {chatList
           .map((chat) => (

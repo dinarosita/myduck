@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./img/logo128.png";
+import logo from "../img/logo128.png";
 import Box from "../wrappers/Box";
 
 export default function Chitchat() {
@@ -10,8 +10,8 @@ export default function Chitchat() {
           <img className="h-12 w-12" src={logo} alt="ChitChat Logo" />
         </div>
         <div>
-          <h4 className="text-xl font-medium text-amber-800">ChitChat</h4>
-          <p className="text-amber-600">You have a new message!</p>
+          <h4 className="text-xl font-medium text-gold-800">ChitChat</h4>
+          <p className="text-gold-600">You have a new message!</p>
         </div>
       </div>
     </Box>
