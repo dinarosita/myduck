@@ -20,14 +20,14 @@ export default function Header() {
     <header className="w-full border-b border-orange-400 p-1">
       <div className="flex flex-row items-baseline justify-between">
         <h1 className="text-3xl font-bold uppercase text-orange-500">
-          <Link to="/">MyDuck</Link>
+          <Link to="/myduck">MyDuck</Link>
         </h1>
         <nav className="flex flex-row gap-2">
-          <Link to="/sleekduck" className="btn">
+          <Link to="/myduck/sleekduck" className="btn">
             <Button>SleekDuck</Button>
           </Link>
           <Button>
-            <Link to="/tailwind">Tailwind</Link>
+            <Link to="/myduck/tailwind">Tailwind</Link>
           </Button>
         </nav>
       </div>
