@@ -4,16 +4,18 @@ import BoxWrapper from "../sleekduck/BoxWrapper";
 import ButtonWrapper from "../sleekduck/ButtonWrapper";
 import DefWrapper from "../sleekduck/DefWrapper";
 import SnapFlexWrapper from "../sleekduck/SnapFlexWrapper";
+import AboutSleekduck from "../sleekduck/AboutSleekduck";
 
 export default function SleekDuck() {
   return (
-    <Box level="h2" title="UI Wrappers">
-      <p>Handy wrappers involving styling and functionalities.</p>
-      <p>Location: src &gt; wrappers.</p>
+    <main>
+    <Box level="h2" title="SleekDuck Wrappers" noborder>
+      <AboutSleekduck /></Box>
+      <Box level="h2" title="Available Wrappers" noborder>
       <ButtonWrapper />
       <BoxWrapper />
       <SnapFlexWrapper />
       <DefWrapper />
-    </Box>
+    </Box></main>
   );
 }

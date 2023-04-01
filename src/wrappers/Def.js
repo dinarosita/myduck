@@ -9,6 +9,22 @@ export default function Def(props) {
       </div>
     );
 
+  if (props.indent && props.div)
+    return (
+      <div className="my-1">
+        <p className="title">{props.title}</p>
+        <div className="ml-5">{props.children}</div>
+      </div>
+    );
+
+  if (props.div)
+    return (
+      <div className="my-1">
+        <p className="title">{props.title}</p>
+        <div>{props.children}</div>
+      </div>
+    );
+
   if (props.inline)
     return (
       <div className="my-1">
@@ -18,6 +34,7 @@ export default function Def(props) {
         </p>
       </div>
     );
+
   return (
     <div className="my-1">
       <p className="title">{props.title}</p>

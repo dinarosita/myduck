@@ -13,6 +13,9 @@
   .title {
     @apply font-bold text-gold-m;
   }
+  strong {
+    @apply title;
+  }
   h1 {
     @apply title text-3xl uppercase;
   }
@@ -34,6 +37,7 @@
   }
 
   .btn {
-    @apply w-fit rounded-full border border-gold-ml px-3 py-0.5  text-sm font-semibold text-gold-m hover:border-transparent hover:bg-gold-ml hover:text-white;
+    @apply w-fit h-fit rounded-full border border-gold-ml px-3 py-0.5  text-sm font-semibold text-gold-m hover:border-transparent hover:bg-gold-ml hover:text-white;
   }
+
 }
