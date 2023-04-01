@@ -44,24 +44,19 @@ export default function BoxWrapper() {
           </Box>
         </Box>
 
-        <Box title="collapse" collapse>
+        <Box title="collapse & expand" collapse>
           <Box collapse title="collapse">
             <p>
-              The box can be made collapsible with collapsed state as the
-              default through property "collapse". For demonstration of how neat
-              it looks, the rest of the boxes will be using collapse property
-              too.
+              Property "collapse" is marking that the box is collapsible. The
+              default view is collapsed.
             </p>
           </Box>
           <Box collapse>
             This can even be done without a title, because the collapse
             indicator is still there.
           </Box>
-          <Box collapse expand title="expanded (future work)">
-            In the future, collapse box will allow expanded state as a starting
-            point through property "expanded". When property expanded is added,
-            property "collapse" doesn't have to be included because it will be
-            assumed by property expanded itself.
+          <Box collapse expand title="expand">
+            For having expanded state to start, add property <strong>expand</strong>. Collapse property can be added or not, because having property expand automatically makes the box collapsible.
           </Box>
         </Box>
 

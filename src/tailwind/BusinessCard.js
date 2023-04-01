@@ -5,7 +5,7 @@ import SnapFlex from "../wrappers/SnapFlex";
 
 export default function BusinessCard() {
   return (
-    <Box h3 title="Business Card">
+    <Box level="h3" expand title="Business Card">
       <SnapFlex>
         <div className=" mx-auto max-w-sm space-y-2 rounded-xl bg-white py-8 px-8 shadow-lg sm:flex sm:items-center sm:space-x-6 sm:space-y-0 sm:py-4">
           <img

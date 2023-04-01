@@ -4,7 +4,7 @@ import Box from "../wrappers/Box";
 
 export default function Chitchat() {
   return (
-    <Box h3 title="Chitchat">
+    <Box  level="h3" expand  title="Chitchat">
       <div className="mx-auto max-w-sm space-y-2 rounded-xl bg-white py-8 px-8 shadow-lg sm:flex sm:items-center sm:space-y-0 sm:space-x-6 sm:py-4">
         <div className="shrink-0">
           <img className="h-12 w-12" src={logo} alt="ChitChat Logo" />

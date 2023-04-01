@@ -4,15 +4,15 @@ import Box from "../wrappers/Box";
 
 export default function Responsive() {
   return (
-    <Box h3 title="Responsive Design">
-      <div className="sm:flex">
+    <Box level="h3" expand title="Responsive Design">
+      <div className="items-center gap-4 sm:flex">
         <div>
           <img src={logo} alt="logo" />
         </div>
         <div>
-          <p>Topic</p>
-          <p>Title</p>
-          <p>Description</p>
+          <p className="title">Vacations</p>
+          <h3>Cactus expedition in Tucson</h3>
+          <p>Enjoy the cactus paradise of Tucson, Arizona.</p>
         </div>
       </div>
     </Box>
