@@ -3,7 +3,7 @@ import Box from "../wrappers/Box";
 
 export default function Sandbox() {
   return (
-    <main className="flex-1 shrink grow overflow-y-auto">
+    <main className="scrollbar flex-1 overflow-y-auto">
       <Box level="h2" title="Sandbox" noborder>
         {/* Insert your code here */}
         <div class="bg-gradient-to-b from-sol-l to-sol">

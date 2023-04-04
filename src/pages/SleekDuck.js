@@ -9,7 +9,7 @@ import SolColorTheme from "../sleekduck/SolColorTheme";
 
 export default function SleekDuck() {
   return (
-    <main className="flex-1 grow shrink overflow-y-auto">
+    <main className="scrollbar flex-1 overflow-y-auto">
       <Box level="h2" title="SleekDuck Theme" noborder>
         <SolColorTheme />
       </Box>
