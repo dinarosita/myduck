@@ -3,22 +3,28 @@ import ChatListContext from "../../contexts/ChatListContext";
 
 export default function ChatHistory() {
   const { chatList, mainChatId, setMainChatId } = useContext(ChatListContext);
+  const basicStyle =
+    "btn border-transparent text-sol-md    rounded-l-none text-left pl-1 hover:bg-white hover:text-sol-md hover:border-sol-m w-full";
 
-  const chatStyle =
-    "rounded-r-full  font-bold  px-2 text-left  hover:bg-gold-50 hover:text-gold-600 active:bg-gold-300 active:text-white hover:border hover:border-gold-m";
+  const mainChatStyle = "bg-sol-d";
 
-  const mainStyle =
-    "bg-gold-50 text-gold-600 border border-gold-m bg-gold-50 hover:border-2";
+  const regularChatStyle = "";
 
-  const regularStyle = " border-gold-m text-gold-m";
+  //   const basicStyle =
+  //     "rounded-r-full  font-bold  px-2 text-left  hover:bg-sol-50 hover:text-sol-600 active:bg-sol-300 active:text-white hover:border hover:border-sol-m";
+
+  //   const mainChatStyle =
+  //     "bg-sol-50 text-sol-600 border border-sol bg-sol-50 hover:border-2";
+
+  //   const regularChatStyle = " border-sol text-sol-m";
 
   const selectClass = (id) =>
-    chatStyle + (id === mainChatId ? mainStyle : regularStyle);
+    basicStyle + (id === mainChatId ? mainChatStyle : regularChatStyle);
 
   return (
-    <div className="flex flex-col justify-start gap-1">
+    <div className="flex flex-col justify-start gap-1 ">
       <h2>My chats</h2>
-      <div className="flex flex-col gap-1 whitespace-normal">
+      <div className="flex flex-col gap-1 whitespace-normal flex-1 overflow-y-auto ">
         {chatList
           .map((chat) => (
             <button

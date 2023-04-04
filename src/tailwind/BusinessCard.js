@@ -9,18 +9,18 @@ export default function BusinessCard() {
       <SnapFlex>
         <div className=" mx-auto max-w-sm space-y-2 rounded-xl bg-white py-8 px-8 shadow-lg sm:flex sm:items-center sm:space-x-6 sm:space-y-0 sm:py-4">
           <img
-            className="mx-auto block h-24 rounded-full bg-gold-100 sm:mx-0 sm:shrink-0"
+            className="mx-auto block h-24 rounded-full bg-sol-100 sm:mx-0 sm:shrink-0"
             src={logo}
             alt="Woman's Face"
           />
           <div className="space-y-2 text-center sm:text-left">
             <div className="space-y-0.5">
-              <p className="text-lg font-semibold text-gold-800">
+              <p className="text-lg font-semibold text-sol-800">
                 Erin Lindford
               </p>
-              <p className="font-medium text-gold-600">Product Engineer</p>
+              <p className="font-medium text-sol-600">Product Engineer</p>
             </div>
-            <button className="rounded-full border border-gold-200 px-4 py-1 text-sm font-semibold text-gold-600 hover:border-transparent hover:bg-gold-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-gold-600 focus:ring-offset-2">
+            <button className="rounded-full border border-sol-200 px-4 py-1 text-sm font-semibold text-sol-600 hover:border-transparent hover:bg-sol-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-sol-600 focus:ring-offset-2">
               Message
             </button>
           </div>

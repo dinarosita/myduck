@@ -2,7 +2,6 @@ import React, { useContext, useRef, useState } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import MainChatContext from "../../contexts/MainChatContext";
-import Button from "../../wrappers/Button"
 
 export default function AddMessage() {
   const { id, setMessageList } = useContext(MainChatContext);
@@ -56,12 +55,12 @@ export default function AddMessage() {
   }
 
   return (
-    <form className="flex flex-col py-2 pt-4 border-t border-gold-m gap-1">
+    <form className="flex flex-col py-2 pt-4  border-sol gap-2">
       <textarea
         id="entry"
         ref={messageRef}
-        className="rounded-xl px-3 py-1 border-gold-ml border resize-none h-40 placeholder:text-gold-m text-gold-md"
-        placeholder="Quack quack..."
+        className="rounded-sm px-3 py-1 border-sol-ml border resize-none h-40 placeholder:text-sol text-sol-md"
+        placeholder="Add new message..."
         value={textvalue}
         onChange={handleTextValue}
         onKeyDown={(event) => {
@@ -72,12 +71,12 @@ export default function AddMessage() {
         }}
         required
       />
-      <Button 
+      <button 
         onClick={postNewMessage}
-        addStyle="ml-auto "
+        className="btn m-auto"
       >
         Submit
-      </Button>
+      </button>
     </form>
   );
 }

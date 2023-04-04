@@ -44,7 +44,7 @@ export default function DefWrapper() {
         and pleasant to follow notes.
       </Def>
       <Def title="Examples" indent>
-        For now, check out the notes on <strong>&lt;Button&gt;</strong>. It is made with nesting <strong>&lt;Def&gt;</strong> of variety of property combinations.
+        For now, check out the notes on <strong>&lt;Button&gt;</strong>. It is made with nesting <strong>&lt;Def&gt;</strong> of variety of property combinations. The wrapper itseld is better not used.
       </Def>
     </Box>
   );

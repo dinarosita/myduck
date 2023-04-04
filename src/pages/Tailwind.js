@@ -6,7 +6,7 @@ import Responsive from "../tailwind/Responsive";
 
 export default function Tailwind() {
   return (
-    <main>
+    <main className="flex-1">
       <Box level="h2" title="Tailwind" noborder>
         <div className="space-y-4">
           <BusinessCard />

@@ -7,15 +7,17 @@ export default function MessageHistory() {
     return <div></div>;
   }
   return (
-    <div className="flex grow flex-col gap-2 py-2 pr-8 whitespace-pre-wrap">
-      {messageList.map((msg) => (
-        <div
-          key={msg.id}
-          className="w-fit border border-gold-ml  px-2 py-1 pr-8 rounded-r-3xl"
-        >
-          {msg.message}
-        </div>
-      ))}
+    <div className="scrollbar flex  flex-1 flex-col-reverse gap-2  overflow-y-auto overflow-y-auto whitespace-pre-wrap border-2   border-sol  border-b-sol-m py-2 pr-8">
+      {messageList
+        .map((msg) => (
+          <div
+            key={msg.id}
+            className="w-fit rounded-r-3xl border border-l-0 border-opacity-50 border-sol px-2 py-1 pr-8"
+          >
+            {msg.message}
+          </div>
+        ))
+        .reverse()}
     </div>
   );
 }

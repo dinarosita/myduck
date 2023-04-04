@@ -75,7 +75,7 @@ export default function BoxWrapper() {
           <Box
             title="addStyle & collapse"
             collapse
-            addStyle="border-dashed border-gold-700 border-2"
+            addStyle="border-dashed border-sol-700 border-2"
           >
             <p>This one is using addStyle and collapse</p>
           </Box>

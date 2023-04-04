@@ -62,37 +62,36 @@ export default function AddChat() {
 
   return (
     <div className="flex flex-col gap-1">
-      <h3 className="text-lg font-bold uppercase text-gold-500 ">
-        New chat
-      </h3>
+      <h3 className="text-lg font-bold uppercase text-sol-500 ">New chat</h3>
       {showButton && (
         <button
           onClick={toggleForm}
-          className="rounded-r-2xl border border-gold-200 px-2 py-1 text-base text-sm  uppercase text-white text-left font-bold bg-gold-300 "
+          className="btn uppercase text-l"
+            // className="m-auto w-fit rounded-2xl border border-sol-200 bg-sol-m px-4  py-1 text-base text-sm font-bold uppercase text-white"
         >
           Start here
         </button>
       )}
       {showForm && (
-        <form onSubmit={postNewChat} className="flex flex-col gap-1">
+        <form onSubmit={postNewChat} className="flex flex-col gap-2">
           <input
             id="title"
             type="text"
             ref={titleRef}
             placeholder="Chat title..."
-            className="inp rounded-tr-xl"
+            className=" rounded-sm border border-sol-m px-1 py-0.5 text-sol-md placeholder-sol-m"
           />
           <input type="submit" hidden="true" />
-          <div className="flex gap-1">
+          <div className="m-auto flex ">
             <button
               onClick={toggleForm}
-              className="btn border px-2 py-0 text-sm"
+              className="btn rounded-r-none border px-2 py-0 text-sm"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="btn flex-1 rounded-br-xl border px-2 py-0 text-sm"
+              className="btn rounded-l-none border px-2 py-0 text-sm"
             >
               Submit
             </button>

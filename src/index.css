@@ -4,40 +4,80 @@
 
 @layer base {
   html {
-    @apply bg-slate-50 bg-opacity-50 text-gold-d;
+    @apply  bg-white bg-opacity-50 text-sol-d;
+    /* @apply bg-gray-50 text-sol-d bg-opacity-50; */
   }
 
   body {
-    @apply container mx-2 mx-auto min-h-screen sm:min-w-min;
+    @apply container mx-2 mx-auto sm:min-w-min;
   }
-  .title {
-    @apply font-bold text-gold-m;
-  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
   strong {
     @apply title;
   }
+
   h1 {
-    @apply title text-3xl uppercase;
+    @apply text-3xl;
   }
   h2 {
-    @apply title text-xl uppercase;
+    @apply text-xl;
   }
   h3 {
-    @apply title text-xl;
+    @apply text-xl;
   }
   h4 {
-    @apply title text-lg;
+    @apply text-lg;
   }
-  h5,
-  h6 {
-    @apply title;
+
+  h1,
+  h2 {
+    @apply uppercase;
   }
-  *:focus {
-    @apply outline-none ring-2 ring-gold-ml  ring-offset-2;
+  :focus {
+    @apply outline-none ring-2 ring-sol-ml;
+  }
+}
+
+@layer components {
+  .title {
+    @apply font-bold text-sol-t;
   }
 
   .btn {
-    @apply w-fit h-fit rounded-full border border-gold-ml px-3 py-0.5  text-sm font-semibold text-gold-m hover:border-transparent hover:bg-gold-ml hover:text-white;
+    @apply h-fit w-fit rounded-full border border-sol-ml px-3 py-0.5 text-sm font-semibold text-sol-t;
+  }
+  .btn:hover {
+    @apply border-transparent bg-sol-ml text-white;
   }
 
+  .btn:active {
+  }
 }
+
+
+/* styles.css */
+.scrollbar::-webkit-scrollbar {
+    width: 8px;
+    
+  }
+  
+  .scrollbar::-webkit-scrollbar-track {
+    /* background-color: #fff; */
+    background-color: #FEE4C3;
+  }
+  
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #FEE4C3, #E88503);
+    /* border-radius: 4px; */
+    /* border: 2px solid #fff; */
+  }
+  .border-l-8 {
+    background: linear-gradient(to bottom, #FEE4C3, #E88503);
+  }
+  
