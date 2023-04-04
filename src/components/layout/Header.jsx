@@ -6,15 +6,16 @@ const Header = () => {
   return (
     <div className="fixed top-0 right-0 w-full border-b border-sol-50 ">
       <div className="  items-center justify-between bg-gradient-to-b from-sol-l to-white py-2 px-4 sm:flex sm:px-10">
-        <div
-          className="flex cursor-pointer items-center  text-2xl font-bold text-sol-t
+        <Link
+          to="/myduck"
+          className="flex w-fit cursor-pointer  items-center text-2xl font-bold text-sol-t focus:ring-0
      "
         >
           MyDuck
           <span className="mr-1 ml-1 pt-2 text-3xl text-sol-d">
             <ion-icon name="chatbubble-outline"></ion-icon>
           </span>
-        </div>
+        </Link>
 
         <div
           onClick={() => setOpen(!open)}
@@ -31,7 +32,7 @@ const Header = () => {
           <li className="my-2  sm:my-0 sm:ml-8">
             <Link
               to="/myduck/sleekduck"
-              className="duration-300 hover:text-sol-md "
+              className="duration-300 hover:text-sol-md focus:ring-0"
               onClick={() => setOpen(!open)}
             >
               SleekDuck
@@ -40,7 +41,7 @@ const Header = () => {
           <li className="my-2  sm:my-0 sm:ml-8">
             <Link
               to="/myduck/tailwind"
-              className="duration-300 hover:text-sol-md"
+              className="duration-300 hover:text-sol-md focus:ring-0"
               onClick={() => setOpen(!open)}
             >
               Tailwind
@@ -49,14 +50,13 @@ const Header = () => {
           <li className="my-2  sm:my-0 sm:ml-8">
             <Link
               to="/myduck/sandbox"
-              className="duration-300 hover:text-sol-md"
+              className="duration-300 hover:text-sol-md focus:ring-0"
               onClick={() => setOpen(!open)}
             >
               Sandbox
             </Link>
           </li>
-          <li className="my-2 sm:my-0  sm:ml-8 opacity-50" >Future Login
-          </li>
+          <li className="my-2 opacity-50  sm:my-0 sm:ml-8">Future Login</li>
         </ul>
       </div>
     </div>
