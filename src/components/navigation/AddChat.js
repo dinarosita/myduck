@@ -5,7 +5,8 @@ import "firebase/compat/firestore";
 import ChatListContext from "../../contexts/ChatListContext";
 
 export default function AddChat() {
-  const { setChatList, setMainChatId } = useContext(ChatListContext);
+  const { mainChatId, setChatList, setMainChatId } = useContext(ChatListContext);
+
 
   const titleRef = useRef();
 
@@ -62,7 +63,7 @@ export default function AddChat() {
 
   return (
     <div className="flex flex-col gap-1">
-      <h3 className="text-lg font-bold uppercase text-sol-500 ">New chat</h3>
+      {mainChatId && <h3 className="uppercase">New chat</h3>}
       {showButton && (
         <button
           onClick={toggleForm}

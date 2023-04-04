@@ -24,7 +24,7 @@ export default function ChatHistory() {
   return (
     <div className="flex flex-col justify-start gap-1 ">
       <h2>My chats</h2>
-      <div className="flex flex-col gap-1 whitespace-normal flex-1 overflow-y-auto ">
+      <div className="flex flex-col gap-1 whitespace-normal flex-1 overflow-y-auto p-1">
         {chatList
           .map((chat) => (
             <button

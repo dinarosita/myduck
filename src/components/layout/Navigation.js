@@ -9,8 +9,7 @@ export default function Navigation() {
   if (!mainChatId)
     return (
       <nav className="w-1/4 shrink-0 grow-0 space-y-4  border-sol-ml p-2 pr-4">
-        <h2>Let's quack!</h2>
-        <AddChat />
+        <h3 className="uppercase">My chats</h3>
       </nav>
     );
 
