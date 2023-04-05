@@ -9,14 +9,15 @@ import SolColorTheme from "../sleekduck/SolColorTheme";
 
 export default function SleekDuck() {
   return (
-    <main className="scrollbar flex-1 overflow-y-auto">
-      <Box level="h2" title="SleekDuck Theme" noborder>
+    <main>
+        <h1>SleekDuck</h1>
+      <Box level="h2" title="Sol Color Theme" collapse>
         <SolColorTheme />
       </Box>
-      <Box level="h2" title="SleekDuck Wrappers" noborder>
+      <Box level="h2" title="SleekDuck Wrappers" collapse>
         <AboutSleekduck />
       </Box>
-      <Box level="h2" title="Available Wrappers" noborder>
+      <Box level="h2" title="Available Wrappers" collapse>
         <ButtonWrapper />
         <BoxWrapper />
         <SnapFlexWrapper />

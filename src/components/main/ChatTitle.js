@@ -29,7 +29,7 @@ export default function ChatTitle() {
 
   return (
     <div className="flex flex-col items-center justify-center  border-sol pb-2">
-      <h2>{title}</h2>
+      <h1>{title}</h1>
       <p className="text-sm">{tag}</p>
     </div>
   );

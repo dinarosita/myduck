@@ -32,7 +32,7 @@ function Header() {
             <ion-icon name="chatbubbles-outline"></ion-icon>
           </div>
           <div logo>
-            <Link to="/myduck" className=" title text-xl" exact onClick={() => {
+            <Link to="/myduck" className=" title text-xl lowercase" exact onClick={() => {
                 setPageNav(false)
                 setChatNav(false)
                 }}>
@@ -59,7 +59,7 @@ function Header() {
         onClick={() => setPageNav(false)}
       >
         <ul
-          className={`scrollbar flex h-full flex-col gap-2 overflow-auto pt-12 sm:flex-row `}
+          className={`scrollbar flex h-full flex-col gap-2 overflow-auto pt-12 pb-4 sm:flex-row `}
         >
           {PAGES.map((page) => (
             <li className=" to-none bg-gradient-to-l from-sol-50">

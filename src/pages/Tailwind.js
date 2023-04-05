@@ -6,14 +6,13 @@ import Responsive from "../tailwind/Responsive";
 
 export default function Tailwind() {
   return (
-    <main className="scrollbar flex-1 overflow-y-auto">
-      <Box level="h2" title="Tailwind" noborder>
-        <div className="space-y-4">
-          <BusinessCard />
-          <Chitchat />
-          <Responsive />
-        </div>
-      </Box>
+    <main>
+      <h1>Tailwind</h1>
+      <div className="space-y-4">
+        <BusinessCard />
+        <Chitchat />
+        <Responsive />
+      </div>
     </main>
   );
 }

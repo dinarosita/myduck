@@ -25,7 +25,9 @@ const Header2 = () => {
         </div>
 
         <ul
-          className={`absolute right-0 z-[-1] w-full bg-white pr-4 text-right font-bold text-sol-m shadow-lg shadow-sol-50 transition-all duration-300 ease-in sm:static sm:z-auto sm:flex sm:w-auto sm:items-center sm:bg-transparent sm:pb-0 sm:pl-0 sm:shadow-none ${
+          className={`absolute right-0 z-[-1] w-full bg-white pr-4 text-right font-bold text-sol-m shadow-lg shadow-sol-50 transition-all duration-300 ease-in 
+          
+          sm:static sm:z-auto sm:flex sm:w-auto sm:items-center sm:bg-transparent sm:pb-0 sm:pl-0 sm:shadow-none ${
             open ? "top-16 " : "top-[-490px]"
           }`}
         >

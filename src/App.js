@@ -11,7 +11,6 @@ export const PAGES = [
     { name: "SleekDuck", path: "/myduck/sleekduck", component: <SleekDuck /> },
     { name: "Tailwind", path: "/myduck/tailwind", component: <Tailwind /> },
     { name: "Sandbox", path: "/myduck/sandbox", component: <Sandbox /> },
-    
   ];
 
 export default function App() {
