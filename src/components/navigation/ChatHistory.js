@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import ChatListContext from "../../contexts/ChatListContext";
+import { useHistory } from "react-router-dom";
 
 export default function ChatHistory() {
+    const history = useHistory()
   const { chatList, mainChatId, setMainChatId } = useContext(ChatListContext);
   const basicStyle =
     "btn border-transparent text-sol-md    rounded-l-none text-left pl-1 hover:bg-white hover:text-sol-md hover:border-sol-m w-full";
@@ -24,12 +26,15 @@ export default function ChatHistory() {
   return (
     <div className="flex flex-col justify-start gap-1 ">
       <h2>My chats</h2>
-      <div className="flex flex-col gap-1 whitespace-normal flex-1 overflow-y-auto p-1">
+      <div className="flex flex-1 flex-col gap-1 overflow-y-auto whitespace-normal p-1">
         {chatList
           .map((chat) => (
             <button
               key={chat.id}
-              onClick={() => setMainChatId(chat.id)}
+              onClick={() => {
+                setMainChatId(chat.id);
+                history.replace("/myduck");
+              }}
               className={selectClass(chat.id)}
             >
               {chat.title ? chat.title : "Untitled Quacks"}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { PAGES } from "../../App";
 import ChatHistory from "../navigation/ChatHistory";
 import AddChat from "../navigation/AddChat";
@@ -8,14 +8,16 @@ function Header() {
   const [chatNav, setChatNav] = useState(false);
   const [pageNav, setPageNav] = useState(false);
 
+
   return (
     <div>
       <header className="to-none absolute z-20 flex h-12 w-full flex-row items-center justify-between bg-gradient-to-b from-sol-50 px-4">
         <div left className="flex flex-row items-center gap-2">
-          <div
+          <div id="chatNavButton"
             onClick={() => {
               setChatNav(!chatNav);
               setPageNav(false);
+   
             }}
             className="title cursor-pointer text-3xl"
           >
@@ -24,7 +26,7 @@ function Header() {
           <div logo>
             <Link
               to="/myduck"
-              className=" title text-xl lowercase"
+              className=" title text-xl lowercase focus:ring-0"
               exact
               onClick={() => {
                 setPageNav(false);
