@@ -2,64 +2,69 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  let [open, setOpen] = useState(false);
-  return (
-    <div className="fixed top-0 right-0 w-full border-b border-sol-50 ">
-      <div className="  items-center justify-between bg-gradient-to-b from-sol-l to-white py-2 px-4 sm:flex sm:px-10">
-        <Link
-          to="/myduck"
-          className="flex w-fit cursor-pointer  items-center text-2xl font-bold text-sol-t focus:ring-0
-     "
-        >
-          MyDuck
-          <span className="mr-1 ml-1 pt-2 text-3xl text-sol-d">
-            <ion-icon name="chatbubble-outline"></ion-icon>
-          </span>
-        </Link>
+  let [openChat, setOpenChat] = useState(false);
+  let [openMenu, setOpenMenu] = useState(false);
 
+  const menuItems = [
+    { name: "MyDuck", path: "/myduck" },
+    { name: "SleekDuck", path: "/myduck/sleekduck" },
+    { name: "Tailwind", path: "/myduck/tailwind" },
+    { name: "Sandbox", path: "/myduck/sandbox" },
+  ];
+
+  return (
+    <header className="fixed top-0 right-0 flex w-full flex-row items-center justify-between bg-gradient-to-b from-sol-50 to-white px-4 py-2">
+      <div
+        id="left"
+        className="title flex flex-row items-center gap-2  lowercase"
+      >
+        <div onClick={() => setOpenChat(!openChat)} className="title text-2xl">
+          <ion-icon name="chatbubbles-outline"></ion-icon>
+        </div>
+        {/* <ul>
+          <li>Chat 1</li>
+          <li>Chat 2</li>
+          <li>Chat 3</li>
+        </ul> */}
+
+        <div id="logo">
+          <Link to="/myduck" className="text-xl uppercase focus:ring-0 hover:text-sol-900">
+            MyDuck
+          </Link>
+        </div>
+      </div>
+      <nav>
         <div
-          onClick={() => setOpen(!open)}
-          className="absolute right-4 top-4 cursor-pointer text-3xl sm:hidden"
+          onClick={() => setOpenMenu(!openMenu)}
+          className="title cursor-pointer text-2xl sm:hidden"
         >
           <ion-icon name="menu-outline"></ion-icon>
         </div>
 
         <ul
-          className={`absolute right-0 z-[-1] w-full bg-white pr-4 text-right font-bold text-sol-m shadow-lg shadow-sol-50 transition-all duration-300 ease-in sm:static sm:z-auto sm:flex sm:w-auto sm:items-center sm:bg-transparent sm:pb-0 sm:pl-0 sm:shadow-none ${
-            open ? "top-16 " : "top-[-490px]"
-          }`}
+          className={`duration-500s absolute left-0 bottom-0 z-[-1] flex h-screen w-full flex-col gap-2   transition-all duration-500 ease-in-out
+          sm:flex sm:flex-row
+          sm:static sm:bg-transparent
+          sm:h-fit
+          ${openMenu ? "top-12 bg-white" : "top-[-490px]"}`}
         >
-          <li className="my-2  sm:my-0 sm:ml-8">
-            <Link
-              to="/myduck/sleekduck"
-              className="duration-300 hover:text-sol-md focus:ring-0"
-              onClick={() => setOpen(!open)}
+          {menuItems.map((item) => (
+            <li
+              key={item.name}
+              className=" text-right font-bold text-sol hover:bg-sol-50 hover:bg-opacity-50 sm:hover:bg-opacity-0 "
             >
-              SleekDuck
-            </Link>
-          </li>
-          <li className="my-2  sm:my-0 sm:ml-8">
-            <Link
-              to="/myduck/tailwind"
-              className="duration-300 hover:text-sol-md focus:ring-0"
-              onClick={() => setOpen(!open)}
-            >
-              Tailwind
-            </Link>
-          </li>
-          <li className="my-2  sm:my-0 sm:ml-8">
-            <Link
-              to="/myduck/sandbox"
-              className="duration-300 hover:text-sol-md focus:ring-0"
-              onClick={() => setOpen(!open)}
-            >
-              Sandbox
-            </Link>
-          </li>
-          <li className="my-2 opacity-50  sm:my-0 sm:ml-8">Future Login</li>
+              <Link
+                to={item.path}
+                onClick={() => setOpenMenu(!openMenu)}
+                className="block w-full p-2 pr-4 duration-300  hover:text-sol-m focus:ring-0 sm:transition-none sm:hover:text-sol-900"
+              >
+                {item.name}
+              </Link>
+            </li>
+          ))}
         </ul>
-      </div>
-    </div>
+      </nav>
+    </header>
   );
 };
 
