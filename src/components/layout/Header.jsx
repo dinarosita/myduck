@@ -37,7 +37,8 @@ function Header() {
           </div>
         </div>
         <nav id="pageNavigation">
-          <div id="hamburgerIcon"
+          <div
+            id="hamburgerIcon"
             onClick={() => {
               setPageNav(!pageNav);
               setChatNav(false);
@@ -49,23 +50,25 @@ function Header() {
             ></ion-icon>
           </div>
 
-          <ul id="pageOptions"
+          <ul
+            id="pageOptions"
             className={`
               absolute top-0 z-[-10] h-screen w-full bg-white bg-opacity-90 transition-all duration-300   ${
                 pageNav ? "right-0 opacity-100" : "-right-full opacity-0"
-              }
-              
-              scrollbar flex h-full flex-col gap-2 overflow-auto pt-12 pb-4 `}
+              }              
+              scrollbar flex h-full flex-col gap-2 overflow-auto pt-12 pb-4 
+              sm:static sm:z-auto sm:right-0 sm:opacity-100 sm:h-fit sm:flex-row sm:bg-transparent 
+              `}
             onClick={() => setPageNav(false)}
           >
             {PAGES.map((page) => (
-              <li className=" to-none bg-gradient-to-l from-sol-50">
+              <li className=" to-none bg-gradient-to-l from-sol-50 sm:hover:bg-opacity-0">
                 <Link
                   key={page.name}
                   to={page.path}
                   onClick={() => setPageNav(false)}
                   exact
-                  className="title block h-full w-full py-2 px-6 text-right "
+                  className="title block h-full w-full py-2 px-6 text-right sm:transition-none sm:hover:text-sol-900"
                 >
                   {page.name}
                 </Link>
