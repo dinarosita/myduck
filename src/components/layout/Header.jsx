@@ -72,10 +72,10 @@ function Header() {
         onClick={() => setPageNav(false)}
       >
         <ul
-          className={`scrollbar flex h-full flex-col gap-2 overflow-auto pt-12 pb-4 sm:flex-row sm:flex-row `}
+          className={`scrollbar flex h-full flex-col gap-2 overflow-auto pt-12 pb-4 `}
         >
           {PAGES.map((page) => (
-            <li className=" to-none sm: bg-gradient-to-l bg-none from-sol-50">
+            <li className=" sm:bg-none bg-gradient-to-l from-sol-50 to-none ">
               <Link
                 key={page.name}
                 to={page.path}
