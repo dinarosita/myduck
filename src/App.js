@@ -6,22 +6,24 @@ import Sandbox from "./pages/Sandbox";
 import SleekDuck from "./pages/SleekDuck";
 import Tailwind from "./pages/Tailwind";
 
+export const PAGES = [
+    { name: "MyDuck", path: "/myduck", component: <MyDuck /> },
+    { name: "SleekDuck", path: "/myduck/sleekduck", component: <SleekDuck /> },
+    { name: "Tailwind", path: "/myduck/tailwind", component: <Tailwind /> },
+    { name: "Sandbox", path: "/myduck/sandbox", component: <Sandbox /> },
+    
+  ];
+
 export default function App() {
+
   return (
     <Layout>
       <Switch>
-        <Route path="/myduck" exact>
-          <MyDuck />
-        </Route>
-        <Route path="/myduck/sleekduck">
-          <SleekDuck />
-        </Route>
-        <Route path="/myduck/tailwind">
-          <Tailwind />
-        </Route>
-        <Route path="/myduck/sandbox">
-          <Sandbox />
-        </Route>
+        {PAGES.map((page) => (
+          <Route path={page.path} exact>
+            {page.component}
+          </Route>
+        ))}
       </Switch>
     </Layout>
   );

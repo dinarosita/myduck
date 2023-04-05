@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    @apply w-full  bg-white text-sol-d;
+    @apply w-full  bg-white text-sol-d overflow-hidden;
   }
 
   /* main {
