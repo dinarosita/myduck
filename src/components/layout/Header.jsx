@@ -43,7 +43,7 @@ function Header() {
             setPageNav(!pageNav);
             setChatNav(false);
           }}
-          className="title cursor-pointer text-3xl sm:hidden"
+          className="title cursor-pointer text-3xl "
         >
           <ion-icon
             name={pageNav ? "close-outline" : "menu-outline"}
@@ -59,7 +59,7 @@ function Header() {
         onClick={() => setChatNav(false)}
       >
         <div
-          className={`scrollbar flex h-full w-full flex-col gap-4 overflow-auto px-4 pt-14 pb-4 sm:flex-row`}
+          className={`scrollbar flex h-full w-full flex-col gap-4 overflow-auto px-4 pt-14 pb-4`}
         >
           <ChatHistory />
           <AddChat />
@@ -68,7 +68,7 @@ function Header() {
 
       <nav
         id="pageNav"
-        className={`absolute top-0 z-10 h-screen w-full bg-white bg-opacity-90 transition-all duration-300  sm:right-0 sm:flex sm:h-fit sm:flex-row sm:justify-end sm:opacity-100 ${
+        className={`absolute top-0 z-10 h-screen w-full bg-white bg-opacity-90 transition-all duration-300   ${
           pageNav ? "right-0 opacity-100" : "-right-full opacity-0"
         }`}
         onClick={() => setPageNav(false)}
