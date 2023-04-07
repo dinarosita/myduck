@@ -1,15 +1,18 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Layout from "./components/layout/Layout";
+import Content from "./components/layout/Content";
+
 import MyDuck from "./pages/MyDuck";
+import About from "./pages/About";
 import Sandbox from "./pages/Sandbox";
-import SleekDuck from "./pages/SleekDuck";
-import Tailwind from "./pages/Tailwind";
+
 
 export const PAGES = [
-    { name: "MyDuck", path: "/myduck", component: <MyDuck /> },
-    { name: "SleekDuck", path: "/myduck/sleekduck", component: <SleekDuck /> },
-    { name: "Tailwind", path: "/myduck/tailwind", component: <Tailwind /> },
+    { name: "MyDuckOld", path: "/myduck/old", component: <MyDuck /> },
+    { name: "MyDuck", path: "/myduck", component: <Content /> },
+
+    { name: "About", path: "/myduck/about", component: <About /> },
     { name: "Sandbox", path: "/myduck/sandbox", component: <Sandbox /> },
   ];
 

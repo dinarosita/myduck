@@ -10,7 +10,7 @@ function Header() {
 
   return (
     <div>
-      <header className="to-none absolute z-20 flex h-12 w-full flex-row items-center justify-between bg-gradient-to-b from-sol-50 px-4">
+      <header className=" z-20 flex h-12 w-full flex-row items-center justify-between bg-gradient-to-b from-sol-50 to-none  px-4">
         <div left className="flex flex-row items-center gap-2">
           <div
             id="chatNavButton"
@@ -25,7 +25,7 @@ function Header() {
           <div logo>
             <Link
               to="/myduck"
-              className=" title text-xl lowercase focus:ring-0"
+              className=" title text-xl lowercase focus:ring-0 leading-none"
               exact
               onClick={() => {
                 setPageNav(false);
@@ -43,7 +43,7 @@ function Header() {
               setPageNav(!pageNav);
               setChatNav(false);
             }}
-            className="title cursor-pointer text-3xl sm:hidden"
+            className="title cursor-pointer text-3xl fixed top-1 right-1"
           >
             <ion-icon
               name={pageNav ? "close-outline" : "menu-outline"}
@@ -57,18 +57,18 @@ function Header() {
                 pageNav ? "right-0 opacity-100" : "-right-full opacity-0"
               }              
               scrollbar flex h-full flex-col gap-2 overflow-auto pt-12 pb-4 
-              sm:static sm:z-auto sm:right-0 sm:opacity-100 sm:h-fit sm:flex-row sm:bg-transparent 
+
               `}
             onClick={() => setPageNav(false)}
           >
             {PAGES.map((page) => (
-              <li className=" to-none bg-gradient-to-l from-sol-50 sm:hover:bg-opacity-0">
+              <li className=" to-none bg-gradient-to-l from-sol-50 ">
                 <Link
                   key={page.name}
                   to={page.path}
                   onClick={() => setPageNav(false)}
                   exact
-                  className="title block h-full w-full py-2 px-6 text-right sm:transition-none sm:hover:text-sol-900"
+                  className="title block h-full w-full py-2 px-6 text-right "
                 >
                   {page.name}
                 </Link>

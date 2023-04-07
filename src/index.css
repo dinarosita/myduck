@@ -2,22 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@tailwind base;
+
 @layer base {
   html {
-    @apply w-full  overflow-hidden bg-white text-sol-d;
+    @apply text-sol-d;
+  }
+
+  code, pre {
+    @apply text-sm tracking-tighter;
+  }
+
+  p > code {
+    @apply px-1 bg-sol-50 bg-opacity-80 ;
   }
 
   /* main {
-    @apply static left-0 top-16 w-full bg-white;
-  } */
-
-  /* body {
-    @apply container;
-  } */
-
-  main {
     @apply scrollbar space-y-4 overflow-y-auto;
-  }
+  } */
 
   h1,
   h2,
@@ -30,22 +32,16 @@
   }
 
   h1 {
-    @apply text-xl text-center;
+    @apply  text-xl;
   }
   h2 {
     @apply text-xl;
   }
   h3 {
-    @apply text-xl;
-  }
-  h4 {
     @apply text-lg;
   }
 
-  h1,
-  h2 {
-    @apply uppercase;
-  }
+
   :focus {
     @apply outline-none ring-2 ring-sol-ml;
   }
@@ -58,6 +54,22 @@
 }
 
 @layer components {
+    .w-effective {
+        @apply w-full max-w-screen-lg mx-auto p-2;
+    }
+
+    .border-screen {
+        @apply border-dashed border-sol-300;
+    }
+
+    .border-guide {
+        /* @apply border border-blue; */
+    }
+
+    .border-guide2 {
+        @apply border border-sol;
+    }
+
   .title {
     @apply font-bold text-sol;
   }
@@ -84,5 +96,5 @@
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-  @apply rounded rounded-full bg-gradient-to-b from-white to-sol;
+  @apply rounded rounded-full bg-gradient-to-b from-transparent to-sol;
 }

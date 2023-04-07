@@ -1,9 +1,19 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}", 'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'],
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
     extend: {
+      
       colors: {
+        blue: {
+            DEFAULT: "#bee3f8",
+        },
+        red: {
+            DEFAULT: "#fc8181",
+        },
         sol: {
           DEFAULT: "#FC9204", // 500, use in default text color of html
           t: "#E88503", // 600, for title use
@@ -27,9 +37,7 @@ module.exports = {
           900: "#9C5902",
           950: "#6F3F01",
         },
-        yellow: {
-          10: "#FFFED8",
-        },
+
       },
     },
   },
