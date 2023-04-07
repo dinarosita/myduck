@@ -55,7 +55,8 @@ export default function AddMessage() {
   }
 
   return (
-    <form className="flex flex-col py-2 pt-4  border-sol gap-2">
+    <form className="flex flex-col py-2 pt-4  border-sol gap-2
+    ">
       <textarea
         id="entry"
         ref={messageRef}
