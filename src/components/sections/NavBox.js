@@ -5,7 +5,7 @@ import AddChat from "./AddChat";
 export default function NavBox() {
   return (
     <>
-      <p className="title text-lg flex-none pl-1 text-red-400">Chatrooms</p>
+      <p className="title text-lg flex-none pl-1 text-sol">Chatrooms</p>
       <div className="scrollnav flex-1 overflow-auto pt-2 ">
         <Navigation />
       </div>

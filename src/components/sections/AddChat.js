@@ -56,7 +56,7 @@ export default function AddChat() {
         type="text"
         ref={titleRef}
         placeholder="+ chatroom"
-        className="f-40 block w-56 text-sm text-red-600 placeholder-red-400"
+        className="f-40 block w-56 text-sm text-red-600 placeholder-sol font-normal"
       />
       <input type="submit" hidden="true" flex-none />
       <div>

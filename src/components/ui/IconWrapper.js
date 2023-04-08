@@ -1,31 +1,24 @@
-import React from "react"
+import React from "react";
 import { useState } from "react";
-import IconWrapper from "../components/ui/IconWrapper";
 
-export default function Sandbox() {
+function IconWrapper({ iconType, onClick }) {
   const [isHovered, setIsHovered] = useState(false);
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
 
-
-  const handleIconClick = () => {
-    alert("Icon clicked");
-  };
-
   return (
-    <div>
     <button
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={onClick}
       className="text-sol hover:text-sol font-bold rounded-sm focus:outline-none focus:shadow-outline leading-none"
     >
       <ion-icon
-        name={isHovered ? "eye-sharp" : "eye-outline"}
+        name={isHovered ? `${iconType}-sharp` : `${iconType}-outline`}
         style={{ fontSize: "24px" }}
       ></ion-icon>
     </button>
-    <IconWrapper iconType="eye" onClick={handleIconClick} />
-
-    </div>
   );
 }
+
+export default IconWrapper;

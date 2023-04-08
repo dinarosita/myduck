@@ -1,6 +1,7 @@
 import React from "react";
 import Box from "../wrappers/Box";
 import DeveloperCard from "../components/developerCard/DeveloperCard";
+import Sandbox from "./Sandbox"
 
 export default function About() {
   return (
@@ -12,6 +13,7 @@ export default function About() {
         </p>
       </header>
       <section>
+        <Sandbox />
         <Box level="h2" title="About" noborder>
           <p>
             MyDuck is a single user chat app for talking to your inner rubber

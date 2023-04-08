@@ -41,19 +41,29 @@
   h3 {
     @apply text-lg;
   }
-
+  /* 
   :focus {
-    @apply outline-none ring-2 ring-sol-400;
-  }
-  ion-icon {
-    @apply title-red;
-  }
-  :disabled {
-    @apply pointer-events-none;
-  }
+    @apply outline-none ring-2 ring-green-300 rounded-md;
+  } */
 }
 
 @layer components {
+
+
+  input:focus,
+  textarea:focus,
+  button:focus,
+  select:focus {
+    @apply ring-2 ring-pasteal ring-offset-1 ring-offset-pasteal outline-none rounded-md;
+    box-shadow: none !important;
+
+  }
+
+  input:focus,
+  textarea:focus {
+    border-color: #A1DDD0 !important;
+  }
+
   .w-effective {
     @apply mx-auto w-full max-w-screen-lg px-3 pb-1 pt-2;
   }
@@ -74,11 +84,11 @@
     @apply font-bold text-sol;
   }
   .title-red {
-    @apply font-bold text-red-400;
+    @apply font-bold text-sol;
   }
 
   .icon {
-    @apply cursor-pointer  text-3xl text-teal;
+    @apply cursor-pointer  text-3xl text-pasteal-500;
   }
 
   .btn {
