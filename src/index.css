@@ -67,7 +67,7 @@
     }
 
     .border-guide2 {
-        @apply border border-sol;
+        /* @apply border border-sol; */
     }
 
   .title {
@@ -92,9 +92,9 @@
 
 .scrollbar::-webkit-scrollbar-track {
   /* @apply rounded rounded-full bg-gradient-to-b from-sol-50 to-sol; */
-  /* @apply rounded rounded-full bg-sol-50; */
+  @apply  bg-sol-100;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-  @apply rounded rounded-full bg-gradient-to-b from-transparent to-sol;
+  @apply rounded rounded-full bg-gradient-to-b from-sol-100 to-sol;
 }

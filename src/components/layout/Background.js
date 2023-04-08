@@ -4,7 +4,7 @@ import React from "react";
 
 export default function Background(props) {
   return (
-    <div className="absolute z-[-10] pointer-events-none overflow-hidden">
+    <div className="absolute z-[-10] pointer-events-none overflow-hidden bg-opacity-50">
       {props.top && (
         <div className={`fixed top-0 h-20 w-screen bg-gradient-to-b from-sol-100 `}></div>
       )}

@@ -6,7 +6,7 @@ import AddChat from "../navigation/AddChat";
 export default function Heading() {
   const [chatNav, setChatNav] = useState(false);
   return (
-    <div className="border-screen flex-none border-b">
+    <div className="border-screen flex-none border-b h-fit bg-opacity-50">
       <div className="w-effective flex items-center justify-between leading-none">
         <div id="headingLeft" className="flex items-center gap-1">
           <div className="title cursor-pointer items-center text-3xl">
@@ -17,9 +17,7 @@ export default function Heading() {
             </button>
             <nav
               id="chatNav"
-              className={`absolute top-0 z-10 h-screen w-full bg-white bg-opacity-90 transition-all duration-300 ${
-                chatNav ? "left-0 opacity-100" : "-left-full opacity-0"
-              }`}
+              className={`absolute top-0 z-10 h-screen w-full bg-white bg-opacity-90 transition-all duration-300 ${chatNav ? "left-0 opacity-100" : "-left-full opacity-0"}`}
               onClick={() => setChatNav(false)}
             >
               <div

@@ -3,7 +3,7 @@ import Box from "../wrappers/Box";
 import duck from "../img/logo128.png";
 export default function About() {
   return (
-    <main className="scrollbar flex flex-col overflow-auto py-6">
+    <main className="w-effective scrollbar flex h-full flex-col gap-2 overflow-auto py-2">
       <header>
         <h1 className="text-center uppercase">Welcome to MyDuck</h1>
         <p className="title text-center">
@@ -56,31 +56,47 @@ export default function About() {
               className="text-red-500"
             >
               Amir's vacation scroll
-            </a>.
+            </a>
+            .
           </p>
         </Box>
       </section>
 
-      <section className="mx-auto mt-4 flex w-11/12 flex-col items-center gap-2 rounded-xl border border-sol py-2 px-4 sm:flex-row sm:gap-4">
-        <img
-          class="mx-auto block h-12 rounded-xl sm:mx-0 sm:h-24 sm:shrink-0 px-4"
-          src={duck}
-          alt="rubber duck"
-        ></img>
-        <div className=" text-center sm:text-left">
-          <p className="text-center text-sm sm:text-left">Developer:</p>
-          <p className="title pb-2 text-xl">Codeyluwak</p>
-          <p className="lg:block">
+      <section className="border border-sol rounded-xl m-4 px-4 pt-4 pb-2 flex flex-col gap-2">
+        <div top className="flex flex-row items-end gap-2 justify-start">
+          <img className="h-10 px-2" src={duck} alt="rubber duck" />
+          <div className="">
+            <p className="text-xs">Developed by:</p>
+            <p className="title text-xl sm:text-left leading-none">Codeyluwak</p>
+          </div>
+        </div>
+        <div bottom>
+          <p className="sm:hidden text-sm">
             Learning React, Tailwind, and Firebase on the path to master
             Next.js, with MyDuck as my first project.
           </p>
-          <p className=" hidden lg:block">
+          <p className=" hidden sm:block text-sm">
             On my journey to master Next.js, I'm learning React, Tailwind, and
             Firebase. MyDuck, my first project, was inspired by the need for a
             rubber duck chat that allows me to keep track of conversations and
             take notes.
           </p>
         </div>
+
+        {/* <img
+          className="hidden h-12 pr-4 sm:block"
+          src={duck}
+          alt="rubber duck"
+        ></img>
+        <div className=" text-center sm:text-left">
+          <p className="text-center text-sm sm:text-left">Developed by:</p>
+          <div className="flex flex-row justify-center gap-2 sm:justify-start">
+            <img class="block h-6 sm:hidden" src={duck} alt="rubber duck"></img>
+            <p className="title pb-2 text-xl sm:text-left">Codeyluwak</p>
+          </div>
+        </div>
+
+         */}
       </section>
     </main>
   );
