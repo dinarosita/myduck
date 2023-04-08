@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import ChatListContext from "../../contexts/ChatListContext";
 import { useHistory } from "react-router-dom";
 
-export default function ChatHistory() {
+export default function ChatNavigation() {
     const history = useHistory()
   const { chatList, mainChatId, setMainChatId } = useContext(ChatListContext);
   const basicStyle =
-    "btn border-transparent text-sol-md    rounded-l-none text-left pl-1 hover:bg-white hover:text-sol-md hover:border-sol-m w-full";
+    "btn border-transparent text-olive-700 font-normal   rounded-l-none text-left pl-0 hover:bg-white hover:text-olive-800 hover:border-olive w-full";
 
-  const mainChatStyle = "bg-sol-d";
+  const mainChatStyle = "bg-olive-800";
 
   const regularChatStyle = "";
 
@@ -24,9 +24,8 @@ export default function ChatHistory() {
     basicStyle + (id === mainChatId ? mainChatStyle : regularChatStyle);
 
   return (
-    <div className="flex flex-col justify-start gap-1 ">
-      <h2>My chats</h2>
-      <div className="flex flex-1 flex-col gap-1 overflow-y-auto whitespace-normal p-1">
+
+      <nav className="flex flex-1 flex-col gap-1 overflow-y-auto scrollnav whitespace-normal p-1">
         {chatList
           .map((chat) => (
             <button
@@ -41,7 +40,7 @@ export default function ChatHistory() {
             </button>
           ))
           .reverse()}
-      </div>
-    </div>
+      </nav>
+
   );
 }

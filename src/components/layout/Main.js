@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import ChatTitle from "../main/ChatTitle";
-import MessageHistory from "../main/MessageHistory";
-import AddMessage from "../main/AddMessage";
+import ChatTitle from "../sections/ChatTitle";
+import MessageHistory from "../sections/MessageHistory";
+import AddMessage from "../sections/AddMessage";
 import ChatListContext from "../../contexts/ChatListContext";
-import AddChat from "../navigation/AddChat";
+import AddChat from "../sections/AddChat";
 
 export default function Main() {
   const { mainChatId } = useContext(ChatListContext);

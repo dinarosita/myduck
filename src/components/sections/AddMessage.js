@@ -55,13 +55,13 @@ export default function AddMessage() {
   }
 
   return (
-    <form className="flex flex-col py-2 pt-4  border-sol gap-2
+    <form className="flex flex-col  relative border-sol  gap-2 
     ">
       <textarea
         id="entry"
         ref={messageRef}
-        className="rounded-sm px-3 py-1 border-sol-ml border resize-none h-40 placeholder:text-sol text-sol-md"
-        placeholder="Add new message..."
+        className="rounded-sm  border-sol-ml border border-dashed resize-none h-28 placeholder:text-sol text-sol-md bg-transparent"
+        placeholder="+ message..."
         value={textvalue}
         onChange={handleTextValue}
         onKeyDown={(event) => {
@@ -74,9 +74,9 @@ export default function AddMessage() {
       />
       <button 
         onClick={postNewMessage}
-        className="btn m-auto"
+        className="text-2xl m-auto absolute bottom-0 right-2"
       >
-        Submit
+        <ion-icon name="paper-plane-outline"></ion-icon>
       </button>
     </form>
   );

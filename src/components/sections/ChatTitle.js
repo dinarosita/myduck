@@ -25,10 +25,9 @@ export default function ChatTitle() {
       setTag(`Created: ${formatTimestamp(chatMeta.createdAt)}`);
     }
   }, [id]);
-  
 
   return (
-    <div className="flex flex-col items-center justify-center  border-sol pb-2">
+    <div className="flex flex-col items-center justify-center">
       <h1>{title}</h1>
       <p className="text-sm">{tag}</p>
     </div>

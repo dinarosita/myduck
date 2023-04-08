@@ -9,12 +9,13 @@
     @apply text-sol-d;
   }
 
-  code, pre {
+  code,
+  pre {
     @apply text-sm tracking-tighter;
   }
 
   p > code {
-    @apply px-1 bg-sol-50 bg-opacity-80 ;
+    @apply bg-sol-50 bg-opacity-80 px-1;
   }
 
   /* main {
@@ -32,7 +33,7 @@
   }
 
   h1 {
-    @apply  text-xl;
+    @apply text-xl;
   }
   h2 {
     @apply text-xl;
@@ -40,7 +41,6 @@
   h3 {
     @apply text-lg;
   }
-
 
   :focus {
     @apply outline-none ring-2 ring-sol-ml;
@@ -54,24 +54,28 @@
 }
 
 @layer components {
-    .w-effective {
-        @apply w-full max-w-screen-lg mx-auto px-3 pb-1 pt-2;
-    }
+  .w-effective {
+    @apply mx-auto w-full max-w-screen-lg px-3 pb-1 pt-2;
+  }
 
-    .border-screen {
-        @apply border-dashed border-sol-300;
-    }
+  .border-screen {
+    @apply border-dashed border-sol-300;
+  }
 
-    .border-guide {
-        /* @apply border border-blue; */
-    }
+  .border-guide {
+    /* @apply border border-blue; */
+  }
 
-    .border-guide2 {
-        /* @apply border border-sol; */
-    }
+  .border-guide2 {
+    /* @apply border border-sol; */
+  }
 
   .title {
     @apply font-bold text-sol;
+  }
+
+  .icon {
+    @apply cursor-pointer  text-3xl text-blue;
   }
 
   .btn {
@@ -91,10 +95,21 @@
 }
 
 .scrollbar::-webkit-scrollbar-track {
-  /* @apply rounded rounded-full bg-gradient-to-b from-sol-50 to-sol; */
-  @apply  bg-sol-100;
+  @apply bg-sol-100;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
   @apply rounded rounded-full bg-gradient-to-b from-sol-100 to-sol;
+}
+
+.scrollnav::-webkit-scrollbar {
+  @apply w-1;
+}
+
+.scrollnav::-webkit-scrollbar-track {
+  /* @apply bg-sol-100; */
+}
+
+.scrollnav::-webkit-scrollbar-thumb {
+  @apply rounded rounded-full bg-gradient-to-b from-white to-olive;
 }

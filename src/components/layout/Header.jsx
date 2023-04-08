@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { PAGES } from "../../App";
-import ChatHistory from "../navigation/ChatHistory";
-import AddChat from "../navigation/AddChat";
+import Navigation from "../sections/Navigation";
+import AddChat from "../sections/AddChat";
 
 function Header() {
   const [chatNav, setChatNav] = useState(false);
@@ -88,7 +88,7 @@ function Header() {
         <div
           className={`scrollbar flex h-full w-full flex-col gap-4 overflow-auto px-4 pt-14 pb-4`}
         >
-          <ChatHistory />
+          <Navigation />
           <AddChat />
         </div>
       </nav>

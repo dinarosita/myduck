@@ -1,36 +1,28 @@
 import React from "react";
-import ChatTitle from "../main/ChatTitle";
-import MessageHistory from "../main/MessageHistory";
-import AddMessage from "../main/AddMessage";
+import ChatTitle from "../sections/ChatTitle";
+import MessageHistory from "../sections/MessageHistory";
+import AddMessage from "../sections/AddMessage";
+import Navigation from "../sections/Navigation";
+import AddChat from "../sections/AddChat";
+import NavBox from "../sections/NavBox";
 
 export default function Content() {
   return (
-    <div className="w-effective border-guide scrollbar flex h-full flex-1 flex-row gap-2 overflow-auto p-2">
-      <nav
-        id="ChatNav"
-        className="border-guide2 hidden h-full w-60 p-1 lg:block"
-      >
-        <h1 className="text-left">Chat Nav</h1>
-      </nav>
-      {/* <main className="flex flex-1   flex-col p-1">
-        <ChatTitle />
-        <MessageHistory />
-        <AddMessage />
-      </main> */}
-      <div className="border-guide flex h-full w-full flex-col gap-2 ">
+    <div className="w-effective flex h-full flex-1 flex-row gap-4 overflow-auto p-2">
+      <div className=" hidden h-full w-60 flex-col  p-1 pt-8  lg:flex">
+        <NavBox />
+      </div>
+
+      <div className="flex h-full w-full flex-col gap-2 ">
         <main className="flex h-full flex-1 flex-col gap-2">
-          <header className="border-guide2 flex h-fit h-20 w-full flex-col items-center p-1">
-            <h1>Chat Title</h1>
-            <p id="tagline">Created at: date and time</p>
+          <header className="flex h-fit h-20 w-full flex-col items-center p-1">
+            <ChatTitle />
           </header>
-          <section className="scrollbar h-20 border-8 border-r-0 rounded-sm border-sol-100 flex-1 overflow-auto ">
+          <section className="scrollbar h-20 flex-1 overflow-y-scroll rounded-sm border-8 border-r-0 border-sol-100 ">
             <MessageHistory />
           </section>
-          <section
-            id="addMessage"
-            className="border-guide2 flex h-20 flex-none flex-col p-1 text-center"
-          >
-            <h2>Add Message</h2>
+          <section className="flex h-fit flex-none flex-col text-center">
+            <AddMessage />
           </section>
         </main>
       </div>
