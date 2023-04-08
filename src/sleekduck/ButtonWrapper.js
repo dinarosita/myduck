@@ -20,7 +20,7 @@ export default function ButtonWrapper() {
             <p className="mb-1">
               Styled button that passed the type and onClick handler of the
               parent. By default, the children will be passed to a paragraph{" "}
-              <span className="font-bold text-sol-m">&lt;p&gt;</span> element.
+              <span className="font-bold text-sol-500">&lt;p&gt;</span> element.
             </p>
             <Button onClick={handleButton}>Click me!</Button>
           </Def>
@@ -46,32 +46,32 @@ export default function ButtonWrapper() {
               the left-end of the parent.
             </Def>
           </Def>
-          <Def title="Styling example: Blue button" div indent>
+          <Def title="Styling example: teal button" div indent>
             <div className="mt-1 space-y-1">
               <Button
                 onClick={handleButton}
-                addStyle="text-blue-500 border-blue-500 border-2"
+                addStyle="text-teal-500 border-teal-500 border-2"
               >
-                Blue forget hover
+                teal forget hover
               </Button>
               <p className="my-1">
-                addStyle="text-blue-500 border-blue-500 border-2"
+                addStyle="text-teal-500 border-teal-500 border-2"
               </p>
               <Button
                 onClick={handleButton}
-                addStyle="text-blue-500 border-blue-500 border-2 hover:bg-blue-500 hover:text-white"
+                addStyle="text-teal-500 border-teal-500 border-2 hover:bg-teal-500 hover:text-white"
               >
-                Blue remember hover
+                teal remember hover
               </Button>
               <p className="my-1">
-                addStyle="text-blue-500 border-blue-500 border-2
-                hover:bg-blue-500 hover:text-white"
+                addStyle="text-teal-500 border-teal-500 border-2
+                hover:bg-teal-500 hover:text-white"
               </p>
             </div>
           </Def>
           <Def title="Styling example: Right end button" div indent>
             {" "}
-            <div className="flex items-center border border-sol-ml p-1">
+            <div className="flex items-center border border-sol-400 p-1">
               <div className="mt-1">
                 <p>addStyle="ml-auto"</p>
                 <p>Parent is a flex box.</p>

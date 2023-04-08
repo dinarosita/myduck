@@ -42,33 +42,36 @@ export default function AddChat() {
         };
         setChatList((prevAllChats) => prevAllChats.concat(latestChat));
         setMainChatId(chatId);
+        titleRef.current.value = "";
       });
   }
 
   return (
-    <form onSubmit={postNewChat} className="flex w-full flex-col items-center ">
+    <form
+      onSubmit={postNewChat}
+      className="flex w-full flex-col items-center gap-2 p-1 "
+    >
       <input
         id="title"
         type="text"
         ref={titleRef}
         placeholder="+ chatroom"
-        className="block w-56 f-40 text-sm text-olive-800 placeholder-olive-700"
+        className="f-40 block w-56 text-sm text-red-600 placeholder-red-400"
       />
       <input type="submit" hidden="true" flex-none />
       <div>
-        <button type="submit" className="flex-none text-olive">
-          <ion-icon
-            color="olive"
-            size="large"
-            name="checkmark-circle-outline"
-          ></ion-icon>
+        <button type="submit" className="flex-none ">
+          <ion-icon size="large" name="checkmark-circle"></ion-icon>
         </button>
-        <button className="flex-none text-olive">
-          <ion-icon
-            color="olive"
-            size="large"
-            name="close-circle-outline"
-          ></ion-icon>
+        <button
+          className="flex-none "
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            titleRef.current.value = "";
+          }}
+        >
+          <ion-icon size="large" name="close-circle-outline"></ion-icon>
         </button>
       </div>
     </form>

@@ -60,7 +60,7 @@ export default function AddMessage() {
       <textarea
         id="entry"
         ref={messageRef}
-        className="rounded-sm  border-sol-ml border border-dashed resize-none h-28 placeholder:text-sol text-sol-md bg-transparent"
+        className="rounded-sm  border-sol-400 border border-dashed resize-none h-28 placeholder:text-sol text-sol-500d bg-transparent"
         placeholder="+ message..."
         value={textvalue}
         onChange={handleTextValue}
@@ -74,9 +74,9 @@ export default function AddMessage() {
       />
       <button 
         onClick={postNewMessage}
-        className="text-2xl m-auto absolute bottom-0 right-2"
+        className="text-2xl m-auto absolute bottom-0 title right-2"
       >
-        <ion-icon name="paper-plane-outline"></ion-icon>
+        <ion-icon color="sol" name="paper-plane-outline"></ion-icon>
       </button>
     </form>
   );

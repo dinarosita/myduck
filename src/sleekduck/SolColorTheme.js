@@ -28,21 +28,21 @@ export default function SolColorTheme() {
       <Def title="index.css" indent div>
 
         <p>text-sol: default html text</p>
-        <p><span className="text-sol-t font-bold">text-sol-t, font-bold:</span> strong and h1-h6 elements, title class</p>
+        <p><span className="text-sol-600 font-bold">text-sol-600, font-bold:</span> strong and h1-h6 elements, title class</p>
       </Def>
 
       <div className="flex flex-row gap-1">
         <div>
           {" "}
           <div className="text-xl font-bold">No color</div>
-          <div className="text-blue text-xl font-bold">blue</div>
-          <div className="text-xl font-bold text-blue-500">blue-500</div>
+          <div className="text-teal text-xl font-bold">teal</div>
+          <div className="text-xl font-bold text-teal-500">teal-500</div>
           <div className="text-xl font-bold text-sol">text-sol</div>
-          <div className="text-xl font-bold text-sol-l">text-sol-l</div>
-          <div className="text-xl font-bold text-sol-ml">text-sol-ml</div>
-          <div className="text-xl font-bold text-sol-m">text-sol-m</div>
-          <div className="text-xl font-bold text-sol-md">text-sol-md</div>
-          <div className="text-xl font-bold text-sol-d">text-sol-d</div>
+          <div className="text-xl font-bold text-sol-100">text-sol-100</div>
+          <div className="text-xl font-bold text-sol-400">text-sol-400</div>
+          <div className="text-xl font-bold text-sol-500">text-sol-500</div>
+          <div className="text-xl font-bold text-sol-500d">text-sol-500d</div>
+          <div className="text-xl font-bold text-sol-950">text-sol-950</div>
         </div>
         <div>
           <div className="text-xl font-bold text-sol-50">text-sol-50</div>

@@ -6,7 +6,7 @@
 
 @layer base {
   html {
-    @apply text-sol-d;
+    @apply text-sol-950;
   }
 
   code,
@@ -43,10 +43,10 @@
   }
 
   :focus {
-    @apply outline-none ring-2 ring-sol-ml;
+    @apply outline-none ring-2 ring-sol-400;
   }
   ion-icon {
-    @apply text-sol;
+    @apply title-red;
   }
   :disabled {
     @apply pointer-events-none;
@@ -59,11 +59,11 @@
   }
 
   .border-screen {
-    @apply border-dashed border-sol-300;
+    @apply border-dashed border-red-300;
   }
 
   .border-guide {
-    /* @apply border border-blue; */
+    /* @apply border border-teal; */
   }
 
   .border-guide2 {
@@ -73,16 +73,19 @@
   .title {
     @apply font-bold text-sol;
   }
+  .title-red {
+    @apply font-bold text-red-400;
+  }
 
   .icon {
-    @apply cursor-pointer  text-3xl text-blue;
+    @apply cursor-pointer  text-3xl text-teal;
   }
 
   .btn {
-    @apply h-fit w-fit rounded-full border border-sol-ml px-3 py-0.5 text-sm font-semibold text-sol-t;
+    @apply h-fit w-fit rounded-full border border-sol-400 px-3 py-0.5 text-sm font-semibold text-sol-600;
   }
   .btn:hover {
-    @apply border-transparent bg-sol-ml text-white;
+    @apply border-transparent bg-sol-400 text-white;
   }
 
   .btn:active {
@@ -99,7 +102,7 @@
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-  @apply rounded rounded-full bg-gradient-to-b from-sol-100 to-sol;
+  @apply rounded rounded-full bg-gradient-to-b from-sol-100 to-red-500;
 }
 
 .scrollnav::-webkit-scrollbar {
@@ -111,5 +114,5 @@
 }
 
 .scrollnav::-webkit-scrollbar-thumb {
-  @apply rounded rounded-full bg-gradient-to-b from-white to-olive;
+  @apply rounded rounded-full bg-gradient-to-b from-transparent to-red-400;
 }

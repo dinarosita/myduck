@@ -68,7 +68,7 @@ export default function AddChat() {
         <button
           onClick={toggleForm}
           className="btn uppercase text-l"
-            // className="m-auto w-fit rounded-2xl border border-sol-200 bg-sol-m px-4  py-1 text-base text-sm font-bold uppercase text-white"
+            // className="m-auto w-fit rounded-2xl border border-sol-200 bg-sol-500 px-4  py-1 text-base text-sm font-bold uppercase text-white"
         >
           Start here
         </button>
@@ -80,7 +80,7 @@ export default function AddChat() {
             type="text"
             ref={titleRef}
             placeholder="Chat title..."
-            className=" rounded-sm border border-sol-m px-1 py-0.5 text-sol-md placeholder-sol-m"
+            className=" rounded-sm border border-sol-500 px-1 py-0.5 text-sol-500d placeholder-sol-500"
           />
           <input type="submit" hidden="true" />
           <div className="m-auto flex ">
