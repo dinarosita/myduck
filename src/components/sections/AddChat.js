@@ -3,11 +3,17 @@ import React, { useContext, useRef } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import ChatListContext from "../../contexts/ChatListContext";
+import IconWrapper from "../ui/IconWrapper";
 
 export default function AddChat() {
   const { setChatList, setMainChatId } = useContext(ChatListContext);
 
   const titleRef = useRef();
+
+  function cancelNewChat(e) {
+    e.preventDefault();
+    titleRef.current.value = "";
+  }
 
   function postNewChat(event) {
     event.preventDefault();
@@ -56,23 +62,15 @@ export default function AddChat() {
         type="text"
         ref={titleRef}
         placeholder="+ chatroom"
-        className="f-40 block w-56 text-sm text-red-600 placeholder-sol font-normal"
+        // className="f-40 block w-56 text-sm font-normal text-red-600 placeholder-sol"
+        // className="appearance-none border border-sol-300 border-solid bg-sol-50 w-56 h-8 rounded text-sm font-normal text-sol-950 placeholder-sol"
+        className="input-custom"
       />
       <input type="submit" hidden="true" flex-none />
       <div>
-        <button type="submit" className="flex-none ">
-          <ion-icon size="large" name="checkmark-circle"></ion-icon>
-        </button>
-        <button
-          className="flex-none "
-          type="button"
-          onClick={(e) => {
-            e.preventDefault();
-            titleRef.current.value = "";
-          }}
-        >
-          <ion-icon size="large" name="close-circle-outline"></ion-icon>
-        </button>
+        {" "}
+        <IconWrapper iconType="close-circle" onClick={cancelNewChat} />
+        <IconWrapper iconType="checkmark-circle" onClick={postNewChat} />
       </div>
     </form>
   );

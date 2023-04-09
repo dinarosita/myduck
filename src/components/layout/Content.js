@@ -18,7 +18,7 @@ export default function Content() {
           <header className="flex h-fit h-20 w-full flex-col items-center p-1">
             <ChatTitle />
           </header>
-          <section className="scrollbar h-20 flex-1 overflow-y-scroll rounded-sm border-8 border-r-0 border-sol-100 ">
+          <section className="scrollbar h-20 flex-1 overflow-y-scroll rounded-sm border-8 border-r-0 border-sol-200 ">
             <MessageHistory />
           </section>
           <section className="flex h-fit flex-none flex-col text-center">

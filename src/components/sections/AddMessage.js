@@ -2,6 +2,7 @@ import React, { useContext, useRef, useState } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import MainChatContext from "../../contexts/MainChatContext";
+import IconWrapper from "../ui/IconWrapper";
 
 export default function AddMessage() {
   const { id, setMessageList } = useContext(MainChatContext);
@@ -60,7 +61,7 @@ export default function AddMessage() {
       <textarea
         id="entry"
         ref={messageRef}
-        className="rounded-sm  border-sol-400 border border-dashed resize-none h-28 placeholder:text-sol text-sol-500d bg-transparent"
+        className="rounded-sm  border-sol-400 border border-dotted border-2 resize-none h-28 placeholder:text-sol  bg-transparent overflow-auto scrollmsg"
         placeholder="+ message..."
         value={textvalue}
         onChange={handleTextValue}
@@ -72,12 +73,8 @@ export default function AddMessage() {
         }}
         required
       />
-      <button 
-        onClick={postNewMessage}
-        className="text-2xl m-auto absolute bottom-0 title right-2"
-      >
-        <ion-icon color="sol" name="paper-plane-outline"></ion-icon>
-      </button>
+      <IconWrapper iconType="paper-plane" onClick={postNewMessage} addClass="absolute bottom-2 right-2" />
+
     </form>
   );
 }

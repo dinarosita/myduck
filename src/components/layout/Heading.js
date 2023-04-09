@@ -1,43 +1,38 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import NavBox from "../sections/NavBox";
+import IconWrapper from "../ui/IconWrapper";
 
 export default function Heading() {
   const [chatNav, setChatNav] = useState(false);
   return (
-    <div className="border-screen relative z-20 h-fit flex-none  border-b bg-opacity-50 title">
+    <div className="border-screen title relative z-20 h-fit  flex-none border-b-2 bg-opacity-50">
       <div className="w-effective flex items-center justify-between leading-none ">
         <div id="headingLeft" className="flex items-center gap-1 ">
           <div className="">
-            <button
+            <IconWrapper
+              iconType="chatbubbles"
               onClick={() => setChatNav((prev) => !prev)}
-              className="relative  z-30 lg:pointer-events-none "
-            >
-              <ion-icon
-                size="large"
-                bg="red"
-                name="chatbubbles-outline"
-              ></ion-icon>
-            </button>
+              addClass="relative z-10"
+            />
 
             <div
               className={`
                  fixed top-0 h-full w-64 
-                rounded-3xl rounded-l border-4 border-sol-200 bg-gradient-to-r from-white to-sol-50/90 border-l-0 transition-all duration-500 lg:hidden ${
+                rounded-3xl rounded-l border-4 border-l-0 border-sol-200 bg-gradient-to-r from-white to-sol-50/90 transition-all duration-500 lg:hidden ${
                   chatNav ? "left-0 opacity-100" : "-left-64 opacity-100"
-                } flex flex-col pt-20 pb-12 px-1`}
+                } flex flex-col px-1 pt-20 pb-12`}
             >
-              <div className="flex-1 flex flex-col overflow-auto gap-4">
+              <div className="flex flex-1 flex-col gap-4 overflow-auto">
                 <NavBox />
               </div>
             </div>
-
           </div>
 
           <div>
             <Link
               to="/myduck"
-              className=" relative z-30 text-xl title lowercase"
+              className=" title relative z-30 text-xl lowercase"
               exact
             >
               MyDuck
@@ -46,21 +41,9 @@ export default function Heading() {
         </div>
 
         <div id="headingRight" className="flex items-center gap-2 ">
-          <div>
-            <Link to="/myduck/about" className=" cursor-pointer" exact>
-              <ion-icon
-                size="large"
-                name="information-circle-outline"
-              ></ion-icon>
-            </Link>
-          </div>
-
-          <div className=" cursor-pointer">
-            <ion-icon size="large" name="add-outline"></ion-icon>
-          </div>
-          <div className="cursor-pointer ">
-            <ion-icon size="large" name="person-circle-outline"></ion-icon>
-          </div>
+          <IconWrapper iconType="information-circle" to="/myduck/about" />
+          <IconWrapper iconType="add-circle" />
+          <IconWrapper iconType="person-circle" />
         </div>
       </div>
     </div>
