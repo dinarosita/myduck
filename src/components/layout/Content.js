@@ -2,13 +2,13 @@ import React from "react";
 import ChatTitle from "../sections/ChatTitle";
 import MessageHistory from "../sections/MessageHistory";
 import AddMessage from "../sections/AddMessage";
-import NavBox from "../sections/NavBox";
+import NavContent from "../sections/NavContent";
 
 export default function Content() {
   return (
     <div className="w-effective flex h-full flex-1 flex-row gap-4 overflow-auto p-2">
       <div className=" hidden h-full w-60 flex-col  p-1 pt-8  lg:flex">
-        <NavBox />
+        <NavContent />
       </div>
 
       <div className="flex h-full w-full flex-col gap-2 ">

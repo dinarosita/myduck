@@ -55,18 +55,18 @@ export default function AddChat() {
   return (
     <form
       onSubmit={postNewChat}
-      className="flex w-full flex-col items-center gap-2 p-1 "
+      className="items-center flex w-full flex-col gap-2 "
     >
+      <label htmlFor="title" className="title pb-1">Add a new chat</label>
       <input
         id="title"
         type="text"
         ref={titleRef}
-        placeholder="+ chatroom"
-        className="input-main-forced h-thin w-56 "
+        placeholder="+ chat title"
+        className="input-main-forced h-thin w-full "
       />
       <input type="submit" hidden="true" flex-none />
       <div>
-        {" "}
         <IconButton ionic="close-circle" onClick={cancelNewChat} />
         <IconButton ionic="checkmark-circle" onClick={postNewChat} />
       </div>

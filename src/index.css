@@ -77,7 +77,7 @@
   }
 
   *:focus {
-    @apply outline-none ring-2 ring-purple-500 ring-offset-1 ring-offset-red-500;
+    @apply outline-none ring-2 ring-hovercolor ;
   }
 
   /* Below need further tidy-up */
@@ -102,15 +102,16 @@
 }
 
 .scrollnav::-webkit-scrollbar {
-  @apply w-1;
+  @apply w-1 ;
 }
 
 .scrollnav::-webkit-scrollbar-track {
-  /* @apply bg-sol-100; */
+  /* @apply bg-white; */
+
 }
 
 .scrollnav::-webkit-scrollbar-thumb {
-  @apply rounded rounded-full bg-gradient-to-b from-transparent to-red-400;
+  @apply rounded rounded-full bg-gradient-to-b from-transparent to-maincolor/50;
 }
 
 .scrollmsg::-webkit-scrollbar {

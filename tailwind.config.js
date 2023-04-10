@@ -31,6 +31,9 @@ module.exports = {
           DEFAULT: "#FC9204", // 500
           7: "#FFFCEB",
           10: "#FEF8E6",
+          12: "#FFFDF8",
+          18: "#FFFBF4",
+          25: "#FFF9F0",
           50: "#FFF2E1",
           100: "#FEE4C3",
           200: "#FED59F",
