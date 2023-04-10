@@ -21,7 +21,7 @@ export default function Box(props) {
 
   const boxBorder = props.noborder? "" : "border"
 
-  const boxClass = `border-sol-300 m-2 p-1  ${boxBorder} ${props.addStyle}`;
+  const boxClass = `border-sol-300 m-2 p-1  ${boxBorder} ${props.addClass}`;
 
 
   if (!props.collapse && !props.expand) {

@@ -3,7 +3,7 @@ import React, { useContext, useRef } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import ChatListContext from "../../contexts/ChatListContext";
-import IconWrapper from "../ui/IconWrapper";
+import IconButton from "../ui/IconButton";
 
 export default function AddChat() {
   const { setChatList, setMainChatId } = useContext(ChatListContext);
@@ -62,15 +62,13 @@ export default function AddChat() {
         type="text"
         ref={titleRef}
         placeholder="+ chatroom"
-        // className="f-40 block w-56 text-sm font-normal text-red-600 placeholder-sol"
-        // className="appearance-none border border-sol-300 border-solid bg-sol-50 w-56 h-8 rounded text-sm font-normal text-sol-950 placeholder-sol"
-        className="input-custom"
+        className="input-main-forced h-thin w-56 "
       />
       <input type="submit" hidden="true" flex-none />
       <div>
         {" "}
-        <IconWrapper iconType="close-circle" onClick={cancelNewChat} />
-        <IconWrapper iconType="checkmark-circle" onClick={postNewChat} />
+        <IconButton ionic="close-circle" onClick={cancelNewChat} />
+        <IconButton ionic="checkmark-circle" onClick={postNewChat} />
       </div>
     </form>
   );

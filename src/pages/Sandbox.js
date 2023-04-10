@@ -1,32 +1,23 @@
-import React from "react"
+import React from "react";
 import { useState } from "react";
-import IconWrapper from "../components/ui/IconWrapper";
+import IconButton from "../components/ui/IconButton";
+import MainWrapper from "../components/ui/MainWrapper";
+import Box from "../wrappers/Box";
+import IonicSandbox from "./sandbox/IonicSandbox";
+import ConfigSandbox from "./sandbox/ConfigSandbox";
 
 export default function Sandbox() {
-  const [isHovered, setIsHovered] = useState(false);
-  const handleMouseEnter = () => setIsHovered(true);
-  const handleMouseLeave = () => setIsHovered(false);
-
-
-  const handleIconClick = () => {
-    alert("Icon clicked");
-  };
-
   return (
-    <div>
-    <button
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      className="text-sol hover:text-sol font-bold rounded-sm focus:outline-none focus:shadow-outline leading-none"
-    >
-      <ion-icon
-        name={isHovered ? "eye-sharp" : "eye-outline"}
-        style={{ fontSize: "24px" }}
-      ></ion-icon>
-    </button>
-    <IconWrapper iconType="eye" onClick={handleIconClick} />
-  
-  
-    </div>
+    <MainWrapper title="Sandbox">
+      <Box title="select element">
+        <select>
+          <option value="option1">Option 1</option>
+          <option value="option2">Option 2</option>
+          <option value="option3">Option 3</option>
+        </select>
+      </Box>
+      <ConfigSandbox />
+      <IonicSandbox />
+    </MainWrapper>
   );
 }

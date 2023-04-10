@@ -6,7 +6,7 @@ export default function ChatNavigation() {
     const history = useHistory()
   const { chatList, mainChatId, setMainChatId } = useContext(ChatListContext);
   const basicStyle =
-    "btn border-transparent font-normal text-sol-950  rounded-l-none text-left pl-0 hover:bg-white hover:text-sol-800 hover:border-sol w-full";
+    " border-transparent font-normal text-sol-950  rounded-l-none text-left pl-0 hover:bg-white hover:text-sol-800 hover:border-sol w-full";
 
   const mainChatStyle = "bg-sol-800";
 

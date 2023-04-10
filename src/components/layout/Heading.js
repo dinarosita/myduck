@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import NavBox from "../sections/NavBox";
-import IconWrapper from "../ui/IconWrapper";
+import IconButton from "../ui/IconButton";
 
 export default function Heading() {
   const [chatNav, setChatNav] = useState(false);
   return (
-    <div className="border-screen title relative z-20 h-fit  flex-none border-b-2 bg-opacity-50">
+    <div className="border-main border-t-0 border-l-0 border-r-0   relative z-20 h-fit  flex-none bg-opacity-50 ">
       <div className="w-effective flex items-center justify-between leading-none ">
-        <div id="headingLeft" className="flex items-center gap-1 ">
-          <div className="">
-            <IconWrapper
-              iconType="chatbubbles"
+        <div id="headingLeft" className="flex items-center gap-2 ">
+          <div>
+            <IconButton
+              ionic="chatbubbles"
               onClick={() => setChatNav((prev) => !prev)}
               addClass="relative z-10"
             />
@@ -32,7 +32,7 @@ export default function Heading() {
           <div>
             <Link
               to="/myduck"
-              className=" title relative z-30 text-xl lowercase"
+              className=" title relative z-30 text-lg font-bold uppercase tracking-wide"
               exact
             >
               MyDuck
@@ -41,9 +41,12 @@ export default function Heading() {
         </div>
 
         <div id="headingRight" className="flex items-center gap-2 ">
-          <IconWrapper iconType="information-circle" to="/myduck/about" />
-          <IconWrapper iconType="add-circle" />
-          <IconWrapper iconType="person-circle" />
+            
+          <IconButton ionic="fish" linkto="/myduck/sandbox" />
+          <IconButton ionic="information-circle" linkto="/myduck/about" />
+          <IconButton ionic="add-circle" />
+          <IconButton ionic="person-circle" />
+          <IconButton ionic="skull" linkto="/myduck/old" />
         </div>
       </div>
     </div>

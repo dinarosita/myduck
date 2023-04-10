@@ -2,8 +2,6 @@ import React from "react";
 import ChatTitle from "../sections/ChatTitle";
 import MessageHistory from "../sections/MessageHistory";
 import AddMessage from "../sections/AddMessage";
-import Navigation from "../sections/Navigation";
-import AddChat from "../sections/AddChat";
 import NavBox from "../sections/NavBox";
 
 export default function Content() {

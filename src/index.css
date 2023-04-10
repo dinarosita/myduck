@@ -6,7 +6,12 @@
 
 @layer base {
   html {
-    @apply text-sol-950;
+    @apply text-textcolor;
+  }
+
+  button:hover,
+  a:hover {
+    @apply text-hovercolor;
   }
 
   code,
@@ -18,10 +23,6 @@
     @apply bg-sol-50 bg-opacity-80 px-1;
   }
 
-  /* main {
-    @apply scrollbar space-y-4 overflow-y-auto;
-  } */
-
   h1,
   h2,
   h3,
@@ -31,7 +32,6 @@
   strong {
     @apply title;
   }
-
   h1 {
     @apply text-xl;
   }
@@ -41,66 +41,51 @@
   h3 {
     @apply text-lg;
   }
-  /* 
-  :focus {
-    @apply outline-none ring-2 ring-green-300 rounded-md;
-  } */
 }
 
 @layer components {
-
-
-  input:focus,
-  textarea:focus,
-  button:focus,
-  select:focus {
-    @apply ring-2 ring-red-500 ring-offset-1 ring-offset-red-500 outline-none rounded-md;
-    box-shadow: none !important;
-
-  }
-
-  input:focus,
-  textarea:focus {
-    @apply border-sol border-2 border-solid !important;
-  }
-
   .w-effective {
-    @apply mx-auto w-full max-w-screen-lg px-3 pb-1 pt-2;
-  }
-
-  .border-screen {
-    @apply border-dotted border-sol ;
-  }
-
-  .border-guide {
-    /* @apply border border-teal; */
-  }
-
-  .border-guide2 {
-    /* @apply border border-sol; */
+    @apply mx-auto w-full max-w-screen-lg px-md py-sm;
   }
 
   .title {
-    @apply font-bold text-sol;
-  }
-  .title-red {
-    @apply font-bold text-sol;
+    @apply font-bold text-maincolor;
   }
 
-  .input-custom {
-    @apply appearance-none text-sol-950 placeholder-sol h-8 w-56 font-normal ;
-    @apply text-sm rounded bg-white/80 border-sol-400 border-2 border-dotted !important;
+  .border-main {
+    @apply border-med border-dotted border-maincolor;
   }
 
-  .btn {
-    @apply h-fit w-fit rounded-full border border-sol-400 px-3 py-0.5 text-sm font-semibold text-sol-600;
-  }
-  .btn:hover {
-    @apply border-transparent bg-sol-400 text-white;
+  .border-main-forced {
+    /* Keep it identical with the non-forced counterpart */
+    @apply border-med border-dotted border-maincolor !important;
   }
 
-  .btn:active {
+  .input-main-forced {
+    @apply border-main-forced font-normal  placeholder-maincolor caret-maincolor;
+    @apply rounded-lg bg-white/80 leading-tight !important;
   }
+
+  .input-main-forced:hover {
+    @apply border-hovercolor placeholder-hovercolor !important;
+  }
+
+  .input-main-forced:active,
+  .input-main-forced:focus {
+    @apply border-solid border-maincolor placeholder-maincolor !important;
+    box-shadow: none !important;
+  }
+
+  *:focus {
+    @apply outline-none ring-2 ring-purple-500 ring-offset-1 ring-offset-red-500;
+  }
+
+  /* Below need further tidy-up */
+
+  /* button:focus {
+    @apply rounded-md outline-none ring-2 ring-red-500 ring-offset-1 ring-offset-red-500;
+    box-shadow: none !important;                        
+  } */
 }
 
 /* Scrollbar */
@@ -129,13 +114,13 @@
 }
 
 .scrollmsg::-webkit-scrollbar {
-    @apply w-1;
-  }
-  
-  .scrollmsg::-webkit-scrollbar-track {
-    /* @apply bg-sol-100; */
-  }
-  
-  .scrollmsg::-webkit-scrollbar-thumb {
-    @apply rounded rounded-full bg-sol-300;
-  }
+  @apply w-1;
+}
+
+.scrollmsg::-webkit-scrollbar-track {
+  /* @apply bg-sol-100; */
+}
+
+.scrollmsg::-webkit-scrollbar-thumb {
+  @apply rounded rounded-full bg-sol-300;
+}

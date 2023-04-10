@@ -13,7 +13,6 @@ export default function About() {
         </p>
       </header>
       <section>
-        <Sandbox />
         <Box level="h2" title="About" noborder>
           <p>
             MyDuck is a single user chat app for talking to your inner rubber
@@ -27,6 +26,25 @@ export default function About() {
           <p>
             Future works: ability to classify chatrooms, edit chatroom title,
             and set up message scale prority.
+          </p>
+        </Box>
+        <Box level="h2" title="Members and security" noborder>
+          <p>
+            {" "}
+            Urgent future work: Security, signup, password protected login.
+          </p>
+        </Box>
+        <Box level="h2" title="Future API works" noborder>
+          <p>
+            Interesting API works will be added soon. Maybe talking to yourself
+            will be becoming more real!
+          </p>
+        </Box>
+
+        <Box level="h2" title="Development tools and libraries" noborder>
+          <p>
+            MyDuck is developed with React JS, Tailwind CSS, and Firebase
+            Realtime Database.
           </p>
         </Box>
         <Box level="h2" title="Members and security" noborder>

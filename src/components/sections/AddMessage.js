@@ -2,7 +2,7 @@ import React, { useContext, useRef, useState } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import MainChatContext from "../../contexts/MainChatContext";
-import IconWrapper from "../ui/IconWrapper";
+import IconButton from "../ui/IconButton";
 
 export default function AddMessage() {
   const { id, setMessageList } = useContext(MainChatContext);
@@ -56,12 +56,13 @@ export default function AddMessage() {
   }
 
   return (
-    <form className="flex flex-col  relative border-sol  gap-2 
-    ">
+    <form
+      className="relative h-28"
+    >
       <textarea
         id="entry"
         ref={messageRef}
-        className="rounded-sm  border-sol-400 border border-dotted border-2 resize-none h-28 placeholder:text-sol  bg-transparent overflow-auto scrollmsg"
+        className="input-main-forced scrollmsg h-full w-full resize-none"
         placeholder="+ message..."
         value={textvalue}
         onChange={handleTextValue}
@@ -73,8 +74,11 @@ export default function AddMessage() {
         }}
         required
       />
-      <IconWrapper iconType="paper-plane" onClick={postNewMessage} addClass="absolute bottom-2 right-2" />
-
+      <IconButton
+        ionic="paper-plane"
+        onClick={postNewMessage}
+        addClass="absolute bottom-0.5 right-2"
+      />
     </form>
   );
 }
