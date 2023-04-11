@@ -10,16 +10,11 @@ export default function MainBody() {
   return (
     <div className="relative flex h-full w-full flex-auto flex-row overflow-auto px-mainpad">
       <div
-        className={`flex h-full w-80 flex-col overflow-auto   py-mainpad transition-all duration-1000
-
-        absolute z-10  ${flap ? "left-0" : "-left-80"} lg:static lg:flex-none
-        
-        
- `}
+        className={`absolute z-10 flex h-full w-80   flex-col overflow-auto py-mainpad transition-all duration-1000  ${
+          flap ? "left-0" : "-left-80"
+        } lg:static lg:flex-none`}
       >
-        
-
-        <div className="overflow-auto border-main  border-l-0 rounded-r-3xl bg-gradient-to-r from-white via-white to-sol-25 px-mainpad  pt-6 lg:border-0 lg:from-transparent lg:via-transparent lg:to-transparent">
+        <div className="border-main flex-auto  overflow-auto rounded-r-3xl border-l-0 bg-gradient-to-r from-white via-white to-sol-25 p-mainpad lg:border-0 lg:from-transparent lg:via-transparent lg:to-transparent">
           <NavContent />
         </div>
       </div>

@@ -20,6 +20,7 @@ module.exports = {
         maincolor: "#FC9204", // sol-500
         hovercolor: "#3FB098", //sea-600
         mboxcolor: "#FDC377", // sol-400
+        cboxcolor: "#FEE4C3", //sol-100
         sol: {
           DEFAULT: "#FC9204", // 500
           7: "#FFFCEB",

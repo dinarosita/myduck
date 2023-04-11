@@ -106,17 +106,17 @@
   @apply rounded rounded-full bg-gradient-to-b from-mboxcolor to-red-500;
 }
 
-.scrollnav::-webkit-scrollbar {
-  @apply w-0.5 ;
+.scroll-cbox::-webkit-scrollbar {
+  @apply w-1 ;
 }
 
-.scrollnav::-webkit-scrollbar-track {
-  /* @apply bg-white; */
+.scroll-cbox::-webkit-scrollbar-track {
+  @apply bg-cboxcolor;
 
 }
 
-.scrollnav::-webkit-scrollbar-thumb {
-  @apply rounded rounded-full bg-maincolor/50;
+.scroll-cbox::-webkit-scrollbar-thumb {
+  @apply bg-gradient-to-b from-cboxcolor to-sol;
 }
 
 .scrollmsg::-webkit-scrollbar {

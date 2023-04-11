@@ -42,7 +42,7 @@ export default function Heading() {
           <IconButton ionic="person-circle" />
         </div>
       </div>
-      <MainHr />
+      <MainHr screen />
     </div>
   );
 }
