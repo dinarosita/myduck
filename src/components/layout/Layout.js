@@ -7,7 +7,7 @@ import Footing from "./Footing";
 export default function Layout(props) {
   return (
     <div className="h-screen w-screen xl:max-w-screen-xl mx-auto flex-col-center">
-      <Background top bottom />
+      <Background />
       <Heading />      
       {props.children}
       <Footing />
