@@ -6,13 +6,14 @@ const ChatListContext = React.createContext({
   mainChatId: null,
   setMainChatId: () => {},
   isLoading: true,
+  ChatAvailable: false,
+  setChatAvailable: () => {}
 });
 
 export function ChatListContextProvider(props) {
   const [chatList, setChatList] = useState([]);
   const [mainChatId, setMainChatId] = useState(null);
-  
-
+  const [ChatAvailable, setChatAvailable] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -28,17 +29,23 @@ export function ChatListContextProvider(props) {
       .then((data) => {
         const chats = [];
 
-        for (const key in data) {
-          const chat = {
-            id: key,
-            ...data[key],
-          };
-          chats.push(chat);
-        }
+        if (!data) {
+          console.log("Chat not available at initial loading.");
+        } else {
+          setChatAvailable(true);
+          console.log("Chats available at initial loading.");
+          for (const key in data) {
+            const chat = {
+              id: key,
+              ...data[key],
+            };
+            chats.push(chat);
+            setChatList(chats);
+            setMainChatId(chats[chats.length - 1].id);
 
+          }
+        }
         setIsLoading(false);
-        setChatList(chats);
-        setMainChatId(chats[chats.length - 1].id);
       })
       .catch((error) => {
         console.log(error);
@@ -51,6 +58,8 @@ export function ChatListContextProvider(props) {
   }, []);
 
   const context = {
+    ChatAvailable: ChatAvailable,
+    setChatAvailable: setChatAvailable,
     chatList: chatList,
     setChatList: setChatList,
     mainChatId: mainChatId,

@@ -28,7 +28,6 @@ export default function Heading() {
             <Link
               to="/myduck"
               className=" title relative z-30 text-lg font-bold uppercase tracking-wide"
-              exact
             >
               MyDuck
             </Link>

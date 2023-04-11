@@ -44,14 +44,13 @@
 }
 
 @layer components {
+  .flex-row-center {
+    @apply flex flex-row items-center;
+  }
 
-    .flex-row-center {
-        @apply flex flex-row items-center;
-    }
-
-    .flex-col-center {
-        @apply flex flex-col items-center;
-    }
+  .flex-col-center {
+    @apply flex flex-col items-center;
+  }
 
   .title {
     @apply font-bold text-maincolor;
@@ -75,14 +74,22 @@
     @apply border-hovercolor placeholder-hovercolor !important;
   }
 
-  .input-main-forced:active,
+  .input-main-forced:active {
+    @apply border-solid border-hovercolor placeholder-maincolor !important;
+    box-shadow: none !important;
+  }
+
   .input-main-forced:focus {
-    @apply border-solid border-maincolor placeholder-maincolor !important;
+    @apply border-solid border-hovercolor placeholder-maincolor !important;
     box-shadow: none !important;
   }
 
   *:focus {
-    @apply outline-none ring-2 ring-hovercolor ;
+    @apply outline-none ring-2 ring-hovercolor;
+  }
+
+  .chat-item {
+    @apply w-full rounded-r-full border-y-2 border-r-2 px-1 py-0.5 text-left ring-0 first:mt-1 last:mb-1 ;
   }
 
   /* Below need further tidy-up */
@@ -107,12 +114,11 @@
 }
 
 .scroll-cbox::-webkit-scrollbar {
-  @apply w-1 ;
+  @apply w-1;
 }
 
 .scroll-cbox::-webkit-scrollbar-track {
   @apply bg-cboxcolor;
-
 }
 
 .scroll-cbox::-webkit-scrollbar-thumb {

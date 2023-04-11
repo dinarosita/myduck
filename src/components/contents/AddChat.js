@@ -6,7 +6,8 @@ import ChatListContext from "../../contexts/ChatListContext";
 import IconButton from "../common/IconButton";
 
 export default function AddChat() {
-  const { setChatList, setMainChatId } = useContext(ChatListContext);
+  const { ChatAvailable, setChatAvailable, setChatList, setMainChatId } =
+    useContext(ChatListContext);
 
   const titleRef = useRef();
 
@@ -33,6 +34,12 @@ export default function AddChat() {
       .then((response) => response.json())
       .then((data) => {
         updateLocalList(data.name);
+        if (!ChatAvailable) {
+          setChatAvailable(true);
+          console.log("New chat added. Chat is now available.");
+        } else {
+          console.log("New chat added. Chat list updated.");
+        }
       });
   }
 
@@ -55,9 +62,11 @@ export default function AddChat() {
   return (
     <form
       onSubmit={postNewChat}
-      className="items-center flex w-full flex-col gap-2 pt-8 pb-2 px-1"
+      className="flex w-full flex-col items-center gap-2 px-1 pb-2 pt-8"
     >
-      <label htmlFor="title" className="title text-lg">Add New Chat</label>
+      <label htmlFor="title" className="title text-lg">
+        Add a New Chat
+      </label>
       <input
         id="title"
         type="text"
@@ -65,7 +74,7 @@ export default function AddChat() {
         placeholder="+ chat title"
         className="input-main-forced w-full"
       />
-      <input type="submit" hidden="true" />
+      <input type="submit" hidden={true} />
       <div>
         <IconButton ionic="close-circle" onClick={cancelNewChat} />
         <IconButton ionic="checkmark-circle" onClick={postNewChat} />
