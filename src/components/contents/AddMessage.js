@@ -74,7 +74,7 @@ export default function AddMessage() {
       <IconButton
         ionic="paper-plane"
         onClick={postNewMessage}
-        addClass="absolute bottom-0.5 right-2"
+        addClass="absolute bottom-2 right-2"
       />
     </form>
   );

@@ -6,7 +6,7 @@
 
 @layer base {
   html {
-    @apply text-textcolor;
+    @apply text-textcolor leading-none;
   }
 
   button:hover,

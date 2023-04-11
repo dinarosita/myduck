@@ -13,7 +13,7 @@ export default function Heading() {
 
   return (
     <div className="relative w-full flex-none px-mainpad">
-      <div className="flex-row-center justify-between pt-mainpad pb-1 leading-none">
+      <div className="flex-row-center justify-between pt-mainpad pb-1 ">
         <div className="flex-row-center gap-2">
           <div>
             <IconButton

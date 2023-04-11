@@ -12,7 +12,7 @@ export default function MessageHistory() {
         .map((msg) => (
           <div
             key={msg.id}
-            className="w-fit rounded-r-3xl border border-l-0 border-opacity-50 border-sol pl-2 pr-4 py-2 leading-tight"
+            className="w-fit rounded-r-3xl border border-l-0 border-opacity-50 border-sol pl-2 pr-4 py-2"
           >
             {msg.message}
           </div>

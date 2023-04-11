@@ -9,7 +9,7 @@ export default function ChatList() {
   return (
     <div className="items-left flex w-full flex-col gap-2 overflow-auto pb-4 pt-8">
       <p className="title text-center text-lg">Chat List</p>
-      <ul className="scroll-cbox flex flex-col items-start gap-0.5 overflow-y-scroll border-y-4 border-l-4 border-cboxcolor pr-4 leading-tight">
+      <ul className="scroll-cbox flex flex-col items-start gap-0.5 overflow-y-scroll border-y-4 border-l-4 border-cboxcolor pr-4 ">
         {!ChatAvailable && (
         <button key="noChat"
         className={`chat-item pointer-events-none bg-sol-25 text-sol-300 border-transparent 
