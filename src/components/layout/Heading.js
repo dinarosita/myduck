@@ -1,22 +1,27 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import IconButton from "../ui/IconButton";
-import NavFlap from "./NavFlap";
+import IconButton from "../common/IconButton";
+import MainHr from "../common/MainHr";
+import FlapContext from "../../contexts/FlapContext";
 
 export default function Heading() {
-  const [openFlap, setOpenFlap] = useState(false);
+    const {flap, setFlap} = useContext(FlapContext)
+
+    const handleButtonClick = () => {
+        setFlap(!flap);
+      };
+
   return (
-    <div className="border-main relative z-20 h-fit   flex-none border-t-0 border-l-0  border-r-0 bg-opacity-50 ">
-      <div className="w-effective flex items-center justify-between leading-none ">
-        <div id="headingLeft" className="flex items-center gap-2 ">
+    <div className="relative w-full flex-none px-mainpad">
+      <div className="flex-row-center justify-between pt-mainpad pb-1 leading-none">
+        <div className="flex-row-center gap-2">
           <div>
             <IconButton
               ionic="chatbubbles"
-              onClick={() => setOpenFlap((prev) => !prev)}
+              onClick={handleButtonClick}
               addClass="relative z-10"
             />
 
-              <NavFlap openFlap={openFlap}/>
           </div>
 
           <div>
@@ -30,14 +35,14 @@ export default function Heading() {
           </div>
         </div>
 
-        <div id="headingRight" className="flex items-center gap-2 ">
+        <div className="flex-row-center gap-1.5">
           <IconButton ionic="fish" linkto="/myduck/sandbox" />
           <IconButton ionic="information-circle" linkto="/myduck/about" />
           <IconButton ionic="add-circle" />
           <IconButton ionic="person-circle" />
-          <IconButton ionic="skull" linkto="/myduck/old" />
         </div>
       </div>
+      <MainHr />
     </div>
   );
 }

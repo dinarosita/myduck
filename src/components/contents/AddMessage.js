@@ -2,7 +2,7 @@ import React, { useContext, useRef, useState } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import MainChatContext from "../../contexts/MainChatContext";
-import IconButton from "../ui/IconButton";
+import IconButton from "../common/IconButton"
 
 export default function AddMessage() {
   const { id, setMessageList } = useContext(MainChatContext);
@@ -51,18 +51,16 @@ export default function AddMessage() {
         setMessageList((prevList) => prevList.concat(latestMessage));
       });
   }
-  if (!id) {
-    return <div></div>;
-  }
+
 
   return (
     <form
-      className="relative h-28"
+      className="relative h-fit"
     >
       <textarea
         id="entry"
         ref={messageRef}
-        className="input-main-forced scrollmsg h-full w-full resize-none"
+        className="input-main-forced scrollmsg h-28 w-full resize-none"
         placeholder="+ message..."
         value={textvalue}
         onChange={handleTextValue}
@@ -72,7 +70,6 @@ export default function AddMessage() {
             event.target.value += "\n";
           }
         }}
-        required
       />
       <IconButton
         ionic="paper-plane"

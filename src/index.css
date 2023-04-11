@@ -44,21 +44,26 @@
 }
 
 @layer components {
-  .w-effective {
-    @apply mx-auto w-full max-w-screen-lg px-md py-sm;
-  }
+
+    .flex-row-center {
+        @apply flex flex-row items-center;
+    }
+
+    .flex-col-center {
+        @apply flex flex-col items-center;
+    }
 
   .title {
     @apply font-bold text-maincolor;
   }
 
   .border-main {
-    @apply border-med border-dotted border-maincolor;
+    @apply border-mainborder border-dotted border-maincolor;
   }
 
   .border-main-forced {
     /* Keep it identical with the non-forced counterpart */
-    @apply border-med border-dotted border-maincolor !important;
+    @apply border-mainborder border-dotted border-maincolor !important;
   }
 
   .input-main-forced {
@@ -90,19 +95,19 @@
 
 /* Scrollbar */
 .scrollbar::-webkit-scrollbar {
-  @apply w-2;
+  @apply w-mboxborder;
 }
 
 .scrollbar::-webkit-scrollbar-track {
-  @apply bg-sol-200;
+  @apply bg-mboxcolor;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-  @apply rounded rounded-full bg-gradient-to-b from-sol-200 to-red-500;
+  @apply rounded rounded-full bg-gradient-to-b from-mboxcolor to-red-500;
 }
 
 .scrollnav::-webkit-scrollbar {
-  @apply w-1 ;
+  @apply w-0.5 ;
 }
 
 .scrollnav::-webkit-scrollbar-track {
@@ -111,7 +116,7 @@
 }
 
 .scrollnav::-webkit-scrollbar-thumb {
-  @apply rounded rounded-full bg-gradient-to-b from-transparent to-maincolor/50;
+  @apply rounded rounded-full bg-maincolor/50;
 }
 
 .scrollmsg::-webkit-scrollbar {

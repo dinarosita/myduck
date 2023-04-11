@@ -27,7 +27,7 @@ export default function ChatTitle() {
   }, [id]);
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col flex-none items-center justify-center">
       <h1>{title}</h1>
       <p className="text-sm">{tag}</p>
     </div>

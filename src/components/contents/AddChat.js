@@ -3,7 +3,7 @@ import React, { useContext, useRef } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import ChatListContext from "../../contexts/ChatListContext";
-import IconButton from "../ui/IconButton";
+import IconButton from "../common/IconButton";
 
 export default function AddChat() {
   const { setChatList, setMainChatId } = useContext(ChatListContext);
@@ -55,17 +55,17 @@ export default function AddChat() {
   return (
     <form
       onSubmit={postNewChat}
-      className="items-center flex w-full flex-col gap-2 "
+      className="items-center flex w-full flex-col gap-1 px-4 "
     >
-      <label htmlFor="title" className="title pb-1">Add a new chat</label>
+      <label htmlFor="title" className="title ">Add a new chat</label>
       <input
         id="title"
         type="text"
         ref={titleRef}
         placeholder="+ chat title"
-        className="input-main-forced h-thin w-full "
+        className="input-main-forced  w-full "
       />
-      <input type="submit" hidden="true" flex-none />
+      <input type="submit" hidden="true" />
       <div>
         <IconButton ionic="close-circle" onClick={cancelNewChat} />
         <IconButton ionic="checkmark-circle" onClick={postNewChat} />

@@ -7,9 +7,9 @@ export default function ChatList() {
   const { chatList, mainChatId, setMainChatId } = useContext(ChatListContext);
 
   return (
-    <div className="items-left flex w-full flex-col gap-3 overflow-auto">
-      <p className="title pl-1">Chats</p>
-      <ul className="flex flex-col items-start gap-1 leading-tight overflow-auto scrollnav  pr-4">
+    <div className="items-left flex w-full flex-col gap-3 pr-4 overflow-auto">
+      <p className="title pl-1 text-lg">Chats</p>
+      <ul className="flex flex-col items-start gap-0.5 leading-tight overflow-auto scrollnav border-main border-x-0 pr-4">
         {chatList
           .map((chat) => (
             <button
@@ -18,8 +18,7 @@ export default function ChatList() {
                 setMainChatId(chat.id);
                 history.replace("/myduck");
               }}
-              className={`w-full rounded-r-full border-med p-sm pr-6
-              pl-sm text-left transition-colors duration-100 hover:border-maincolor hover:text-textcolor focus:border-maincolor 
+              className={`w-full rounded-r-full border py-0.5 px-2 text-left transition hover:border-hovercolor hover:text-textcolor focus:border-maincolor transi
             focus:outline-none ring-0 ${
               mainChatId === chat.id
                 ? "border-maincolor bg-white"

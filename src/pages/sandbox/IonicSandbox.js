@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import IconButton from '../../components/ui/IconButton';
-import Box from '../../wrappers/Box';
+import IconButton from '../../components/common/IconButton';
+import Box from '../../components/common/Box';
 
 export default function IonicSandbox() {
     const [isHovered, setIsHovered] = useState(false);

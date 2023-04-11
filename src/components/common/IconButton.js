@@ -6,7 +6,7 @@ export default function IconButton(props) {
     <ion-icon
       name={`${props.ionic ? props.ionic : "sad"}-outline`}
       //   size={props.small? "small" : "large"}
-      class="text-2xl text-maincolor transition-colors duration-200 hover:text-hovercolor"
+      class="text-2xl text-maincolor transition hover:text-hovercolor"
     ></ion-icon>
   );
 

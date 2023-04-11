@@ -7,7 +7,7 @@ export default function MessageHistory() {
     return <div></div>;
   }
   return (
-    <div className="flex flex-col-reverse whitespace-pre-wrap gap-2 pr-8 py-2">
+    <div className="flex h-full flex-auto flex-col-reverse whitespace-pre-wrap gap-2 pr-8 overflow-y-scroll rounded border-mboxborder border-r-0 border-mboxcolor scrollbar">
       {messageList
         .map((msg) => (
           <div

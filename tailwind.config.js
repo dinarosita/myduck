@@ -7,26 +7,19 @@ module.exports = {
   theme: {
     extend: {
       spacing: {
-        // Handy for: p, m, gap
-        sm: "0.25rem", // 1
-        md: "0.5rem", // 2
-        lg: "1rem", // 4
-        // Handy for "1 dimentional" w or h
-        thin: "2rem", // 8
-        med: "3rem", // 12
-        thick: "4rem", // 16
+        mainpad: "0.5rem", // 2, 8px
+        mboxborder: "4px", // 2, 8px
       },
       borderWidth: {
-        xthin: "0.5px", // 0.5
-        thin: "1px", // 1
-        med: "2px", // 2
-        thick: "4px", // 3
-        xthick: "8px", // 4
+        mainborder: "2px", // 2
+        mboxborder: "4px", // 8
+
       },
       colors: {
         textcolor: "#6F3F01", // sol-950
         maincolor: "#FC9204", // sol-500
         hovercolor: "#3FB098", //sea-600
+        mboxcolor: "#FDC377", // sol-400
         sol: {
           DEFAULT: "#FC9204", // 500
           7: "#FFFCEB",
