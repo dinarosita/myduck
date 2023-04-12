@@ -12,28 +12,24 @@ export default function Heading() {
       };
 
   return (
-    <div className="relative w-full flex-none px-mainpad">
-      <div className="flex-row-center justify-between pt-mainpad pb-1 ">
+    <div className="w-effective flex-none px-mainspace">
+      <div className="flex-row-center justify-between pt-mainspace pb-1 ">
         <div className="flex-row-center gap-2">
           <div>
             <IconButton
               ionic="chatbubbles"
               onClick={handleButtonClick}
-              addClass="relative z-10"
             />
-
           </div>
-
           <div>
             <Link
               to="/myduck"
-              className=" title relative z-30 text-lg font-bold uppercase tracking-wide"
+              className=" title text-lg font-bold uppercase tracking-wide"
             >
               MyDuck
             </Link>
           </div>
         </div>
-
         <div className="flex-row-center gap-1.5">
           <IconButton ionic="fish" linkto="/myduck/sandbox" />
           <IconButton ionic="information-circle" linkto="/myduck/about" />

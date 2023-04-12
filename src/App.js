@@ -1,12 +1,12 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Layout from "./components/layout/Layout";
-import MainBody from "./components/layout/MainBody";
+import MainContent from "./components/layout/MainContent";
 import About from "./pages/About";
 import Sandbox from "./pages/Sandbox";
 
 export const PAGES = [
-  { name: "MyDuck", path: "/myduck", element: <MainBody />, exact: true },
+  { name: "MyDuck", path: "/myduck", element: <MainContent />, exact: true },
   { name: "About", path: "/myduck/about", element: <About />, exact: false },
   { name: "Sandbox", path: "/myduck/sandbox", element: <Sandbox />, exact: false },
 ];

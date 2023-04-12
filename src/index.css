@@ -6,7 +6,7 @@
 
 @layer base {
   html {
-    @apply text-textcolor leading-none;
+    @apply leading-none text-textcolor;
   }
 
   button:hover,
@@ -44,6 +44,9 @@
 }
 
 @layer components {
+  .w-effective {
+    @apply w-full xl:max-w-screen-xl mx-auto;
+  }
   .flex-row-center {
     @apply flex flex-row items-center;
   }
@@ -57,12 +60,12 @@
   }
 
   .border-main {
-    @apply border-mainborder border-dotted border-maincolor;
+    @apply border-mainborderw border-dotted border-maincolor;
   }
 
   .border-main-forced {
     /* Keep it identical with the non-forced counterpart */
-    @apply border-mainborder border-dotted border-maincolor !important;
+    @apply border-mainborderw border-dotted border-maincolor !important;
   }
 
   .input-main-forced {
@@ -89,7 +92,7 @@
   }
 
   .chat-item {
-    @apply w-full rounded-r-full border-y-2 border-r-2 px-1 py-0.5 text-left ring-0 first:mt-1 last:mb-1 ;
+    @apply w-full rounded-r-full border-y-2 border-r-2 px-1 py-0.5 text-left ring-0 first:mt-1 last:mb-1;
   }
 
   /* Below need further tidy-up */
@@ -102,7 +105,7 @@
 
 /* Scrollbar */
 .scrollbar::-webkit-scrollbar {
-  @apply w-mboxborder;
+  @apply w-mboxspace;
 }
 
 .scrollbar::-webkit-scrollbar-track {

@@ -7,12 +7,12 @@ module.exports = {
   theme: {
     extend: {
       spacing: {
-        mainpad: "0.5rem", // 2, 8px
-        mboxborder: "4px", // 2, 8px
+        mainspace: "0.5rem", // 2, 8px
+        mboxspace: "4px", // 2, 8px
       },
       borderWidth: {
-        mainborder: "2px", // 2
-        mboxborder: "4px", // 8
+        mainborderw: "2px", // 2
+        mboxborderw: "4px", // 8
 
       },
       colors: {

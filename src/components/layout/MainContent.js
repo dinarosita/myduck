@@ -5,16 +5,16 @@ import AddMessage from "../contents/AddMessage";
 import NavContent from "../contents/NavContent";
 import FlapContext from "../../contexts/FlapContext";
 
-export default function MainBody() {
+export default function MainContent() {
   const { flap } = useContext(FlapContext);
   return (
-    <div className="relative flex h-full w-full flex-auto flex-row overflow-auto px-mainpad">
+    <div className="relative flex h-full w-effective flex-auto flex-row overflow-auto px-mainspace">
       <div
-        className={`absolute z-10 flex h-full w-80   flex-col overflow-auto py-mainpad transition-all duration-500  ${
+        className={`absolute z-10 flex h-full w-80   flex-col overflow-auto py-mainspace transition-all duration-500  ${
           flap ? "left-0" : "-left-80"
         } lg:static lg:flex-none`}
       >
-        <div className="border-main flex-auto  overflow-auto rounded-r-3xl border-l-0 bg-gradient-to-r from-white via-white to-sol-25 p-mainpad lg:border-0 lg:from-transparent lg:via-transparent lg:to-transparent">
+        <div className="border-main flex-auto  overflow-auto rounded-r-3xl border-l-0 bg-gradient-to-r from-white via-white to-sol-25 p-mainspace lg:border-0 lg:from-transparent lg:via-transparent lg:to-transparent">
           <NavContent />
         </div>
       </div>
