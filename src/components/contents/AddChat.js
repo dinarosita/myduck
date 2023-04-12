@@ -4,16 +4,21 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import ChatListContext from "../../contexts/ChatListContext";
 import IonicButton from "../common/IonicButton";
+import FlapContext from "../../contexts/FlapContext"
+
 
 export default function AddChat() {
   const { ChatAvailable, setChatAvailable, setChatList, setMainChatId } =
     useContext(ChatListContext);
+    const {setFlapOpen, setOverlayVisible} = useContext(FlapContext)
 
   const titleRef = useRef();
 
   function cancelNewChat(e) {
     e.preventDefault();
     titleRef.current.value = "";
+    setFlapOpen(false);
+    setOverlayVisible(false)
   }
 
   function postNewChat(event) {
@@ -40,6 +45,8 @@ export default function AddChat() {
         } else {
           console.log("New chat added. Chat list updated.");
         }
+        setFlapOpen(false);
+        setOverlayVisible(false)
       });
   }
 

@@ -1,8 +1,11 @@
 import React, { useContext } from "react";
 import ChatListContext from "../../contexts/ChatListContext";
 import { useNavigate } from "react-router-dom";
+import FlapContext from "../../contexts/FlapContext"
+
 
 export default function ChatList() {
+    const {setFlapOpen, setOverlayVisible} = useContext(FlapContext)
   const navigate = useNavigate();
   const { ChatAvailable, chatList, mainChatId, setMainChatId } = useContext(ChatListContext);
 
@@ -25,6 +28,8 @@ export default function ChatList() {
               onClick={() => {
                 setMainChatId(chat.id);
                 navigate("/myduck");
+                setFlapOpen(false);
+                setOverlayVisible(false)
               }}
               className={`chat-item 
               transition hover:border-hovercolor hover:text-textcolor

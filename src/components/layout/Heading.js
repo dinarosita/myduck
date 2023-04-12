@@ -1,40 +1,57 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import IonicButton from "../common/IonicButton";
 import MainHr from "../common/MainHr";
 import FlapContext from "../../contexts/FlapContext";
+import useWindowSize from "../../hooks/useWindowSize";
 
 export default function Heading() {
-    const {flap, setFlap} = useContext(FlapContext)
+  const { flapOpen, setFlapOpen, setOverlayVisible } = useContext(FlapContext);
+  const { width } = useWindowSize();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isLgBreakpoint = width >= 1024;
 
-    const handleButtonClick = () => {
-        setFlap(!flap);
-      };
+  function handleNavClick() {
+    if (location.pathname !== "/myduck") {
+      navigate("/myduck");
+    }
+    if (isLgBreakpoint) {
+      setFlapOpen(false);
+    } else {
+        setFlapOpen(!flapOpen);
+        setOverlayVisible(!flapOpen);    }
+  }
+
+  function handleLinkClick(link) {
+    setFlapOpen(false);
+    navigate(link);
+  }
 
   return (
-    <div className="w-effective flex-none px-mainspace">
-      <div className="flex-row-center justify-between pt-mainspace pb-1 ">
+    <div className="w-effective flex-none px-mainspace" >
+      <div className="flex-row-center pb-1 pt-mainspace h-full">
         <div className="flex-row-center gap-2">
           <div>
-            <IonicButton
-              ionic="chatbubbles"
-              onClick={handleButtonClick}
-            />
+            <IonicButton ionic="chatbubbles" onClick={handleNavClick} />
           </div>
           <div>
-            <Link
-              to="/myduck"
+            <button
+              onClick={() => handleLinkClick("/myduck")}
               className=" title text-lg font-bold uppercase tracking-wide"
             >
               MyDuck
-            </Link>
+            </button>
           </div>
         </div>
-        <div className="flex-row-center gap-1.5 icon-parent">
+        <div className="w-full h-full border-sol border-1 flex-1" onClick={() => setFlapOpen(false)}
+></div>
+        <div className="flex-row-center icon-parent gap-1.5">
           <IonicButton ionic="fish" linkto="/myduck/sandbox" />
           <IonicButton ionic="information-circle" linkto="/myduck/about" />
           <IonicButton ionic="add-circle" />
           <IonicButton ionic="person-circle" />
+          <IonicButton />
         </div>
       </div>
       <MainHr screen />

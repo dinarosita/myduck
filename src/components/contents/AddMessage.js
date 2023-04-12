@@ -3,16 +3,19 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import MainChatContext from "../../contexts/MainChatContext";
 import IonicButton from "../common/IonicButton"
+import FlapContext from "../../contexts/FlapContext";
 
 export default function AddMessage() {
   const { id, setMessageList } = useContext(MainChatContext);
   const [textvalue, setTextValue] = useState("");
+  const { flapOpen } = useContext(FlapContext)
 
   function handleTextValue(event) {
     setTextValue(event.target.value);
   }
 
   const messageRef = useRef();
+
 
   function postNewMessage(event) {
     event.preventDefault();
@@ -74,7 +77,7 @@ export default function AddMessage() {
       <IonicButton
         ionic="paper-plane"
         onClick={postNewMessage}
-        addClass="absolute bottom-2 right-2"
+        addClass={`absolute bottom-2 right-2 ${flapOpen && "z-[-10]"}`}
       />
     </form>
   );
