@@ -1,12 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function IconButton(props) {
+export default function IonicButton(props) {
   const iconElement = (
     <ion-icon
       name={`${props.ionic ? props.ionic : "sad"}-outline`}
-      //   size={props.small? "small" : "large"}
-      class="text-2xl text-maincolor transition hover:text-hovercolor"
+      class="text-2xl text-maincolor transition hover:text-hovercolor ionic"
     ></ion-icon>
   );
 
@@ -20,7 +19,7 @@ export default function IconButton(props) {
 
   if (props.linkto) {
     return (
-      <Link to={props.linkto} className={props.addClass}>
+      <Link to={props.linkto} className={`ionic-parent ${props.addClass}`}>
         {iconElement}
       </Link>
     );
@@ -30,7 +29,7 @@ export default function IconButton(props) {
       onClick={isButtonSet ? props.onClick : () => alert("Configure me!")}
       type={props.type}
       disabled={props.disabled}
-      className={props.addClass}
+      className={`ionic-parent ${props.addClass}`}
     >
       {iconElement}
     </button>

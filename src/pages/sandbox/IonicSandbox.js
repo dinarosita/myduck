@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import IconButton from '../../components/common/IconButton';
+import IonicButton from '../../components/common/IonicButton';
 import Box from '../../components/common/Box';
 
 export default function IonicSandbox() {
@@ -25,7 +25,7 @@ export default function IonicSandbox() {
         ></ion-icon>
       </button>
 
-      <IconButton ionic="eye" onClick={handleIconClick} />
+      <IonicButton ionic="eye" onClick={handleIconClick} />
     </Box>
     <Box title="Hidden block approach" addClass="w-full">
       <button className="h-6 w-6 border border-sol">
@@ -63,11 +63,11 @@ export default function IonicSandbox() {
         ></ion-icon>
       </button>
     </Box>
-    <Box title="IconButton" addClass="w-full">
-      <IconButton linkto="/myduck" ionic="chatbubble" />
-      <IconButton onClick={() => alert("Icon Button")} ionic="leaf" />
-      <IconButton onClick={() => alert("Icon Button")} ionic="leaf" color="blue-500" hover="purple-500" size="3xl"  />
-      <IconButton />
+    <Box title="IonicButton" addClass="w-full">
+      <IonicButton linkto="/myduck" ionic="chatbubble" />
+      <IonicButton onClick={() => alert("Icon Button")} ionic="leaf" />
+      <IonicButton onClick={() => alert("Icon Button")} ionic="leaf" color="blue-500" hover="purple-500" size="3xl"  />
+      <IonicButton />
     </Box>
   </Box>
   )

@@ -69,8 +69,8 @@
   }
 
   .input-main-forced {
-    @apply border-main-forced font-normal  placeholder-maincolor caret-maincolor;
-    @apply rounded-lg bg-white/80 leading-tight !important;
+    @apply border-main-forced font-normal placeholder-maincolor caret-maincolor;
+    @apply rounded-lg bg-white/80 leading-tight  text-textcolor  !important;
   }
 
   .input-main-forced:hover {
@@ -83,13 +83,21 @@
   }
 
   .input-main-forced:focus {
-    @apply border-solid border-hovercolor placeholder-maincolor !important;
+    @apply border-solid border-hovercolor placeholder-hovercolor !important;
     box-shadow: none !important;
   }
 
-  *:focus {
-    @apply outline-none ring-2 ring-hovercolor;
+
+  .ionic-parent:focus .ionic,
+  .ionic-parent:active .ionic {
+    @apply text-hovercolor;
   }
+
+  *:focus {
+    /* @apply outline-none ring-2 ring-hovercolor; */
+    @apply outline-none text-hovercolor;
+  }
+
 
   .chat-item {
     @apply w-full rounded-r-full border-y-2 border-r-2 px-1 py-0.5 text-left ring-0 first:mt-1 last:mb-1;

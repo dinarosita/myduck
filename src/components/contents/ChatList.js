@@ -28,7 +28,7 @@ export default function ChatList() {
               }}
               className={`chat-item 
               transition hover:border-hovercolor hover:text-textcolor
-            focus:border-maincolor focus:outline-none ${
+            focus:border-hovercolor focus:text-textcolor focus:outline-none ${
               mainChatId === chat.id
                 ? "border-cboxcolor bg-sol-50"
                 : "border-transparent"

@@ -1,7 +1,6 @@
 import React from "react";
 import Box from "../components/common/Box";
 import DeveloperCard from "../components/developerCard/DeveloperCard";
-import Sandbox from "./Sandbox";
 
 export default function About() {
   return (

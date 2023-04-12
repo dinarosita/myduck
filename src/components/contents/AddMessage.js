@@ -2,7 +2,7 @@ import React, { useContext, useRef, useState } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import MainChatContext from "../../contexts/MainChatContext";
-import IconButton from "../common/IconButton"
+import IonicButton from "../common/IonicButton"
 
 export default function AddMessage() {
   const { id, setMessageList } = useContext(MainChatContext);
@@ -71,7 +71,7 @@ export default function AddMessage() {
           }
         }}
       />
-      <IconButton
+      <IonicButton
         ionic="paper-plane"
         onClick={postNewMessage}
         addClass="absolute bottom-2 right-2"

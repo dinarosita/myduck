@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import IconButton from "../common/IconButton";
+import IonicButton from "../common/IonicButton";
 import MainHr from "../common/MainHr";
 import FlapContext from "../../contexts/FlapContext";
 
@@ -16,7 +16,7 @@ export default function Heading() {
       <div className="flex-row-center justify-between pt-mainspace pb-1 ">
         <div className="flex-row-center gap-2">
           <div>
-            <IconButton
+            <IonicButton
               ionic="chatbubbles"
               onClick={handleButtonClick}
             />
@@ -30,11 +30,11 @@ export default function Heading() {
             </Link>
           </div>
         </div>
-        <div className="flex-row-center gap-1.5">
-          <IconButton ionic="fish" linkto="/myduck/sandbox" />
-          <IconButton ionic="information-circle" linkto="/myduck/about" />
-          <IconButton ionic="add-circle" />
-          <IconButton ionic="person-circle" />
+        <div className="flex-row-center gap-1.5 icon-parent">
+          <IonicButton ionic="fish" linkto="/myduck/sandbox" />
+          <IonicButton ionic="information-circle" linkto="/myduck/about" />
+          <IonicButton ionic="add-circle" />
+          <IonicButton ionic="person-circle" />
         </div>
       </div>
       <MainHr screen />
