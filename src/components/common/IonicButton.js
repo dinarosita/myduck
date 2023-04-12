@@ -13,18 +13,11 @@ export default function IonicButton(props) {
 
   const iconElement = (
     <ion-icon
-      name={`${props.ionic ? props.ionic : "sad"}-outline`}
+      name={`${props.ionic ? props.ionic : "happy"}-outline`}
       class="ionic text-2xl text-maincolor transition hover:text-hovercolor"
     ></ion-icon>
   );
 
-//   if (props.linkto) {
-//     return (
-//       <button onClick={() => {handleLinkClick(props.linkto)}} className={`ionic-parent ${props.addClass}`}>
-//         {iconElement}
-//       </button>
-//     );
-//   }
   return (
     <button
       onClick={props.linkto? () => {handleLinkClick(props.linkto)} : props.onClick}

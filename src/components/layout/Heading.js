@@ -49,8 +49,8 @@ export default function Heading() {
         <div className="flex-row-center icon-parent gap-1.5">
           <IonicButton ionic="fish" linkto="/myduck/sandbox" />
           <IonicButton ionic="information-circle" linkto="/myduck/about" />
-          <IonicButton ionic="add-circle" />
-          <IonicButton ionic="person-circle" />
+          {/* <IonicButton ionic="add-circle" />
+          <IonicButton ionic="person-circle" /> */}
           <IonicButton />
         </div>
       </div>
