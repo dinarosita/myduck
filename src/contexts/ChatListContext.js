@@ -1,18 +1,22 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import React, { useEffect, useState } from "react";
 
 const ChatListContext = React.createContext({
   chatList: [],
   setChatList: () => {},
   mainChatId: null,
-  setMainChatId: () => {},
   isLoading: true,
   ChatAvailable: false,
-  setChatAvailable: () => {}
+  setChatAvailable: () => {},
+  updateMainChatId: () => {},
 });
 
 export function ChatListContextProvider(props) {
   const [chatList, setChatList] = useState([]);
-  const [mainChatId, setMainChatId] = useState(null);
+  const [mainChatId, setMainChatId] = useState(
+    localStorage.getItem("mainChatId")
+  );
   const [ChatAvailable, setChatAvailable] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -41,8 +45,9 @@ export function ChatListContextProvider(props) {
             };
             chats.push(chat);
             setChatList(chats);
-            setMainChatId(chats[chats.length - 1].id);
-
+            if (!mainChatId) {
+              setMainChatId(chats[chats.length - 1].id);
+            }
           }
         }
         setIsLoading(false);
@@ -57,14 +62,19 @@ export function ChatListContextProvider(props) {
     };
   }, []);
 
+  function updateMainChatId(newId) {
+    localStorage.setItem("mainChatId", newId);
+    setMainChatId(newId);
+  }
+
   const context = {
     ChatAvailable: ChatAvailable,
     setChatAvailable: setChatAvailable,
     chatList: chatList,
     setChatList: setChatList,
     mainChatId: mainChatId,
-    setMainChatId: setMainChatId,
     isLoading: isLoading,
+    updateMainChatId: updateMainChatId,
   };
 
   return (

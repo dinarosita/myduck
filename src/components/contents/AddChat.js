@@ -8,7 +8,7 @@ import FlapContext from "../../contexts/FlapContext"
 
 
 export default function AddChat() {
-  const { ChatAvailable, setChatAvailable, setChatList, setMainChatId } =
+  const { ChatAvailable, setChatAvailable, setChatList, updateMainChatId } =
     useContext(ChatListContext);
     const {setFlapOpen, setOverlayVisible} = useContext(FlapContext)
 
@@ -61,7 +61,7 @@ export default function AddChat() {
           ...data,
         };
         setChatList((prevAllChats) => prevAllChats.concat(latestChat));
-        setMainChatId(chatId);
+        updateMainChatId(chatId);
         titleRef.current.value = "";
       });
   }

@@ -7,7 +7,7 @@ import FlapContext from "../../contexts/FlapContext"
 export default function ChatList() {
     const {setFlapOpen, setOverlayVisible} = useContext(FlapContext)
   const navigate = useNavigate();
-  const { ChatAvailable, chatList, mainChatId, setMainChatId } = useContext(ChatListContext);
+  const { ChatAvailable, chatList, mainChatId, updateMainChatId } = useContext(ChatListContext);
 
   return (
     <div className="items-left flex w-full flex-col gap-2 overflow-auto pb-4 pt-8">
@@ -26,7 +26,7 @@ export default function ChatList() {
             <button
               key={chat.id}
               onClick={() => {
-                setMainChatId(chat.id);
+                updateMainChatId(chat.id);
                 navigate("/myduck");
                 setFlapOpen(false);
                 setOverlayVisible(false)
