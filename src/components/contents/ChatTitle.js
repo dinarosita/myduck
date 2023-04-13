@@ -23,7 +23,7 @@ export default function ChatTitle() {
         setTitle(chatMeta.title);
       }
       if (chatMeta && chatMeta.createdAt) {
-      setTag(`Created: ${formatTimestamp(chatMeta.createdAt)}`);
+        setTag(`Created: ${formatTimestamp(chatMeta.createdAt)}`);
       } else {
         setTag("");
       }
@@ -31,9 +31,11 @@ export default function ChatTitle() {
   }, [id, chatMeta]);
 
   return (
-    <div className="flex flex-col flex-none items-center justify-center">
-      <h1>{title}</h1>
-      <p className="text-sm">{tag}</p>
-    </div>
+    <header className="flex h-fit w-full flex-none flex-col items-center text-center">
+      <div className="flex flex-none flex-col items-center justify-center">
+        <h1>{title}</h1>
+        <p className="text-sm">{tag}</p>
+      </div>
+    </header>
   );
 }

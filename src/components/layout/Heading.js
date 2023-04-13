@@ -53,13 +53,9 @@ export default function Heading() {
           onClick={() => setFlapOpen(false)}
         ></div>
         <div className="flex-row-center icon-parent gap-1.5">
-
           <IonicButton ionic="information-circle" linkto="/myduck/about" />
-          {/* <IonicButton ionic="add-circle" />
-          <IonicButton ionic="person-circle" /> */}
           <IonicButton ionic="fish" linkto="/myduck/sandbox" />
           <IonicButton ionic="pencil" onClick={toggleFocus} addClass="hidden lg:block" text={focusText} />
-
         </div>
       </div>
       <MainHr screen />

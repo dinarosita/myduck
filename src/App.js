@@ -8,16 +8,10 @@ import Sandbox from "./pages/Sandbox";
 export const PAGES = [
   { name: "MyDuck", path: "/myduck", element: <MainContent />, exact: true },
   { name: "About", path: "/myduck/about", element: <About />, exact: false },
-  {
-    name: "Sandbox",
-    path: "/myduck/sandbox",
-    element: <Sandbox />,
-    exact: false,
-  },
+  { name: "Sandbox", path: "/myduck/sandbox", element: <Sandbox />, exact: false, },
 ];
 
 export default function App() {
-  
   return (
     <Layout>
       <Routes>

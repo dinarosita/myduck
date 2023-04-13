@@ -7,7 +7,7 @@ import FlapContext from "../../contexts/FlapContext";
 import FocusContext from "../../contexts/FocusContext";
 
 export default function AddMessage() {
-  const {msgFormRef} = useContext(FocusContext);
+  const { msgFormRef } = useContext(FocusContext);
   const { id, setMessageList } = useContext(MainChatContext);
   const [textvalue, setTextValue] = useState("");
   const { flapOpen } = useContext(FlapContext);
@@ -56,26 +56,28 @@ export default function AddMessage() {
   }
 
   return (
-    <form className="relative h-fit">
-      <textarea
-        id="entry"
-        ref={msgFormRef}
-        className="input-main-forced scrollmsg h-28 w-full resize-none"
-        placeholder="+ message..."
-        value={textvalue}
-        onChange={handleTextValue}
-        onKeyDown={(event) => {
-          if (event.key === 13) {
-            event.preventDefault();
-            event.target.value += "\n";
-          }
-        }}
-      />
-      <IonicButton
-        ionic="paper-plane"
-        onClick={postNewMessage}
-        addClass={`absolute bottom-2 right-2 ${flapOpen && "z-[-10]"}`}
-      />
-    </form>
+    <section className="flex-none pb-1 text-center">
+      <form className="relative h-fit">
+        <textarea
+          id="entry"
+          ref={msgFormRef}
+          className="input-main-forced scrollmsg h-28 w-full resize-none"
+          placeholder="+ message..."
+          value={textvalue}
+          onChange={handleTextValue}
+          onKeyDown={(event) => {
+            if (event.key === 13) {
+              event.preventDefault();
+              event.target.value += "\n";
+            }
+          }}
+        />
+        <IonicButton
+          ionic="paper-plane"
+          onClick={postNewMessage}
+          addClass={`absolute bottom-2 right-2 ${flapOpen && "z-[-10]"}`}
+        />
+      </form>
+    </section>
   );
 }
