@@ -6,12 +6,12 @@ function useVirtualKeyboard() {
 
   useEffect(() => {
     const handleResize = () => {
-      const isLandscape = window.innerWidth > window.innerHeight;
-      const screenHeight = isLandscape ? screen.availWidth : screen.availHeight;
-      const currentHeight = window.innerHeight;
-
-      setIsKeyboardVisible(currentHeight < screenHeight * 0.8);
-    };
+        const isLandscape = window.innerWidth > window.innerHeight;
+        const screenHeight = isLandscape ? window.screen.availWidth : window.screen.availHeight;
+        const currentHeight = window.innerHeight;
+      
+        setIsKeyboardVisible(currentHeight < screenHeight * 0.8);
+      };
 
     window.addEventListener('resize', handleResize);
     return () => {

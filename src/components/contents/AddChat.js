@@ -5,10 +5,10 @@ import "firebase/compat/firestore";
 import ChatListContext from "../../contexts/ChatListContext";
 import IonicButton from "../common/IonicButton";
 import FlapContext from "../../contexts/FlapContext";
-import FocusContext from "../../contexts/FocusContext";
+import AutofocusContext from "../../contexts/AutofocusContext";
 
 export default function AddChat() {
-  const { chatFormRef, msgFormRef, autofocus } = useContext(FocusContext);
+  const { chatFormRef, msgFormRef, autofocus } = useContext(AutofocusContext);
   const { ChatAvailable, setChatAvailable, setChatList, updateMainChatId } =
     useContext(ChatListContext);
   const { setFlapOpen, setOverlayVisible } = useContext(FlapContext);

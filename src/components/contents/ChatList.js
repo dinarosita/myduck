@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import ChatListContext from "../../contexts/ChatListContext";
 import { useNavigate } from "react-router-dom";
 import FlapContext from "../../contexts/FlapContext";
-import FocusContext from "../../contexts/FocusContext";
+import AutofocusContext from "../../contexts/AutofocusContext";
 
 export default function ChatList() {
-  const {msgFormRef} = useContext(FocusContext);
+  const {msgFormRef} = useContext(AutofocusContext);
   const { setFlapOpen, setOverlayVisible } = useContext(FlapContext);
   const navigate = useNavigate();
   const { ChatAvailable, chatList, mainChatId, updateMainChatId } =

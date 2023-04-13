@@ -1,18 +1,20 @@
-// FocusContext.js
+// AutofocusContext.js
 
 import { createContext, useRef } from "react";
 import useWindowSize from "../hooks/useWindowSize";
+import useVirtualKeyboard from "../hooks/useVirtualKeyboard";
 
-const FocusContext = createContext(null);
+const AutofocusContext = createContext(null);
 
-export function FocusContextProvider({ children }) {
+export function AutofocusContextProvider({ children }) {
+    const virtualKeyboard = useVirtualKeyboard()
   const msgFormRef = useRef();
   const chatFormRef = useRef();
   const { width } = useWindowSize();
   const isLargeScreen = width >= 1024;
 
   function autofocus(ref){
-    if (isLargeScreen) {
+    if (isLargeScreen || !virtualKeyboard) {
         ref.current.focus()
     }
   }
@@ -23,7 +25,7 @@ export function FocusContextProvider({ children }) {
     autofocus: autofocus,
   };  
   
-  return <FocusContext.Provider value={context}>{children}</FocusContext.Provider>;
+  return <AutofocusContext.Provider value={context}>{children}</AutofocusContext.Provider>;
 }
 
-export default FocusContext;
+export default AutofocusContext;

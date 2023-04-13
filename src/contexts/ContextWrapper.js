@@ -2,14 +2,14 @@ import React from "react";
 import { ChatListContextProvider } from "./ChatListContext";
 import { MainChatContextProvider } from "./MainChatContext";
 import { FlapContextProvider } from "./FlapContext";
-import { FocusContextProvider } from "./FocusContext";
+import { AutofocusContextProvider } from "./AutofocusContext";
 
 export default function ContextWrapper({ children }) {
   return (
     <FlapContextProvider>
       <ChatListContextProvider>
         <MainChatContextProvider>
-          <FocusContextProvider>{children}</FocusContextProvider>
+          <AutofocusContextProvider>{children}</AutofocusContextProvider>
         </MainChatContextProvider>
       </ChatListContextProvider>
     </FlapContextProvider>

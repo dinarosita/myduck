@@ -4,10 +4,10 @@ import IonicButton from "../common/IonicButton";
 import MainHr from "../common/MainHr";
 import FlapContext from "../../contexts/FlapContext";
 import useWindowSize from "../../hooks/useWindowSize";
-import FocusContext from "../../contexts/FocusContext";
+import AutofocusContext from "../../contexts/AutofocusContext";
 
 export default function Heading() {
-  const { chatFormRef, autofocus } = useContext(FocusContext);
+  const { chatFormRef, autofocus } = useContext(AutofocusContext);
   const { flapOpen, setFlapOpen, setOverlayVisible } = useContext(FlapContext);
   const { width } = useWindowSize();
   const location = useLocation();
