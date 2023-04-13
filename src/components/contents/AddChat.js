@@ -8,6 +8,8 @@ import FlapContext from "../../contexts/FlapContext";
 import AutofocusContext from "../../contexts/AutofocusContext";
 
 export default function AddChat() {
+  const { handleFocus, handleBlur } = useContext(AutofocusContext);
+
   const { chatFormRef, msgFormRef, autofocus } = useContext(AutofocusContext);
   const { ChatAvailable, setChatAvailable, setChatList, updateMainChatId } =
     useContext(ChatListContext);
@@ -49,7 +51,7 @@ export default function AddChat() {
         setOverlayVisible(false);
         chatFormRef.current.value = "";
         autofocus(msgFormRef);
-    });
+      });
   }
 
   function updateLocalList(chatId) {
@@ -78,6 +80,8 @@ export default function AddChat() {
       <input
         id="title"
         type="text"
+        onFocus={handleFocus}
+        onBlur={handleBlur}
         ref={chatFormRef}
         placeholder="+ chat title"
         className="input-main-forced w-full"

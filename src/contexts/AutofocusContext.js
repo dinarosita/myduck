@@ -7,14 +7,14 @@ import useVirtualKeyboard from "../hooks/useVirtualKeyboard";
 const AutofocusContext = createContext(null);
 
 export function AutofocusContextProvider({ children }) {
-    const virtualKeyboard = useVirtualKeyboard()
-  const msgFormRef = useRef();
+    const { isKeyboardVisible, handleFocus, handleBlur } = useVirtualKeyboard();
+    const msgFormRef = useRef();
   const chatFormRef = useRef();
   const { width } = useWindowSize();
   const isLargeScreen = width >= 1024;
 
   function autofocus(ref){
-    if (isLargeScreen || !virtualKeyboard) {
+    if (isLargeScreen || !isKeyboardVisible) {
         ref.current.focus()
     }
   }

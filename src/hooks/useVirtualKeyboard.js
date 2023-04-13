@@ -1,25 +1,18 @@
-// useVirtualKeyboard.js
-import { useState, useEffect } from 'react';
+// useVirtualKeyboardState.js
+import { useState } from 'react';
 
-function useVirtualKeyboard() {
+function useVirtualKeyboardState() {
   const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
 
-  useEffect(() => {
-    const handleResize = () => {
-        const isLandscape = window.innerWidth > window.innerHeight;
-        const screenHeight = isLandscape ? window.screen.availWidth : window.screen.availHeight;
-        const currentHeight = window.innerHeight;
-      
-        setIsKeyboardVisible(currentHeight < screenHeight * 0.8);
-      };
+  const handleFocus = () => {
+    setIsKeyboardVisible(true);
+  };
 
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  const handleBlur = () => {
+    setIsKeyboardVisible(false);
+  };
 
-  return isKeyboardVisible;
+  return { isKeyboardVisible, handleFocus, handleBlur };
 }
 
-export default useVirtualKeyboard;
+export default useVirtualKeyboardState;
