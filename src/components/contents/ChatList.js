@@ -1,25 +1,29 @@
 import React, { useContext } from "react";
 import ChatListContext from "../../contexts/ChatListContext";
 import { useNavigate } from "react-router-dom";
-import FlapContext from "../../contexts/FlapContext"
-
+import FlapContext from "../../contexts/FlapContext";
+import RefContext from "../../contexts/RefContext";
 
 export default function ChatList() {
-    const {setFlapOpen, setOverlayVisible} = useContext(FlapContext)
+  const addMessageRef = useContext(RefContext);
+  const { setFlapOpen, setOverlayVisible } = useContext(FlapContext);
   const navigate = useNavigate();
-  const { ChatAvailable, chatList, mainChatId, updateMainChatId } = useContext(ChatListContext);
+  const { ChatAvailable, chatList, mainChatId, updateMainChatId } =
+    useContext(ChatListContext);
 
   return (
     <div className="items-left flex w-full flex-col gap-2 overflow-auto pb-4 pt-8">
       <p className="title text-center text-lg">Chat List</p>
       <ul className="scroll-cbox flex flex-col items-start gap-0.5 overflow-y-scroll border-y-4 border-l-4 border-cboxcolor pr-4 ">
         {!ChatAvailable && (
-        <button key="noChat"
-        className={`chat-item pointer-events-none bg-sol-25 text-sol-300 border-transparent 
-      }`}
-      >{"Waiting for your first chat"}</button>
+          <button
+            key="noChat"
+            className={`chat-item } pointer-events-none border-transparent bg-sol-25 
+      text-sol-300`}
+          >
+            {"Waiting for your first chat"}
+          </button>
         )}
-
 
         {chatList
           .map((chat) => (
@@ -29,7 +33,8 @@ export default function ChatList() {
                 updateMainChatId(chat.id);
                 navigate("/myduck");
                 setFlapOpen(false);
-                setOverlayVisible(false)
+                setOverlayVisible(false);
+                addMessageRef.current.focus();
               }}
               className={`chat-item 
               transition hover:border-hovercolor hover:text-textcolor

@@ -1,27 +1,26 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useState } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import MainChatContext from "../../contexts/MainChatContext";
-import IonicButton from "../common/IonicButton"
+import IonicButton from "../common/IonicButton";
 import FlapContext from "../../contexts/FlapContext";
+import RefContext from "../../contexts/RefContext";
 
 export default function AddMessage() {
+  const {addMessageRef} = useContext(RefContext);
   const { id, setMessageList } = useContext(MainChatContext);
   const [textvalue, setTextValue] = useState("");
-  const { flapOpen } = useContext(FlapContext)
+  const { flapOpen } = useContext(FlapContext);
 
   function handleTextValue(event) {
     setTextValue(event.target.value);
   }
 
-  const messageRef = useRef();
-
-
   function postNewMessage(event) {
     event.preventDefault();
 
     const chatMeta = {
-      message: messageRef.current.value,
+      message: addMessageRef.current.value,
       createdAt: firebase.firestore.Timestamp.now(),
     };
     fetch(
@@ -38,6 +37,7 @@ export default function AddMessage() {
       .then((data) => {
         updateLocalMessages(data.name);
         setTextValue("");
+        addMessageRef.current.focus();
       });
   }
 
@@ -55,14 +55,11 @@ export default function AddMessage() {
       });
   }
 
-
   return (
-    <form
-      className="relative h-fit"
-    >
+    <form className="relative h-fit">
       <textarea
         id="entry"
-        ref={messageRef}
+        ref={addMessageRef}
         className="input-main-forced scrollmsg h-28 w-full resize-none"
         placeholder="+ message..."
         value={textvalue}

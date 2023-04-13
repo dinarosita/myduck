@@ -4,8 +4,10 @@ import IonicButton from "../common/IonicButton";
 import MainHr from "../common/MainHr";
 import FlapContext from "../../contexts/FlapContext";
 import useWindowSize from "../../hooks/useWindowSize";
+import RefContext from "../../contexts/RefContext";
 
 export default function Heading() {
+    const {addChatRef} = useContext(RefContext)
   const { flapOpen, setFlapOpen, setOverlayVisible } = useContext(FlapContext);
   const { width } = useWindowSize();
   const location = useLocation();
@@ -18,9 +20,13 @@ export default function Heading() {
     }
     if (isLgBreakpoint) {
       setFlapOpen(false);
+      
     } else {
         setFlapOpen(!flapOpen);
-        setOverlayVisible(!flapOpen);    }
+        setOverlayVisible(!flapOpen);    
+        addChatRef.current.focus()
+    }
+    
   }
 
   function handleLinkClick(link) {

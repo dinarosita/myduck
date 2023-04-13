@@ -1,31 +1,31 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext } from "react";
 
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import ChatListContext from "../../contexts/ChatListContext";
 import IonicButton from "../common/IonicButton";
-import FlapContext from "../../contexts/FlapContext"
-
+import FlapContext from "../../contexts/FlapContext";
+import RefContext from "../../contexts/RefContext";
 
 export default function AddChat() {
+  const { addChatRef, addMessageRef } = useContext(RefContext);
   const { ChatAvailable, setChatAvailable, setChatList, updateMainChatId } =
     useContext(ChatListContext);
-    const {setFlapOpen, setOverlayVisible} = useContext(FlapContext)
-
-  const titleRef = useRef();
+  const { setFlapOpen, setOverlayVisible } = useContext(FlapContext);
 
   function cancelNewChat(e) {
     e.preventDefault();
-    titleRef.current.value = "";
+    addChatRef.current.value = "";
     setFlapOpen(false);
-    setOverlayVisible(false)
+    setOverlayVisible(false);
+    addMessageRef.current.focus();
   }
 
   function postNewChat(event) {
     event.preventDefault();
 
     const chatMeta = {
-      title: titleRef.current.value ? titleRef.current.value : null,
+      title: addChatRef.current.value ? addChatRef.current.value : null,
       createdAt: firebase.firestore.Timestamp.now(),
     };
 
@@ -46,7 +46,9 @@ export default function AddChat() {
           console.log("New chat added. Chat list updated.");
         }
         setFlapOpen(false);
-        setOverlayVisible(false)
+        setOverlayVisible(false);
+        addChatRef.current.value = "";
+        addMessageRef.current.focus();
       });
   }
 
@@ -62,7 +64,6 @@ export default function AddChat() {
         };
         setChatList((prevAllChats) => prevAllChats.concat(latestChat));
         updateMainChatId(chatId);
-        titleRef.current.value = "";
       });
   }
 
@@ -77,7 +78,7 @@ export default function AddChat() {
       <input
         id="title"
         type="text"
-        ref={titleRef}
+        ref={addChatRef}
         placeholder="+ chat title"
         className="input-main-forced w-full"
       />
