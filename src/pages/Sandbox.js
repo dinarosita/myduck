@@ -1,12 +1,15 @@
 import React from "react";
-import MainWrapper from "../components/common/MainWrapper";
 import Box from "../components/common/Box";
 import IonicSandbox from "./sandbox/IonicSandbox";
 import ConfigSandbox from "./sandbox/ConfigSandbox";
 
 export default function Sandbox() {
   return (
-    <MainWrapper title="Sandbox">
+    <main className="w-effective scrollbar flex h-full flex-col gap-2 overflow-auto py-2">
+      <header>
+        <h1 className="text-center uppercase">Sandbox</h1>
+        <p className="title text-center">A little playground. Or... a fishpond</p>
+      </header>
       <Box title="select element">
         <select>
           <option value="option1">Option 1</option>
@@ -15,7 +18,7 @@ export default function Sandbox() {
         </select>
       </Box>
       <ConfigSandbox />
-      <IonicSandbox />
-    </MainWrapper>
+      <IonicSandbox />{" "}
+    </main>
   );
 }

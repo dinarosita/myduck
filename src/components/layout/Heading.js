@@ -7,7 +7,7 @@ import useWindowSize from "../../hooks/useWindowSize";
 import AutofocusContext from "../../contexts/AutofocusContext";
 
 export default function Heading() {
-  const { chatFormRef, autofocus } = useContext(AutofocusContext);
+  const { chatFormRef, autofocus, toggleAutofocus } = useContext(AutofocusContext);
   const { flapOpen, setFlapOpen, setOverlayVisible } = useContext(FlapContext);
   const { width } = useWindowSize();
   const location = useLocation();
@@ -53,11 +53,13 @@ export default function Heading() {
           onClick={() => setFlapOpen(false)}
         ></div>
         <div className="flex-row-center icon-parent gap-1.5">
-          <IonicButton ionic="fish" linkto="/myduck/sandbox" />
+
           <IonicButton ionic="information-circle" linkto="/myduck/about" />
           {/* <IonicButton ionic="add-circle" />
           <IonicButton ionic="person-circle" /> */}
-          <IonicButton />
+          <IonicButton ionic="fish" linkto="/myduck/sandbox" />
+          <IonicButton ionic="pencil" onClick={toggleAutofocus} />
+
         </div>
       </div>
       <MainHr screen />
