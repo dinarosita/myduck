@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import FlapContext from "../../contexts/FlapContext";
 
 export default function IonicButton(props) {
-  const { setFlapOpen, overlayVisible } = useContext(FlapContext);
+  const { setFlapOpen } = useContext(FlapContext);
   const navigate = useNavigate();
 
   function handleLinkClick(link) {
@@ -26,6 +26,7 @@ export default function IonicButton(props) {
       className={`ionic-parent ${props.addClass} `}
     >
       {iconElement}
+      {props.text}
     </button>
   );
 }

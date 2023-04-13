@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import MainContent from "./components/layout/MainContent";
@@ -17,10 +17,7 @@ export const PAGES = [
 ];
 
 export default function App() {
-  useEffect(() => {
-    localStorage.removeItem("autofocusAllowed");
-    console.log("LocalStorage 'autofocusAllowed' key removed");
-  }, []);
+  
   return (
     <Layout>
       <Routes>

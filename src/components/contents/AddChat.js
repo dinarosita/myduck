@@ -5,10 +5,10 @@ import "firebase/compat/firestore";
 import ChatHistoryContext from "../../contexts/ChatHistoryContext";
 import IonicButton from "../common/IonicButton";
 import FlapContext from "../../contexts/FlapContext";
-import AutofocusContext from "../../contexts/AutofocusContext";
+import FocusContext from "../../contexts/FocusContext";
 
 export default function AddChat() {
-  const { chatFormRef, msgFormRef, autofocus } = useContext(AutofocusContext);
+  const { chatFormRef, msgFormRef, focus } = useContext(FocusContext);
   const { ChatAvailable, setChatAvailable, setChatHistory, updateMainChatId } =
     useContext(ChatHistoryContext);
   const { setFlapOpen, setOverlayVisible } = useContext(FlapContext);
@@ -18,7 +18,7 @@ export default function AddChat() {
     chatFormRef.current.value = "";
     setFlapOpen(false);
     setOverlayVisible(false);
-    autofocus(msgFormRef);
+    focus(msgFormRef);
   }
 
   function postNewChat(event) {
@@ -48,7 +48,7 @@ export default function AddChat() {
         setFlapOpen(false);
         setOverlayVisible(false);
         chatFormRef.current.value = "";
-        autofocus(msgFormRef);
+        focus(msgFormRef);
       });
   }
 

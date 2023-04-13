@@ -4,10 +4,10 @@ import "firebase/compat/firestore";
 import MainChatContext from "../../contexts/MainChatContext";
 import IonicButton from "../common/IonicButton";
 import FlapContext from "../../contexts/FlapContext";
-import AutofocusContext from "../../contexts/AutofocusContext";
+import FocusContext from "../../contexts/FocusContext";
 
 export default function AddMessage() {
-  const {msgFormRef} = useContext(AutofocusContext);
+  const {msgFormRef} = useContext(FocusContext);
   const { id, setMessageList } = useContext(MainChatContext);
   const [textvalue, setTextValue] = useState("");
   const { flapOpen } = useContext(FlapContext);

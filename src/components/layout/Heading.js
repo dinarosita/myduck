@@ -4,10 +4,10 @@ import IonicButton from "../common/IonicButton";
 import MainHr from "../common/MainHr";
 import FlapContext from "../../contexts/FlapContext";
 import useWindowSize from "../../hooks/useWindowSize";
-import AutofocusContext from "../../contexts/AutofocusContext";
+import FocusContext from "../../contexts/FocusContext";
 
 export default function Heading() {
-  const { chatFormRef, autofocus, toggleAutofocus } = useContext(AutofocusContext);
+  const { chatFormRef, focus, toggleFocus, focusText} = useContext(FocusContext);
   const { flapOpen, setFlapOpen, setOverlayVisible } = useContext(FlapContext);
   const { width } = useWindowSize();
   const location = useLocation();
@@ -23,7 +23,7 @@ export default function Heading() {
     } else {
       setFlapOpen(!flapOpen);
       setOverlayVisible(!flapOpen);
-      autofocus(chatFormRef);
+      focus(chatFormRef);
     }
   }
 
@@ -58,7 +58,7 @@ export default function Heading() {
           {/* <IonicButton ionic="add-circle" />
           <IonicButton ionic="person-circle" /> */}
           <IonicButton ionic="fish" linkto="/myduck/sandbox" />
-          <IonicButton ionic="pencil" onClick={toggleAutofocus} addClass="hidden lg:block" />
+          <IonicButton ionic="pencil" onClick={toggleFocus} addClass="hidden lg:block" text={focusText} />
 
         </div>
       </div>
