@@ -1,5 +1,5 @@
 import React from "react";
-import { ChatListContextProvider } from "./ChatListContext";
+import { ChatHistoryContextProvider } from "./ChatHistoryContext";
 import { MainChatContextProvider } from "./MainChatContext";
 import { FlapContextProvider } from "./FlapContext";
 import { AutofocusContextProvider } from "./AutofocusContext";
@@ -7,11 +7,11 @@ import { AutofocusContextProvider } from "./AutofocusContext";
 export default function ContextWrapper({ children }) {
   return (
     <FlapContextProvider>
-      <ChatListContextProvider>
+      <ChatHistoryContextProvider>
         <MainChatContextProvider>
           <AutofocusContextProvider>{children}</AutofocusContextProvider>
         </MainChatContextProvider>
-      </ChatListContextProvider>
+      </ChatHistoryContextProvider>
     </FlapContextProvider>
   );
 }

@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
-import ChatListContext from "../../contexts/ChatListContext";
+import ChatHistoryContext from "../../contexts/ChatHistoryContext";
 import { useNavigate } from "react-router-dom";
 import FlapContext from "../../contexts/FlapContext";
 import AutofocusContext from "../../contexts/AutofocusContext";
 
-export default function ChatList() {
-  const {msgFormRef} = useContext(AutofocusContext);
+export default function ChatHistory() {
+  const {msgFormRef, autofocus} = useContext(AutofocusContext);
   const { setFlapOpen, setOverlayVisible } = useContext(FlapContext);
   const navigate = useNavigate();
   const { ChatAvailable, chatList, mainChatId, updateMainChatId } =
-    useContext(ChatListContext);
+    useContext(ChatHistoryContext);
 
   return (
     <div className="items-left flex w-full flex-col gap-2 overflow-auto pb-4 pt-8">
@@ -34,7 +34,7 @@ export default function ChatList() {
                 navigate("/myduck");
                 setFlapOpen(false);
                 setOverlayVisible(false);
-                msgFormRef.current.focus();
+                autofocus(msgFormRef);
               }}
               className={`chat-item 
               transition hover:border-hovercolor hover:text-textcolor

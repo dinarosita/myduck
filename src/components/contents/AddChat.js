@@ -2,17 +2,15 @@ import React, { useContext } from "react";
 
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
-import ChatListContext from "../../contexts/ChatListContext";
+import ChatHistoryContext from "../../contexts/ChatHistoryContext";
 import IonicButton from "../common/IonicButton";
 import FlapContext from "../../contexts/FlapContext";
 import AutofocusContext from "../../contexts/AutofocusContext";
 
 export default function AddChat() {
-  const { handleFocus, handleBlur } = useContext(AutofocusContext);
-
   const { chatFormRef, msgFormRef, autofocus } = useContext(AutofocusContext);
-  const { ChatAvailable, setChatAvailable, setChatList, updateMainChatId } =
-    useContext(ChatListContext);
+  const { ChatAvailable, setChatAvailable, setChatHistory, updateMainChatId } =
+    useContext(ChatHistoryContext);
   const { setFlapOpen, setOverlayVisible } = useContext(FlapContext);
 
   function cancelNewChat(e) {
@@ -64,7 +62,7 @@ export default function AddChat() {
           id: chatId,
           ...data,
         };
-        setChatList((prevAllChats) => prevAllChats.concat(latestChat));
+        setChatHistory((prevAllChats) => prevAllChats.concat(latestChat));
         updateMainChatId(chatId);
       });
   }
@@ -80,8 +78,6 @@ export default function AddChat() {
       <input
         id="title"
         type="text"
-        onFocus={handleFocus}
-        onBlur={handleBlur}
         ref={chatFormRef}
         placeholder="+ chat title"
         className="input-main-forced w-full"

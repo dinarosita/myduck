@@ -1,5 +1,5 @@
 import React from "react";
-import ChatList from "./ChatList";
+import ChatHistory from "./ChatHistory";
 import AddChat from "./AddChat";
 import MainHr from "../common/MainHr"
 
@@ -8,7 +8,7 @@ export default function NavContent() {
     <nav className="flex h-full flex-auto flex-col items-start overflow-auto justify-start px-4">
       <AddChat />
       <MainHr addClass="w-full"/>
-      <ChatList />
+      <ChatHistory />
     </nav>
   );
 }

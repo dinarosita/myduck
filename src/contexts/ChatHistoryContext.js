@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 
-const ChatListContext = React.createContext({
+const ChatHistoryContext = React.createContext({
   chatList: [],
-  setChatList: () => {},
+  setChatHistory: () => {},
   mainChatId: null,
   isLoading: true,
   ChatAvailable: false,
@@ -11,8 +11,8 @@ const ChatListContext = React.createContext({
   updateMainChatId: () => {},
 });
 
-export function ChatListContextProvider(props) {
-  const [chatList, setChatList] = useState([]);
+export function ChatHistoryContextProvider(props) {
+  const [chatList, setChatHistory] = useState([]);
   const [mainChatId, setMainChatId] = useState(
     localStorage.getItem("mainChatId")
   );
@@ -43,7 +43,7 @@ export function ChatListContextProvider(props) {
               ...data[key],
             };
             chats.push(chat);
-            setChatList(chats);
+            setChatHistory(chats);
             if (!mainChatId) {
               setMainChatId(chats[chats.length - 1].id);
             }
@@ -69,17 +69,17 @@ export function ChatListContextProvider(props) {
     ChatAvailable: ChatAvailable,
     setChatAvailable: setChatAvailable,
     chatList: chatList,
-    setChatList: setChatList,
+    setChatHistory: setChatHistory,
     mainChatId: mainChatId,
     isLoading: isLoading,
     updateMainChatId: updateMainChatId,
   };
 
   return (
-    <ChatListContext.Provider value={context}>
+    <ChatHistoryContext.Provider value={context}>
       {props.children}
-    </ChatListContext.Provider>
+    </ChatHistoryContext.Provider>
   );
 }
 
-export default ChatListContext;
+export default ChatHistoryContext;

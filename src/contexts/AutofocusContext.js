@@ -2,19 +2,17 @@
 
 import { createContext, useRef } from "react";
 import useWindowSize from "../hooks/useWindowSize";
-import useVirtualKeyboard from "../hooks/useVirtualKeyboard";
 
 const AutofocusContext = createContext(null);
 
 export function AutofocusContextProvider({ children }) {
-    const { isKeyboardVisible, handleFocus, handleBlur } = useVirtualKeyboard();
     const msgFormRef = useRef();
   const chatFormRef = useRef();
   const { width } = useWindowSize();
   const isLargeScreen = width >= 1024;
 
   function autofocus(ref){
-    if (isLargeScreen || !isKeyboardVisible) {
+    if (isLargeScreen) {
         ref.current.focus()
     }
   }
