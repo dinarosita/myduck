@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-
 import React, { useEffect, useState } from "react";
 
 const ChatListContext = React.createContext({
@@ -56,7 +55,6 @@ export function ChatListContextProvider(props) {
         console.log(error);
         setIsLoading(false);
       });
-
     return () => {
       abortController.abort();
     };

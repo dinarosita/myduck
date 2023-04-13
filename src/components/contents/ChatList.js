@@ -5,7 +5,7 @@ import FlapContext from "../../contexts/FlapContext";
 import RefContext from "../../contexts/RefContext";
 
 export default function ChatList() {
-  const addMessageRef = useContext(RefContext);
+  const {addMessageRef} = useContext(RefContext);
   const { setFlapOpen, setOverlayVisible } = useContext(FlapContext);
   const navigate = useNavigate();
   const { ChatAvailable, chatList, mainChatId, updateMainChatId } =
