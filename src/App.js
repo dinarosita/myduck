@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import MainContent from "./components/layout/MainContent";
@@ -8,10 +8,19 @@ import Sandbox from "./pages/Sandbox";
 export const PAGES = [
   { name: "MyDuck", path: "/myduck", element: <MainContent />, exact: true },
   { name: "About", path: "/myduck/about", element: <About />, exact: false },
-  { name: "Sandbox", path: "/myduck/sandbox", element: <Sandbox />, exact: false },
+  {
+    name: "Sandbox",
+    path: "/myduck/sandbox",
+    element: <Sandbox />,
+    exact: false,
+  },
 ];
 
 export default function App() {
+  useEffect(() => {
+    localStorage.removeItem("autofocusAllowed");
+    console.log("LocalStorage 'autofocusAllowed' key removed");
+  }, []);
   return (
     <Layout>
       <Routes>

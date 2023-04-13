@@ -58,7 +58,7 @@ export default function Heading() {
           {/* <IonicButton ionic="add-circle" />
           <IonicButton ionic="person-circle" /> */}
           <IonicButton ionic="fish" linkto="/myduck/sandbox" />
-          <IonicButton ionic="pencil" onClick={toggleAutofocus} />
+          <IonicButton ionic="pencil" onClick={toggleAutofocus} addClass="hidden lg:block" />
 
         </div>
       </div>
