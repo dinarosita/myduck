@@ -5,27 +5,27 @@ import "firebase/compat/firestore";
 import ChatListContext from "../../contexts/ChatListContext";
 import IonicButton from "../common/IonicButton";
 import FlapContext from "../../contexts/FlapContext";
-import RefContext from "../../contexts/RefContext";
+import FocusContext from "../../contexts/FocusContext";
 
 export default function AddChat() {
-  const { addChatRef, addMessageRef } = useContext(RefContext);
+  const { chatFormRef, msgFormRef, autofocus } = useContext(FocusContext);
   const { ChatAvailable, setChatAvailable, setChatList, updateMainChatId } =
     useContext(ChatListContext);
   const { setFlapOpen, setOverlayVisible } = useContext(FlapContext);
 
   function cancelNewChat(e) {
     e.preventDefault();
-    addChatRef.current.value = "";
+    chatFormRef.current.value = "";
     setFlapOpen(false);
     setOverlayVisible(false);
-    addMessageRef.current.focus();
+    autofocus(msgFormRef);
   }
 
   function postNewChat(event) {
     event.preventDefault();
 
     const chatMeta = {
-      title: addChatRef.current.value ? addChatRef.current.value : null,
+      title: chatFormRef.current.value ? chatFormRef.current.value : null,
       createdAt: firebase.firestore.Timestamp.now(),
     };
 
@@ -47,9 +47,9 @@ export default function AddChat() {
         }
         setFlapOpen(false);
         setOverlayVisible(false);
-        addChatRef.current.value = "";
-        addMessageRef.current.focus();
-      });
+        chatFormRef.current.value = "";
+        autofocus(msgFormRef);
+    });
   }
 
   function updateLocalList(chatId) {
@@ -78,7 +78,7 @@ export default function AddChat() {
       <input
         id="title"
         type="text"
-        ref={addChatRef}
+        ref={chatFormRef}
         placeholder="+ chat title"
         className="input-main-forced w-full"
       />

@@ -4,29 +4,27 @@ import IonicButton from "../common/IonicButton";
 import MainHr from "../common/MainHr";
 import FlapContext from "../../contexts/FlapContext";
 import useWindowSize from "../../hooks/useWindowSize";
-import RefContext from "../../contexts/RefContext";
+import FocusContext from "../../contexts/FocusContext";
 
 export default function Heading() {
-    const {addChatRef} = useContext(RefContext)
+  const { chatFormRef, autofocus } = useContext(FocusContext);
   const { flapOpen, setFlapOpen, setOverlayVisible } = useContext(FlapContext);
   const { width } = useWindowSize();
   const location = useLocation();
   const navigate = useNavigate();
-  const isLgBreakpoint = width >= 1024;
+  const isLargeScreen = width >= 1024;
 
   function handleNavClick() {
     if (location.pathname !== "/myduck") {
       navigate("/myduck");
     }
-    if (isLgBreakpoint) {
+    if (isLargeScreen) {
       setFlapOpen(false);
-      
     } else {
-        setFlapOpen(!flapOpen);
-        setOverlayVisible(!flapOpen);    
-        addChatRef.current.focus()
+      setFlapOpen(!flapOpen);
+      setOverlayVisible(!flapOpen);
+      autofocus(chatFormRef);
     }
-    
   }
 
   function handleLinkClick(link) {
@@ -35,8 +33,8 @@ export default function Heading() {
   }
 
   return (
-    <div className="w-effective flex-none px-mainspace" >
-      <div className="flex-row-center pb-1 pt-mainspace h-full">
+    <div className="w-effective flex-none px-mainspace">
+      <div className="flex-row-center h-full pb-1 pt-mainspace">
         <div className="flex-row-center gap-2">
           <div>
             <IonicButton ionic="chatbubbles" onClick={handleNavClick} />
@@ -50,8 +48,10 @@ export default function Heading() {
             </button>
           </div>
         </div>
-        <div className="w-full h-full border-sol border-1 flex-1" onClick={() => setFlapOpen(false)}
-></div>
+        <div
+          className="border-1 h-full w-full flex-1 border-sol"
+          onClick={() => setFlapOpen(false)}
+        ></div>
         <div className="flex-row-center icon-parent gap-1.5">
           <IonicButton ionic="fish" linkto="/myduck/sandbox" />
           <IonicButton ionic="information-circle" linkto="/myduck/about" />

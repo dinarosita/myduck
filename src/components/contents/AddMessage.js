@@ -4,10 +4,10 @@ import "firebase/compat/firestore";
 import MainChatContext from "../../contexts/MainChatContext";
 import IonicButton from "../common/IonicButton";
 import FlapContext from "../../contexts/FlapContext";
-import RefContext from "../../contexts/RefContext";
+import FocusContext from "../../contexts/FocusContext";
 
 export default function AddMessage() {
-  const {addMessageRef} = useContext(RefContext);
+  const {msgFormRef} = useContext(FocusContext);
   const { id, setMessageList } = useContext(MainChatContext);
   const [textvalue, setTextValue] = useState("");
   const { flapOpen } = useContext(FlapContext);
@@ -20,7 +20,7 @@ export default function AddMessage() {
     event.preventDefault();
 
     const chatMeta = {
-      message: addMessageRef.current.value,
+      message: msgFormRef.current.value,
       createdAt: firebase.firestore.Timestamp.now(),
     };
     fetch(
@@ -37,7 +37,7 @@ export default function AddMessage() {
       .then((data) => {
         updateLocalMessages(data.name);
         setTextValue("");
-        addMessageRef.current.focus();
+        msgFormRef.current.focus();
       });
   }
 
@@ -59,7 +59,7 @@ export default function AddMessage() {
     <form className="relative h-fit">
       <textarea
         id="entry"
-        ref={addMessageRef}
+        ref={msgFormRef}
         className="input-main-forced scrollmsg h-28 w-full resize-none"
         placeholder="+ message..."
         value={textvalue}
