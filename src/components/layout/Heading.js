@@ -5,10 +5,10 @@ import MainHr from "../common/MainHr";
 import FlapContext from "../../contexts/FlapContext";
 import useWindowSize from "../../hooks/useWindowSize";
 import FocusContext from "../../contexts/FocusContext";
-// import GlobalConfigContext from "../../contexts/GlobalConfigContext";
+import GlobalConfigContext from "../../contexts/GlobalConfigContext";
 
 export default function Heading() {
-//   const { modeReload } = useContext(GlobalConfigContext);
+  const { toggleMode } = useContext(GlobalConfigContext);
   const { chatFormRef, focus, toggleFocus, focusText } =
     useContext(FocusContext);
   const { flapOpen, setFlapOpen, setOverlayVisible } = useContext(FlapContext);
@@ -64,7 +64,7 @@ export default function Heading() {
             addClass="hidden lg:block"
             text={focusText}
           />
-          {/* <IonicButton ionic="construct" onClick={modeReload}></IonicButton> */}
+          <IonicButton ionic="construct" onClick={toggleMode}></IonicButton>
         </div>
       </div>
       <MainHr screen />

@@ -25,7 +25,9 @@ export function FocusContextProvider({ children }) {
 
   function focus(ref) {
     if (isLargeScreen || focusAllowed) {
-      ref.current.focus();
+      if (ref && ref.current) {
+        ref.current.focus();
+      }
     }
   }
 

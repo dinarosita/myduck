@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 
 const GlobalConfigContext = React.createContext();
 
 export function GlobalConfigContextProvider({ children }) {
-  const myduckUrl = "https://myduck-fb785-default-rtdb.firebaseio.com/";
+    
+    const [mode, setMode] = useState(localStorage.getItem("myduckMode"));
+    const databaseUrl = "https://myduck-fb785-default-rtdb.firebaseio.com/" + (mode ? mode : "chats")
+    
 
-  const dataMode = {
-    chats: "chats",
-    mock: "mock",
-  };
+      function toggleMode() {
+        const newMode = (!mode || mode === "chats") ? "mock" : "chats";
+        setMode(newMode);
+        localStorage.setItem("myduckMode", newMode);
+        window.location.reload();
+      }
 
-  const context = {
-    databaseUrl: `${myduckUrl}${dataMode.mock}`,
-  };
+    const context = {
+        databaseUrl: databaseUrl,
+        toggleMode: toggleMode,
+    }
+ 
   return (
     <GlobalConfigContext.Provider value={context}>
       {children}
