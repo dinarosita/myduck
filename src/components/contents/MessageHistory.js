@@ -18,7 +18,7 @@ export default function MessageHistory() {
     <section className="h-full flex-auto overflow-auto">
       <div
         ref={containerRef}
-        className="scrollbar flex h-full flex-auto flex-col  gap-1 overflow-y-scroll whitespace-pre-wrap  rounded border-mboxborderw border-r-0 border-mboxcolor pr-8"
+        className="scrollbar flex h-full flex-auto flex-col  gap-1 overflow-y-scroll whitespace-pre-wrap  rounded border-mboxborderw border-r-0 border-mboxcolor pr-8 min-h-80"
       >
         {messageList.map((msg) => (
           <div

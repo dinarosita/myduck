@@ -7,7 +7,7 @@ import Overlay from "./Overlay";
 
 export default function Layout(props) {
   return (
-    <div className="absolute z-0 h-screen w-screen flex-col-center">
+    <div className="absolute z-0 h-screen w-screen min-h-400 min-w-320 flex-col-center">
       <Background />
       <Heading />     
       <Overlay /> 

@@ -6,6 +6,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      minWidth: {
+        320: "320px",
+      },
+      minHeight: {
+        64: "64px",
+        320: "320px",
+        400: "400px",
+        568: "568px",
+      },
       spacing: {
         mainspace: "0.5rem", // 2, 8px
         mboxspace: "4px", // 2, 8px
@@ -13,7 +22,6 @@ module.exports = {
       borderWidth: {
         mainborderw: "2px", // 2
         mboxborderw: "4px", // 8
-
       },
       colors: {
         textcolor: "#6F3F01", // sol-950
