@@ -7,13 +7,10 @@ module.exports = {
   theme: {
     extend: {
       minWidth: {
-        320: "320px",
+        minwidth: "320px",
       },
       minHeight: {
-        64: "64px",
-        320: "320px",
-        400: "400px",
-        568: "568px",
+        minheight: "480px",
       },
       spacing: {
         mainspace: "0.5rem", // 2, 8px
