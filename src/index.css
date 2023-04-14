@@ -6,7 +6,7 @@
 
 @layer base {
   html {
-    @apply leading-none text-textcolor transition-all duration-1000;
+    @apply leading-none text-textcolor;
   }
 
   button:hover,

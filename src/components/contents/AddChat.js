@@ -5,8 +5,10 @@ import ChatHistoryContext from "../../contexts/ChatHistoryContext";
 import IonicButton from "../common/IonicButton";
 import FlapContext from "../../contexts/FlapContext";
 import FocusContext from "../../contexts/FocusContext";
+import GlobalConfigContext from "../../contexts/GlobalConfigContext";
 
 export default function AddChat() {
+  const { databaseUrl } = useContext(GlobalConfigContext);
   const { chatFormRef, msgFormRef, focus } = useContext(FocusContext);
   const { ChatAvailable, setChatAvailable, setChatHistory, updateMainChatId } =
     useContext(ChatHistoryContext);
@@ -28,7 +30,7 @@ export default function AddChat() {
       createdAt: firebase.firestore.Timestamp.now(),
     };
 
-    fetch("https://myduck-fb785-default-rtdb.firebaseio.com/chats.json", {
+    fetch(`${databaseUrl}.json`, {
       method: "POST",
       body: JSON.stringify(chatMeta),
       headers: {
@@ -52,9 +54,7 @@ export default function AddChat() {
   }
 
   function updateLocalList(chatId) {
-    fetch(
-      `https://myduck-fb785-default-rtdb.firebaseio.com/chats/${chatId}.json`
-    )
+    fetch(`${databaseUrl}/${chatId}.json`)
       .then((response) => response.json())
       .then((data) => {
         const latestChat = {

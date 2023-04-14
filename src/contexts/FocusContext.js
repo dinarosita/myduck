@@ -1,4 +1,4 @@
-import { createContext, useEffect, useRef, useState } from "react";
+import { createContext, useRef, useState } from "react";
 import useWindowSize from "../hooks/useWindowSize";
 
 const FocusContext = createContext(null);

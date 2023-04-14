@@ -1,5 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import GlobalConfigContext from "./GlobalConfigContext";
+
 
 const ChatHistoryContext = React.createContext({
   chatList: [],
@@ -12,6 +14,7 @@ const ChatHistoryContext = React.createContext({
 });
 
 export function ChatHistoryContextProvider(props) {
+  const { databaseUrl } = useContext(GlobalConfigContext);
   const [chatList, setChatHistory] = useState([]);
   const [mainChatId, setMainChatId] = useState(
     localStorage.getItem("mainChatId")
@@ -23,7 +26,7 @@ export function ChatHistoryContextProvider(props) {
     setIsLoading(true);
     const abortController = new AbortController();
 
-    fetch("https://myduck-fb785-default-rtdb.firebaseio.com/chats.json", {
+    fetch(`${databaseUrl}.json`, {
       signal: abortController.signal,
     })
       .then((response) => {

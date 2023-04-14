@@ -5,9 +5,12 @@ import MainHr from "../common/MainHr";
 import FlapContext from "../../contexts/FlapContext";
 import useWindowSize from "../../hooks/useWindowSize";
 import FocusContext from "../../contexts/FocusContext";
+// import GlobalConfigContext from "../../contexts/GlobalConfigContext";
 
 export default function Heading() {
-  const { chatFormRef, focus, toggleFocus, focusText} = useContext(FocusContext);
+//   const { modeReload } = useContext(GlobalConfigContext);
+  const { chatFormRef, focus, toggleFocus, focusText } =
+    useContext(FocusContext);
   const { flapOpen, setFlapOpen, setOverlayVisible } = useContext(FlapContext);
   const { width } = useWindowSize();
   const location = useLocation();
@@ -55,7 +58,13 @@ export default function Heading() {
         <div className="flex-row-center icon-parent gap-1.5">
           <IonicButton ionic="information-circle" linkto="/myduck/about" />
           <IonicButton ionic="fish" linkto="/myduck/sandbox" />
-          <IonicButton ionic="pencil" onClick={toggleFocus} addClass="hidden lg:block" text={focusText} />
+          <IonicButton
+            ionic="pencil"
+            onClick={toggleFocus}
+            addClass="hidden lg:block"
+            text={focusText}
+          />
+          {/* <IonicButton ionic="construct" onClick={modeReload}></IonicButton> */}
         </div>
       </div>
       <MainHr screen />

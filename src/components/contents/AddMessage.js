@@ -5,8 +5,10 @@ import MainChatContext from "../../contexts/MainChatContext";
 import IonicButton from "../common/IonicButton";
 import FlapContext from "../../contexts/FlapContext";
 import FocusContext from "../../contexts/FocusContext";
+import GlobalConfigContext from "../../contexts/GlobalConfigContext";
 
 export default function AddMessage() {
+  const { databaseUrl } = useContext(GlobalConfigContext);
   const { msgFormRef } = useContext(FocusContext);
   const { id, setMessageList } = useContext(MainChatContext);
   const [textvalue, setTextValue] = useState("");
@@ -23,16 +25,13 @@ export default function AddMessage() {
       message: msgFormRef.current.value,
       createdAt: firebase.firestore.Timestamp.now(),
     };
-    fetch(
-      `https://myduck-fb785-default-rtdb.firebaseio.com/chats/${id}/messages.json`,
-      {
-        method: "POST",
-        body: JSON.stringify(chatMeta),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    fetch(`${databaseUrl}/${id}/messages.json`, {
+      method: "POST",
+      body: JSON.stringify(chatMeta),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
         updateLocalMessages(data.name);
@@ -42,9 +41,7 @@ export default function AddMessage() {
   }
 
   function updateLocalMessages(messageId) {
-    fetch(
-      `https://myduck-fb785-default-rtdb.firebaseio.com/chats/${id}/messages/${messageId}.json`
-    )
+    fetch(`${databaseUrl}/${id}/messages/${messageId}.json`)
       .then((response) => response.json())
       .then((data) => {
         const latestMessage = {

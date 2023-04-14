@@ -1,5 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import React, { useContext, useEffect, useState } from "react";
 import ChatHistoryContext from "./ChatHistoryContext";
+import GlobalConfigContext from "./GlobalConfigContext";
 
 const MainChatContext = React.createContext({
   id: null,
@@ -10,6 +13,7 @@ const MainChatContext = React.createContext({
 });
 
 export function MainChatContextProvider(props) {
+  const { databaseUrl } = useContext(GlobalConfigContext);
   const { mainChatId, chatList } = useContext(ChatHistoryContext);
 
   const [messageList, setMessageList] = useState([]);
@@ -19,12 +23,9 @@ export function MainChatContextProvider(props) {
     setIsLoading(true);
     const abortController = new AbortController();
 
-    fetch(
-      `https://myduck-fb785-default-rtdb.firebaseio.com/chats/${mainChatId}/messages.json`,
-      {
-        signal: abortController.signal,
-      }
-    )
+    fetch(`${databaseUrl}/${mainChatId}/messages.json`, {
+      signal: abortController.signal,
+    })
       .then((response) => {
         return response.json();
       })

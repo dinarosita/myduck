@@ -1,9 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import FlapContext from "../../contexts/FlapContext";
 import ChatHistory from "../contents/ChatHistory";
 import AddChat from "../contents/AddChat";
 import MainHr from "../common/MainHr";
-import IonicButton from "../common/IonicButton";
 
 export default function Navigation() {
   const { flapOpen } = useContext(FlapContext);
@@ -12,7 +11,7 @@ export default function Navigation() {
   return (
     <div
       className={`
-        absolute z-20 flex h-full w-72 flex-col overflow-auto py-mainspace transition-all duration-500 
+        absolute z-20 flex h-full w-72 flex-col overflow-auto py-mainspace transition-all duration-default 
       lg:static lg:flex-none 
        
       ${flapOpen ? "left-0" : "-left-72"}`}

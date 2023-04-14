@@ -6,11 +6,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      transitionDuration: {
+        default: "300ms",
+      },
       minWidth: {
-        minwidth: "320px",
+        default: "320px",
       },
       minHeight: {
-        minheight: "420px",
+        default: "420px",
       },
       spacing: {
         mainspace: "0.5rem", // 2, 8px
