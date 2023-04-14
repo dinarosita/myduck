@@ -10,7 +10,7 @@ module.exports = {
         minwidth: "320px",
       },
       minHeight: {
-        minheight: "480px",
+        minheight: "420px",
       },
       spacing: {
         mainspace: "0.5rem", // 2, 8px
