@@ -8,7 +8,7 @@ import Overlay from "./Overlay";
 export default function Layout(props) {
   return (
     <div className="absolute z-0 h-screen w-screen min-w-default min-h-default flex-col-center ">
-      <Background />
+      {/* <Background /> */}
       <Heading />     
       <Overlay /> 
       {props.children}

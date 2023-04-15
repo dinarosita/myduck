@@ -23,6 +23,9 @@ module.exports = {
         mainborderw: "2px", // 2
         mboxborderw: "4px", // 8
       },
+      screens: {
+        xs: "480px",
+      },
       colors: {
         textcolor: "#6F3F01", // sol-950
         maincolor: "#FC9204", // sol-500

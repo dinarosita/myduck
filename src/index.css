@@ -44,8 +44,11 @@
 }
 
 @layer components {
+  .border-guide {
+    @apply border border-purple-700;
+  }
   .w-effective {
-    @apply w-full xl:max-w-screen-xl mx-auto;
+    @apply mx-auto w-full xl:max-w-screen-xl;
   }
   .flex-row-center {
     @apply flex flex-row items-center;
@@ -87,7 +90,6 @@
     box-shadow: none !important;
   }
 
-
   .ionic-parent:focus .ionic,
   .ionic-parent:active .ionic {
     @apply text-hovercolor;
@@ -95,9 +97,8 @@
 
   *:focus {
     /* @apply outline-none ring-2 ring-hovercolor; */
-    @apply outline-none text-hovercolor;
+    @apply text-hovercolor outline-none;
   }
-
 
   .chat-item {
     @apply w-full rounded-r-full border-y-2 border-r-2 px-1 py-0.5 text-left ring-0 first:mt-1 last:mb-1;

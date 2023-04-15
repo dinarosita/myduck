@@ -12,13 +12,12 @@ export default function AddChat() {
   const { chatFormRef, msgFormRef, focus } = useContext(FocusContext);
   const { ChatAvailable, setChatAvailable, setChatHistory, updateMainChatId } =
     useContext(ChatHistoryContext);
-  const { setFlapOpen, setOverlayVisible } = useContext(FlapContext);
+  const { setFlapOpen } = useContext(FlapContext);
 
   function cancelNewChat(e) {
     e.preventDefault();
     chatFormRef.current.value = "";
     setFlapOpen(false);
-    setOverlayVisible(false);
     focus(msgFormRef);
   }
 
@@ -47,7 +46,6 @@ export default function AddChat() {
           console.log("New chat added. Chat list updated.");
         }
         setFlapOpen(false);
-        setOverlayVisible(false);
         chatFormRef.current.value = "";
         focus(msgFormRef);
       });
@@ -70,6 +68,7 @@ export default function AddChat() {
     <form
       onSubmit={postNewChat}
       className="flex w-full flex-col items-center gap-2 px-1 pb-2 pt-8"
+
     >
       <label htmlFor="title" className="title text-lg">
         Add a New Chat

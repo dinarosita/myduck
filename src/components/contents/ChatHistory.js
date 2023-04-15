@@ -5,8 +5,8 @@ import FlapContext from "../../contexts/FlapContext";
 import FocusContext from "../../contexts/FocusContext";
 
 export default function ChatHistory() {
-  const {msgFormRef, focus} = useContext(FocusContext);
-  const { setFlapOpen, setOverlayVisible } = useContext(FlapContext);
+  const { msgFormRef, focus } = useContext(FocusContext);
+  const { setFlapOpen  } = useContext(FlapContext);
   const navigate = useNavigate();
   const { ChatAvailable, chatList, mainChatId, updateMainChatId } =
     useContext(ChatHistoryContext);
@@ -33,7 +33,6 @@ export default function ChatHistory() {
                 updateMainChatId(chat.id);
                 navigate("/myduck");
                 setFlapOpen(false);
-                setOverlayVisible(false);
                 focus(msgFormRef);
               }}
               className={`chat-item 

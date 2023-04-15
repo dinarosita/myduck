@@ -11,7 +11,7 @@ export default function Heading() {
   const { toggleMode } = useContext(GlobalConfigContext);
   const { chatFormRef, focus, toggleFocus, focusText } =
     useContext(FocusContext);
-  const { flapOpen, setFlapOpen, setOverlayVisible } = useContext(FlapContext);
+  const { flapOpen, setFlapOpen } = useContext(FlapContext);
   const { width } = useWindowSize();
   const location = useLocation();
   const navigate = useNavigate();
@@ -25,7 +25,6 @@ export default function Heading() {
       setFlapOpen(false);
     } else {
       setFlapOpen(!flapOpen);
-      setOverlayVisible(!flapOpen);
       focus(chatFormRef);
     }
   }
