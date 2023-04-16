@@ -12,7 +12,7 @@ export default function AddMessage() {
   const { msgFormRef } = useContext(FocusContext);
   const { id, setMessageList } = useContext(MainChatContext);
   const [textvalue, setTextValue] = useState("");
-  const { flapOpen } = useContext(FlapContext);
+  const { isFlapOpen } = useContext(FlapContext);
 
   function handleTextValue(event) {
     setTextValue(event.target.value);
@@ -53,13 +53,16 @@ export default function AddMessage() {
   }
 
   return (
-    <section className="flex-none pb-1 text-center">
-      <form className="relative h-fit">
+    <section className="flex-none h-fit text-center ">
+      <form className="relative h-fit h-full" style={{ lineHeight: 0 }}>
         <textarea
           id="entry"
           ref={msgFormRef}
-          className="input-main-forced scrollmsg h-28 w-full resize-none"
+          className="input-main-forced scrollmsg  w-full resize-y h-28 max-h-textmax"
           placeholder="+ message..."
+          style={{
+            minHeight: '60px',
+          }}
           value={textvalue}
           onChange={handleTextValue}
           onKeyDown={(event) => {
@@ -72,7 +75,7 @@ export default function AddMessage() {
         <IonicButton
           ionic="paper-plane"
           onClick={postNewMessage}
-          addClass={`absolute bottom-2 right-2 ${flapOpen && "z-[-10]"}`}
+          addClass={`absolute bottom-2 right-2 ${isFlapOpen && "z-[-10]"}`}
         />
       </form>
     </section>

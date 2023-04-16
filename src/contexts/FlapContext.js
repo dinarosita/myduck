@@ -5,17 +5,17 @@ const FlapContext = React.createContext();
 
 export function FlapContextProvider({ children }) {
     const {chatFormRef} = useContext(FocusContext)
-  const [flapOpen, setFlapOpen] = useState(false);
+  const [isFlapOpen, setIsFlapOpen] = useState(false);
 
   function handleCloseFlap() {
     console.log("Handle Close Flap")
     chatFormRef.current.value = "";
-    setFlapOpen(false);
+    setIsFlapOpen(false);
   }
 
   const context = {
-    flapOpen: flapOpen,
-    setFlapOpen: setFlapOpen,
+    isFlapOpen: isFlapOpen,
+    setIsFlapOpen: setIsFlapOpen,
     handleCloseFlap: handleCloseFlap,
   };
 

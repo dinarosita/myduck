@@ -6,6 +6,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      maxHeight: {
+        textmax: "240px", 
+      },
+      minHeight: {
+        textmin: "60px", // Doesn't work on textarea
+      },
       transitionDuration: {
         default: "300ms",
       },

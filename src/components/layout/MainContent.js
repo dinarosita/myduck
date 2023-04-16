@@ -4,7 +4,7 @@ import Main from "./Main";
 
 export default function MainContent() {
   return (
-    <div className="w-effective relative flex h-full flex-auto flex-row overflow-auto px-mainspace gap-mainspace">
+    <div className="w-effective relative flex h-full flex-auto flex-row overflow-auto p-mainspace gap-mainspace">
       <Navigation />
       <Main />
     </div>

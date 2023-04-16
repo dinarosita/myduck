@@ -3,10 +3,10 @@ import FlapContext from "../../contexts/FlapContext";
 import ChatHistory from "../contents/ChatHistory";
 import AddChat from "../contents/AddChat";
 import MainHr from "../common/MainHr";
-import NavFlap from "../common/NavFlap";
+import NavSkin from "../common/NavSkin";
 
 export default function Navigation() {
-  const { flapOpen } = useContext(FlapContext);
+  const { isFlapOpen } = useContext(FlapContext);
 
   return (
     // <div
@@ -14,13 +14,13 @@ export default function Navigation() {
     //     absolute z-20 flex h-full w-72 flex-col overflow-auto py-mainspace transition-all duration-default
     //   lg:static lg:flex-none
 
-    //   ${flapOpen ? "left-0" : "-left-72"}`}
+    //   ${isFlapOpen ? "left-0" : "-left-72"}`}
     // >
 
     //   <div className={`border-main flex-auto overflow-auto rounded-r-3xl border-l-0 bg-gradient-to-r from-white via-white to-sol-25 p-mainspace lg:border-0 lg:from-transparent lg:via-transparent lg:to-transparent `}>
     // <nav className="flex h-full flex-auto flex-col items-start justify-start overflow-auto px-2">
-    <NavFlap>
-      <nav
+    <NavSkin>
+      <div
         className={`
         flex flex-1 flex-col
         overflow-y-auto px-mainspace gap-2
@@ -29,8 +29,8 @@ export default function Navigation() {
         <AddChat />
         <MainHr addClass="w-full" />
         <ChatHistory />
-      </nav>
-    </NavFlap>
+      </div>
+    </NavSkin>
     // </nav>
     //   </div>
     // </div>

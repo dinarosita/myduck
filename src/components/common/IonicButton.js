@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import FlapContext from "../../contexts/FlapContext";
 
 export default function IonicButton(props) {
-  const { setFlapOpen } = useContext(FlapContext);
+  const { setIsFlapOpen } = useContext(FlapContext);
   const navigate = useNavigate();
 
   function handleLinkClick(link) {
-    setFlapOpen(false);
+    setIsFlapOpen(false);
     navigate(link);
   }
 

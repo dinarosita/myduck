@@ -31,7 +31,7 @@ export default function ChatTitle() {
   }, [id, chatMeta]);
 
   return (
-    <header className="flex h-fit w-full flex-none flex-col items-center text-center">
+    <header className="flex h-fit w-full flex-none flex-col items-center text-center pt-2">
       <div className="flex flex-none flex-col items-center justify-center">
         <h1>{title}</h1>
         <p className="text-sm">{tag}</p>

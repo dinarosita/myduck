@@ -11,7 +11,7 @@ export default function Heading() {
   const { toggleMode } = useContext(GlobalConfigContext);
   const { chatFormRef, focus, toggleFocus, focusText } =
     useContext(FocusContext);
-  const { flapOpen, setFlapOpen } = useContext(FlapContext);
+  const { isFlapOpen, setIsFlapOpen } = useContext(FlapContext);
   const { width } = useWindowSize();
   const location = useLocation();
   const navigate = useNavigate();
@@ -22,15 +22,15 @@ export default function Heading() {
       navigate("/myduck");
     }
     if (isLargeScreen) {
-      setFlapOpen(false);
+      setIsFlapOpen(false);
     } else {
-      setFlapOpen(!flapOpen);
+      setIsFlapOpen(!isFlapOpen);
       focus(chatFormRef);
     }
   }
 
   function handleLinkClick(link) {
-    setFlapOpen(false);
+    setIsFlapOpen(false);
     navigate(link);
   }
 
@@ -52,7 +52,7 @@ export default function Heading() {
         </div>
         <div
           className="border-1 h-full w-full flex-1 border-sol"
-          onClick={() => setFlapOpen(false)}
+          onClick={() => setIsFlapOpen(false)}
         ></div>
         <div className="flex-row-center icon-parent gap-1.5">
           <IonicButton ionic="information-circle" linkto="/myduck/about" />

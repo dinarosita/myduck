@@ -12,12 +12,12 @@ export default function AddChat() {
   const { chatFormRef, msgFormRef, focus } = useContext(FocusContext);
   const { ChatAvailable, setChatAvailable, setChatHistory, updateMainChatId } =
     useContext(ChatHistoryContext);
-  const { setFlapOpen } = useContext(FlapContext);
+  const { setIsFlapOpen } = useContext(FlapContext);
 
   function cancelNewChat(e) {
     e.preventDefault();
     chatFormRef.current.value = "";
-    setFlapOpen(false);
+    setIsFlapOpen(false);
     focus(msgFormRef);
   }
 
@@ -45,7 +45,7 @@ export default function AddChat() {
         } else {
           console.log("New chat added. Chat list updated.");
         }
-        setFlapOpen(false);
+        setIsFlapOpen(false);
         chatFormRef.current.value = "";
         focus(msgFormRef);
       });

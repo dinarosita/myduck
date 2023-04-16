@@ -5,12 +5,12 @@ import AddMessage from "../contents/AddMessage";
 import FlapContext from "../../contexts/FlapContext";
 
 export default function Main() {
-  const { setFlapOpen } = useContext(FlapContext);
+  const { setIsFlapOpen } = useContext(FlapContext);
 
   return (
     <main
-      className="flex h-full w-full flex-auto flex-col gap-2 overflow-auto pt-4"
-      onClick={() => setFlapOpen(false)}
+      className="flex justify-between h-full flex-auto flex-col gap-2 overflow-auto "
+      onClick={() => setIsFlapOpen(false)}
     >
       <ChatTitle />
       <MessageHistory />
