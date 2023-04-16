@@ -23,7 +23,7 @@ export default function Navigation() {
       <nav
         className={`
         flex flex-1 flex-col
-        overflow-y-auto px-mainspace
+        overflow-y-auto px-mainspace gap-2
     `}
       >
         <AddChat />

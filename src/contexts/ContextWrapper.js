@@ -8,13 +8,15 @@ import { GlobalConfigContextProvider } from "./GlobalConfigContext";
 export default function ContextWrapper({ children }) {
   return (
     <GlobalConfigContextProvider>
-      <FlapContextProvider>
-        <ChatHistoryContextProvider>
-          <MainChatContextProvider>
-            <FocusContextProvider>{children}</FocusContextProvider>
-          </MainChatContextProvider>
-        </ChatHistoryContextProvider>
-      </FlapContextProvider>
+      <FocusContextProvider>
+        <FlapContextProvider>
+          <ChatHistoryContextProvider>
+            <MainChatContextProvider>
+                {children}
+            </MainChatContextProvider>
+          </ChatHistoryContextProvider>
+        </FlapContextProvider>
+      </FocusContextProvider>
     </GlobalConfigContextProvider>
   );
 }

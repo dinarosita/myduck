@@ -16,6 +16,7 @@ export function GlobalConfigContextProvider({ children }) {
       }
 
     const context = {
+        mode: mode,
         databaseUrl: databaseUrl,
         toggleMode: toggleMode,
     }

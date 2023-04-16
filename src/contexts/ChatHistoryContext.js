@@ -14,10 +14,11 @@ const ChatHistoryContext = React.createContext({
 });
 
 export function ChatHistoryContextProvider(props) {
-  const { databaseUrl } = useContext(GlobalConfigContext);
+
+  const { mode, databaseUrl } = useContext(GlobalConfigContext);
   const [chatList, setChatHistory] = useState([]);
   const [mainChatId, setMainChatId] = useState(
-    localStorage.getItem("mainChatId")
+    localStorage.getItem(`${mode}-mainChatId`)
   );
   const [ChatAvailable, setChatAvailable] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -64,7 +65,7 @@ export function ChatHistoryContextProvider(props) {
   }, []);
 
   function updateMainChatId(newId) {
-    localStorage.setItem("mainChatId", newId);
+    localStorage.setItem(`${mode}-mainChatId`, newId);
     setMainChatId(newId);
   }
 

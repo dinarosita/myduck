@@ -2,16 +2,14 @@ import React, { useContext } from "react";
 import FlapContext from "../../contexts/FlapContext";
 
 function Overlay() {
-  const { flapOpen, setFlapOpen } = useContext(FlapContext);
+  const { flapOpen, handleCloseFlap } = useContext(FlapContext);
 
-  const handleClick = () => {
-      setFlapOpen(false);
-  };
 
   return (
     <div
-      onClick={() => setFlapOpen(false)}
-      className={`fixed z-10 inset-0 bg-white opacity-70 sm:hidden ${
+      onClick={handleCloseFlap}
+
+      className={`fixed z-10 inset-0 bg-black opacity-40 sm:hidden ${
         flapOpen ? "visible" : "invisible"
       }`}
     />
