@@ -133,7 +133,7 @@
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-  @apply rounded rounded-full bg-gradient-to-b from-mboxcolor to-red-500;
+  @apply rounded rounded-full bg-gradient-to-b from-mboxcolor to-sol;
 }
 
 .scroll-cbox::-webkit-scrollbar {

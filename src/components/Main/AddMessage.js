@@ -55,7 +55,7 @@ export default function AddMessage() {
         <textarea
           id="entry"
           ref={textareaRef}
-          className="input-main-forced scrollmsg  w-full resize-y h-28 max-h-textmax"
+          className="input-main-forced scrollmsg  w-full resize-y h-28 max-h-textmax border-hover"
           placeholder="+ message..."
           style={{
             minHeight: '60px',
