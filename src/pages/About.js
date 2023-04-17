@@ -1,6 +1,6 @@
 import React from "react";
-import Box from "../components/common/Box";
-import DeveloperCard from "../components/developerCard/DeveloperCard";
+import Box from "../components/Common/Box";
+import DeveloperCard from "../components/DeveloperCard/DeveloperCard";
 
 export default function About() {
   return (

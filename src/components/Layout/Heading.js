@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import IonicButton from "../common/IonicButton";
-import MainHr from "../common/MainHr";
+import IonicButton from "../Common/IonicButton";
+import MainHr from "../Common/MainHr";
 import FlapContext from "../../contexts/FlapContext";
 import useWindowSize from "../../hooks/useWindowSize";
 import FocusContext from "../../contexts/FocusContext";
@@ -18,6 +18,7 @@ export default function Heading() {
   const isLargeScreen = width >= 1024;
 
   function handleNavClick() {
+    console.log("Nav clicked");
     if (location.pathname !== "/myduck") {
       navigate("/myduck");
     }
@@ -37,14 +38,18 @@ export default function Heading() {
   return (
     <div className="w-effective flex-none px-mainspace">
       <div className="flex-row-center h-full pb-1 pt-mainspace">
-        <div className="flex-row-center gap-2">
+        <div className="flex-row-center gap-2 ">
           <div>
-            <IonicButton ionic="chatbubbles" onClick={handleNavClick} />
+            <IonicButton
+              ionic="menu"
+              addClass="lg:hidden"
+              onClick={handleNavClick}
+            />
           </div>
           <div>
             <button
               onClick={() => handleLinkClick("/myduck")}
-              className=" title text-lg font-bold uppercase tracking-wide"
+              className=" title text-lg font-bold uppercase tracking-wide "
             >
               MyDuck
             </button>

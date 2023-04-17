@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import MainChatContext from "../../contexts/MainChatContext";
-import IonicButton from "../common/IonicButton";
+import IonicButton from "../Common/IonicButton";
 import FlapContext from "../../contexts/FlapContext";
 import FocusContext from "../../contexts/FocusContext";
 import GlobalConfigContext from "../../contexts/GlobalConfigContext";

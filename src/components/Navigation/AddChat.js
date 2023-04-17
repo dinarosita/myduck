@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import ChatHistoryContext from "../../contexts/ChatHistoryContext";
-import IonicButton from "../common/IonicButton";
+import IonicButton from "../Common/IonicButton";
 import FlapContext from "../../contexts/FlapContext";
 import FocusContext from "../../contexts/FocusContext";
 import GlobalConfigContext from "../../contexts/GlobalConfigContext";

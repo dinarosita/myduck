@@ -1,7 +1,7 @@
 import React from "react";
-import Box from "../components/common/Box";
-import IonicSandbox from "./sandbox/IonicSandbox";
-import ConfigSandbox from "./sandbox/ConfigSandbox";
+import Box from "../components/Common/Box";
+import IonicSandbox from "./Sandbox/IonicSandbox";
+import ConfigSandbox from "./Sandbox/ConfigSandbox";
 
 export default function Sandbox() {
   return (

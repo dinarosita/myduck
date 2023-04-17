@@ -1,5 +1,5 @@
 import React from "react";
-import MainHr from "../common/MainHr";
+import MainHr from "../Common/MainHr";
 
 export default function Footing() {
   return (

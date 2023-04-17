@@ -11,7 +11,7 @@ export default function NavSkin(props) {
       {/* Smartphone < xs (480px): Overlay above in and out, mask the rest */}
       <nav className="block xs:hidden">
         {isFlapOpen && (
-          <div className="absolute z-20 h-screen w-full bg-white">
+          <div className="absolute z-20 h-screen w-80 bg-white">
             <IonicButton
               ionic="close"
               onClick={handleCloseFlap}
@@ -23,15 +23,17 @@ export default function NavSkin(props) {
       </nav>
 
       {/* Small screen > xs (480): slide flex in and out  */}
-      <nav className="hidden xs:block xs:flex xs:flex-col md:hidden">
+      {/* <nav className={`hidden xs:block  xs:absolute flex-none flex flex-col w-52 sm:w-56 md:w-64 lg:hidden transition border-main rounded-lg h-full bg-white
+        ${isFlapOpen ? "xs:left-0" : "xs:-left-52" }
+      `}
+      >
         {props.children}
-      </nav>
+      </nav> */}
 
-      {/* Medium screen > lg (1024): permanently flex out  */}
+      {/* Large screen > lg (1024): permanently flex out  */}
       <nav className="hidden lg:block flex-none flex flex-col w-80 border-main  rounded-lg h-full">
         {props.children}
       </nav>
-      {/* <div className="hidden lg:block border-transparent bg-gradient-to-r from-transparent to-sol-50 rounded-full w-5 border my-mainspace" /> */}
      
     </>
   );

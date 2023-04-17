@@ -47,6 +47,11 @@
 }
 
 @layer components {
+
+    .pass-overlay {
+        @apply overflow-y-auto h-full;
+    }
+    
   .border-guide {
     @apply border border-purple-700;
   }

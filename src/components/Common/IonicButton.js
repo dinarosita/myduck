@@ -14,7 +14,7 @@ export default function IonicButton(props) {
   const iconElement = (
     <ion-icon
       name={`${props.ionic ? props.ionic : "happy"}-outline`}
-      class="ionic text-2xl text-maincolor transition hover:text-hovercolor"
+      class={`ionic text-2xl text-maincolor transition hover:text-hovercolor ${props.addIonicClass}`}
     ></ion-icon>
   );
 
