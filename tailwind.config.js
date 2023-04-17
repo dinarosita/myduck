@@ -12,9 +12,7 @@ module.exports = {
       minHeight: {
         textmin: "60px", // Doesn't work on textarea
       },
-      transitionDuration: {
-        default: "300ms",
-      },
+  
       minWidth: {
         default: "320px",
       },

@@ -1,31 +1,27 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import ChatHistoryContext from "../../contexts/ChatHistoryContext";
 import IonicButton from "../Common/IonicButton";
-import FlapContext from "../../contexts/FlapContext";
-import FocusContext from "../../contexts/FocusContext";
 import GlobalConfigContext from "../../contexts/GlobalConfigContext";
 
 export default function AddChat() {
+    const inputRef = useRef()
   const { databaseUrl } = useContext(GlobalConfigContext);
-  const { chatFormRef, msgFormRef, focus } = useContext(FocusContext);
   const { ChatAvailable, setChatAvailable, setChatHistory, updateMainChatId } =
     useContext(ChatHistoryContext);
-  const { setIsFlapOpen } = useContext(FlapContext);
 
   function cancelNewChat(e) {
     e.preventDefault();
-    chatFormRef.current.value = "";
-    setIsFlapOpen(false);
-    focus(msgFormRef);
+    inputRef.current.value = "";
+    
   }
 
   function postNewChat(event) {
     event.preventDefault();
 
     const chatMeta = {
-      title: chatFormRef.current.value ? chatFormRef.current.value : null,
+      title: inputRef.current.value ? inputRef.current.value : null,
       createdAt: firebase.firestore.Timestamp.now(),
     };
 
@@ -45,9 +41,8 @@ export default function AddChat() {
         } else {
           console.log("New chat added. Chat list updated.");
         }
-        setIsFlapOpen(false);
-        chatFormRef.current.value = "";
-        focus(msgFormRef);
+        inputRef.current.value = "";
+        
       });
   }
 
@@ -76,7 +71,7 @@ export default function AddChat() {
       <input
         id="title"
         type="text"
-        ref={chatFormRef}
+        ref={inputRef}
         placeholder="+ chat title"
         className="input-main-forced w-full"
       />

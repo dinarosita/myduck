@@ -11,6 +11,8 @@ export default function IonicButton(props) {
     navigate(link);
   }
 
+  
+
   const iconElement = (
     <ion-icon
       name={`${props.ionic ? props.ionic : "happy"}-outline`}
@@ -26,7 +28,6 @@ export default function IonicButton(props) {
       className={`ionic-parent ${props.addClass} `}
     >
       {iconElement}
-      {props.text}
     </button>
   );
 }

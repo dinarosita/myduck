@@ -1,18 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import MainChatContext from "../../contexts/MainChatContext";
 import IonicButton from "../Common/IonicButton";
-import FlapContext from "../../contexts/FlapContext";
-import FocusContext from "../../contexts/FocusContext";
 import GlobalConfigContext from "../../contexts/GlobalConfigContext";
 
 export default function AddMessage() {
+    const textareaRef = useRef()
   const { databaseUrl } = useContext(GlobalConfigContext);
-  const { msgFormRef } = useContext(FocusContext);
   const { id, setMessageList } = useContext(MainChatContext);
   const [textvalue, setTextValue] = useState("");
-  const { isFlapOpen } = useContext(FlapContext);
 
   function handleTextValue(event) {
     setTextValue(event.target.value);
@@ -22,7 +19,7 @@ export default function AddMessage() {
     event.preventDefault();
 
     const chatMeta = {
-      message: msgFormRef.current.value,
+      message: textareaRef.current.value,
       createdAt: firebase.firestore.Timestamp.now(),
     };
     fetch(`${databaseUrl}/${id}/messages.json`, {
@@ -36,7 +33,7 @@ export default function AddMessage() {
       .then((data) => {
         updateLocalMessages(data.name);
         setTextValue("");
-        msgFormRef.current.focus();
+        textareaRef.current.focus();
       });
   }
 
@@ -57,7 +54,7 @@ export default function AddMessage() {
       <form className="relative h-fit h-full" style={{ lineHeight: 0 }}>
         <textarea
           id="entry"
-          ref={msgFormRef}
+          ref={textareaRef}
           className="input-main-forced scrollmsg  w-full resize-y h-28 max-h-textmax"
           placeholder="+ message..."
           style={{
@@ -75,7 +72,7 @@ export default function AddMessage() {
         <IonicButton
           ionic="paper-plane"
           onClick={postNewMessage}
-          addClass={`absolute bottom-2 right-2 ${isFlapOpen && "z-[-10]"}`}
+          addClass={`absolute bottom-2 right-2`}
         />
       </form>
     </section>

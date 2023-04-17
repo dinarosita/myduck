@@ -1,12 +1,8 @@
 import React, { useContext } from "react";
 import ChatHistoryContext from "../../contexts/ChatHistoryContext";
 import { useNavigate } from "react-router-dom";
-import FlapContext from "../../contexts/FlapContext";
-import FocusContext from "../../contexts/FocusContext";
 
 export default function ChatHistory() {
-  const { msgFormRef, focus } = useContext(FocusContext);
-  const { setIsFlapOpen  } = useContext(FlapContext);
   const navigate = useNavigate();
   const { ChatAvailable, chatList, mainChatId, updateMainChatId } =
     useContext(ChatHistoryContext);
@@ -32,8 +28,6 @@ export default function ChatHistory() {
               onClick={() => {
                 updateMainChatId(chat.id);
                 navigate("/myduck");
-                setIsFlapOpen(false);
-                focus(msgFormRef);
               }}
               className={`chat-item 
               transition hover:border-hovercolor hover:text-textcolor
