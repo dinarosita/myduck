@@ -6,7 +6,7 @@ import NavButton from "../Common/NavButton";
 
 export default function Navigation() {
   return (
-    <nav className="pass-overflow border-main relative flex flex-col gap-2  rounded-lg px-mainspace">
+    <nav className="pass-overflow border-main relative flex flex-col gap-2  rounded px-mainspace">
       <NavButton close  addClass="absolute right-2 top-2 lg:hidden" />
       <AddChat />
       <MainHr addClass="w-full" />

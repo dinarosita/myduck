@@ -15,7 +15,7 @@ export default function ContentWrapper() {
       {/* Overlay Nav: (-) to xs-480 */}
       <div className={`pass-overflow relative xs:hidden`}>
         <div
-          className={`w-80 max-w-full rounded-lg bg-white transition smooth
+          className={`w-80 max-w-full rounded bg-white transition smooth
             ${isFlapOpen ? "translate-x-0" : "-translate-x-full"}
             absolute bottom-0 left-0 top-0 z-20`}
         >
@@ -34,7 +34,7 @@ export default function ContentWrapper() {
       {/* Sliding Nav: xs-480 to lg-1024 */}
       <div className="pass-overflow relative hidden xs:block lg:hidden">
         <div
-          className={`w-52 rounded-lg pr-2 transition smooth sm:w-60  md:w-64
+          className={`w-52 rounded pr-2 transition smooth sm:w-60  md:w-64
             ${isFlapOpen ? "translate-x-0" : "-translate-x-full"}
             absolute bottom-0 left-0 top-0 z-20`}
         >

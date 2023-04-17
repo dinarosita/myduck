@@ -34,7 +34,7 @@ module.exports = {
         textcolor: "#6F3F01", // sol-950
         maincolor: "#FC9204", // sol-500
         hovercolor: "#3FB098", //sea-600
-        mboxcolor: "#FDC377", // sol-300
+        mboxcolor: "#BFE8DF", // sol-300
         cboxcolor: "#FEE4C3", //sol-100
         nonactive: "#FED59F", // sol-200
         sol: {

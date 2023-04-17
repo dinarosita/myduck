@@ -84,7 +84,7 @@
 
   .input-main-forced {
     @apply border-main-forced font-normal placeholder-maincolor caret-maincolor;
-    @apply rounded-lg bg-white/80 leading-tight  text-textcolor  !important;
+    @apply rounded bg-white/80 leading-tight  text-textcolor  !important;
   }
 
   .input-main-forced:hover {
@@ -100,6 +100,7 @@
     @apply border-solid border-hovercolor placeholder-hovercolor !important;
     box-shadow: none !important;
   }
+
 
   .ionic-parent:focus .ionic,
   .ionic-parent:active .ionic {
@@ -124,16 +125,16 @@
 }
 
 /* Scrollbar */
-.scrollbar::-webkit-scrollbar {
-  @apply w-mboxspace;
+.scroll-mbox::-webkit-scrollbar {
+  @apply w-2;
 }
 
-.scrollbar::-webkit-scrollbar-track {
+.scroll-mbox::-webkit-scrollbar-track {
   @apply bg-mboxcolor;
 }
 
-.scrollbar::-webkit-scrollbar-thumb {
-  @apply rounded rounded-full bg-gradient-to-b from-mboxcolor to-sol;
+.scroll-mbox::-webkit-scrollbar-thumb {
+  @apply rounded rounded-full bg-gradient-to-b from-transparent  to-hovercolor;
 }
 
 .scroll-cbox::-webkit-scrollbar {
