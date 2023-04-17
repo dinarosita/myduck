@@ -9,7 +9,7 @@ function Overlay() {
     <div
       onClick={handleCloseFlap}
 
-      className={`fixed z-10 inset-0 bg-black opacity-40 xs:hidden ${
+      className={`hidden fixed z-10 inset-0 bg-black opacity-40 xs:hidden ${
         isFlapOpen ? "visible" : "invisible"
       }`}
     />

@@ -28,6 +28,7 @@ export default function Heading() {
       setIsFlapOpen(!isFlapOpen);
       focus(chatFormRef);
     }
+    console.log(isFlapOpen)
   }
 
   function handleLinkClick(link) {
