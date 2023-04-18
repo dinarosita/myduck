@@ -32,7 +32,7 @@ module.exports = {
       },
       colors: {
         textcolor: "#463325", 
-        sprigblush: "#F9FBF9",
+        petal: "#FCF8F8", // blossom-50
         vincent: {
           50: "#F0F8FA",
           100: "#E0F1F5",

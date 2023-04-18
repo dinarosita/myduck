@@ -8,17 +8,21 @@ export default function ChatHistory() {
     useContext(ChatHistoryContext);
 
   return (
-    <div className="items-left flex w-full flex-col gap-2 pass-overflow pb-2 pt-6">
-      <p className="title text-center text-lg">Chat History</p>
-      <ul className="scroll-cbox flex flex-col items-start gap-0.5 overflow-y-scroll border-y-4 border-l-4 border-cboxcolor pr-4 rounded-sm">
+    <div className="items-left pass-overflow flex w-full flex-col gap-2 p-2">
+      <ul className="scroll-vince flex flex-col items-start  overflow-y-auto pr-4 gap-1">
         {!ChatAvailable && (
           <button
             key="noChat"
-            className={`chat-item } pointer-events-none border-transparent bg-sol-25 
-      text-sol-300`}
+            className={`pointer-events-none             
+            
+              w-full  rounded-r-full px-2   py-1    
+              text-left text-petal/50 bg-vincent-950/10 
+              
+              `}
           >
-            {"Waiting for your first chat"}
+            {"Enter your first chat"}
           </button>
+          
         )}
 
         {chatList
@@ -29,15 +33,11 @@ export default function ChatHistory() {
                 updateMainChatId(chat.id);
                 navigate("/myduck");
               }}
-              className={`chat-item 
-              transition hover:border-hovercolor hover:text-textcolor
-            focus:border-hovercolor focus:text-textcolor focus:outline-none ${
-              mainChatId === chat.id
-                ? "border-cboxcolor bg-sol-50"
-                : "border-transparent"
-            }`}
+              className={`${(mainChatId === chat.id) && "bg-vincent-950/20 "}
+              w-full  rounded-r-full px-2   py-1    
+              text-left text-petal ring-0 transition hover:bg-petal/20 focus:bg-vincent-950/20 active:bg-none `}
             >
-              {chat.title ? chat.title : "Untitled Quacks"}
+              {chat.title ? chat.title : "Untitled"}
             </button>
           ))
           .reverse()}

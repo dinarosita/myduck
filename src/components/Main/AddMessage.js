@@ -50,7 +50,7 @@ export default function AddMessage() {
   }
 
   return (
-    <section className="flex-none h-fit text-center bg-transparent border-t-8 border-blossom-50">
+    <section className="flex-none h-fit text-center bg-transparent ">
       <form className="relative h-fit h-full" style={{ lineHeight: 0 }}>
         <textarea
           id="entry"

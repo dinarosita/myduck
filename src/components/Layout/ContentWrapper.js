@@ -13,9 +13,9 @@ export default function ContentWrapper() {
   return (
     <div className="w-effective pass-overflow p-mainspace">
       {/* Overlay Nav: (-) to xs-480 */}
-      <div className={`pass-overflow relative xs:hidden`}>
+      <div className={`pass-overflow relative xs:hidden `}>
         <div
-          className={`w-80 max-w-full rounded bg-white transition smooth
+          className={`w-80 max-w-full rounded  transition smooth 
             ${isFlapOpen ? "translate-x-0" : "-translate-x-full"}
             absolute bottom-0 left-0 top-0 z-20`}
         >

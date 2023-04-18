@@ -62,18 +62,18 @@ export default function AddChat() {
   return (
     <form
       onSubmit={postNewChat}
-      className="flex w-full flex-col items-center gap-2 px-1 pb-2 pt-8"
+      className="flex w-full flex-col items-center gap-1 px-3 py-2"
 
     >
-      <label htmlFor="title" className="title text-lg">
-        Add a New Chat
+      <label htmlFor="title" className="font-bold text-petal text-lg">
+        New Chat
       </label>
       <input
         id="title"
         type="text"
         ref={inputRef}
         placeholder="+ chat title"
-        className="input-main-forced w-full"
+        className="inputbox w-full"
       />
       <input type="submit" hidden={true} />
       <div>

@@ -5,9 +5,10 @@ import AddMessage from "./AddMessage";
 
 export default function Main() {
   return (
-    <main className="pass-overflow  flex flex-auto flex-col justify-between border-blossom-50 border-8 rounded-3xl ">
+    <main className="pass-overflow flex flex-auto flex-col justify-between white-frame">
       <ChatTitle />
       <MessageHistory />
+      <hr className="white-separator"/>
       <AddMessage />
     </main>
   );

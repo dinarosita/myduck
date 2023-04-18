@@ -25,7 +25,7 @@ export default function MessageHistory() {
         {messageList.map((msg) => (
           <div
             key={msg.id}
-            className="flex bg-blossom-50/80 flex-col rounded-r-3xl  py-2 pl-2 pr-4 break-words leading-tight w-fit"
+            className="flex bg-petal/80 flex-col rounded-r-3xl  py-2 pl-2 pr-4 break-words leading-tight w-fit"
           >
             {msg.message}
           </div>

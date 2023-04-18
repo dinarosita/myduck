@@ -25,7 +25,6 @@ export default function Heading() {
             <button
               onClick={() => handleLinkClick("/myduck")}
               className="white-button
-              
               text-lg px-2 rounded-full font-bold uppercase tracking-wide "
             >
               Talking to my almond

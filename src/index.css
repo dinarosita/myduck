@@ -39,8 +39,19 @@
 }
 
 @layer components {
+  .white-border {
+    @apply border-8 border-petal;
+  }
+  .white-frame {
+    @apply white-border rounded-3xl;
+  }
+
+  .white-separator {
+    @apply white-border border-x-0 border-b-0;
+  }
+
   .white-button {
-    @apply text-blossom-50 hover:text-vincent-800 focus:text-vincent-800 active:text-vincent-900;
+    @apply text-petal hover:text-vincent-800 focus:text-vincent-800 active:text-vincent-900;
   }
 
   .white-button:focus ion-icon {
@@ -52,15 +63,26 @@
   }
 
   .nonactive-button {
-    @apply text-blossom-50/50 hover:text-blossom-50/50 focus:text-blossom-50/50  active:text-blossom-50/50 
-    pointer-events-none;    
-  }
-  
-  .nonactive-button:focus ion-icon,
-  .nonactive-button:active ion-icon {
-    @apply text-blossom-50/50;
+    @apply pointer-events-none text-petal/50 hover:text-petal/50  focus:text-petal/50 
+    active:text-petal/50;
   }
 
+  .nonactive-button:focus ion-icon,
+  .nonactive-button:active ion-icon {
+    @apply text-petal/50;
+  }
+
+  .scroll-vince::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  .scroll-vince::-webkit-scrollbar-track {
+    /* @apply bg-vincent-200; */
+  }
+  
+  .scroll-vince::-webkit-scrollbar-thumb {
+    @apply rounded rounded-full bg-vincent-50/50;
+  }
   /* Vincent theme above */
 
   .pass-overflow {
@@ -88,13 +110,13 @@
     @apply font-bold text-maincolor;
   }
 
-  .border-main {
-    @apply border-mainborderw border-dotted border-maincolor;
-  }
 
   .border-main-forced {
     /* Keep it identical with the non-forced counterpart */
     @apply border-mainborderw border-dotted border-maincolor !important;
+  }
+  .inputbox {
+    @apply rounded-full py-1 !important;
   }
 
   .input-main-forced {
@@ -118,12 +140,10 @@
 
   *:focus {
     /* @apply outline-none ring-2 ring-hovercolor; */
-    @apply text-hovercolor outline-none;
+    @apply outline-none;
   }
 
-  .chat-item {
-    @apply w-full rounded-r-full border-y-2 border-r-2 px-1 py-0.5 text-left ring-0 first:mt-1 last:mb-1;
-  }
+
 
   /* Below need further tidy-up */
 
@@ -134,50 +154,3 @@
 }
 
 /* Scrollbar */
-.scroll-vince::-webkit-scrollbar {
-  @apply w-2;
-}
-
-.scroll-vince::-webkit-scrollbar-track {
-  /* @apply bg-vincent-200; */
-}
-
-.scroll-vince::-webkit-scrollbar-thumb {
-  @apply rounded rounded-full bg-vincent-50/50;
-}
-
-.scroll-mbox::-webkit-scrollbar {
-  @apply w-2;
-}
-
-.scroll-mbox::-webkit-scrollbar-track {
-  @apply bg-vincent-200;
-}
-
-.scroll-mbox::-webkit-scrollbar-thumb {
-  @apply rounded rounded-full bg-gradient-to-b from-transparent  to-vincent-700;
-}
-
-.scroll-cbox::-webkit-scrollbar {
-  @apply w-1;
-}
-
-.scroll-cbox::-webkit-scrollbar-track {
-  @apply bg-cboxcolor;
-}
-
-.scroll-cbox::-webkit-scrollbar-thumb {
-  @apply bg-gradient-to-b from-cboxcolor to-sol;
-}
-
-.scrollmsg::-webkit-scrollbar {
-  @apply w-1;
-}
-
-.scrollmsg::-webkit-scrollbar-track {
-  /* @apply bg-sol-100; */
-}
-
-.scrollmsg::-webkit-scrollbar-thumb {
-  @apply rounded rounded-full bg-sol-300;
-}
