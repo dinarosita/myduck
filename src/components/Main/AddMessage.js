@@ -50,12 +50,13 @@ export default function AddMessage() {
   }
 
   return (
-    <section className="flex-none h-fit text-center border-almond-50 border-8 border-t-0 bg-transparent rounded-b-3xl">
+    <section className="flex-none h-fit text-center bg-transparent border-t-8 border-blossom-50">
       <form className="relative h-fit h-full" style={{ lineHeight: 0 }}>
         <textarea
           id="entry"
           ref={textareaRef}
-          className="bg-transparent placeholder-almond-50 text-white border-0 scrollmsg caret-white w-full resize-y h-28 max-h-textmax border-hover"
+          className="bg-transparent/20 hover:bg-transparent/50 placeholder-vincent-50/80 text-white border-0 scrollmsg caret-white w-full resize-y h-28 max-h-textmax
+          "
           placeholder="+ message..."
           style={{
             minHeight: '60px',

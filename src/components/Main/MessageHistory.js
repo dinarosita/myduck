@@ -15,7 +15,7 @@ export default function MessageHistory() {
     return <div></div>;
   }
   return (
-    <section className="flex-auto pass-overflow border-almond-50 border-8 p-2 ">
+    <section className="flex-auto pass-overflow p-2 bg-transparent/20 ">
       <div
         ref={containerRef}
         className="
@@ -25,7 +25,7 @@ export default function MessageHistory() {
         {messageList.map((msg) => (
           <div
             key={msg.id}
-            className="flex bg-almond-50 flex-col rounded-r-3xl  border-l-0 py-2 pl-2 pr-1 break-words  border-2 "
+            className="flex bg-blossom-50 flex-col rounded-r-3xl  py-2 pl-2 pr-1 break-words leading-tight"
           >
             {msg.message}
           </div>
