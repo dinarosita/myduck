@@ -31,6 +31,8 @@ module.exports = {
         xs: "480px",
       },
       colors: {
+        textcolor: "#463325", 
+        sprigblush: "#F9FBF9",
         vincent: {
           50: "#F0F8FA",
           100: "#E0F1F5",
@@ -83,7 +85,6 @@ module.exports = {
           900: "#3C5D3F",
           950: "#2C442E",
         },
-        textcolor: "#6F3F01", // sol-950
         maincolor: "#FC9204", // sol-500
         hovercolor: "#3FB098", //sea-600
         mboxcolor: "#BFE8DF", // sol-300

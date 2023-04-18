@@ -33,7 +33,7 @@ export default function ChatTitle() {
   return (
     <header className="flex h-fit w-full flex-none flex-col items-center text-center ">
       <div className="flex flex-none flex-col items-center justify-center">
-        <h1 className="text-hovercolor">{title}</h1>
+        <h1 className="text-blossom-100">{title}</h1>
         <p className="text-sm">{tag}</p>
       </div>
     </header>

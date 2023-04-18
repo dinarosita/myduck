@@ -20,14 +20,14 @@ export default function Heading() {
   return (
     <div className="w-effective flex-none px-mainspace">
       <div className="flex-row-center h-full justify-between pb-1 pt-mainspace">
-        <div className="flex-row-center gap-2 ">
+        <div className="flex-row-center gap-1 ">
           <NavButton />
           <div>
             <button
               onClick={() => handleLinkClick("/myduck")}
-              className=" title text-lg font-bold uppercase tracking-wide "
+              className="text-sprig-100 hover:text-vincent-500/80 hover:bg-sprig-100/50 text-lg px-2 rounded-full font-bold uppercase tracking-wide "
             >
-              MyDuck
+              Talking to my almond
             </button>
           </div>
         </div>
@@ -35,11 +35,13 @@ export default function Heading() {
         <div className="flex-row-center icon-parent gap-2 pr-1">
           <IonicButton ionic="information-circle" linkto="/myduck/about" />
           <IonicButton ionic="fish" linkto="/myduck/sandbox" />
-       
+
           <IonicButton ionic="construct" onClick={toggleMode}></IonicButton>
         </div>
       </div>
-      <MainHr screen />
+      <hr
+        className={` absolute left-0 h-0.5 w-screen border-0 border-x-0 border-b-0 bg-gradient-to-r from-blossom-400 via-sprig-400 to-almond-400`}
+      />
     </div>
   );
 }
