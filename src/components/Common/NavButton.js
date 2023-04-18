@@ -26,7 +26,7 @@ export default function NavButton(props) {
     >
       <ion-icon
         name={`${props.close ? "close" : "menu"}-outline`}
-        class={`ionic text-2xl text-sprig-50 p-0.5 transition hover:text-vincent-500/90   rounded-full hover:bg-sprig-100/50 lg:text-nonactive`}
+        class={`ionic text-2xl text-sprig-50 p-0.5 transition hover:text-vincent-500/80   rounded-full hover:bg-sprig-100/50 lg:text-nonactive`}
       ></ion-icon>
     </button>
   );

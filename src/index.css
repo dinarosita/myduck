@@ -125,16 +125,28 @@
 }
 
 /* Scrollbar */
+.scroll-vince::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  .scroll-vince::-webkit-scrollbar-track {
+    /* @apply bg-vincent-200; */
+  }
+  
+  .scroll-vince::-webkit-scrollbar-thumb {
+    @apply rounded rounded-full bg-vincent-50/50;
+  }
+
 .scroll-mbox::-webkit-scrollbar {
   @apply w-2;
 }
 
 .scroll-mbox::-webkit-scrollbar-track {
-  @apply bg-mboxcolor;
+  @apply bg-vincent-200;
 }
 
 .scroll-mbox::-webkit-scrollbar-thumb {
-  @apply rounded rounded-full bg-gradient-to-b from-transparent  to-hovercolor;
+  @apply rounded rounded-full bg-gradient-to-b from-transparent  to-vincent-700;
 }
 
 .scroll-cbox::-webkit-scrollbar {

@@ -15,15 +15,17 @@ export default function MessageHistory() {
     return <div></div>;
   }
   return (
-    <section className="flex-auto pass-overflow">
+    <section className="flex-auto pass-overflow border-almond-50 border-8 p-2 ">
       <div
         ref={containerRef}
-        className="scroll-mbox flex flex-auto flex-col  gap-1 h-full overflow-y-scroll whitespace-pre-wrap  rounded border-8 border-r-0 border-mboxcolor pr-2 md:pr-4 min-h-80"
+        className="
+         bg-transparent
+        scroll-vince flex flex-auto flex-col  gap-2  h-full overflow-y-scroll whitespace-pre-wrap   pr-8 min-h-80 "
       >
         {messageList.map((msg) => (
           <div
             key={msg.id}
-            className="flex  flex-col rounded-r-3xl border-2 border-l-0 border-hovercolor border-opacity-50 py-2 pl-2 pr-4 first:mt-1 last:mb-1 break-words"
+            className="flex bg-almond-50 flex-col rounded-r-3xl  border-l-0 py-2 pl-2 pr-1 break-words  border-2 "
           >
             {msg.message}
           </div>

@@ -19,13 +19,13 @@ export default function Heading() {
 
   return (
     <div className="w-effective flex-none px-mainspace">
-      <div className="flex-row-center h-full justify-between pb-1 pt-mainspace">
+      <div className="flex-row-center h-full justify-between  pt-mainspace">
         <div className="flex-row-center gap-1 ">
           <NavButton />
           <div>
             <button
               onClick={() => handleLinkClick("/myduck")}
-              className="text-sprig-100 hover:text-vincent-500/80 hover:bg-sprig-100/50 text-lg px-2 rounded-full font-bold uppercase tracking-wide "
+              className="text-sprig-50 hover:text-vincent-500/80 hover:bg-sprig-100/50 text-lg px-2 rounded-full font-bold uppercase tracking-wide "
             >
               Talking to my almond
             </button>
@@ -39,9 +39,7 @@ export default function Heading() {
           <IonicButton ionic="construct" onClick={toggleMode}></IonicButton>
         </div>
       </div>
-      <hr
-        className={` absolute left-0 h-0.5 w-screen border-0 border-x-0 border-b-0 bg-gradient-to-r from-blossom-400 via-sprig-400 to-almond-400`}
-      />
+     
     </div>
   );
 }
