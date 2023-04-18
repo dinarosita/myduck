@@ -27,7 +27,7 @@ export default function IonicButton(props) {
       <ion-icon
         name={`${props.ionic ? props.ionic : "happy"}-outline`}
         class={`text-2xl 
-      transition white-button
+      transition smooth white-button
       ${props.addIonicClass}`}
       ></ion-icon>
     </button>

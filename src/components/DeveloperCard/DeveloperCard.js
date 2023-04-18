@@ -8,7 +8,7 @@ export default function DeveloperCard() {
             <img className="h-10 px-2" src={duck} alt="rubber duck" />
             <div className="">
               <p className="text-xs">Developed by:</p>
-              <p className="title text-xl leading-none sm:text-left">
+              <p className="titletext text-xl leading-none sm:text-left">
                 Codeyluwak
               </p>
             </div>

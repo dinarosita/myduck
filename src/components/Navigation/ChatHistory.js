@@ -9,7 +9,7 @@ export default function ChatHistory() {
 
   return (
     <div className="items-left pass-overflow flex w-full flex-col gap-2 p-2">
-      <ul className="scroll-vince flex flex-col items-start  overflow-y-auto pr-4 gap-1">
+      <ul className="skyscroll flex flex-col items-start  overflow-y-auto pr-4 gap-1">
         {!ChatAvailable && (
           <button
             key="noChat"
@@ -35,7 +35,7 @@ export default function ChatHistory() {
               }}
               className={`${(mainChatId === chat.id) && "bg-vincent-950/20 "}
               w-full  rounded-r-full px-2   py-1    
-              text-left text-petal ring-0 transition hover:bg-petal/20 focus:bg-vincent-950/20 active:bg-none `}
+              text-left text-petal ring-0 transition smooth hover:bg-petal/20 focus:bg-vincent-950/20 active:bg-none `}
             >
               {chat.title ? chat.title : "Untitled"}
             </button>

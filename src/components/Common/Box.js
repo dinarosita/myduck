@@ -39,7 +39,7 @@ export default function Box(props) {
           className="flex items-baseline space-x-2 rounded-r-full pr-2"
         >
           <h2 className="font-bold text-petal text-lg">{props.title}</h2>
-          <p className="title">{arrow}</p>
+          <p className="titletext">{arrow}</p>
         </button>
         {!isHidden && <div>{props.children}</div>}
       </div>
@@ -53,7 +53,7 @@ export default function Box(props) {
         className="flex items-baseline space-x-2 rounded-r-full pr-2"
       >
         <h2 className="font-bold text-petal text-lg">{props.title}</h2>
-        <p className="title">{arrow}</p>
+        <p className="titletext">{arrow}</p>
       </button>
       {!isHidden && <div>{props.children}</div>}
     </div>

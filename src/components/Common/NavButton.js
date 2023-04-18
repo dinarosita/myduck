@@ -26,7 +26,7 @@ export default function NavButton(props) {
     >
       <ion-icon
         name={`${props.close ? "close" : "menu"}-outline`}
-        class={`white-button  text-2xl transition lg:nonactive-button ${props.addIonicClass}`}
+        class={`white-button  text-2xl transition smooth lg:nonactive-button ${props.addIonicClass}`}
       ></ion-icon>
     </button>
   );

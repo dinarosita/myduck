@@ -55,7 +55,7 @@ export default function AddMessage() {
         <textarea
           id="entry"
           ref={textareaRef}
-          className="bg-transparent/20 hover:bg-transparent/50 placeholder-vincent-50/80 text-white border-0 scrollmsg caret-white w-full resize-y h-28 max-h-textmax
+          className="bg-transparent/20 hover:bg-transparent/50 placeholder-vincent-50/80 text-white border-0 scrollmsg caret-white w-full resize-y h-28 max-h-60
           "
           placeholder="+ message..."
           style={{

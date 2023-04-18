@@ -20,7 +20,7 @@ export default function MessageHistory() {
         ref={containerRef}
         className="
          bg-transparent
-        scroll-vince flex flex-auto flex-col  gap-2  h-full overflow-y-scroll whitespace-pre-wrap   pr-8 min-h-80 "
+        skyscroll flex flex-auto flex-col  gap-2  h-full overflow-y-scroll whitespace-pre-wrap   pr-8 min-h-80 "
       >
         {messageList.map((msg) => (
           <div

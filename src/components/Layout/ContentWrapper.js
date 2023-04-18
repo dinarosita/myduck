@@ -11,7 +11,7 @@ export default function ContentWrapper() {
 }
 
   return (
-    <div className="w-effective pass-overflow p-mainspace">
+    <div className="w-effective pass-overflow p-2">
       {/* Overlay Nav: (-) to xs-480 */}
       <div className={`pass-overflow relative xs:hidden `}>
         <div
