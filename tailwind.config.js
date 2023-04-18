@@ -7,12 +7,12 @@ module.exports = {
   theme: {
     extend: {
       maxHeight: {
-        textmax: "240px", 
+        textmax: "240px",
       },
       minHeight: {
         textmin: "60px", // Doesn't work on textarea
       },
-  
+
       minWidth: {
         default: "320px",
       },
@@ -31,6 +31,58 @@ module.exports = {
         xs: "480px",
       },
       colors: {
+        vincent: {
+          50: "#F0F8FA",
+          100: "#E0F1F5",
+          200: "#BDE2EA",
+          300: "#97D1DE",
+          400: "#64BACE",
+          500: "#399BB2",
+          600: "#338B9E",
+          700: "#2E7D8F",
+          800: "#256574",
+          900: "#1B4A55",
+          950: "#14363E",
+        },
+        almond: {
+          50: "#F8F4F2",
+          100: "#F1EAE4",
+          200: "#E4D7CD",
+          300: "#D3BDAC",
+          400: "#BE9D84",
+          500: "#A27756",
+          600: "#936C4E",
+          700: "#7F5D43",
+          800: "#6B4E39",
+          900: "#463325",
+          950: "#32251B",
+        },
+        blossom: {
+          50: "#FCF8F8",
+          100: "#F9F2F1",
+          200: "#F1E1DF",
+          300: "#E8CECA",
+          400: "#E0BDB8",
+          500: "#D5A69F",
+          600: "#CC938A",
+          700: "#BF786E",
+          800: "#B35E51",
+          900: "#834339",
+          950: "#552C25",
+        },
+        sprig: {
+          50: "#F9FBF9",
+          100: "#EFF5F0",
+          200: "#DAE7DB",
+          300: "#C7DBC9",
+          400: "#B1CDB4",
+          500: "#98BD9B",
+          600: "#80AD83",
+          700: "#649B68",
+          800: "#527F55",
+          900: "#3C5D3F",
+          950: "#2C442E",
+        },
         textcolor: "#6F3F01", // sol-950
         maincolor: "#FC9204", // sol-500
         hovercolor: "#3FB098", //sea-600
