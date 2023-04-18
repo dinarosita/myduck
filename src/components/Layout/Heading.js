@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import IonicButton from "../Common/IonicButton";
-import MainHr from "../Common/MainHr";
 import FlapContext from "../../contexts/FlapContext";
 import GlobalConfigContext from "../../contexts/GlobalConfigContext";
 import NavButton from "../Common/NavButton";
@@ -19,13 +18,15 @@ export default function Heading() {
 
   return (
     <div className="w-effective flex-none px-mainspace">
-      <div className="flex-row-center h-full justify-between  pt-mainspace">
+      <div className="flex-row-center h-full justify-between pt-mainspace px-mainspace">
         <div className="flex-row-center gap-1 ">
           <NavButton />
           <div>
             <button
               onClick={() => handleLinkClick("/myduck")}
-              className="text-sprig-50 hover:text-vincent-500/80 hover:bg-sprig-100/50 text-lg px-2 rounded-full font-bold uppercase tracking-wide "
+              className="white-button
+              
+              text-lg px-2 rounded-full font-bold uppercase tracking-wide "
             >
               Talking to my almond
             </button>
@@ -35,7 +36,6 @@ export default function Heading() {
         <div className="flex-row-center icon-parent gap-2 pr-1">
           <IonicButton ionic="information-circle" linkto="/myduck/about" />
           <IonicButton ionic="fish" linkto="/myduck/sandbox" />
-
           <IonicButton ionic="construct" onClick={toggleMode}></IonicButton>
         </div>
       </div>

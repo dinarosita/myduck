@@ -21,12 +21,12 @@ export default function NavButton(props) {
 
   return (
     <button
-      className={`ionic-parent lg:pointer-events-none ${props.addClass}`}
+      className={`white-button lg:nonactive-button ${props.addClass}`}
       onClick={props.close ? handleCloseNav : handleOpenNav}
     >
       <ion-icon
         name={`${props.close ? "close" : "menu"}-outline`}
-        class={`ionic text-2xl text-sprig-50 p-0.5 transition hover:text-vincent-500/80   rounded-full hover:bg-sprig-100/50 lg:text-nonactive`}
+        class={`white-button text-2xl transition lg:nonactive-button`}
       ></ion-icon>
     </button>
   );
