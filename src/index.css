@@ -18,24 +18,6 @@
     @apply bg-sol-50 bg-opacity-80 px-1;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  strong {
-    @apply title;
-  }
-  h1 {
-    @apply text-xl;
-  }
-  h2 {
-    @apply text-xl;
-  }
-  h3 {
-    @apply text-lg;
-  }
 }
 
 @layer components {
@@ -48,6 +30,18 @@
 
   .white-separator {
     @apply white-border border-x-0 border-b-0;
+  }
+
+  .white-header {
+    @apply flex h-fit w-full flex-none flex-col bg-petal pb-2 pt-1 text-center text-vincent-800;
+  }
+
+  .white-header > h1 {
+    @apply text-lg font-bold uppercase;
+  }
+
+  .white-header > .tagline { 
+    @apply text-sm;
   }
 
   .white-button {
@@ -107,50 +101,18 @@
   }
 
   .title {
-    @apply font-bold text-maincolor;
+    @apply font-bold text-petal;
   }
 
 
-  .border-main-forced {
-    /* Keep it identical with the non-forced counterpart */
-    @apply border-mainborderw border-dotted border-maincolor !important;
-  }
+
   .inputbox {
     @apply rounded-full py-1 !important;
   }
 
-  .input-main-forced {
-    @apply border-main-forced font-normal placeholder-maincolor caret-maincolor;
-    @apply rounded bg-white/80 leading-tight  text-textcolor  !important;
-  }
-
-  .input-main-forced:hover {
-    @apply border-hovercolor placeholder-hovercolor !important;
-  }
-
-  .input-main-forced:active {
-    @apply border-solid border-hovercolor placeholder-maincolor !important;
-    box-shadow: none !important;
-  }
-
-  .input-main-forced:focus {
-    @apply border-solid border-hovercolor placeholder-hovercolor !important;
-    box-shadow: none !important;
-  }
-
   *:focus {
-    /* @apply outline-none ring-2 ring-hovercolor; */
+  
     @apply outline-none;
   }
 
-
-
-  /* Below need further tidy-up */
-
-  /* button:focus {
-    @apply rounded-md outline-none ring-2 ring-red-500 ring-offset-1 ring-offset-red-500;
-    box-shadow: none !important;                        
-  } */
 }
-
-/* Scrollbar */

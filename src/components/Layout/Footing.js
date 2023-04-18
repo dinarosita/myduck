@@ -6,7 +6,7 @@ export default function Footing() {
   
       <div className="text-petal font-bold flex-row-center justify-between px-1 pb-mainspace text-xs">
         <div>&copy; 2023 Codeyluwak </div>
-        <div>Talking to my almond</div>
+        <div>I'm talking to my duck!</div>
       </div>
     </footer>
   );

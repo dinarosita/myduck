@@ -4,6 +4,7 @@ import IonicButton from "../Common/IonicButton";
 import FlapContext from "../../contexts/FlapContext";
 import GlobalConfigContext from "../../contexts/GlobalConfigContext";
 import NavButton from "../Common/NavButton";
+import duck from "../DeveloperCard/logo128.png";
 
 export default function Heading() {
   const { toggleMode } = useContext(GlobalConfigContext);
@@ -18,16 +19,16 @@ export default function Heading() {
 
   return (
     <div className="w-effective flex-none px-mainspace">
-      <div className="flex-row-center h-full justify-between pt-mainspace px-mainspace">
+      <div className="flex-row-center h-full justify-between px-mainspace pt-mainspace">
         <div className="flex-row-center gap-1 ">
-          <NavButton />
+          <NavButton addIonicClass="text-yellow-200" />
           <div>
             <button
               onClick={() => handleLinkClick("/myduck")}
-              className="white-button
-              text-lg px-2 rounded-full font-bold uppercase tracking-wide "
+              className="white-button flex items-center rounded-full px-2 text-lg font-bold uppercase tracking-wide text-yellow-200 "
             >
-              Talking to my almond
+              {/* <img className="h-5 pr-1" src={duck} alt="rubber duck" /> */}
+              <div>MyDuck</div>
             </button>
           </div>
         </div>
@@ -38,7 +39,6 @@ export default function Heading() {
           <IonicButton ionic="construct" onClick={toggleMode}></IonicButton>
         </div>
       </div>
-     
     </div>
   );
 }

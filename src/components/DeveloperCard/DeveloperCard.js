@@ -3,7 +3,7 @@ import duck from "./logo128.png";
 
 export default function DeveloperCard() {
   return (
-    <div className="flex flex-col gap-2  rounded-xl border border-sol px-4 pt-2 pb-2">
+    <div className="flex flex-col gap-2  rounded-xl  px-4 pt-2 pb-2">
           <div className="flex flex-row items-end justify-start gap-2">
             <img className="h-10 px-2" src={duck} alt="rubber duck" />
             <div className="">
