@@ -27,7 +27,7 @@ export function ChatHistoryContextProvider(props) {
     setIsLoading(true);
     const abortController = new AbortController();
 
-    fetch(`${databaseUrl}.json`, {
+    fetch(`${databaseUrl}/chatMeta.json`, {
       signal: abortController.signal,
     })
       .then((response) => {
