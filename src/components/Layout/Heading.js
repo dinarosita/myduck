@@ -4,10 +4,10 @@ import IonicButton from "../Common/IonicButton";
 import FlapContext from "../../contexts/FlapContext";
 import GlobalConfigContext from "../../contexts/GlobalConfigContext";
 import NavButton from "../Common/NavButton";
-import duck from "../DeveloperCard/logo128.png";
+// import duck from "../DeveloperCard/logo128.png";
 
 export default function Heading() {
-  const { toggleMode } = useContext(GlobalConfigContext);
+  const { mode, toggleMode } = useContext(GlobalConfigContext);
 
   const { setIsFlapOpen } = useContext(FlapContext);
   const navigate = useNavigate();
@@ -32,11 +32,12 @@ export default function Heading() {
             </button>
           </div>
         </div>
+        <div className="text-xs text-vincent-700 font-bold uppercase">{(mode === "mock") && "(Mock mode)"}</div>
 
         <div className="flex-row-center icon-parent gap-2 pr-1">
-          <IonicButton ionic="information-circle" linkto="/myduck/about" addIonicClass="text-daffodil"/>
-          <IonicButton ionic="fish" linkto="/myduck/sandbox" addIonicClass="text-daffodil"/>
-          <IonicButton ionic="construct" onClick={toggleMode} addIonicClass="text-daffodil" />
+          <IonicButton ionic="bulb" linkto="/myduck/about" addIonicClass="text-daffodil"/>
+          <IonicButton ionic="beaker" linkto="/myduck/sandbox" addIonicClass="text-daffodil"/>
+          <IonicButton ionic="build" onClick={toggleMode} addIonicClass="text-daffodil" />
         </div>
       </div>
     </div>

@@ -11,7 +11,7 @@ module.exports = {
       },
       colors: {
         charcoal: "#463325", // almond-900
-        daffodil: "#ffe082", // amber-200
+        daffodil: "#FCF8F8", // amber-200 - petal now
         petal: "#FCF8F8", // petal-50
         nonactive: "#BDE2EA", // vincent-200
         vincent: {
