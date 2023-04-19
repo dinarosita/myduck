@@ -23,7 +23,7 @@ export function MainChatContextProvider(props) {
     setIsLoading(true);
     const abortController = new AbortController();
 
-    fetch(`${databaseUrl}/${mainChatId}/messages.json`, {
+    fetch(`${databaseUrl}/messages/${mainChatId}.json`, {
       signal: abortController.signal,
     })
       .then((response) => {
