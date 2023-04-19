@@ -26,7 +26,7 @@
   }
 
   .white-header > h1 {
-    @apply text-lg font-bold uppercase;
+    @apply text-lg font-bold;
   }
 
   .white-header > .tagline {
