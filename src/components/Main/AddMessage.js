@@ -17,7 +17,14 @@ export default function AddMessage() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    postNewMessage(id, textareaRef.current.value, (messageId) => {
+    const messageContent = textareaRef.current.value.trim();
+
+    if (messageContent === "") {
+        console.log("Empty message or white spaces only, not submitting.")
+        return;
+    }
+
+    postNewMessage(id, messageContent, (messageId) => {
       updateLocalMessages(id, messageId, (latestMessage) => {
         setMessageList((prevList) => prevList.concat(latestMessage));
       });
