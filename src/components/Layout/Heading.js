@@ -4,7 +4,7 @@ import IonicButton from "../Common/IonicButton";
 import FlapContext from "../../contexts/FlapContext";
 import GlobalConfigContext from "../../contexts/GlobalConfigContext";
 import NavButton from "../Common/NavButton";
-// import duck from "../DeveloperCard/logo128.png";
+import duck from "../../assets/logo/rubberduck4-yellow-512.png";
 
 export default function Heading() {
   const { mode, toggleMode } = useContext(GlobalConfigContext);
@@ -27,12 +27,12 @@ export default function Heading() {
               onClick={() => handleLinkClick("/myduck")}
               className="white-button flex items-center rounded-full px-2 text-lg font-bold uppercase tracking-wide text-daffodil "
             >
-              {/* <img className="h-5 pr-1" src={duck} alt="rubber duck" /> */}
+              
               <div>MyDuck</div>
             </button>
           </div>
         </div>
-        <div className="text-xs text-vincent-700 font-bold uppercase">{(mode === "mock") && "(Mock mode)"}</div>
+        <div className="text-xs text-vincent-700 font-bold uppercase">{(mode === "mock") ? "(Mock mode)" : <img className="h-8 pr-1" src={duck} alt="rubber duck" />}</div>
 
         <div className="flex-row-center icon-parent gap-2 pr-1">
           <IonicButton ionic="bulb" linkto="/myduck/about" addIonicClass="text-daffodil"/>
