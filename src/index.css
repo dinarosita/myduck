@@ -64,7 +64,7 @@
   }
 
   .skyscroll::-webkit-scrollbar-thumb {
-    @apply rounded rounded-full bg-vincent-50/50;
+    @apply rounded rounded-full bg-vincent-300/50;
   }
 
   .pass-overflow {

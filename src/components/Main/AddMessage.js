@@ -3,6 +3,8 @@ import "firebase/compat/firestore";
 import MainChatContext from "../../contexts/MainChatContext";
 import IonicButton from "../Common/IonicButton";
 import { useMessage } from "../../hooks/useMessage";
+import { sanitizeInput } from '../../utils/sanitize';
+
 
 export default function AddMessage() {
   const textareaRef = useRef();
@@ -17,7 +19,11 @@ export default function AddMessage() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const messageContent = textareaRef.current.value.trim();
+    const rawMessageContent = textareaRef.current.value;
+    const sanitizedMessageContent = sanitizeInput(rawMessageContent);
+    const messageContent = sanitizedMessageContent.trim();
+    console.log(rawMessageContent, " into ", sanitizedMessageContent)
+
 
     if (messageContent === "") {
         console.log("Empty message or white spaces only, not submitting.")
@@ -39,7 +45,8 @@ export default function AddMessage() {
         <textarea
           id="entry"
           ref={textareaRef}
-          className="scrollmsg h-28 max-h-60 w-full resize-y border-0 bg-transparent/20 text-white placeholder-vincent-50/80 caret-white hover:bg-transparent/50
+          maxLength="2000"
+          className="skyscroll h-28 max-h-60 w-full resize-y border-0 bg-transparent/20 text-white placeholder-vincent-50/80 caret-white hover:bg-transparent/50
           "
           placeholder="+ message..."
           style={{

@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^13.5.0",
     "autoprefixer": "^10.4.14",
     "craco": "^0.0.3",
+    "dompurify": "^3.0.2",
     "firebase": "^9.18.0",
     "flowbite": "^1.6.4",
     "ionicons": "^7.1.0",
