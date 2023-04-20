@@ -1,12 +1,16 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import IonicButton from "../Common/IonicButton";
 import { useChat } from "../../hooks/useChat";
 import { sanitizeInput } from '../../utils/sanitize';
+import { useWindowSize } from "../../hooks/useWindowSize";
+import FlapContext from "../../contexts/FlapContext";
 
 
 export default function AddChat() {
+    const {setIsFlapOpen} = useContext(FlapContext)
   const inputRef = useRef();
   const { postNewChat } = useChat()
+  const windowSize = useWindowSize()
   
   function cancelNewChat(e) {
     e.preventDefault();
@@ -21,6 +25,9 @@ export default function AddChat() {
     postNewChat(sanitizedTitle).then(() => {
         inputRef.current.value = "";
     })
+    if (windowSize.width < 480) {
+        setIsFlapOpen(false)
+    }
   }
   
   return (

@@ -50,6 +50,6 @@ export function useChat() {
   }
 
   return {
-    postNewChat,
+    postNewChat
   };
 }

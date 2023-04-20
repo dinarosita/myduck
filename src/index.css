@@ -6,6 +6,9 @@
   html {
     @apply text-charcoal;
   }
+  h2 {
+    @apply text-lg font-bold
+  }
 }
 
 @layer components {

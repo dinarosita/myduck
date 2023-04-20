@@ -4,6 +4,7 @@ import MainChatContext from "../../contexts/MainChatContext";
 import IonicButton from "../Common/IonicButton";
 import { useMessage } from "../../hooks/useMessage";
 import { sanitizeInput } from '../../utils/sanitize';
+import { useWindowSize } from "../../hooks/useWindowSize";
 
 
 export default function AddMessage() {
@@ -11,6 +12,7 @@ export default function AddMessage() {
   const { id, setMessageList } = useContext(MainChatContext);
   const [textvalue, setTextValue] = useState("");
   const { postNewMessage, updateLocalMessages } = useMessage();
+  const windowSize = useWindowSize();
 
   function handleTextValue(e) {
     setTextValue(e.target.value);
@@ -22,7 +24,6 @@ export default function AddMessage() {
     const rawMessageContent = textareaRef.current.value;
     const sanitizedMessageContent = sanitizeInput(rawMessageContent);
     const messageContent = sanitizedMessageContent.trim();
-    console.log(rawMessageContent, " into ", sanitizedMessageContent)
 
 
     if (messageContent === "") {
@@ -35,7 +36,9 @@ export default function AddMessage() {
         setMessageList((prevList) => prevList.concat(latestMessage));
       });
       setTextValue("");
-      textareaRef.current.focus();
+      if (windowSize.width > 480) {
+        textareaRef.current.focus();
+      }
     });
   }
 
