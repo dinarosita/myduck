@@ -15,7 +15,6 @@ const MainChatContext = React.createContext({
 export function MainChatContextProvider(props) {
   const { databaseUrl } = useContext(GlobalConfigContext);
   const { mainChatId, chatList } = useContext(ChatHistoryContext);
-
   const [messageList, setMessageList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 

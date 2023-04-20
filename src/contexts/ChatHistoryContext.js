@@ -6,7 +6,6 @@ const ChatHistoryContext = React.createContext({
   chatList: [],
   setChatHistory: () => {},
   mainChatId: null,
-  isLoading: true,
   ChatAvailable: false,
   setChatAvailable: () => {},
   updateMainChatId: () => {},
