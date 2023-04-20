@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
-import ChatHistoryContext from "../contexts/ChatHistoryContext";
+import ChatroomContext from "../contexts/ChatroomContext";
 import GlobalConfigContext from "../contexts/GlobalConfigContext";
 
 export function useChat() {
   const { databaseUrl } = useContext(GlobalConfigContext);
-  const { ChatAvailable, setChatAvailable, setChatHistory, updateMainChatId } =
-    useContext(ChatHistoryContext);
+  const { ChatAvailable, setChatAvailable, setChatHistory, updateActiveChatId } =
+    useContext(ChatroomContext);
 
   function postNewChat(title) {
     const chatMeta = {
@@ -45,7 +45,7 @@ export function useChat() {
           ...data,
         };
         setChatHistory((prevAllChats) => prevAllChats.concat(latestChat));
-        updateMainChatId(chatId);
+        updateActiveChatId(chatId);
       });
   }
 

@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import React, { useContext, useEffect, useState } from "react";
-import ChatHistoryContext from "./ChatHistoryContext";
+import ChatroomContext from "./ChatroomContext";
 import GlobalConfigContext from "./GlobalConfigContext";
 
-const MainChatContext = React.createContext({
+const ActiveChatContext = React.createContext({
   id: null,
   chatMeta: {},
   messageList: [],
@@ -12,9 +12,9 @@ const MainChatContext = React.createContext({
   isLoading: true,
 });
 
-export function MainChatContextProvider(props) {
+export function ActiveChatContextProvider(props) {
   const { databaseUrl } = useContext(GlobalConfigContext);
-  const { mainChatId, chatList } = useContext(ChatHistoryContext);
+  const { activeChatId, chatList } = useContext(ChatroomContext);
   const [messageList, setMessageList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -22,7 +22,7 @@ export function MainChatContextProvider(props) {
     setIsLoading(true);
     const abortController = new AbortController();
 
-    fetch(`${databaseUrl}/messages/${mainChatId}.json`, {
+    fetch(`${databaseUrl}/messages/${activeChatId}.json`, {
       signal: abortController.signal,
     })
       .then((response) => {
@@ -49,21 +49,21 @@ export function MainChatContextProvider(props) {
     return () => {
       abortController.abort();
     };
-  }, [mainChatId]);
+  }, [activeChatId]);
 
   const context = {
-    id: mainChatId,
-    chatMeta: chatList.find((chat) => chat.id === mainChatId),
+    id: activeChatId,
+    chatMeta: chatList.find((chat) => chat.id === activeChatId),
     messageList: messageList,
     setMessageList: setMessageList,
     isLoading: isLoading,
   };
 
   return (
-    <MainChatContext.Provider value={context}>
+    <ActiveChatContext.Provider value={context}>
       {props.children}
-    </MainChatContext.Provider>
+    </ActiveChatContext.Provider>
   );
 }
 
-export default MainChatContext;
+export default ActiveChatContext;

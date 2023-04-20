@@ -2,21 +2,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import GlobalConfigContext from "./GlobalConfigContext";
 
-const ChatHistoryContext = React.createContext({
+const ChatroomContext = React.createContext({
   chatList: [],
   setChatHistory: () => {},
-  mainChatId: null,
+  activeChatId: null,
   ChatAvailable: false,
   setChatAvailable: () => {},
-  updateMainChatId: () => {},
+  updateActiveChatId: () => {},
 });
 
-export function ChatHistoryContextProvider(props) {
+export function ChatroomContextProvider(props) {
 
   const { mode, databaseUrl } = useContext(GlobalConfigContext);
   const [chatList, setChatHistory] = useState([]);
-  const [mainChatId, setMainChatId] = useState(
-    localStorage.getItem(`${mode}-mainChatId`)
+  const [activeChatId, setActiveChatId] = useState(
+    localStorage.getItem(`${mode}-activeChatId`)
   );
   const [ChatAvailable, setChatAvailable] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -46,8 +46,8 @@ export function ChatHistoryContextProvider(props) {
             };
             chats.push(chat);
             setChatHistory(chats);
-            if (!mainChatId) {
-              setMainChatId(chats[chats.length - 1].id);
+            if (!activeChatId) {
+              setActiveChatId(chats[chats.length - 1].id);
             }
           }
         }
@@ -62,9 +62,9 @@ export function ChatHistoryContextProvider(props) {
     };
   }, []);
 
-  function updateMainChatId(newId) {
-    localStorage.setItem(`${mode}-mainChatId`, newId);
-    setMainChatId(newId);
+  function updateActiveChatId(newId) {
+    localStorage.setItem(`${mode}-activeChatId`, newId);
+    setActiveChatId(newId);
   }
 
   const context = {
@@ -72,16 +72,16 @@ export function ChatHistoryContextProvider(props) {
     setChatAvailable: setChatAvailable,
     chatList: chatList,
     setChatHistory: setChatHistory,
-    mainChatId: mainChatId,
+    activeChatId: activeChatId,
     isLoading: isLoading,
-    updateMainChatId: updateMainChatId,
+    updateActiveChatId: updateActiveChatId,
   };
 
   return (
-    <ChatHistoryContext.Provider value={context}>
+    <ChatroomContext.Provider value={context}>
       {props.children}
-    </ChatHistoryContext.Provider>
+    </ChatroomContext.Provider>
   );
 }
 
-export default ChatHistoryContext;
+export default ChatroomContext;

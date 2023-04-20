@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import MainChatContext from "../../contexts/MainChatContext";
+import ActiveChatContext from "../../contexts/ActiveChatContext";
 
 export default function ChatTitle() {
-  const { id, chatMeta } = useContext(MainChatContext);
+  const { id, chatMeta } = useContext(ActiveChatContext);
   const [title, setTitle] = useState("");
   const [tag, setTag] = useState("");
 

@@ -1,6 +1,6 @@
 import React from "react";
-import { ChatHistoryContextProvider } from "./ChatHistoryContext";
-import { MainChatContextProvider } from "./MainChatContext";
+import { ChatroomContextProvider } from "./ChatroomContext";
+import { ActiveChatContextProvider } from "./ActiveChatContext";
 import { FlapContextProvider } from "./FlapContext";
 import { GlobalConfigContextProvider } from "./GlobalConfigContext";
 
@@ -8,11 +8,11 @@ export default function ContextWrapper({ children }) {
   return (
     <GlobalConfigContextProvider>
         <FlapContextProvider>
-          <ChatHistoryContextProvider>
-            <MainChatContextProvider>
+          <ChatroomContextProvider>
+            <ActiveChatContextProvider>
                 {children}
-            </MainChatContextProvider>
-          </ChatHistoryContextProvider>
+            </ActiveChatContextProvider>
+          </ChatroomContextProvider>
         </FlapContextProvider>
     </GlobalConfigContextProvider>
   );

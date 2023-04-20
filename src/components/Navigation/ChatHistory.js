@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
-import ChatHistoryContext from "../../contexts/ChatHistoryContext";
+import ChatroomContext from "../../contexts/ChatroomContext";
 import { useNavigate } from "react-router-dom";
 import FlapContext from "../../contexts/FlapContext";
 import { useWindowSize } from "../../hooks/useWindowSize";
 
 export default function ChatHistory() {
   const navigate = useNavigate();
-  const { ChatAvailable, chatList, mainChatId, updateMainChatId } =
-    useContext(ChatHistoryContext);
+  const { ChatAvailable, chatList, activeChatId, updateActiveChatId } =
+    useContext(ChatroomContext);
     const {setIsFlapOpen} = useContext(FlapContext)
     const windowSize = useWindowSize()
 
@@ -34,13 +34,13 @@ export default function ChatHistory() {
             <button
               key={chat.id}
               onClick={() => {
-                updateMainChatId(chat.id);
+                updateActiveChatId(chat.id);
                 if (windowSize.width < 480) {
                     setIsFlapOpen(false)
                 }
                 navigate("/myduck");          
               }}
-              className={`${(mainChatId === chat.id) && "bg-vincent-950/20 "}
+              className={`${(activeChatId === chat.id) && "bg-vincent-950/20 "}
               w-full  rounded-r-full px-2   py-1    
               text-left text-petal ring-0 transition smooth hover:bg-petal/20 focus:bg-vincent-950/20 active:bg-none `}
             >
