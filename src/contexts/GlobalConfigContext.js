@@ -5,7 +5,7 @@ const GlobalConfigContext = React.createContext();
 export function GlobalConfigContextProvider({ children }) {
     
     const [mode, setMode] = useState(localStorage.getItem("myduckMode"));
-    const databaseUrl = "https://myduck-fb785-default-rtdb.firebaseio.com/" + (mode ? mode : "chats")
+    const databaseUrl = `https://myduck-fb785-default-rtdb.firebaseio.com/${mode ? mode : "chats"}`
     
 
       function toggleMode() {
