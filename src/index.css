@@ -52,20 +52,6 @@
     @apply flex h-6 w-6 items-center justify-center;
   }
 
-  /* @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  
-  .heading-fade-in {
-    opacity: 1;
-    animation: fadeIn 0.5s ease-in-out;
-  } */
-
   .nonactive-button {
     @apply pointer-events-none text-petal/50 hover:text-petal/50  focus:text-petal/50 
     active:text-petal/50;
