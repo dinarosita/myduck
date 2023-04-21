@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
 import "firebase/compat/firestore";
 import ActiveChatContext from "../../contexts/ActiveChatContext";
-import IonicButton from "../Common/IonicButton";
+import IconButton from "../Common/IconButton";
 import { useMessage } from "../../hooks/useMessage";
 import { sanitizeInput } from '../../utils/sanitize';
 import { useWindowSize } from "../../hooks/useWindowSize";
@@ -14,12 +14,12 @@ export default function AddMessage() {
   const { postNewMessage, updateLocalMessages } = useMessage();
   const windowSize = useWindowSize();
 
-  function handleTextValue(e) {
-    setTextValue(e.target.value);
+  function handleTextValue(event) {
+    setTextValue(event.target.value);
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleSubmit(event) {
+    event.preventDefault();
 
     const rawMessageContent = textareaRef.current.value;
     const sanitizedMessageContent = sanitizeInput(rawMessageContent);
@@ -64,10 +64,10 @@ export default function AddMessage() {
             }
           }}
         />
-        <IonicButton
-          ionic="paper-plane"
+        <IconButton
+          task="messageSubmit"
           onClick={handleSubmit}
-          addClass={`absolute bottom-2 right-2`}
+          addButtonClass={`absolute bottom-2 right-2`}
         />
       </form>
     </section>

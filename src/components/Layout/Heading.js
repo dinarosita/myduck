@@ -3,8 +3,10 @@ import GlobalConfigContext from "../../contexts/GlobalConfigContext";
 import duck from "../../assets/logo/rubberduck4-yellow-512.png";
 import { useLinkButtonLogic } from "../../hooks/useLinkButtonLogic";
 import IconButton from "../Common/IconButton";
+import { useNavButtonLogic } from "../../hooks/useNavButtonLogic";
 
 export default function Heading() {
+  const { handleNavMenu } = useNavButtonLogic();
   const { mode, toggleMode } = useContext(GlobalConfigContext);
   const handleLinkClick = useLinkButtonLogic();
 
@@ -14,7 +16,7 @@ export default function Heading() {
         <div className="flex-row-center flex-1 gap-1">
           <div className="min-w-12">
             <IconButton
-              type="navigation"
+              onClick={handleNavMenu}
               task="navMenu"
               addButtonClass="lg:nonactive-button"
               addIconClass="lg:nonactive-button"
@@ -45,8 +47,8 @@ export default function Heading() {
         </div>
 
         <div className="flex flex-1 justify-end gap-2">
-          <IconButton type="routing" task="about" />
-          <IconButton type="routing" task="sandbox" />
+          <IconButton type="routing" page="about" />
+          <IconButton type="routing" page="sandbox" />
           <IconButton task="toggleMode" onClick={toggleMode} />
         </div>
       </div>

@@ -11,11 +11,11 @@ import {
   TrashIcon,
   PencilSquareIcon,
   PaperAirplaneIcon,
-} from "@heroicons/react/24/solid";
-import { useNavButtonLogic } from "../../hooks/useNavButtonLogic";
+  BookOpenIcon,
+} from "@heroicons/react/24/outline";
 
 const iconMapping = {
-  about: GlobeAltIcon,
+  about: BookOpenIcon,
   sandbox: BeakerIcon,
   toggleMode: CodeBracketIcon,
   navMenu: Bars3Icon,
@@ -24,46 +24,34 @@ const iconMapping = {
   chatCancel: XCircleIcon,
   chatDelete: TrashIcon,
   chatTitleEdit: PencilSquareIcon,
-  MessageSubmit: PaperAirplaneIcon,
-  MessageEdit: PencilSquareIcon,
-  MessageDelete: TrashIcon,
+  messageSubmit: PaperAirplaneIcon,
+  messageEdit: PencilSquareIcon,
+  messageDelete: TrashIcon,
 };
 
 export default function IconButton(props) {
   const handleLinkClick = useLinkButtonLogic();
-  const { handleNavMenu, handleNavClose } = useNavButtonLogic();
-  const IconComponent = iconMapping[props.task];
+  const IconComponent = iconMapping[props.page || props.task];
 
-  const handleClick = () => {
+  const handleClick = (event) => {
     switch (props.type) {
       case "routing":
-        handleLinkClick(`/myduck/${props.task}`);
-        break;
-      case "navigation":
-        props.task === "navMenu" ? handleNavMenu() : handleNavClose();
-        break;
-      case "chat":
-        // (props.task === "chatSubmit") ? handleChatSubmit() : handleChatCancel();
-        // More to come: chatDelete, chatTitleEdit. Use switch.
-        break;
-      case "message":
-        // handleMessageSubmit();
-        // More to come: messageDelete. Use switch.
+        handleLinkClick(`/myduck/${props.page}`);
         break;
       default:
-        props.onClick && props.onClick();
+        props.onClick && props.onClick(event);
         break;
     }
   };
 
   return (
     <button
-      onClick={handleClick}
-      className={`blush-button  ${props.addButtonClass}`}
+      onClick={(event) => handleClick(event)}
+      className={`blush-button h-6 w-6 ${props.addButtonClass}`}
     >
       {IconComponent && (
         <IconComponent
-          className={`blush-button h-6 w-6 ${props.addIconClass}`}
+          className={`${props.addIconClass}`}
         />
       )}
     </button>

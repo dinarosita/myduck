@@ -1,9 +1,9 @@
 import React, { useContext, useRef } from "react";
-import IonicButton from "../Common/IonicButton";
 import { useChat } from "../../hooks/useChat";
 import { sanitizeInput } from "../../utils/sanitize";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import FlapContext from "../../contexts/FlapContext";
+import IconButton from "../Common/IconButton";
 
 export default function AddChat() {
   const { setIsFlapOpen } = useContext(FlapContext);
@@ -11,13 +11,13 @@ export default function AddChat() {
   const { postNewChat } = useChat();
   const windowSize = useWindowSize();
 
-  function cancelNewChat(e) {
-    e.preventDefault();
+  function cancelNewChat(event) {
+    event.preventDefault();
     inputRef.current.value = "";
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleSubmit(event) {
+    event.preventDefault();
     const title = inputRef.current.value;
     const sanitizedTitle = sanitizeInput(title);
     console.log(title, " into ", sanitizedTitle);
@@ -47,8 +47,8 @@ export default function AddChat() {
       />
       <input type="submit" hidden={true} />
       <div>
-        <IonicButton ionic="close-circle" onClick={cancelNewChat} />
-        <IonicButton ionic="checkmark-circle" onClick={handleSubmit} />
+        <IconButton task="chatCancel" onClick={cancelNewChat} />
+        <IconButton task="chatSubmit" onClick={handleSubmit} />
       </div>
     </form>
   );

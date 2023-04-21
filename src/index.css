@@ -40,11 +40,11 @@
     @apply text-petal hover:text-vincent-800 focus:text-vincent-800 active:text-vincent-900;
   }
 
-  .blush-button:focus ion-icon {
+  .blush-button:focus {
     @apply text-vincent-800;
   }
 
-  .blush-button:active ion-icon {
+  .blush-button:active  {
     @apply text-vincent-900;
   }
 
@@ -71,8 +71,8 @@
     active:text-petal/50;
   }
 
-  .nonactive-button:focus ion-icon,
-  .nonactive-button:active ion-icon {
+  .nonactive-button:focus heroicon,
+  .nonactive-button:active heroicon {
     @apply text-petal/50;
   }
 
