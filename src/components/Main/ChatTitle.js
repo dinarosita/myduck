@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import ActiveChatContext from "../../contexts/ActiveChatContext";
+import ChatroomContext from "../../contexts/ChatroomContext";
 
 export default function ChatTitle() {
-  const { id, chatMeta } = useContext(ActiveChatContext);
-  const [title, setTitle] = useState("");
-  const [tag, setTag] = useState("");
+    const { isLoading } = useContext(ChatroomContext);
+    const { id, chatMeta } = useContext(ActiveChatContext);
+  const [title, setTitle] = useState("Welcome");
+  const [tag, setTag] = useState("Loading almost done...");
 
   function formatTimestamp(timestamp) {
     const date = new Date(timestamp.seconds * 1000).toDateString();
@@ -13,7 +15,10 @@ export default function ChatTitle() {
   }
 
   useEffect(() => {
-    if (!id) {
+    if(!isLoading) {
+        setTitle("Welcome")
+        setTag("Loading almost done...")
+    } else if (!id) {
       setTitle("Welcome to MyDuck");
       setTag("Start a new chat...");
     } else {
@@ -25,7 +30,7 @@ export default function ChatTitle() {
       if (chatMeta && chatMeta.createdAt) {
         setTag(`Created: ${formatTimestamp(chatMeta.createdAt)}`);
       } else {
-        setTag("");
+        setTag("Created some times ago");
       }
     }
   }, [id, chatMeta]);
