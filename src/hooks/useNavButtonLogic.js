@@ -7,7 +7,7 @@ export function useNavButtonLogic() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  function handleOpenNav() {
+  function handleNavMenu() {
     if (location.pathname !== "/myduck") {
       navigate("/myduck");
       setIsFlapOpen(true);
@@ -15,9 +15,9 @@ export function useNavButtonLogic() {
     setIsFlapOpen(!isFlapOpen);
   }
 
-  function handleCloseNav() {
+  function handleNavClose() {
     setIsFlapOpen(false);
   }
 
-  return { handleOpenNav, handleCloseNav } ;
+  return { handleNavMenu, handleNavClose } ;
 }

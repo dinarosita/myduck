@@ -6,6 +6,11 @@ import {
   CodeBracketIcon,
   Bars3Icon,
   XMarkIcon,
+  CheckCircleIcon,
+  XCircleIcon,
+  TrashIcon,
+  PencilSquareIcon,
+  PaperAirplaneIcon,
 } from "@heroicons/react/24/solid";
 import { useNavButtonLogic } from "../../hooks/useNavButtonLogic";
 
@@ -15,11 +20,18 @@ const iconMapping = {
   toggleMode: CodeBracketIcon,
   navMenu: Bars3Icon,
   navClose: XMarkIcon,
+  chatSubmit: CheckCircleIcon,
+  chatCancel: XCircleIcon,
+  chatDelete: TrashIcon,
+  chatTitleEdit: PencilSquareIcon,
+  MessageSubmit: PaperAirplaneIcon,
+  MessageEdit: PencilSquareIcon,
+  MessageDelete: TrashIcon,
 };
 
 export default function IconButton(props) {
   const handleLinkClick = useLinkButtonLogic();
-  const { handleOpenNav, handleCloseNav } = useNavButtonLogic();
+  const { handleNavMenu, handleNavClose } = useNavButtonLogic();
   const IconComponent = iconMapping[props.task];
 
   const handleClick = () => {
@@ -28,10 +40,16 @@ export default function IconButton(props) {
         handleLinkClick(`/myduck/${props.task}`);
         break;
       case "navigation":
-        props.task === "navMenu" ? handleOpenNav() : handleCloseNav();
+        props.task === "navMenu" ? handleNavMenu() : handleNavClose();
         break;
-      case "formSubmit":
-      case "formCancel":
+      case "chat":
+        // (props.task === "chatSubmit") ? handleChatSubmit() : handleChatCancel();
+        // More to come: chatDelete, chatTitleEdit. Use switch.
+        break;
+      case "message":
+        // handleMessageSubmit();
+        // More to come: messageDelete. Use switch.
+        break;
       default:
         props.onClick && props.onClick();
         break;

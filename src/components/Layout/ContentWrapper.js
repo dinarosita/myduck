@@ -6,7 +6,7 @@ import { ChatroomContextProvider } from "../../contexts/ChatroomContext";
 
 export default function ContentWrapper() {
   const { isFlapOpen, setIsFlapOpen } = useContext(FlapContext);
-  function handleCloseNav() {
+  function handleNavClose() {
     setIsFlapOpen(false);
   }
   return (
@@ -28,7 +28,7 @@ export default function ContentWrapper() {
               className={`smooth fixed inset-0 z-10 bg-black transition-opacity  ${
                 isFlapOpen ? "opacity-50" : "invisible opacity-0"
               }`}
-              onClick={handleCloseNav}
+              onClick={handleNavClose}
             ></div>
             <Main />
           </div>
