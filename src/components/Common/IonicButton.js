@@ -1,33 +1,26 @@
-import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import FlapContext from "../../contexts/FlapContext";
+import React from "react";
+import useHandleLinkClick from "../../hooks/useHandleLinkClick";
 
 export default function IonicButton(props) {
-  const { setIsFlapOpen } = useContext(FlapContext);
-  const navigate = useNavigate();
-
-  function handleLink(link) {
-    setIsFlapOpen(false);
-    navigate(link);
-  }
+  const handleLinkClick = useHandleLinkClick()
 
   return (
     <button
       onClick={
         props.linkto
           ? () => {
-              handleLink(props.linkto);
+            handleLinkClick(props.linkto);
             }
           : props.onClick
       }
       type={props.type}
       disabled={props.disabled}
-      className={`white-button ${props.addClass} `}
+      className={`blush-button icon-container ${props.addClass} `}
     >
       <ion-icon
         name={`${props.ionic ? props.ionic : "happy"}-outline`}
         class={`text-2xl 
-      transition smooth white-button
+      transition smooth blush-button
       ${props.addIonicClass}`}
       ></ion-icon>
     </button>

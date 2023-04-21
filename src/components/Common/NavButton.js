@@ -21,12 +21,12 @@ export default function NavButton(props) {
 
   return (
     <button
-      className={`white-button lg:nonactive-button ${props.addClass}`}
+      className={`flex-none blush-button lg:nonactive-button icon-container ${props.addClass}`}
       onClick={props.close ? handleCloseNav : handleOpenNav}
     >
       <ion-icon
         name={`${props.close ? "close" : "menu"}-outline`}
-        class={`white-button  text-2xl transition smooth lg:nonactive-button ${props.addIonicClass}`}
+        class={`blush-button  text-2xl transition smooth lg:nonactive-button ${props.addIonicClass}`}
       ></ion-icon>
     </button>
   );

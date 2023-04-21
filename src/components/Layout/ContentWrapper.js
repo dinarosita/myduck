@@ -3,7 +3,6 @@ import Navigation from "../Navigation/Navigation";
 import Main from "../Main/Main";
 import FlapContext from "../../contexts/FlapContext";
 import { ChatroomContextProvider } from "../../contexts/ChatroomContext";
-import { ActiveChatContextProvider } from "../../contexts/ActiveChatContext";
 
 export default function ContentWrapper() {
   const { isFlapOpen, setIsFlapOpen } = useContext(FlapContext);
@@ -12,7 +11,6 @@ export default function ContentWrapper() {
   }
   return (
     <ChatroomContextProvider>
-      <ActiveChatContextProvider>
 
         <div className="w-effective pass-overflow p-2">
 
@@ -64,8 +62,7 @@ export default function ContentWrapper() {
           </div>
 
         </div>
-        
-      </ActiveChatContextProvider>
+
     </ChatroomContextProvider>
   );
 }

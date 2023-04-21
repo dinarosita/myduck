@@ -5,9 +5,9 @@ export default function Sandbox() {
     const windowSize = useWindowSize()
   return (
     <div className="pass-overflow p-2 w-full">
-      <main className="w-effective white-frame flex h-full flex-col pass-overflow text-vincent-800">
+      <main className="w-effective blush-frame flex h-full flex-col pass-overflow text-vincent-800">
 
-        <header className="white-header">
+        <header className="blush-header">
           <h1>Sandbox</h1>
           <p className="tagline">
             Currently no experiment

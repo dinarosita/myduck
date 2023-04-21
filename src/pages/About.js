@@ -5,8 +5,8 @@ import DeveloperCard from "../components/DeveloperCard/DeveloperCard";
 export default function About() {
   return (
     <div className="pass-overflow w-full p-2 bg-transparent">
-      <main className="w-effective white-frame pass-overflow flex h-full flex-col text-vincent-800">
-        <header className="white-header">
+      <main className="w-effective blush-frame pass-overflow flex h-full flex-col text-vincent-800">
+        <header className="blush-header">
           <h1>Welcome to MyDuck</h1>
           <p className="tagline">Brainstorm with your inner rubber duck</p>
         </header>
@@ -85,7 +85,7 @@ export default function About() {
             </Box>
           </div>
         </section>
-        <hr className="white-separator" />
+        <hr className="blush-separator" />
         <section className="bg-transparent/20 text-petal border-none">
           <DeveloperCard />
         </section>

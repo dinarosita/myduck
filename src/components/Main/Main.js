@@ -7,10 +7,10 @@ import { ActiveChatContextProvider } from "../../contexts/ActiveChatContext";
 export default function Main() {
   return (
     <ActiveChatContextProvider>
-      <main className="pass-overflow white-frame flex flex-auto flex-col justify-between">
+      <main className="pass-overflow blush-frame flex flex-auto flex-col justify-between">
         <ChatTitle />
         <MessageHistory />
-        <hr className="white-separator" />
+        <hr className="blush-separator" />
         <AddMessage />
       </main>
     </ActiveChatContextProvider>

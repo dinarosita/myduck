@@ -31,7 +31,7 @@ export default function ChatTitle() {
   }, [id, chatMeta]);
 
   return (
-      <header className="white-header">
+      <header className="blush-header">
         <h1>{title}</h1>
         <p className="tagline">{tag}</p>
       </header>

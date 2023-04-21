@@ -7,46 +7,64 @@
     @apply text-charcoal;
   }
   h2 {
-    @apply text-lg font-bold
+    @apply text-lg font-bold;
   }
 }
 
 @layer components {
-  .white-border {
+  .blush-border {
     @apply border-8 border-petal;
   }
 
-  .white-frame {
-    @apply white-border rounded-3xl;
+  .blush-frame {
+    @apply blush-border rounded-3xl;
   }
 
-  .white-separator {
-    @apply white-border border-x-0 border-b-0;
+  .blush-separator {
+    @apply blush-border border-x-0 border-b-0;
   }
 
-  .white-header {
+  .blush-header {
     @apply flex h-fit w-full flex-none flex-col bg-petal pb-2 pt-1 text-center text-vincent-800;
   }
 
-  .white-header > h1 {
+  .blush-header > h1 {
     @apply text-lg font-bold;
   }
 
-  .white-header > .tagline {
+  .blush-header > .tagline {
     @apply text-sm;
   }
 
-  .white-button {
+  .blush-button {
     @apply text-petal hover:text-vincent-800 focus:text-vincent-800 active:text-vincent-900;
   }
 
-  .white-button:focus ion-icon {
+  .blush-button:focus ion-icon {
     @apply text-vincent-800;
   }
 
-  .white-button:active ion-icon {
+  .blush-button:active ion-icon {
     @apply text-vincent-900;
   }
+
+  .icon-container {
+    @apply flex h-6 w-6 items-center justify-center;
+  }
+
+  /* @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .heading-fade-in {
+    opacity: 1;
+    animation: fadeIn 0.5s ease-in-out;
+  } */
 
   .nonactive-button {
     @apply pointer-events-none text-petal/50 hover:text-petal/50  focus:text-petal/50 
