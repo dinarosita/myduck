@@ -6,7 +6,7 @@ const ChatroomContext = React.createContext({
   chatList: [],
   setChatHistory: () => {},
   activeChatId: null,
-  ChatAvailable: false,
+  chatAvailable: false,
   setChatAvailable: () => {},
   updateActiveChatId: () => {},
 });
@@ -18,7 +18,7 @@ export function ChatroomContextProvider(props) {
   const [activeChatId, setActiveChatId] = useState(
     localStorage.getItem(`${mode}-activeChatId`)
   );
-  const [ChatAvailable, setChatAvailable] = useState(false);
+  const [chatAvailable, setChatAvailable] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -68,7 +68,7 @@ export function ChatroomContextProvider(props) {
   }
 
   const context = {
-    ChatAvailable: ChatAvailable,
+    chatAvailable: chatAvailable,
     setChatAvailable: setChatAvailable,
     chatList: chatList,
     setChatHistory: setChatHistory,

@@ -6,7 +6,7 @@ import GlobalConfigContext from "../contexts/GlobalConfigContext";
 
 export function useChat() {
   const { databaseUrl } = useContext(GlobalConfigContext);
-  const { ChatAvailable, setChatAvailable, setChatHistory, updateActiveChatId } =
+  const { chatAvailable, setChatAvailable, setChatHistory, updateActiveChatId } =
     useContext(ChatroomContext);
 
   function postNewChat(title) {
@@ -27,7 +27,7 @@ export function useChat() {
         const chatId = data.name;
         
         updateLocalList(chatId);
-        if (!ChatAvailable) {
+        if (!chatAvailable) {
           setChatAvailable(true);
           console.log("New chat added. Chat is now available.");
         } else {

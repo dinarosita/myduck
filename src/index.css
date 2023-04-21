@@ -37,15 +37,7 @@
   }
 
   .blush-button {
-    @apply text-petal hover:text-vincent-800 focus:text-vincent-800 active:text-vincent-900;
-  }
-
-  .blush-button:focus {
-    @apply text-vincent-800;
-  }
-
-  .blush-button:active  {
-    @apply text-vincent-900;
+    @apply text-petal hover:text-transparent/40 focus:text-transparent/40 active:text-transparent/20;
   }
 
   .icon-container {
@@ -57,10 +49,15 @@
     active:text-petal/50;
   }
 
-  .nonactive-button:focus heroicon,
-  .nonactive-button:active heroicon {
+  .nonactive-button:focus > heroicon,
+  .nonactive-button:active > heroicon {
     @apply text-petal/50;
   }
+
+  .chat-button {
+    @apply w-full rounded-r-full px-2 py-1 text-left text-petal ring-0;
+  }
+         
 
   .skyscroll::-webkit-scrollbar {
     @apply w-2;

@@ -6,48 +6,57 @@ import { useWindowSize } from "../../hooks/useWindowSize";
 
 export default function ChatHistory() {
   const navigate = useNavigate();
-  const { ChatAvailable, chatList, activeChatId, updateActiveChatId } =
+  const windowSize = useWindowSize();
+  const { isLoading } = useContext(ChatroomContext);
+  const { setIsFlapOpen } = useContext(FlapContext);
+  const { chatAvailable, chatList, activeChatId, updateActiveChatId } =
     useContext(ChatroomContext);
-    const {setIsFlapOpen} = useContext(FlapContext)
-    const windowSize = useWindowSize()
+
+  function getChatButtons() {
+    if (isLoading) {
+      return [
+        <button
+          key="chatIsLoading"
+          className={`chat-button pointer-events-none bg-vincent-950/20 opacity-30`}
+        >
+          Loading...
+        </button>,
+      ];
+    } else if (!chatAvailable) {
+      return [
+        <button
+          key="noChat"
+          className={`chat-button pointer-events-none bg-vincent-950/20`}
+        >
+          Enter your first chat
+        </button>,
+      ];
+    } else {
+      return chatList
+        .map((chat) => (
+          <button
+            key={chat.id}
+            onClick={() => {
+              updateActiveChatId(chat.id);
+              if (windowSize.width < 480) {
+                setIsFlapOpen(false);
+              }
+              navigate("/myduck");
+            }}
+            className={`chat-button hover:bg-petal/20 focus:bg-vincent-950/20 active:bg-none transition smooth
+            ${activeChatId === chat.id && "bg-vincent-950/20 "}`}
+          >
+            {chat.title || "Untitled"}
+          </button>
+        ))
+        .reverse();
+    }
+  }
 
   return (
     <div className="items-left pass-overflow flex w-full flex-col gap-2 p-2">
-      <ul className="skyscroll flex flex-col items-start  overflow-y-auto pr-4 gap-1">
-        {!ChatAvailable && (
-          <button
-            key="noChat"
-            className={`pointer-events-none             
-            
-              w-full  rounded-r-full px-2   py-1    
-              text-left text-petal/50 bg-vincent-950/10 
-              
-              `}
-          >
-            {"Enter your first chat"}
-          </button>
-          
-        )}
-
-        {chatList
-          .map((chat) => (
-            <button
-              key={chat.id}
-              onClick={() => {
-                updateActiveChatId(chat.id);
-                if (windowSize.width < 480) {
-                    setIsFlapOpen(false)
-                }
-                navigate("/myduck");          
-              }}
-              className={`${(activeChatId === chat.id) && "bg-vincent-950/20 "}
-              w-full  rounded-r-full px-2   py-1    
-              text-left text-petal ring-0 transition smooth hover:bg-petal/20 focus:bg-vincent-950/20 active:bg-none `}
-            >
-              {chat.title ? chat.title : "Untitled"}
-            </button>
-          ))
-          .reverse()}
+      <ul className="skyscroll flex flex-col items-start  gap-1 overflow-y-auto pr-4">
+        {getChatButtons()}
       </ul>
     </div>
   );
