@@ -2,7 +2,7 @@ import { useContext } from "react";
 import FlapContext from "../contexts/FlapContext";
 import { useNavigate } from "react-router-dom";
 
-export default function useHandleLinkClick() {
+export function useLinkButtonLogic() {
     const {setIsFlapOpen} = useContext(FlapContext)
     const navigate = useNavigate()
 

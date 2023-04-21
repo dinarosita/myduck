@@ -1,19 +1,25 @@
 import React, { useContext } from "react";
-import IonicButton from "../Common/IonicButton";
 import GlobalConfigContext from "../../contexts/GlobalConfigContext";
-import NavButton from "../Common/NavButton";
 import duck from "../../assets/logo/rubberduck4-yellow-512.png";
-import useHandleLinkClick from "../../hooks/useHandleLinkClick";
+import { useLinkButtonLogic } from "../../hooks/useLinkButtonLogic";
+import IconButton from "../Common/IconButton";
 
 export default function Heading() {
   const { mode, toggleMode } = useContext(GlobalConfigContext);
-  const handleLinkClick = useHandleLinkClick();
+  const handleLinkClick = useLinkButtonLogic();
 
   return (
-    <div className="w-effective flex-none px-2 heading-fade-in">
-      <div className="flex-row-center h-full justify-between px-2 pt-2">
-        <div className="flex-row-center gap-1">
-          <div className="min-w-12"><NavButton addIonicClass="text-daffodil" /></div>
+    <div className="w-effective heading-fade-in flex-none px-2">
+      <div className="flex-row-center h-8 justify-between px-2 pt-2">
+        <div className="flex-row-center flex-1 gap-1">
+          <div className="min-w-12">
+            <IconButton
+              type="navigation"
+              task="navMenu"
+              addButtonClass="lg:nonactive-button"
+              addIconClass="lg:nonactive-button"
+            />
+          </div>
           <div className="flex-none">
             <button
               onClick={() => handleLinkClick("/myduck")}
@@ -23,9 +29,10 @@ export default function Heading() {
             </button>
           </div>
         </div>
-        <div className="text-xs font-bold uppercase text-vincent-700">
+
+        <div className=" flex justify-center text-xs font-bold uppercase text-vincent-700">
           {mode === "mock" ? (
-            "(Mock mode)"
+            "- Mock -"
           ) : (
             <img
               className="h-8 pr-1"
@@ -37,22 +44,10 @@ export default function Heading() {
           )}
         </div>
 
-        <div className="flex-row-center icon-parent gap-2 pr-1">
-          <IonicButton
-            ionic="bulb"
-            linkto="/myduck/about"
-            addIonicClass="text-daffodil"
-          />
-          <IonicButton
-            ionic="beaker"
-            linkto="/myduck/sandbox"
-            addIonicClass="text-daffodil"
-          />
-          <IonicButton
-            ionic="build"
-            onClick={toggleMode}
-            addIonicClass="text-daffodil"
-          />
+        <div className="flex flex-1 justify-end gap-2">
+          <IconButton type="routing" task="about" />
+          <IconButton type="routing" task="sandbox" />
+          <IconButton task="toggleMode" onClick={toggleMode} />
         </div>
       </div>
     </div>

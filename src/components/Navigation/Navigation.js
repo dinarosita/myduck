@@ -1,7 +1,7 @@
 import React from "react";
 import ChatHistory from "../Navigation/ChatHistory";
 import AddChat from "../Navigation/AddChat";
-import NavButton from "../Common/NavButton";
+import IconButton from "../Common/IconButton";
 
 export default function Navigation() {
   return (
@@ -9,7 +9,7 @@ export default function Navigation() {
 
         <div className="flex flex-row justify-between items-center p-2 pl-3 ">
             <div className="font-bold text-petal text-lg leading-none">Chat History</div>
-            <NavButton close addClass="lg:hidden" />
+            <IconButton type="navigation" task="navClose" addButtonClass="lg:hidden" />
         </div>
         <hr className="blush-separator" />
 

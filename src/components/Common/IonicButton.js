@@ -1,8 +1,10 @@
 import React from "react";
-import useHandleLinkClick from "../../hooks/useHandleLinkClick";
+import { useLinkButtonLogic } from "../../hooks/useLinkButtonLogic";
+import { BookOpenIcon, NewspaperIcon, GlobeAltIcon, BeakerIcon } from "@heroicons/react/24/solid";
+
 
 export default function IonicButton(props) {
-  const handleLinkClick = useHandleLinkClick()
+  const handleLinkClick = useLinkButtonLogic()
 
   return (
     <button
