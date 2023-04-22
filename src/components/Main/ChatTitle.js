@@ -5,8 +5,8 @@ import ChatroomContext from "../../contexts/ChatroomContext";
 export default function ChatTitle() {
     const { isLoading } = useContext(ChatroomContext);
     const { id, chatMeta } = useContext(ActiveChatContext);
-  const [title, setTitle] = useState("Welcome");
-  const [tag, setTag] = useState("Loading almost done...");
+  const [title, setTitle] = useState("");
+  const [tag, setTag] = useState("");
 
   function formatTimestamp(timestamp) {
     const date = new Date(timestamp.seconds * 1000).toDateString();
@@ -15,7 +15,7 @@ export default function ChatTitle() {
   }
 
   useEffect(() => {
-    if(!isLoading) {
+    if(isLoading) {
         setTitle("Welcome")
         setTag("Loading almost done...")
     } else if (!id) {
@@ -36,7 +36,7 @@ export default function ChatTitle() {
   }, [id, chatMeta]);
 
   return (
-      <header className="blush-header">
+      <header className="blush-header min-h-16">
         <h1>{title}</h1>
         <p className="tagline">{tag}</p>
       </header>

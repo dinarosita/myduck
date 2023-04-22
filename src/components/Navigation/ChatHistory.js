@@ -17,7 +17,7 @@ export default function ChatHistory() {
       return [
         <button
           key="chatIsLoading"
-          className={`chat-button pointer-events-none bg-vincent-950/20 opacity-30`}
+          className={`chat-button pointer-events-none bg-vincent-950/20 opacity-50`}
         >
           Loading...
         </button>,

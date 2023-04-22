@@ -12,14 +12,14 @@ export default function Heading() {
 
   return (
     <div className="w-effective heading-fade-in flex-none px-2">
-      <div className="flex-row-center h-8 justify-between px-2 pt-2">
-        <div className="flex-row-center flex-1 gap-1">
-          <div className="min-w-12">
+      <div className="flex items-center h-8 justify-between px-2 pt-2">
+        <div className="flex-row-center flex-1 gap-1 items-center">
+          <div className="min-w-12 leading-none">
             <IconButton
               onClick={handleNavMenu}
               task="navMenu"
-              addButtonClass="lg:nonactive-button"
-              addIconClass="lg:nonactive-button"
+              addButtonClass="lg:nonactive-button "
+              addIconClass="lg:nonactive-button "
             />
           </div>
           <div className="flex-none">
@@ -46,7 +46,7 @@ export default function Heading() {
           )}
         </div>
 
-        <div className="flex flex-1 justify-end gap-2">
+        <div className="flex flex-1 justify-end items-start gap-2">
           <IconButton type="routing" page="about" />
           <IconButton type="routing" page="sandbox" />
           <IconButton task="toggleMode" onClick={toggleMode} />

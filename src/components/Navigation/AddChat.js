@@ -32,7 +32,7 @@ export default function AddChat() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex w-full flex-col items-center gap-1 px-3 py-2"
+      className="flex w-full flex-col items-center gap-1 px-3 h-28 flex-none justify-center"
     >
       <label htmlFor="title" className="text-lg font-bold text-petal">
         New Chat

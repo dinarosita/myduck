@@ -9,6 +9,10 @@ module.exports = {
       screens: {
         xs: "480px",
       },
+      minHeight: {
+        16: "4rem",
+        80: "20rem",
+      },
       colors: {
         charcoal: "#463325", // almond-900
         daffodil: "#FCF8F8", // amber-200 - petal now
