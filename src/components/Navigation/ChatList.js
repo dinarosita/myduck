@@ -1,16 +1,16 @@
 import React, { useContext } from "react";
-import ChatroomContext from "../../contexts/ChatroomContext";
+import ChatListContext from "../../contexts/ChatListContext";
 import { useNavigate } from "react-router-dom";
 import FlapContext from "../../contexts/FlapContext";
 import { useWindowSize } from "../../hooks/useWindowSize";
 
-export default function ChatHistory() {
+export default function ChatList() {
   const navigate = useNavigate();
   const windowSize = useWindowSize();
-  const { isLoading } = useContext(ChatroomContext);
+  const { isLoading } = useContext(ChatListContext);
   const { setIsFlapOpen } = useContext(FlapContext);
   const { chatAvailable, chatList, activeChatId, updateActiveChatId } =
-    useContext(ChatroomContext);
+    useContext(ChatListContext);
 
   function getChatButtons() {
     if (isLoading) {

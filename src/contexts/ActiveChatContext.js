@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import React, { useContext, useEffect, useState } from "react";
-import ChatroomContext from "./ChatroomContext";
-import GlobalConfigContext from "./GlobalConfigContext";
+import ChatListContext from "./ChatListContext";
+import { DATABASE_URL } from "../config";
 
 const ActiveChatContext = React.createContext({
   id: null,
@@ -13,8 +13,7 @@ const ActiveChatContext = React.createContext({
 });
 
 export function ActiveChatContextProvider(props) {
-  const { databaseUrl } = useContext(GlobalConfigContext);
-  const { activeChatId, chatList } = useContext(ChatroomContext);
+  const { activeChatId, chatList } = useContext(ChatListContext);
   const [messageList, setMessageList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -22,7 +21,7 @@ export function ActiveChatContextProvider(props) {
     setIsLoading(true);
     const abortController = new AbortController();
 
-    fetch(`${databaseUrl}/messages/${activeChatId}.json`, {
+    fetch(`${DATABASE_URL}/messages/${activeChatId}.json`, {
       signal: abortController.signal,
     })
       .then((response) => {

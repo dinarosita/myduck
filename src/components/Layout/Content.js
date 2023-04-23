@@ -2,15 +2,15 @@ import React, { useContext } from "react";
 import Navigation from "../Navigation/Navigation";
 import Main from "../Main/Main";
 import FlapContext from "../../contexts/FlapContext";
-import { ChatroomContextProvider } from "../../contexts/ChatroomContext";
+import { ChatListContextProvider } from "../../contexts/ChatListContext";
 
-export default function ContentWrapper() {
+export default function Content() {
   const { isFlapOpen, setIsFlapOpen } = useContext(FlapContext);
   function handleNavClose() {
     setIsFlapOpen(false);
   }
   return (
-    <ChatroomContextProvider>
+    <ChatListContextProvider>
       <div className="w-effective pass-overflow px-2">
         {/* RESPONSIVE SMARTPHONE < xs-480 - Overlay */}
         <div className={`pass-overflow relative xs:hidden `}>
@@ -59,6 +59,6 @@ export default function ContentWrapper() {
           </div>
         </div>
       </div>
-    </ChatroomContextProvider>
+    </ChatListContextProvider>
   );
 }

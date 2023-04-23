@@ -1,5 +1,5 @@
 import React from "react";
-import ChatHistory from "../Navigation/ChatHistory";
+import ChatList from "../Navigation/ChatList";
 import AddChat from "../Navigation/AddChat";
 import IconButton from "../Common/IconButton";
 import { useNavButtonLogic } from "../../hooks/useNavButtonLogic";
@@ -15,7 +15,7 @@ export default function Navigation() {
         </div>
         <hr className="blush-separator" />
 
-      <ChatHistory />
+      <ChatList />
       <hr className="blush-separator" />
       <AddChat />
     </nav>

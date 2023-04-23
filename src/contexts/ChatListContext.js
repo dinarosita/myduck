@@ -1,22 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect, useState } from "react";
-import GlobalConfigContext from "./GlobalConfigContext";
+import React, { useEffect, useState } from "react";
+import { DATABASE_URL } from "../config";
 
-const ChatroomContext = React.createContext({
+const ChatListContext = React.createContext({
   chatList: [],
-  setChatHistory: () => {},
+  setChatList: () => {},
   activeChatId: null,
-  chatAvailable: false,
-  setChatAvailable: () => {},
   updateActiveChatId: () => {},
+  chatAvailable: null,
+  setChatAvailable: () => {},
 });
 
-export function ChatroomContextProvider(props) {
-
-  const { mode, databaseUrl } = useContext(GlobalConfigContext);
-  const [chatList, setChatHistory] = useState([]);
+export function ChatListContextProvider(props) {
+  const [chatList, setChatList] = useState([]);
   const [activeChatId, setActiveChatId] = useState(
-    localStorage.getItem(`${mode}-activeChatId`)
+    localStorage.getItem("MyDuckActiveChatId")
   );
   const [chatAvailable, setChatAvailable] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -24,8 +22,9 @@ export function ChatroomContextProvider(props) {
   useEffect(() => {
     setIsLoading(true);
     const abortController = new AbortController();
+    console.log(`${DATABASE_URL}/chatMeta.json`)
 
-    fetch(`${databaseUrl}/chatMeta.json`, {
+    fetch(`${DATABASE_URL}/chatMeta.json`, {
       signal: abortController.signal,
     })
       .then((response) => {
@@ -45,7 +44,7 @@ export function ChatroomContextProvider(props) {
               ...data[key],
             };
             chats.push(chat);
-            setChatHistory(chats);
+            setChatList(chats);
             if (!activeChatId) {
               setActiveChatId(chats[chats.length - 1].id);
             }
@@ -63,7 +62,7 @@ export function ChatroomContextProvider(props) {
   }, []);
 
   function updateActiveChatId(newId) {
-    localStorage.setItem(`${mode}-activeChatId`, newId);
+    localStorage.setItem("MyDuckActiveChatId", newId);
     setActiveChatId(newId);
   }
 
@@ -71,17 +70,17 @@ export function ChatroomContextProvider(props) {
     chatAvailable: chatAvailable,
     setChatAvailable: setChatAvailable,
     chatList: chatList,
-    setChatHistory: setChatHistory,
+    setChatList: setChatList,
     activeChatId: activeChatId,
     isLoading: isLoading,
     updateActiveChatId: updateActiveChatId,
   };
 
   return (
-    <ChatroomContext.Provider value={context}>
+    <ChatListContext.Provider value={context}>
       {props.children}
-    </ChatroomContext.Provider>
+    </ChatListContext.Provider>
   );
 }
 
-export default ChatroomContext;
+export default ChatListContext;

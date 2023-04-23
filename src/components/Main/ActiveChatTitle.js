@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import ActiveChatContext from "../../contexts/ActiveChatContext";
-import ChatroomContext from "../../contexts/ChatroomContext";
+import ChatListContext from "../../contexts/ChatListContext";
 
-export default function ChatTitle() {
-    const { isLoading } = useContext(ChatroomContext);
+export default function ActiveChatTitle() {
+    const { isLoading } = useContext(ChatListContext);
     const { id, chatMeta } = useContext(ActiveChatContext);
   const [title, setTitle] = useState("");
   const [tag, setTag] = useState("");

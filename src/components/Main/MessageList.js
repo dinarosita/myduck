@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef } from "react";
 import ActiveChatContext from "../../contexts/ActiveChatContext";
 
-export default function MessageHistory() {
+export default function MessageList() {
   const { messageList, id } = useContext(ActiveChatContext);
   const containerRef = useRef();
 

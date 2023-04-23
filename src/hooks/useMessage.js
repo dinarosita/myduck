@@ -1,10 +1,8 @@
-import { useContext } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
-import GlobalConfigContext from "../contexts/GlobalConfigContext";
+import { DATABASE_URL } from "../config";
 
 export function useMessage() {
-  const { databaseUrl } = useContext(GlobalConfigContext);
 
   function postNewMessage(chatId, newMessage, callback) {
     const messageData = {
@@ -12,7 +10,7 @@ export function useMessage() {
       createdAt: firebase.firestore.Timestamp.now(),
     };
 
-    fetch(`${databaseUrl}/messages/${chatId}.json`, {
+    fetch(`${DATABASE_URL}/messages/${chatId}.json`, {
       method: "POST",
       body: JSON.stringify(messageData),
       headers: {
@@ -28,7 +26,7 @@ export function useMessage() {
   }
 
   function updateLocalMessages(chatId, messageId, callback) {
-    fetch(`${databaseUrl}/messages/${chatId}/${messageId}.json`)
+    fetch(`${DATABASE_URL}/messages/${chatId}/${messageId}.json`)
       .then((response) => response.json())
       .then((data) => {
         const latestMessage = {

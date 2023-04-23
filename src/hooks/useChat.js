@@ -1,13 +1,12 @@
 import { useContext } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
-import ChatroomContext from "../contexts/ChatroomContext";
-import GlobalConfigContext from "../contexts/GlobalConfigContext";
+import ChatListContext from "../contexts/ChatListContext";
+import { DATABASE_URL } from "../config";
 
 export function useChat() {
-  const { databaseUrl } = useContext(GlobalConfigContext);
-  const { chatAvailable, setChatAvailable, setChatHistory, updateActiveChatId } =
-    useContext(ChatroomContext);
+  const { chatAvailable, setChatAvailable, setChatList, updateActiveChatId } =
+    useContext(ChatListContext);
 
   function postNewChat(title) {
     const chatMeta = {
@@ -15,7 +14,7 @@ export function useChat() {
       createdAt: firebase.firestore.Timestamp.now(),
     };
 
-    return fetch(`${databaseUrl}/chatMeta.json`, {
+    return fetch(`${DATABASE_URL}/chatMeta.json`, {
       method: "POST",
       body: JSON.stringify(chatMeta),
       headers: {
@@ -37,14 +36,14 @@ export function useChat() {
   }
 
   function updateLocalList(chatId) {
-    return fetch(`${databaseUrl}/chatMeta/${chatId}.json`)
+    return fetch(`${DATABASE_URL}/chatMeta/${chatId}.json`)
       .then((response) => response.json())
       .then((data) => {
         const latestChat = {
           id: chatId,
           ...data,
         };
-        setChatHistory((prevAllChats) => prevAllChats.concat(latestChat));
+        setChatList((prevAllChats) => prevAllChats.concat(latestChat));
         updateActiveChatId(chatId);
       });
   }
