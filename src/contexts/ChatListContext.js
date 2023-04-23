@@ -22,8 +22,6 @@ export function ChatListContextProvider(props) {
   useEffect(() => {
     setIsLoading(true);
     const abortController = new AbortController();
-    console.log(`${DATABASE_URL}/chatMeta.json`)
-
     fetch(`${DATABASE_URL}/chatMeta.json`, {
       signal: abortController.signal,
     })
