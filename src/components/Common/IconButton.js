@@ -1,7 +1,6 @@
 import React from "react";
 import { useLinkButtonLogic } from "../../hooks/useLinkButtonLogic";
 import {
-  GlobeAltIcon,
   BeakerIcon,
   CodeBracketIcon,
   Bars3Icon,

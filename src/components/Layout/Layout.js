@@ -11,7 +11,7 @@ export default function Layout(props) {
   return (
     <GlobalConfigContextProvider>
       <FlapContextProvider>
-        <div className="flex-col-center absolute z-0 h-screen  w-screen ">
+        <div className="flex-col-center absolute z-0 h-screen w-screen">
           <Background />
           <Heading />
           {props.children}

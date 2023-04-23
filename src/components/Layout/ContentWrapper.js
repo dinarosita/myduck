@@ -11,7 +11,7 @@ export default function ContentWrapper() {
   }
   return (
     <ChatroomContextProvider>
-      <div className="w-effective pass-overflow p-2">
+      <div className="w-effective pass-overflow px-2">
         {/* RESPONSIVE SMARTPHONE < xs-480 - Overlay */}
         <div className={`pass-overflow relative xs:hidden `}>
           <div

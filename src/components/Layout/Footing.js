@@ -2,12 +2,9 @@ import React from "react";
 
 export default function Footing() {
   return (
-    <footer className="w-effective flex-none px-2">
-  
-      <div className="text-petal font-bold flex-row-center justify-between px-1 pb-2 text-xs">
-        <div>&copy; 2023 Codeyluwak </div>
-        <div>I'm talking to my duck!</div>
-      </div>
+    <footer className="w-effective flex-row-center h-7 flex-none justify-between px-4 text-xs font-bold text-petal">
+      <div>&copy; 2023 Codeyluwak </div>
+      <div>I'm talking to my duck!</div>
     </footer>
   );
 }

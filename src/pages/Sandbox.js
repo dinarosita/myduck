@@ -11,13 +11,6 @@ import {
   SparklesIcon,
   WrenchIcon,
   AdjustmentsHorizontalIcon,
-  ArchiveBoxArrowDownIcon,
-  ArchiveBoxXMarkIcon,
-  CheckCircleIcon,
-  XCircleIcon,
-  SwatchIcon,
-  TrashIcon,
-  RocketLaunchIcon,
 } from "@heroicons/react/24/solid";
 
 export default function Sandbox() {

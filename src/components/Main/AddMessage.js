@@ -49,7 +49,7 @@ export default function AddMessage() {
           id="entry"
           ref={textareaRef}
           maxLength="2000"
-          className="skyscroll h-28  max-h-60 w-full resize-y border-0 bg-transparent/20 text-white placeholder-vincent-50/80 caret-white hover:bg-transparent/50
+          className="skinnyscroll h-28  max-h-60 w-full resize-y border-0 bg-transparent/20 text-white placeholder-vincent-50/80 caret-white hover:bg-transparent/50 
           "
           placeholder="+ message..."
           style={{

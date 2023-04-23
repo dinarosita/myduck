@@ -43,7 +43,9 @@ export default function AddChat() {
         maxLength="50"
         ref={inputRef}
         placeholder="+ chat title"
-        className="inputbox w-full"
+        className="rounded-full py-1 focus:ring-0 w-full border-2 border-blossom-300 placeholder:text-vincent-700 text-vincent-800 focus:border-blossom-500 hover:placeholder:text-vincent-400 hover:border-blossom-500"
+
+        
       />
       <input type="submit" hidden={true} />
       <div>

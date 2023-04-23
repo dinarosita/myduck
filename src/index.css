@@ -57,7 +57,6 @@
   .chat-button {
     @apply w-full rounded-r-full px-2 py-1 text-left text-petal ring-0;
   }
-         
 
   .skyscroll::-webkit-scrollbar {
     @apply w-2;
@@ -68,7 +67,20 @@
   }
 
   .skyscroll::-webkit-scrollbar-thumb {
-    @apply rounded rounded-full bg-vincent-300/50;
+    @apply rounded-full bg-vincent-300/50;
+  }
+
+  
+  .skinnyscroll::-webkit-scrollbar {
+    @apply w-2 ;
+  }
+
+  .skinnyscroll::-webkit-scrollbar-track {
+    /* @apply bg-blossom-200; */
+  }
+
+  .skinnyscroll::-webkit-scrollbar-thumb {
+    @apply rounded-t-full bg-gradient-to-b from-vincent-300/50 to-blossom-300/50;
   }
 
   .pass-overflow {
@@ -93,10 +105,6 @@
 
   .titletext {
     @apply font-bold text-petal;
-  }
-
-  .inputbox {
-    @apply rounded-full py-1 !important;
   }
 
   *:focus {

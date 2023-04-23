@@ -12,7 +12,7 @@ export default function Heading() {
 
   return (
     <div className="w-effective heading-fade-in flex-none px-2">
-      <div className="flex items-center h-8 justify-between px-2 pt-2">
+      <div className="flex items-center h-10 justify-between px-2 ">
         <div className="flex-row-center flex-1 gap-1 items-center">
           <div className="min-w-12 leading-none">
             <IconButton
