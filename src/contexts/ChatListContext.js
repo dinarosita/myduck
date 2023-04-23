@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { DATABASE_URL } from "../config";
 
 const ChatListContext = React.createContext({
+  isLoading: true,
   chatList: [],
   setChatList: () => {},
   activeChatId: null,
@@ -12,16 +13,17 @@ const ChatListContext = React.createContext({
 });
 
 export function ChatListContextProvider(props) {
+  const [isLoading, setIsLoading] = useState(true);
   const [chatList, setChatList] = useState([]);
   const [activeChatId, setActiveChatId] = useState(
-    localStorage.getItem("MyDuckActiveChatId")
+    localStorage.getItem("activeChatId")
   );
   const [chatAvailable, setChatAvailable] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
     const abortController = new AbortController();
+
     fetch(`${DATABASE_URL}/chatMeta.json`, {
       signal: abortController.signal,
     })
@@ -32,21 +34,28 @@ export function ChatListContextProvider(props) {
         const chats = [];
 
         if (!data) {
-          console.log("Chat not available at initial loading.");
+          console.log("Page loading log: Chat not available");
         } else {
           setChatAvailable(true);
-          console.log("Chats available at initial loading.");
+          console.log("Page loading log: Chat available");
+
           for (const key in data) {
             const chat = {
               id: key,
               ...data[key],
             };
+
             chats.push(chat);
-            setChatList(chats);
-            if (!activeChatId) {
-              setActiveChatId(chats[chats.length - 1].id);
-            }
+            
           }
+          setChatList(chats);
+
+            if (
+              !activeChatId ||
+              !chats.some((chat) => chat.id === activeChatId)
+            ) {
+              updateActiveChatId(chats[chats.length - 1].id);
+            }
         }
         setIsLoading(false);
       })
@@ -60,7 +69,7 @@ export function ChatListContextProvider(props) {
   }, []);
 
   function updateActiveChatId(newId) {
-    localStorage.setItem("MyDuckActiveChatId", newId);
+    localStorage.setItem("activeChatId", newId);
     setActiveChatId(newId);
   }
 
