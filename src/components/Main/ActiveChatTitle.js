@@ -36,7 +36,7 @@ export default function ActiveChatTitle() {
   }, [id, chatMeta]);
 
   return (
-      <header className={`blush-header min-h-16 ${isLoading && "text-opacity-50"}`}>
+      <header className={`blush-header min-h-16 ${isLoading && "text-opacity-30"}`}>
         <h1>{title}</h1>
         <p className="tagline">{tag}</p>
       </header>

@@ -5,9 +5,11 @@ import IconButton from "../Common/IconButton";
 import { useMessage } from "../../hooks/useMessage";
 import { sanitizeInput } from '../../utils/sanitize';
 import { useWindowSize } from "../../hooks/useWindowSize";
+import ChatListContext from "../../contexts/ChatListContext";
 
 
 export default function AddMessage() {
+    const {isLoading, chatAvailable} = useContext(ChatListContext)
   const textareaRef = useRef();
   const { id, setMessageList } = useContext(ActiveChatContext);
   const [textvalue, setTextValue] = useState("");
@@ -19,6 +21,9 @@ export default function AddMessage() {
   }
 
   function handleSubmit(event) {
+    if (isLoading) {
+        return
+    }
     event.preventDefault();
 
     const rawMessageContent = textareaRef.current.value;
@@ -43,14 +48,14 @@ export default function AddMessage() {
   }
 
   return (
-    <section className="h-fit flex-none bg-transparent text-center ">
+    <section className={`h-fit flex-none bg-transparent text-center ${(isLoading || !chatAvailable) && "pointer-events-none opacity-50"}`}>
       <form className="relative h-fit h-full " style={{ lineHeight: 0 }}>
         <textarea
           id="entry"
           ref={textareaRef}
           maxLength="2000"
-          className="skinnyscroll h-28  max-h-60 w-full resize-y border-0 bg-transparent/20 text-white placeholder-vincent-50/80 caret-white hover:bg-transparent/50 
-          "
+          className={`skinnyscroll h-28  max-h-60 w-full resize-y border-0 bg-transparent/20 text-white placeholder-vincent-50/80 caret-white hover:bg-transparent/50 
+          `}
           placeholder="+ message..."
           style={{
             minHeight: "60px",

@@ -1,7 +1,11 @@
 import React, { useContext, useEffect, useRef } from "react";
 import ActiveChatContext from "../../contexts/ActiveChatContext";
+import ChatListContext from "../../contexts/ChatListContext";
+
 
 export default function MessageList() {
+    const {isLoading, chatAvailable} = useContext(ChatListContext)
+
   const { messageList, id } = useContext(ActiveChatContext);
   const containerRef = useRef();
 
@@ -11,11 +15,11 @@ export default function MessageList() {
     }
   }, [messageList]);
 
-//   if (!id) {
-//     return <div></div>;
-//   }
+  
+
   return (
     <section className="flex-auto h-full pass-overflow p-2 bg-transparent/20 ">
+      {!isLoading && chatAvailable &&
       <div
         ref={containerRef}
         className="
@@ -30,7 +34,7 @@ export default function MessageList() {
             {msg.message}
           </div>
         ))}
-      </div>
+      </div>}
     </section>
   );
 }

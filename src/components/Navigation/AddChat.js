@@ -4,12 +4,15 @@ import { sanitizeInput } from "../../utils/sanitize";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import FlapContext from "../../contexts/FlapContext";
 import IconButton from "../Common/IconButton";
+import ChatListContext from "../../contexts/ChatListContext";
 
 export default function AddChat() {
   const { setIsFlapOpen } = useContext(FlapContext);
   const inputRef = useRef();
   const { postNewChat } = useChat();
   const windowSize = useWindowSize();
+  const {isLoading, chatAvailable} = useContext(ChatListContext)
+
 
   function cancelNewChat(event) {
     event.preventDefault();
@@ -17,6 +20,9 @@ export default function AddChat() {
   }
 
   function handleSubmit(event) {
+    if (isLoading) {
+        return
+    }
     event.preventDefault();
     const title = inputRef.current.value;
     const sanitizedTitle = sanitizeInput(title);
@@ -32,7 +38,7 @@ export default function AddChat() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex w-full flex-col items-center gap-1 px-3 h-28 flex-none justify-center"
+      className={`flex w-full flex-col items-center gap-1 px-3 h-28 flex-none justify-center ${isLoading && "pointer-events-none opacity-50"}`}
     >
       <label htmlFor="title" className="text-lg font-bold text-petal">
         New Chat
