@@ -8,15 +8,15 @@ const UserChatsContext = createContext({
   updateActiveChatId: () => {},
   isNewUser: false,
   setIsNewUser: () => {},
-  userChats: [],
-  setUserChats: () => {},
+  userChatsData: [],
+  setUserChatsData: () => {},
 });
 
 export function UserChatsContextProvider(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [activeChatId, setActiveChatId] = useState(null);
   const [isNewUser, setIsNewUser] = useState(false);
-  const [userChats, setUserChats] = useState([]);
+  const [userChatsData, setUserChatsData] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -26,6 +26,9 @@ export function UserChatsContextProvider(props) {
       signal: abortController.signal,
     })
       .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
         return response.json();
       })
       .then((data) => {
@@ -46,7 +49,7 @@ export function UserChatsContextProvider(props) {
 
             chats.push(chat);
           }
-          setUserChats(chats);
+          setUserChatsData(chats);
 
           const lastChatId = localStorage.getItem("activeChatId");
 
@@ -74,8 +77,8 @@ export function UserChatsContextProvider(props) {
 
   const context = {
     isLoading: isLoading,
-    userChats: userChats,
-    setUserChats: setUserChats,
+    userChatsData: userChatsData,
+    setUserChatsData: setUserChatsData,
     activeChatId: activeChatId,
     updateActiveChatId: updateActiveChatId,
     isNewUser: isNewUser,

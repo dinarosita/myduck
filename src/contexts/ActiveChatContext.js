@@ -12,7 +12,7 @@ const ActiveChatContext = createContext({
 });
 
 export function ActiveChatContextProvider(props) {
-  const { activeChatId, userChats } = useContext(UserChatsContext);
+  const { activeChatId, userChatsData } = useContext(UserChatsContext);
   const [chatMessages, setChatMessages] = useState([]);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export function ActiveChatContextProvider(props) {
 
   const context = {
     chatId: activeChatId,
-    chatMeta: userChats.find((chat) => chat.id === activeChatId),
+    chatMeta: userChatsData.find((chat) => chat.id === activeChatId),
     chatMessages: chatMessages,
     setChatMessages: setChatMessages,
   };

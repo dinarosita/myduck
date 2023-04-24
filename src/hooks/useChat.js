@@ -5,7 +5,7 @@ import UserChatsContext from "../contexts/UserChatsContext";
 import { DATABASE_URL } from "../config";
 
 export function useChat() {
-  const { isNewUser, setIsNewUser, setUserChats, updateActiveChatId } =
+  const { isNewUser, setIsNewUser, setUserChatsData, updateActiveChatId } =
     useContext(UserChatsContext);
 
   function postNewChat(title) {
@@ -43,7 +43,7 @@ export function useChat() {
           id: chatId,
           ...data,
         };
-        setUserChats((prevAllChats) => prevAllChats.concat(latestChat));
+        setUserChatsData((prevAllChats) => prevAllChats.concat(latestChat));
         updateActiveChatId(chatId);
       });
   }
