@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/myduck/static/css/main.99f4b8bd.css",
-    "main.js": "/myduck/static/js/main.92c5fe1c.js",
+    "main.css": "/myduck/static/css/main.bfa908a0.css",
+    "main.js": "/myduck/static/js/main.22a5c6f2.js",
     "index.html": "/myduck/index.html",
-    "main.99f4b8bd.css.map": "/myduck/static/css/main.99f4b8bd.css.map",
-    "main.92c5fe1c.js.map": "/myduck/static/js/main.92c5fe1c.js.map"
+    "main.bfa908a0.css.map": "/myduck/static/css/main.bfa908a0.css.map",
+    "main.22a5c6f2.js.map": "/myduck/static/js/main.22a5c6f2.js.map"
   },
   "entrypoints": [
-    "static/css/main.99f4b8bd.css",
-    "static/js/main.92c5fe1c.js"
+    "static/css/main.bfa908a0.css",
+    "static/js/main.22a5c6f2.js"
   ]
 }
