@@ -3,8 +3,8 @@ import ActiveChatContext from "../../contexts/ActiveChatContext";
 import ChatListContext from "../../contexts/ChatListContext";
 
 export default function ActiveChatTitle() {
-    const { isLoading } = useContext(ChatListContext);
-    const { id, chatMeta } = useContext(ActiveChatContext);
+  const { isLoading, isNewUser } = useContext(ChatListContext);
+  const { chatMeta } = useContext(ActiveChatContext);
   const [title, setTitle] = useState("");
   const [tag, setTag] = useState("");
 
@@ -15,30 +15,28 @@ export default function ActiveChatTitle() {
   }
 
   useEffect(() => {
-    if(isLoading) {
-        setTitle("Loading ducks")
-        setTag("Quack quack quack!")
-    } else if (!id) {
-      setTitle("Welcome to MyDuck");
-      setTag("Start a new chat!");
+    if (isLoading) {
+      setTitle("Loading Duck");
+      setTag("Quack quack quack");
     } else {
-      if (!chatMeta || !chatMeta.title) {
-        setTitle("Untitled Quacks");
+      if (isNewUser) {
+        setTitle("Welcome to MyDuck");
+        setTag("Start a new chat!");
       } else {
-        setTitle(chatMeta.title);
-      }
-      if (chatMeta && chatMeta.createdAt) {
-        setTag(`Created: ${formatTimestamp(chatMeta.createdAt)}`);
-      } else {
-        setTag("Created some times ago");
+        if (chatMeta) {
+          setTitle(chatMeta.title ? chatMeta.title : "Untitled quack");
+          setTag(`Created: ${formatTimestamp(chatMeta.createdAt)}`);
+        }
       }
     }
-  }, [id, chatMeta]);
+  }, [isLoading, isNewUser, chatMeta]);
 
   return (
-      <header className={`blush-header min-h-16 ${isLoading && "text-opacity-30"}`}>
-        <h1>{title}</h1>
-        <p className="tagline">{tag}</p>
-      </header>
+    <header
+      className={`blush-header min-h-16 ${(isLoading || (!isNewUser && !chatMeta)) && "text-opacity-30"}`}
+    >
+      <h1>{title}</h1>
+      <p className="tagline">{tag}</p>
+    </header>
   );
 }

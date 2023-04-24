@@ -3,13 +3,12 @@ import "firebase/compat/firestore";
 import ActiveChatContext from "../../contexts/ActiveChatContext";
 import IconButton from "../Common/IconButton";
 import { useMessage } from "../../hooks/useMessage";
-import { sanitizeInput } from '../../utils/sanitize';
+import { sanitizeInput } from "../../utils/sanitize";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import ChatListContext from "../../contexts/ChatListContext";
 
-
 export default function AddMessage() {
-    const {isLoading, chatAvailable} = useContext(ChatListContext)
+  const { isLoading, isNewUser } = useContext(ChatListContext);
   const textareaRef = useRef();
   const { id, setMessageList } = useContext(ActiveChatContext);
   const [textvalue, setTextValue] = useState("");
@@ -21,8 +20,8 @@ export default function AddMessage() {
   }
 
   function handleSubmit(event) {
-    if (isLoading) {
-        return
+    if (isLoading || isNewUser) {
+      return;
     }
     event.preventDefault();
 
@@ -30,10 +29,9 @@ export default function AddMessage() {
     const sanitizedMessageContent = sanitizeInput(rawMessageContent);
     const messageContent = sanitizedMessageContent.trim();
 
-
     if (messageContent === "") {
-        console.log("Empty message or white spaces only, not submitting.")
-        return;
+      console.log("Empty message or white spaces only, not submitting.");
+      return;
     }
 
     postNewMessage(id, messageContent, (messageId) => {
@@ -48,7 +46,11 @@ export default function AddMessage() {
   }
 
   return (
-    <section className={`h-fit flex-none bg-transparent text-center ${(isLoading || !chatAvailable) && "pointer-events-none opacity-50"}`}>
+    <section
+      className={`h-fit flex-none bg-transparent text-center ${
+        (isLoading || isNewUser) && "pointer-events-none opacity-50"
+      }`}
+    >
       <form className="relative h-fit h-full " style={{ lineHeight: 0 }}>
         <textarea
           id="entry"

@@ -7,25 +7,27 @@ import { useWindowSize } from "../../hooks/useWindowSize";
 export default function ChatList() {
   const navigate = useNavigate();
   const windowSize = useWindowSize();
-  const { isLoading } = useContext(ChatListContext);
   const { setIsFlapOpen } = useContext(FlapContext);
-  const { chatAvailable, chatList, activeChatId, updateActiveChatId } =
-    useContext(ChatListContext);
-
-  const [sectionContent, setSectionContent] = useState();
+  const {
+    isLoading,
+    isNewUser,
+    chatList,
+    activeChatId,
+    updateActiveChatId,
+  } = useContext(ChatListContext);
+  const [content, setContent] = useState();
 
   useEffect(() => {
-    if (isLoading || !chatAvailable) {
-      setSectionContent(
+    if (isLoading || isNewUser) {
+      setContent(
         <button
-          key="chatIsLoading"
           className={`chat-button pointer-events-none bg-vincent-950/20 opacity-50`}
         >
           {isLoading ? "Loading..." : "Hello Duckies!"}
         </button>
       );
     } else {
-      setSectionContent(
+      setContent(
         chatList
           .map((chat) => (
             <button
@@ -46,12 +48,12 @@ export default function ChatList() {
           .reverse()
       );
     }
-  }, [isLoading, chatAvailable]);
+  }, [isLoading, isNewUser]);
 
   return (
     <div className="items-left pass-overflow flex w-full flex-col gap-2 p-2">
       <ul className="skyscroll flex flex-col items-start  gap-1 overflow-y-auto pr-4">
-        {sectionContent}
+        {content}
       </ul>
     </div>
   );

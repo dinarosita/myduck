@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { createContext, useState } from "react";
 
-const FlapContext = React.createContext();
+const FlapContext = createContext();
 
 export function FlapContextProvider({ children }) {
   const [isFlapOpen, setIsFlapOpen] = useState(false);

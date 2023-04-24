@@ -11,7 +11,7 @@ export default function AddChat(props) {
   const inputRef = useRef();
   const { postNewChat } = useChat();
   const windowSize = useWindowSize();
-  const { isLoading, chatAvailable } = useContext(ChatListContext);
+  const { isLoading, isNewUser } = useContext(ChatListContext);
 
   function cancelNewChat(event) {
     event.preventDefault();
@@ -40,7 +40,7 @@ export default function AddChat(props) {
       className={`flex h-28 w-full flex-none  flex-col items-center justify-center px-3 
       ${
         props.nav &&
-        (isLoading || !chatAvailable) &&
+        (isLoading || isNewUser) &&
         "pointer-events-none opacity-50"
       }
       ${props.welcome ? "gap-2" : "gap-1"}`}

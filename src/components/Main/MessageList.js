@@ -4,10 +4,10 @@ import ChatListContext from "../../contexts/ChatListContext";
 import AddChat from "../Navigation/AddChat";
 
 export default function MessageList() {
-  const { isLoading, chatAvailable } = useContext(ChatListContext);
-  const [sectionContent, setSectionContent] = useState(<></>);
+  const { isLoading, isNewUser } = useContext(ChatListContext);
+  const [content, setContent] = useState(null);
 
-  const { messageList, id } = useContext(ActiveChatContext);
+  const { messageList } = useContext(ActiveChatContext);
   const containerRef = useRef();
 
   useEffect(() => {
@@ -18,19 +18,21 @@ export default function MessageList() {
 
   useEffect(() => {
     if (isLoading) {
-      setSectionContent(<></>);
+      setContent(null);
     } else {
-      if (!chatAvailable) {
-        setSectionContent(<div className="flex pt-8 w-3/4 min-w-fit h-full mx-auto"><AddChat welcome /></div>);
+      if (isNewUser) {
+        setContent(
+          <div className="mx-auto flex h-full w-3/4 min-w-fit pt-8">
+            <AddChat welcome />
+          </div>
+        );
       } else {
-        setSectionContent(
+        setContent(
           <div
             ref={containerRef}
             className={`
                  skyscroll
-                flex h-full min-h-80 flex-auto  flex-col  gap-2 overflow-y-scroll whitespace-pre-wrap bg-transparent pr-8 ${
-                  (isLoading || !chatAvailable) && "hidden"
-                }`}
+                flex h-full min-h-80 flex-auto  flex-col  gap-2 overflow-y-scroll whitespace-pre-wrap bg-transparent pr-8 `}
           >
             {messageList.map((msg) => (
               <div
@@ -44,9 +46,11 @@ export default function MessageList() {
         );
       }
     }
-  }, [isLoading, chatAvailable]);
+  }, [isLoading, isNewUser]);
 
   return (
-    <section className="pass-overflow h-full flex-auto bg-transparent/20 p-2 ">{sectionContent}</section>
+    <section className="pass-overflow h-full flex-auto bg-transparent/20 p-2 ">
+      {content}
+    </section>
   );
 }

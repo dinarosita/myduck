@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import ChatListContext from "./ChatListContext";
 import { DATABASE_URL } from "../config";
 
-const ActiveChatContext = React.createContext({
+const ActiveChatContext = createContext({
   id: null,
   chatMeta: {},
   messageList: [],

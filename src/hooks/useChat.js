@@ -5,7 +5,7 @@ import ChatListContext from "../contexts/ChatListContext";
 import { DATABASE_URL } from "../config";
 
 export function useChat() {
-  const { chatAvailable, setChatAvailable, setChatList, updateActiveChatId } =
+  const { isNewUser, setIsNewUser, setChatList, updateActiveChatId } =
     useContext(ChatListContext);
 
   function postNewChat(title) {
@@ -26,8 +26,8 @@ export function useChat() {
         const chatId = data.name;
         
         updateLocalList(chatId);
-        if (!chatAvailable) {
-          setChatAvailable(true);
+        if (isNewUser) {
+          setIsNewUser(false);
           console.log("New chat added. Chat is now available.");
         } else {
           console.log("New chat added. Chat list updated.");

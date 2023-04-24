@@ -1,24 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { DATABASE_URL } from "../config";
 
-const ChatListContext = React.createContext({
+const ChatListContext = createContext({
   isLoading: true,
-  chatList: [],
-  setChatList: () => {},
   activeChatId: null,
   updateActiveChatId: () => {},
-  chatAvailable: true,
-  setChatAvailable: () => {},
+  isNewUser: false,
+  setIsNewUser: () => {},
+  chatList: [],
+  setChatList: () => {},
 });
 
 export function ChatListContextProvider(props) {
   const [isLoading, setIsLoading] = useState(true);
-  const [chatAvailable, setChatAvailable] = useState(true);
+  const [activeChatId, setActiveChatId] = useState(null);
+  const [isNewUser, setIsNewUser] = useState(false);
   const [chatList, setChatList] = useState([]);
-  const [activeChatId, setActiveChatId] = useState(
-    localStorage.getItem("activeChatId")
-  );
 
   useEffect(() => {
     setIsLoading(true);
@@ -34,12 +32,11 @@ export function ChatListContextProvider(props) {
         const chats = [];
 
         if (!data) {
-          setChatAvailable(false);
-          updateActiveChatId(null)
-          console.log("Page loading log: Chat not available");
+          setIsNewUser(true);
+          console.log("New user");
         } else {
-          setChatAvailable(true);
-          console.log("Page loading log: Chat available");
+          setIsNewUser(false);
+          console.log("Chats available");
 
           for (const key in data) {
             const chat = {
@@ -51,12 +48,14 @@ export function ChatListContextProvider(props) {
           }
           setChatList(chats);
 
-          if (
-            !activeChatId ||
-            !chats.some((chat) => chat.id === activeChatId)
-          ) {
+          const lastChatId = localStorage.getItem("activeChatId")
+
+          if (lastChatId && chats.some((chat) => chat.id === lastChatId)) {
+            setActiveChatId(lastChatId)
+          } else {
             updateActiveChatId(chats[chats.length - 1].id);
           }
+
         }
         setIsLoading(false);
       })
@@ -80,8 +79,8 @@ export function ChatListContextProvider(props) {
     setChatList: setChatList,
     activeChatId: activeChatId,
     updateActiveChatId: updateActiveChatId,
-    chatAvailable: chatAvailable,
-    setChatAvailable: setChatAvailable,
+    isNewUser: isNewUser,
+    setIsNewUser: setIsNewUser,
   };
 
   return (
