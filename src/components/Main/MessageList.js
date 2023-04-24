@@ -11,11 +11,11 @@ export default function MessageList() {
     }
   }, [messageList]);
 
-  if (!id) {
-    return <div></div>;
-  }
+//   if (!id) {
+//     return <div></div>;
+//   }
   return (
-    <section className="flex-auto pass-overflow p-2 bg-transparent/20 ">
+    <section className="flex-auto h-full pass-overflow p-2 bg-transparent/20 ">
       <div
         ref={containerRef}
         className="

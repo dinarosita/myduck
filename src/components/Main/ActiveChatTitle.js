@@ -16,11 +16,11 @@ export default function ActiveChatTitle() {
 
   useEffect(() => {
     if(isLoading) {
-        setTitle("Welcome")
-        setTag("Loading almost done...")
+        setTitle("Loading ducks")
+        setTag("Quack quack quack!")
     } else if (!id) {
       setTitle("Welcome to MyDuck");
-      setTag("Start a new chat...");
+      setTag("Start a new chat!");
     } else {
       if (!chatMeta || !chatMeta.title) {
         setTitle("Untitled Quacks");
@@ -36,7 +36,7 @@ export default function ActiveChatTitle() {
   }, [id, chatMeta]);
 
   return (
-      <header className="blush-header min-h-16">
+      <header className={`blush-header min-h-16 ${isLoading && "text-opacity-50"}`}>
         <h1>{title}</h1>
         <p className="tagline">{tag}</p>
       </header>

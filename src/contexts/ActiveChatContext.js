@@ -9,16 +9,13 @@ const ActiveChatContext = React.createContext({
   chatMeta: {},
   messageList: [],
   setMessageList: () => {},
-  isLoading: true,
 });
 
 export function ActiveChatContextProvider(props) {
   const { activeChatId, chatList } = useContext(ChatListContext);
   const [messageList, setMessageList] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
     const abortController = new AbortController();
 
     fetch(`${DATABASE_URL}/messages/${activeChatId}.json`, {
@@ -37,12 +34,10 @@ export function ActiveChatContextProvider(props) {
           dataMessages.push(message);
         }
 
-        setIsLoading(false);
         setMessageList(dataMessages);
       })
       .catch((error) => {
         console.log(error);
-        setIsLoading(false);
       });
 
     return () => {
@@ -55,7 +50,6 @@ export function ActiveChatContextProvider(props) {
     chatMeta: chatList.find((chat) => chat.id === activeChatId),
     messageList: messageList,
     setMessageList: setMessageList,
-    isLoading: isLoading,
   };
 
   return (

@@ -8,17 +8,17 @@ const ChatListContext = React.createContext({
   setChatList: () => {},
   activeChatId: null,
   updateActiveChatId: () => {},
-  chatAvailable: null,
+  chatAvailable: true,
   setChatAvailable: () => {},
 });
 
 export function ChatListContextProvider(props) {
   const [isLoading, setIsLoading] = useState(true);
+  const [chatAvailable, setChatAvailable] = useState(true);
   const [chatList, setChatList] = useState([]);
   const [activeChatId, setActiveChatId] = useState(
     localStorage.getItem("activeChatId")
   );
-  const [chatAvailable, setChatAvailable] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -34,6 +34,8 @@ export function ChatListContextProvider(props) {
         const chats = [];
 
         if (!data) {
+          setChatAvailable(false);
+          updateActiveChatId(null)
           console.log("Page loading log: Chat not available");
         } else {
           setChatAvailable(true);
@@ -46,16 +48,15 @@ export function ChatListContextProvider(props) {
             };
 
             chats.push(chat);
-            
           }
           setChatList(chats);
 
-            if (
-              !activeChatId ||
-              !chats.some((chat) => chat.id === activeChatId)
-            ) {
-              updateActiveChatId(chats[chats.length - 1].id);
-            }
+          if (
+            !activeChatId ||
+            !chats.some((chat) => chat.id === activeChatId)
+          ) {
+            updateActiveChatId(chats[chats.length - 1].id);
+          }
         }
         setIsLoading(false);
       })
@@ -74,13 +75,13 @@ export function ChatListContextProvider(props) {
   }
 
   const context = {
-    chatAvailable: chatAvailable,
-    setChatAvailable: setChatAvailable,
+    isLoading: isLoading,
     chatList: chatList,
     setChatList: setChatList,
     activeChatId: activeChatId,
-    isLoading: isLoading,
     updateActiveChatId: updateActiveChatId,
+    chatAvailable: chatAvailable,
+    setChatAvailable: setChatAvailable,
   };
 
   return (
