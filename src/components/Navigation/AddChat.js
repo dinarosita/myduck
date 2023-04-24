@@ -6,13 +6,12 @@ import FlapContext from "../../contexts/FlapContext";
 import IconButton from "../Common/IconButton";
 import ChatListContext from "../../contexts/ChatListContext";
 
-export default function AddChat() {
+export default function AddChat(props) {
   const { setIsFlapOpen } = useContext(FlapContext);
   const inputRef = useRef();
   const { postNewChat } = useChat();
   const windowSize = useWindowSize();
-  const {isLoading, chatAvailable} = useContext(ChatListContext)
-
+  const { isLoading, chatAvailable } = useContext(ChatListContext);
 
   function cancelNewChat(event) {
     event.preventDefault();
@@ -21,7 +20,7 @@ export default function AddChat() {
 
   function handleSubmit(event) {
     if (isLoading) {
-        return
+      return;
     }
     event.preventDefault();
     const title = inputRef.current.value;
@@ -38,10 +37,16 @@ export default function AddChat() {
   return (
     <form
       onSubmit={handleSubmit}
-      className={`flex w-full flex-col items-center gap-1 px-3 h-28 flex-none justify-center ${isLoading && "pointer-events-none opacity-50"}`}
+      className={`flex h-28 w-full flex-none  flex-col items-center justify-center px-3 
+      ${
+        props.nav &&
+        (isLoading || !chatAvailable) &&
+        "pointer-events-none opacity-50"
+      }
+      ${props.welcome ? "gap-2" : "gap-1"}`}
     >
       <label htmlFor="title" className="text-lg font-bold text-petal">
-        New Chat
+        {props.welcome ? "Start your first chat!" : "New Chat"}
       </label>
       <input
         id="title"
@@ -49,9 +54,7 @@ export default function AddChat() {
         maxLength="50"
         ref={inputRef}
         placeholder="+ chat title"
-        className="rounded-full py-1 focus:ring-0 w-full border-2 border-blossom-300 placeholder:text-vincent-700 text-vincent-800 focus:border-blossom-500 hover:placeholder:text-vincent-400 hover:border-blossom-500"
-
-        
+        className="w-full rounded-full border-2 border-blossom-300 py-1 text-vincent-800 placeholder:text-vincent-700 hover:border-blossom-500 hover:placeholder:text-vincent-400 focus:border-blossom-500 focus:ring-0"
       />
       <input type="submit" hidden={true} />
       <div>
