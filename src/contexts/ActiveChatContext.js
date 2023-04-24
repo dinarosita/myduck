@@ -1,19 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import React, { createContext, useContext, useEffect, useState } from "react";
-import ChatListContext from "./ChatListContext";
+import UserChatsContext from "./UserChatsContext";
 import { DATABASE_URL } from "../config";
 
 const ActiveChatContext = createContext({
-  id: null,
+  chatId: null,
   chatMeta: {},
-  messageList: [],
-  setMessageList: () => {},
+  chatMessages: [],
+  setChatMessages: () => {},
 });
 
 export function ActiveChatContextProvider(props) {
-  const { activeChatId, chatList } = useContext(ChatListContext);
-  const [messageList, setMessageList] = useState([]);
+  const { activeChatId, userChats } = useContext(UserChatsContext);
+  const [chatMessages, setChatMessages] = useState([]);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -25,16 +25,16 @@ export function ActiveChatContextProvider(props) {
         return response.json();
       })
       .then((data) => {
-        const dataMessages = [];
+        const messages = [];
         for (const key in data) {
           const message = {
             id: key,
             ...data[key],
           };
-          dataMessages.push(message);
+          messages.push(message);
         }
 
-        setMessageList(dataMessages);
+        setChatMessages(messages);
       })
       .catch((error) => {
         console.log(error);
@@ -46,10 +46,10 @@ export function ActiveChatContextProvider(props) {
   }, [activeChatId]);
 
   const context = {
-    id: activeChatId,
-    chatMeta: chatList.find((chat) => chat.id === activeChatId),
-    messageList: messageList,
-    setMessageList: setMessageList,
+    chatId: activeChatId,
+    chatMeta: userChats.find((chat) => chat.id === activeChatId),
+    chatMessages: chatMessages,
+    setChatMessages: setChatMessages,
   };
 
   return (

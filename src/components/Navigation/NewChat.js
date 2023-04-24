@@ -4,14 +4,14 @@ import { sanitizeInput } from "../../utils/sanitize";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import FlapContext from "../../contexts/FlapContext";
 import IconButton from "../Common/IconButton";
-import ChatListContext from "../../contexts/ChatListContext";
+import UserChatsContext from "../../contexts/UserChatsContext";
 
-export default function AddChat(props) {
+export default function NewChat(props) {
   const { setIsFlapOpen } = useContext(FlapContext);
   const inputRef = useRef();
   const { postNewChat } = useChat();
   const windowSize = useWindowSize();
-  const { isLoading, isNewUser } = useContext(ChatListContext);
+  const { isLoading, isNewUser } = useContext(UserChatsContext);
 
   function cancelNewChat(event) {
     event.preventDefault();
@@ -54,7 +54,7 @@ export default function AddChat(props) {
         maxLength="50"
         ref={inputRef}
         placeholder="+ chat title"
-        className="w-full rounded-full border-2 border-blossom-300 py-1 text-vincent-800 placeholder:text-vincent-700 hover:border-blossom-500 hover:placeholder:text-vincent-400 focus:border-blossom-500 focus:ring-0"
+        className={`w-full rounded-full border-2 border-blossom-300 py-1 text-vincent-800 placeholder:text-vincent-700 hover:border-blossom-500 hover:placeholder:text-vincent-400 focus:border-blossom-500 focus:ring-0 max-w-md  ${props.welcome ? "text-center" : "text-left"}`}
       />
       <input type="submit" hidden={true} />
       <div>

@@ -1,17 +1,17 @@
 import React from "react";
-import ActiveChatTitle from "./ActiveChatTitle";
-import MessageList from "./MessageList";
-import AddMessage from "./AddMessage";
+import ChatTitle from "./ChatTitle";
+import ChatMessages from "./ChatMessages";
+import NewMessage from "./NewMessage";
 import { ActiveChatContextProvider } from "../../contexts/ActiveChatContext";
 
 export default function Main() {
   return (
     <ActiveChatContextProvider>
       <main className="pass-overflow blush-frame flex flex-auto flex-col justify-between">
-        <ActiveChatTitle />
-        <MessageList />
+        <ChatTitle />
+        <ChatMessages />
         <hr className="blush-separator" />
-        <AddMessage />
+        <NewMessage />
       </main>
     </ActiveChatContextProvider>
   );

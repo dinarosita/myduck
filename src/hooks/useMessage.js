@@ -36,7 +36,7 @@ export function useMessage() {
         if (callback) {
           callback(latestMessage);
         }
-        // setMessageList((prevList) => prevList.concat(latestMessage));
+        // setChatMessages((prevList) => prevList.concat(latestMessage));
       });
   }
 

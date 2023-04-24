@@ -2,21 +2,21 @@
 import React, { createContext, useEffect, useState } from "react";
 import { DATABASE_URL } from "../config";
 
-const ChatListContext = createContext({
+const UserChatsContext = createContext({
   isLoading: true,
   activeChatId: null,
   updateActiveChatId: () => {},
   isNewUser: false,
   setIsNewUser: () => {},
-  chatList: [],
-  setChatList: () => {},
+  userChats: [],
+  setUserChats: () => {},
 });
 
-export function ChatListContextProvider(props) {
+export function UserChatsContextProvider(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [activeChatId, setActiveChatId] = useState(null);
   const [isNewUser, setIsNewUser] = useState(false);
-  const [chatList, setChatList] = useState([]);
+  const [userChats, setUserChats] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -46,16 +46,15 @@ export function ChatListContextProvider(props) {
 
             chats.push(chat);
           }
-          setChatList(chats);
+          setUserChats(chats);
 
-          const lastChatId = localStorage.getItem("activeChatId")
+          const lastChatId = localStorage.getItem("activeChatId");
 
           if (lastChatId && chats.some((chat) => chat.id === lastChatId)) {
-            setActiveChatId(lastChatId)
+            setActiveChatId(lastChatId);
           } else {
             updateActiveChatId(chats[chats.length - 1].id);
           }
-
         }
         setIsLoading(false);
       })
@@ -75,8 +74,8 @@ export function ChatListContextProvider(props) {
 
   const context = {
     isLoading: isLoading,
-    chatList: chatList,
-    setChatList: setChatList,
+    userChats: userChats,
+    setUserChats: setUserChats,
     activeChatId: activeChatId,
     updateActiveChatId: updateActiveChatId,
     isNewUser: isNewUser,
@@ -84,10 +83,10 @@ export function ChatListContextProvider(props) {
   };
 
   return (
-    <ChatListContext.Provider value={context}>
+    <UserChatsContext.Provider value={context}>
       {props.children}
-    </ChatListContext.Provider>
+    </UserChatsContext.Provider>
   );
 }
 
-export default ChatListContext;
+export default UserChatsContext;

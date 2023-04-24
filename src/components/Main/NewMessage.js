@@ -5,12 +5,12 @@ import IconButton from "../Common/IconButton";
 import { useMessage } from "../../hooks/useMessage";
 import { sanitizeInput } from "../../utils/sanitize";
 import { useWindowSize } from "../../hooks/useWindowSize";
-import ChatListContext from "../../contexts/ChatListContext";
+import UserChatsContext from "../../contexts/UserChatsContext";
 
-export default function AddMessage() {
-  const { isLoading, isNewUser } = useContext(ChatListContext);
+export default function NewMessage() {
+  const { isLoading, isNewUser } = useContext(UserChatsContext);
   const textareaRef = useRef();
-  const { id, setMessageList } = useContext(ActiveChatContext);
+  const { chatId, setChatMessages } = useContext(ActiveChatContext);
   const [textvalue, setTextValue] = useState("");
   const { postNewMessage, updateLocalMessages } = useMessage();
   const windowSize = useWindowSize();
@@ -34,9 +34,9 @@ export default function AddMessage() {
       return;
     }
 
-    postNewMessage(id, messageContent, (messageId) => {
-      updateLocalMessages(id, messageId, (latestMessage) => {
-        setMessageList((prevList) => prevList.concat(latestMessage));
+    postNewMessage(chatId, messageContent, (messageId) => {
+      updateLocalMessages(chatId, messageId, (latestMessage) => {
+        setChatMessages((prevList) => prevList.concat(latestMessage));
       });
       setTextValue("");
       if (windowSize.width > 480) {

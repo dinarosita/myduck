@@ -1,20 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
-import ChatListContext from "../../contexts/ChatListContext";
+import UserChatsContext from "../../contexts/UserChatsContext";
 import { useNavigate } from "react-router-dom";
 import FlapContext from "../../contexts/FlapContext";
 import { useWindowSize } from "../../hooks/useWindowSize";
 
-export default function ChatList() {
+export default function UserChats() {
   const navigate = useNavigate();
   const windowSize = useWindowSize();
   const { setIsFlapOpen } = useContext(FlapContext);
   const {
     isLoading,
     isNewUser,
-    chatList,
+    userChats,
     activeChatId,
     updateActiveChatId,
-  } = useContext(ChatListContext);
+  } = useContext(UserChatsContext);
   const [content, setContent] = useState();
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function ChatList() {
       );
     } else {
       setContent(
-        chatList
+        userChats
           .map((chat) => (
             <button
               key={chat.id}
@@ -39,7 +39,7 @@ export default function ChatList() {
                 }
                 navigate("/myduck");
               }}
-              className={`chat-button smooth transition hover:bg-petal/20 focus:bg-vincent-950/20 active:bg-none
+              className={`chat-button smooth transition hover:bg-petal/20 focus:bg-vincent-950/20 active:bg-none break-words
             ${activeChatId === chat.id && "bg-vincent-950/20 "}`}
             >
               {chat.title || "Untitled"}
@@ -48,7 +48,7 @@ export default function ChatList() {
           .reverse()
       );
     }
-  }, [isLoading, isNewUser]);
+  }, [isLoading, isNewUser, activeChatId]);
 
   return (
     <div className="items-left pass-overflow flex w-full flex-col gap-2 p-2">

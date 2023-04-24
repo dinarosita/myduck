@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
-import ChatListContext from "../contexts/ChatListContext";
+import UserChatsContext from "../contexts/UserChatsContext";
 import { DATABASE_URL } from "../config";
 
 export function useChat() {
-  const { isNewUser, setIsNewUser, setChatList, updateActiveChatId } =
-    useContext(ChatListContext);
+  const { isNewUser, setIsNewUser, setUserChats, updateActiveChatId } =
+    useContext(UserChatsContext);
 
   function postNewChat(title) {
     const chatMeta = {
@@ -43,7 +43,7 @@ export function useChat() {
           id: chatId,
           ...data,
         };
-        setChatList((prevAllChats) => prevAllChats.concat(latestChat));
+        setUserChats((prevAllChats) => prevAllChats.concat(latestChat));
         updateActiveChatId(chatId);
       });
   }
