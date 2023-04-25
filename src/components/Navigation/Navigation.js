@@ -25,7 +25,6 @@ export default function Navigation() {
         />
       </div>
       <hr className="blush-separator" />
-
       <UserChats />
       <hr className="blush-separator" />
       <NewChat nav />

@@ -4,7 +4,7 @@ import UserChatsContext from "../../contexts/UserChatsContext";
 
 export default function ChatTitle() {
   const { isLoading, isNewUser } = useContext(UserChatsContext);
-  const { chatMeta } = useContext(ActiveChatContext);
+  const { chatMeta, chatLoading } = useContext(ActiveChatContext);
   const [title, setTitle] = useState("");
   const [tag, setTag] = useState("");
 
@@ -13,6 +13,7 @@ export default function ChatTitle() {
     const time = new Date(timestamp.seconds * 1000).toLocaleTimeString();
     return `${date} at ${time}`;
   }
+
 
   useEffect(() => {
     if (isLoading) {
@@ -29,7 +30,7 @@ export default function ChatTitle() {
         }
       }
     }
-  }, [isLoading, isNewUser, chatMeta]);
+  }, [isLoading, isNewUser, chatMeta, chatLoading]);
 
   return (
     <header

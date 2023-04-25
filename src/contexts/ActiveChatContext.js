@@ -5,6 +5,7 @@ import UserChatsContext from "./UserChatsContext";
 import { DATABASE_URL } from "../config";
 
 const ActiveChatContext = createContext({
+  chatLoading: false,
   chatId: null,
   chatMeta: {},
   chatMessages: [],
@@ -14,8 +15,10 @@ const ActiveChatContext = createContext({
 export function ActiveChatContextProvider(props) {
   const { activeChatId, userChatsData } = useContext(UserChatsContext);
   const [chatMessages, setChatMessages] = useState([]);
+  const [chatLoading, setChatLoading] = useState(false);
 
   useEffect(() => {
+    setChatLoading(true);
     const abortController = new AbortController();
 
     fetch(`${DATABASE_URL}/messages/${activeChatId}.json`, {
@@ -35,6 +38,7 @@ export function ActiveChatContextProvider(props) {
         }
 
         setChatMessages(messages);
+        setChatLoading(false);
       })
       .catch((error) => {
         console.log(error);
@@ -46,6 +50,7 @@ export function ActiveChatContextProvider(props) {
   }, [activeChatId]);
 
   const context = {
+    chatLoading: chatLoading,
     chatId: activeChatId,
     chatMeta: userChatsData.find((chat) => chat.id === activeChatId),
     chatMessages: chatMessages,

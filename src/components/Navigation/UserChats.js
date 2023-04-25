@@ -31,7 +31,7 @@ export default function UserChats() {
         ) : (
           userChatsData
             .map((chat) => (
-              <li key={chat.id}>
+              <li key={chat.id} className="max-w-full">
                 <button
                   onClick={() => {
                     updateActiveChatId(chat.id);

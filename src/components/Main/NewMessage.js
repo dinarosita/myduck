@@ -20,9 +20,6 @@ export default function NewMessage() {
   }
 
   function handleSubmit(event) {
-    if (isLoading || isNewUser) {
-      return;
-    }
     event.preventDefault();
 
     const rawMessageContent = textareaRef.current.value;
@@ -51,12 +48,16 @@ export default function NewMessage() {
         (isLoading || isNewUser) && "pointer-events-none opacity-50"
       }`}
     >
-      <form className="relative h-fit h-full " style={{ lineHeight: 0 }}>
+      <form
+        disabled={isLoading || isNewUser}
+        className="relative h-fit h-full "
+        style={{ lineHeight: 0 }}
+      >
         <textarea
           id="entry"
           ref={textareaRef}
           maxLength="2000"
-          className={`skinnyscroll h-28  max-h-60 w-full resize-y border-0 bg-transparent/20 text-white placeholder-vincent-50/80 caret-white hover:bg-transparent/50 
+          className={`skinnyscroll h-28  max-h-60 w-full resize-y border-0 bg-transparent/20 text-white placeholder-vincent-50/80 caret-white hover:bg-transparent/30  focus:bg-transparent/30
           `}
           placeholder="+ message..."
           style={{

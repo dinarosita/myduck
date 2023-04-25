@@ -37,7 +37,7 @@
   }
 
   .blush-button {
-    @apply text-petal hover:text-transparent/40 focus:text-transparent/40 active:text-transparent/20;
+    @apply text-petal hover:text-transparent/60 focus:text-transparent/60 active:text-transparent/20;
   }
 
   .icon-container {

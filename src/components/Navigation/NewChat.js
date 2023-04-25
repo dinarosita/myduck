@@ -37,6 +37,7 @@ export default function NewChat(props) {
   return (
     <form
       onSubmit={handleSubmit}
+      disabled={isLoading || isNewUser}
       className={`flex h-28 w-full flex-none  flex-col items-center justify-center px-3 
       ${
         props.nav &&
