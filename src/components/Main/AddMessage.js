@@ -7,12 +7,12 @@ import { sanitizeInput } from "../../utils/sanitize";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import UserChatsContext from "../../contexts/UserChatsContext";
 
-export default function NewMessage() {
+export default function AddMessage() {
   const { isLoading, isNewUser } = useContext(UserChatsContext);
   const textareaRef = useRef();
-  const { chatId, setChatMessages } = useContext(ActiveChatContext);
+  const { chatId, setMessageHistory } = useContext(ActiveChatContext);
   const [textvalue, setTextValue] = useState("");
-  const { postNewMessage, updateLocalMessages } = useMessage();
+  const { postAddMessage, updateLocalMessages } = useMessage();
   const windowSize = useWindowSize();
 
   function handleTextValue(event) {
@@ -31,9 +31,9 @@ export default function NewMessage() {
       return;
     }
 
-    postNewMessage(chatId, messageContent, (messageId) => {
+    postAddMessage(chatId, messageContent, (messageId) => {
       updateLocalMessages(chatId, messageId, (latestMessage) => {
-        setChatMessages((prevList) => prevList.concat(latestMessage));
+        setMessageHistory((prevList) => prevList.concat(latestMessage));
       });
       setTextValue("");
       if (windowSize.width > 480) {

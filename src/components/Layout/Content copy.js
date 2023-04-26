@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Navigation from "../Navigation/Navigation";
 import Main from "../Main/Main";
 import FlapContext from "../../contexts/FlapContext";
-import { ChatListContextProvider } from "../../contexts/ChatListContext";
+import { UserChatsContextProvider } from "../../contexts/UserChatsContext";
 
 export default function Content() {
   const { isFlapOpen, setIsFlapOpen } = useContext(FlapContext);
@@ -10,7 +10,7 @@ export default function Content() {
     setIsFlapOpen(false);
   }
   return (
-    <ChatListContextProvider>
+    <UserChatsContextProvider>
       <div className="w-effective pass-overflow px-2">
         {/* RESPONSIVE SMARTPHONE < xs-480 - Overlay */}
         <div className={`pass-overflow relative xs:hidden `}>
@@ -28,7 +28,7 @@ export default function Content() {
             }`}
             onClick={handleNavClose}
           ></div>
-          <Main />
+          <Main   />
         </div>
 
         {/* RESPONSIVE SMALL xs-480 to lg-1024 - Sliding nav */}
@@ -38,27 +38,27 @@ export default function Content() {
             ${isFlapOpen ? "translate-x-0" : "-translate-x-full"}
             absolute bottom-0 left-0 top-0 z-20`}
           >
-            <Navigation />
+            <Navigation  />
           </div>
           <div
             className={`pass-overflow smooth relative transition-all  ${
               isFlapOpen ? "ml-52 sm:ml-60 md:ml-64" : "ml-0"
             }`}
           >
-            <Main />
+            <Main  />
           </div>
         </div>
 
         {/* RESPONSIVE LARGE  > lg-1024 - Permanent nav */}
         <div className={`pass-overflow hidden flex-row gap-2 lg:flex`}>
           <div className="w-72 flex-none">
-            <Navigation />
+            <Navigation  />
           </div>
           <div className="w-full flex-1">
             <Main />
           </div>
         </div>
       </div>
-    </ChatListContextProvider>
+    </UserChatsContextProvider>
   );
 }

@@ -4,29 +4,30 @@ import { sanitizeInput } from "../../utils/sanitize";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import FlapContext from "../../contexts/FlapContext";
 import IconButton from "../Common/IconButton";
-import UserChatsContext from "../../contexts/UserChatsContext";
+import ChatListContext from "../../contexts/ChatListContext";
 
-export default function NewChat(props) {
+export default function AddChat(props) {
   const { setIsFlapOpen } = useContext(FlapContext);
-  const inputRef = useRef();
-  const { postNewChat } = useChat();
-  const windowSize = useWindowSize();
-  const { isLoading, isNewUser } = useContext(UserChatsContext);
+  const { isPageLoading, isNewUser } = useContext(ChatListContext);
 
-  function cancelNewChat(event) {
+  const inputRef = useRef();
+  const { postAddChat } = useChat();
+  const windowSize = useWindowSize();
+
+  function cancelAddChat(event) {
     event.preventDefault();
     inputRef.current.value = "";
   }
 
   function handleSubmit(event) {
-    if (isLoading) {
+    if (isPageLoading) {
       return;
     }
     event.preventDefault();
     const title = inputRef.current.value;
     const sanitizedTitle = sanitizeInput(title);
-    console.log(title, " into ", sanitizedTitle);
-    postNewChat(sanitizedTitle).then(() => {
+    // console.log(title, " into ", sanitizedTitle);
+    postAddChat(sanitizedTitle).then(() => {
       inputRef.current.value = "";
     });
     if (windowSize.width < 480) {
@@ -35,13 +36,15 @@ export default function NewChat(props) {
   }
 
   return (
+    // <div className="text-petal text-lg">Under Construction</div>
+
     <form
       onSubmit={handleSubmit}
-      disabled={isLoading || isNewUser}
+      disabled={isPageLoading || isNewUser}
       className={`flex h-28 w-full flex-none  flex-col items-center justify-center px-3 
       ${
         props.nav &&
-        (isLoading || isNewUser) &&
+        (isPageLoading || isNewUser) &&
         "pointer-events-none opacity-50"
       }
       ${props.welcome ? "gap-2" : "gap-1"}`}
@@ -59,7 +62,7 @@ export default function NewChat(props) {
       />
       <input type="submit" hidden={true} />
       <div>
-        <IconButton task="chatCancel" onClick={cancelNewChat} />
+        <IconButton task="chatCancel" onClick={cancelAddChat} />
         <IconButton task="chatSubmit" onClick={handleSubmit} />
       </div>
     </form>

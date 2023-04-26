@@ -8,7 +8,7 @@ export function useChat() {
   const { isNewUser, setIsNewUser, setUserChatsData, updateActiveChatId } =
     useContext(UserChatsContext);
 
-  function postNewChat(title) {
+  function postAddChat(title) {
     const chatMeta = {
       title: title || null,
       createdAt: firebase.firestore.Timestamp.now(),
@@ -49,6 +49,6 @@ export function useChat() {
   }
 
   return {
-    postNewChat
+    postAddChat
   };
 }

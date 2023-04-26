@@ -12,12 +12,12 @@ const database = firebase.database();
 const messagesRef = database.ref("messages");
 
 // add a new message to the database
-function postNewMessage(message) {
+function postAddMessage(message) {
   messagesRef.push(message);
 }
 
 // listen for changes to the messages node
-function listenForNewMessages() {
+function listenForAddMessages() {
   messagesRef.on("child_added", (snapshot) => {
     const message = snapshot.val();
     console.log("New message:", message);
@@ -33,5 +33,5 @@ function sanitizeInput(input) {
 // use the sanitized input to post a new message
 function postSanitizedMessage(messageContent) {
   const sanitizedContent = sanitizeInput(messageContent);
-  postNewMessage(sanitizedContent);
+  postAddMessage(sanitizedContent);
 }

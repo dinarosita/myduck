@@ -8,13 +8,13 @@ const ActiveChatContext = createContext({
   chatLoading: false,
   chatId: null,
   chatMeta: {},
-  chatMessages: [],
-  setChatMessages: () => {},
+  messageHistory: [],
+  setMessageHistory: () => {},
 });
 
 export function ActiveChatContextProvider(props) {
   const { activeChatId, userChatsData } = useContext(UserChatsContext);
-  const [chatMessages, setChatMessages] = useState([]);
+  const [messageHistory, setMessageHistory] = useState([]);
   const [chatLoading, setChatLoading] = useState(false);
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export function ActiveChatContextProvider(props) {
           messages.push(message);
         }
 
-        setChatMessages(messages);
+        setMessageHistory(messages);
         setChatLoading(false);
       })
       .catch((error) => {
@@ -53,8 +53,8 @@ export function ActiveChatContextProvider(props) {
     chatLoading: chatLoading,
     chatId: activeChatId,
     chatMeta: userChatsData.find((chat) => chat.id === activeChatId),
-    chatMessages: chatMessages,
-    setChatMessages: setChatMessages,
+    messageHistory: messageHistory,
+    setMessageHistory: setMessageHistory,
   };
 
   return (
