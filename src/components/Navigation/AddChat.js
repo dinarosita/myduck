@@ -1,5 +1,4 @@
 import React, { useContext, useRef } from "react";
-import { useChat } from "../../hooks/useChat";
 import { sanitizeInput } from "../../utils/sanitize";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import FlapContext from "../../contexts/FlapContext";
@@ -8,10 +7,9 @@ import ChatListContext from "../../contexts/ChatListContext";
 
 export default function AddChat(props) {
   const { setIsFlapOpen } = useContext(FlapContext);
-  const { isPageLoading, isNewUser } = useContext(ChatListContext);
+  const { isPageLoading, isNewUser, addNewChat } = useContext(ChatListContext);
 
   const inputRef = useRef();
-  const { postAddChat } = useChat();
   const windowSize = useWindowSize();
 
   function cancelAddChat(event) {
@@ -20,14 +18,12 @@ export default function AddChat(props) {
   }
 
   function handleSubmit(event) {
+    event.preventDefault();
     if (isPageLoading) {
       return;
     }
-    event.preventDefault();
-    const title = inputRef.current.value;
-    const sanitizedTitle = sanitizeInput(title);
-    // console.log(title, " into ", sanitizedTitle);
-    postAddChat(sanitizedTitle).then(() => {
+    const title = sanitizeInput(inputRef.current.value);
+    addNewChat(title).then(() => {
       inputRef.current.value = "";
     });
     if (windowSize.width < 480) {

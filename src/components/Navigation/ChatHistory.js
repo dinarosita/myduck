@@ -1,19 +1,19 @@
 import React, { useContext } from "react";
-// import FlapContext from "../../contexts/FlapContext";
-// import { useNavigate } from "react-router-dom";
-// import { useWindowSize } from "../../hooks/useWindowSize";
+import FlapContext from "../../contexts/FlapContext";
+import { useNavigate } from "react-router-dom";
+import { useWindowSize } from "../../hooks/useWindowSize";
 import ChatListContext from "../../contexts/ChatListContext";
 
 export default function ChatHistory() {
-//   const navigate = useNavigate();
-//   const windowSize = useWindowSize();
-//   const { setIsFlapOpen } = useContext(FlapContext);
+  const navigate = useNavigate();
+  const windowSize = useWindowSize();
+  const { setIsFlapOpen } = useContext(FlapContext);
   const {
     isPageLoading,
     isNewUser,
     localChatList,
     mainChatId,
-    // updateActiveChatId,
+    updateMainChat
   } = useContext(ChatListContext);
 
   return (
@@ -33,13 +33,15 @@ export default function ChatHistory() {
             .map((chat) => (
               <li key={chat.id} className="max-w-full">
                 <button
-                //   onClick={() => {
-                //     updateActiveChatId(chat.id);
-                //     if (windowSize.width < 480) {
-                //       setIsFlapOpen(false);
-                //     }
-                //     navigate("/myduck");
-                //   }}
+                  onClick={() => {
+                    if (chat.id !== mainChatId) {
+                        updateMainChat(chat.id);
+                    }
+                    if (windowSize.width < 480) {
+                      setIsFlapOpen(false);
+                    }
+                    navigate("/myduck");
+                  }}
                   className={`chat-button smooth break-words transition hover:bg-petal/20 focus:bg-vincent-950/20 active:bg-none
                             ${
                                 mainChatId === chat.id && "bg-vincent-950/20 "
