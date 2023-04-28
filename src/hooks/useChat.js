@@ -1,14 +1,14 @@
 import { useContext } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
-import UserChatsContext from "../contexts/UserChatsContext";
+import ChatIndexContext from "../contexts/ChatIndexContext";
 import { DATABASE_URL } from "../config";
 
 export function useChat() {
-  const { isNewUser, setIsNewUser, setUserChatsData, updateActiveChatId } =
-    useContext(UserChatsContext);
+  const { isNewUser, setIsNewUser, setChatHistoryData, updateActiveChatId } =
+    useContext(ChatIndexContext);
 
-  function postNewChat(title) {
+  function postAddChat(title) {
     const chatMeta = {
       title: title || null,
       createdAt: firebase.firestore.Timestamp.now(),
@@ -43,12 +43,12 @@ export function useChat() {
           id: chatId,
           ...data,
         };
-        setUserChatsData((prevAllChats) => prevAllChats.concat(latestChat));
+        setChatHistoryData((prevAllChats) => prevAllChats.concat(latestChat));
         updateActiveChatId(chatId);
       });
   }
 
   return {
-    postNewChat
+    postAddChat
   };
 }

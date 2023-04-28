@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import ActiveChatContext from "../../contexts/ActiveChatContext";
-import UserChatsContext from "../../contexts/UserChatsContext";
-import NewChat from "../Navigation/NewChat";
+import ChatRoomContext from "../../contexts/ChatRoomContext";
+import ChatIndexContext from "../../contexts/ChatIndexContext";
+import AddChat from "../Navigation/AddChat";
 
-export default function ChatMessages() {
-  const { isLoading, isNewUser } = useContext(UserChatsContext);
+export default function MessageHistory() {
+  const { isLoading, isNewUser } = useContext(ChatIndexContext);
   const [content, setContent] = useState(null);
 
-  const { chatMessages } = useContext(ActiveChatContext);
+  const { chatMessages } = useContext(ChatRoomContext);
   const containerRef = useRef();
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function ChatMessages() {
       if (isNewUser) {
         setContent(
           <div className="mx-auto flex h-full w-3/4 min-w-fit pt-8">
-            <NewChat welcome />
+            <AddChat welcome />
           </div>
         );
       } else {

@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import UserChats from "../Navigation/UserChats";
-import NewChat from "../Navigation/NewChat";
+import ChatHistory from "../Navigation/ChatHistory";
+import AddChat from "../Navigation/AddChat";
 import IconButton from "../Common/IconButton";
 import { useNavButtonLogic } from "../../hooks/useNavButtonLogic";
-import UserChatsContext from "../../contexts/UserChatsContext";
+import ChatIndexContext from "../../contexts/ChatIndexContext";
 
 export default function Navigation() {
-  const { isLoading, isNewUser } = useContext(UserChatsContext);
+  const { isLoading, isNewUser } = useContext(ChatIndexContext);
   const { handleNavClose } = useNavButtonLogic();
   return (
     <nav className="pass-overflow blush-frame relative flex flex-col rounded-l-none bg-gradient-to-br from-vincent-500/80 via-vincent-400 to-vincent-700 ">
@@ -26,9 +26,9 @@ export default function Navigation() {
       </div>
       <hr className="blush-separator" />
 
-      <UserChats />
+      <ChatHistory />
       <hr className="blush-separator" />
-      <NewChat nav />
+      <AddChat nav />
     </nav>
   );
 }

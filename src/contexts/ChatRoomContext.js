@@ -1,19 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import React, { createContext, useContext, useEffect, useState } from "react";
-import UserChatsContext from "./UserChatsContext";
+import ChatIndexContext from "./ChatIndexContext";
 import { DATABASE_URL } from "../config";
 
-const ActiveChatContext = createContext({
+const ChatRoomContext = createContext({
   chatId: null,
   chatMeta: {},
   chatMessages: [],
-  setChatMessages: () => {},
+  setMessageHistory: () => {},
 });
 
-export function ActiveChatContextProvider(props) {
-  const { activeChatId, userChatsData } = useContext(UserChatsContext);
-  const [chatMessages, setChatMessages] = useState([]);
+export function ChatRoomContextProvider(props) {
+  const { activeChatId, userChatsData } = useContext(ChatIndexContext);
+  const [chatMessages, setMessageHistory] = useState([]);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -34,7 +34,7 @@ export function ActiveChatContextProvider(props) {
           messages.push(message);
         }
 
-        setChatMessages(messages);
+        setMessageHistory(messages);
       })
       .catch((error) => {
         console.log(error);
@@ -49,14 +49,14 @@ export function ActiveChatContextProvider(props) {
     chatId: activeChatId,
     chatMeta: userChatsData.find((chat) => chat.id === activeChatId),
     chatMessages: chatMessages,
-    setChatMessages: setChatMessages,
+    setMessageHistory: setMessageHistory,
   };
 
   return (
-    <ActiveChatContext.Provider value={context}>
+    <ChatRoomContext.Provider value={context}>
       {props.children}
-    </ActiveChatContext.Provider>
+    </ChatRoomContext.Provider>
   );
 }
 
-export default ActiveChatContext;
+export default ChatRoomContext;

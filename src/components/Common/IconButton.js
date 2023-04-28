@@ -22,7 +22,7 @@ const iconMapping = {
   chatSubmit: CheckCircleIcon,
   chatCancel: XCircleIcon,
   chatDelete: TrashIcon,
-  chatTitleEdit: PencilSquareIcon,
+  chatMetaEdit: PencilSquareIcon,
   messageSubmit: PaperAirplaneIcon,
   messageEdit: PencilSquareIcon,
   messageDelete: TrashIcon,

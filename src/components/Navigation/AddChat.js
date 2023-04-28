@@ -4,16 +4,16 @@ import { sanitizeInput } from "../../utils/sanitize";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import FlapContext from "../../contexts/FlapContext";
 import IconButton from "../Common/IconButton";
-import UserChatsContext from "../../contexts/UserChatsContext";
+import ChatIndexContext from "../../contexts/ChatIndexContext";
 
-export default function NewChat(props) {
+export default function AddChat(props) {
   const { setIsFlapOpen } = useContext(FlapContext);
   const inputRef = useRef();
-  const { postNewChat } = useChat();
+  const { postAddChat } = useChat();
   const windowSize = useWindowSize();
-  const { isLoading, isNewUser } = useContext(UserChatsContext);
+  const { isLoading, isNewUser } = useContext(ChatIndexContext);
 
-  function cancelNewChat(event) {
+  function cancelAddChat(event) {
     event.preventDefault();
     inputRef.current.value = "";
   }
@@ -26,7 +26,7 @@ export default function NewChat(props) {
     const title = inputRef.current.value;
     const sanitizedTitle = sanitizeInput(title);
     console.log(title, " into ", sanitizedTitle);
-    postNewChat(sanitizedTitle).then(() => {
+    postAddChat(sanitizedTitle).then(() => {
       inputRef.current.value = "";
     });
     if (windowSize.width < 480) {
@@ -58,7 +58,7 @@ export default function NewChat(props) {
       />
       <input type="submit" hidden={true} />
       <div>
-        <IconButton task="chatCancel" onClick={cancelNewChat} />
+        <IconButton task="chatCancel" onClick={cancelAddChat} />
         <IconButton task="chatSubmit" onClick={handleSubmit} />
       </div>
     </form>

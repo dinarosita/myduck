@@ -1,18 +1,18 @@
 import React, { useContext, useRef, useState } from "react";
 import "firebase/compat/firestore";
-import ActiveChatContext from "../../contexts/ActiveChatContext";
+import ChatRoomContext from "../../contexts/ChatRoomContext";
 import IconButton from "../Common/IconButton";
 import { useMessage } from "../../hooks/useMessage";
 import { sanitizeInput } from "../../utils/sanitize";
 import { useWindowSize } from "../../hooks/useWindowSize";
-import UserChatsContext from "../../contexts/UserChatsContext";
+import ChatIndexContext from "../../contexts/ChatIndexContext";
 
-export default function NewMessage() {
-  const { isLoading, isNewUser } = useContext(UserChatsContext);
+export default function AddMessage() {
+  const { isLoading, isNewUser } = useContext(ChatIndexContext);
   const textareaRef = useRef();
-  const { chatId, setChatMessages } = useContext(ActiveChatContext);
+  const { chatId, setMessageHistory } = useContext(ChatRoomContext);
   const [textvalue, setTextValue] = useState("");
-  const { postNewMessage, updateLocalMessages } = useMessage();
+  const { postAddMessage, updateLocalMessages } = useMessage();
   const windowSize = useWindowSize();
 
   function handleTextValue(event) {
@@ -34,9 +34,9 @@ export default function NewMessage() {
       return;
     }
 
-    postNewMessage(chatId, messageContent, (messageId) => {
+    postAddMessage(chatId, messageContent, (messageId) => {
       updateLocalMessages(chatId, messageId, (latestMessage) => {
-        setChatMessages((prevList) => prevList.concat(latestMessage));
+        setMessageHistory((prevList) => prevList.concat(latestMessage));
       });
       setTextValue("");
       if (windowSize.width > 480) {

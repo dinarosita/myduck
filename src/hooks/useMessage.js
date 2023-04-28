@@ -4,7 +4,7 @@ import { DATABASE_URL } from "../config";
 
 export function useMessage() {
 
-  function postNewMessage(chatId, newMessage, callback) {
+  function postAddMessage(chatId, newMessage, callback) {
     const messageData = {
       message: newMessage,
       createdAt: firebase.firestore.Timestamp.now(),
@@ -36,9 +36,9 @@ export function useMessage() {
         if (callback) {
           callback(latestMessage);
         }
-        // setChatMessages((prevList) => prevList.concat(latestMessage));
+        // setMessageHistory((prevList) => prevList.concat(latestMessage));
       });
   }
 
-  return { postNewMessage, updateLocalMessages };
+  return { postAddMessage, updateLocalMessages };
 }

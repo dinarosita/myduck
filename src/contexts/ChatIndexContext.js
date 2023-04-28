@@ -2,21 +2,21 @@
 import React, { createContext, useEffect, useState } from "react";
 import { DATABASE_URL } from "../config";
 
-const UserChatsContext = createContext({
+const ChatIndexContext = createContext({
   isLoading: true,
   activeChatId: null,
   updateActiveChatId: () => {},
   isNewUser: false,
   setIsNewUser: () => {},
   userChatsData: [],
-  setUserChatsData: () => {},
+  setChatHistoryData: () => {},
 });
 
-export function UserChatsContextProvider(props) {
+export function ChatIndexContextProvider(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [activeChatId, setActiveChatId] = useState(null);
   const [isNewUser, setIsNewUser] = useState(false);
-  const [userChatsData, setUserChatsData] = useState([]);
+  const [userChatsData, setChatHistoryData] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -49,7 +49,7 @@ export function UserChatsContextProvider(props) {
 
             chats.push(chat);
           }
-          setUserChatsData(chats);
+          setChatHistoryData(chats);
 
           const lastChatId = localStorage.getItem("activeChatId");
 
@@ -78,7 +78,7 @@ export function UserChatsContextProvider(props) {
   const context = {
     isLoading: isLoading,
     userChatsData: userChatsData,
-    setUserChatsData: setUserChatsData,
+    setChatHistoryData: setChatHistoryData,
     activeChatId: activeChatId,
     updateActiveChatId: updateActiveChatId,
     isNewUser: isNewUser,
@@ -86,10 +86,10 @@ export function UserChatsContextProvider(props) {
   };
 
   return (
-    <UserChatsContext.Provider value={context}>
+    <ChatIndexContext.Provider value={context}>
       {props.children}
-    </UserChatsContext.Provider>
+    </ChatIndexContext.Provider>
   );
 }
 
-export default UserChatsContext;
+export default ChatIndexContext;

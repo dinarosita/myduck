@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import ActiveChatContext from "../../contexts/ActiveChatContext";
-import UserChatsContext from "../../contexts/UserChatsContext";
+import ChatRoomContext from "../../contexts/ChatRoomContext";
+import ChatIndexContext from "../../contexts/ChatIndexContext";
 
-export default function ChatTitle() {
-  const { isLoading, isNewUser } = useContext(UserChatsContext);
-  const { chatMeta } = useContext(ActiveChatContext);
+export default function ChatMeta() {
+  const { isLoading, isNewUser } = useContext(ChatIndexContext);
+  const { chatMeta } = useContext(ChatRoomContext);
   const [title, setTitle] = useState("");
   const [tag, setTag] = useState("");
 
