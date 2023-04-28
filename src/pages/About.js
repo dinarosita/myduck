@@ -1,10 +1,11 @@
 import React from "react";
 import Box from "../components/Common/Box";
 import DeveloperCard from "../components/DeveloperCard/DeveloperCard";
+import almondBlossom from "../assets/images/gogh-almond-blossom-1024.jpg";
 
 export default function About() {
   return (
-    <div className="pass-overflow w-full p-2 bg-transparent">
+    <div className="pass-overflow w-full bg-transparent p-2">
       <main className="w-effective blush-frame pass-overflow flex h-full flex-col text-vincent-800">
         <header className="blush-header">
           <h1>Welcome to MyDuck</h1>
@@ -13,7 +14,7 @@ export default function About() {
         <section className="pass-overflow flex-auto bg-transparent/20 p-2 text-petal">
           <div
             className="skyscroll
-        min-h-80 flex h-full flex-auto  flex-col  gap-2 overflow-y-scroll whitespace-pre-wrap   bg-transparent pr-8 "
+        flex h-full min-h-80 flex-auto  flex-col  gap-2 overflow-y-scroll whitespace-pre-wrap   bg-transparent pr-8 "
           >
             <Box title="About" noborder>
               <p>
@@ -21,6 +22,15 @@ export default function About() {
                 rubber duck. Often we feel the need to talk to somebody else,
                 and turn out that just able to articulate what we have in mind,
                 we have it sorted. It also function as brainstorming note pad.
+              </p>
+            </Box>
+            <Box title="Versions" noborder>
+              <p>
+                <span className="font-bold">v1.0.0</span>: First stable version.
+              </p>
+              <p>
+                <span className="font-bold">main-dev-1.1.0</span>: Current
+                version under development. Sourced in v1.0.0
               </p>
             </Box>
             <Box title="Chat structure" noborder>
@@ -46,7 +56,7 @@ export default function About() {
             <Box title="Development tools and libraries" noborder>
               <p>
                 MyDuck is developed with React JS, Tailwind CSS, and Firebase
-                Realtime Database.
+                Realtime Database. In the near future, MyDuck will adopt MERN.
               </p>
             </Box>
             <Box title="Members and security" noborder>
@@ -68,25 +78,29 @@ export default function About() {
                 Realtime Database.
               </p>
             </Box>
-            <Box title="Theme" noborder>
-              <p>
-                The color scheme is inspired by orange in rubber duck, subdued
-                version. The simple background is inspired by{" "}
-                <a
-                  href="https://www.youtube.com/watch?v=EVM7fP67Wgk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blossom-400"
-                >
-                  Amir's vacation scroll
-                </a>
-                .
-              </p>
+            <Box title="Theme" noborder addClass="w-full">
+              <p>Van Gogh's Almond Blossoms, with a yellow rubber duck.</p>
+              <div className="flex-col-center mx-auto my-4 w-4/5 md:w-2/3 ">
+                <img
+                  className="w-full mb-2 max-w-md flex-shrink rounded border-2 border-petal/50"
+                  src={almondBlossom}
+                  alt="Gogh's Almond Blossom"
+                />
+                <div className="max-w-full text-sm">
+                  Almond Blossom by Vincent van Gogh
+                </div>
+                <div className="text-xs">
+                  Public domain, via{" "}
+                  <a href="https://commons.wikimedia.org/wiki/File:Vincent_van_Gogh_-_Almond_blossom_-_Google_Art_Project.jpg">
+                    Wikimedia Commons
+                  </a>
+                </div>
+              </div>
             </Box>
           </div>
         </section>
         <hr className="blush-separator" />
-        <section className="bg-transparent/20 text-petal border-none">
+        <section className="border-none bg-transparent/20 text-petal">
           <DeveloperCard />
         </section>
       </main>

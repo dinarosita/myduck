@@ -44,20 +44,7 @@ export default function Sandbox() {
             <WrenchIcon className="blush-button h-6 w-6" />
             <AdjustmentsHorizontalIcon className="blush-button h-6 w-6" />
           </div>
-          <div>
-            <h2>Center mid child</h2>
-            <div className="flex w-full justify-between">
-              <div className="flex-1">
-                <div className="bg-blue-500 p-4">Child 1Child 1Child 1Child 1Child 1Child 1Child 1Child 1Child 1Child 1Child 1Child 1Child 1Child 1Child 1Child 1Child 1Child 1Child 1Child 1Child 1Child 1Child 1Child 1Child 1Child 1Child 1Child 1</div>
-              </div>
-              <div className="flex flex-1 justify-center">
-                <div className="bg-green-500 p-4">Child 2</div>
-              </div>
-              <div className="flex flex-1 justify-end">
-                <div className="bg-red-500 p-4">Child 3</div>
-              </div>
-            </div>
-          </div>
+          
         </section>
       </main>
     </div>
