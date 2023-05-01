@@ -9,32 +9,32 @@ export default function ChatHistory() {
   const windowSize = useWindowSize();
   const { setIsFlapOpen } = useContext(FlapContext);
   const {
-    isLoading,
+    isPageLoading,
     isNewUser,
-    userChatsData,
-    activeChatId,
-    updateActiveChatId,
+    chatList,
+    mainChatId,
+    updateMainChatId,
   } = useContext(ChatIndexContext);
 
   return (
     <div className="items-left pass-overflow flex w-full flex-col gap-2 p-2">
       <ul className="skyscroll flex flex-col items-start  gap-1 overflow-y-auto pr-4">
-        {isLoading || isNewUser ? (
-          <li key={isLoading ? "id-loading" : "id-newUser"}>
+        {isPageLoading || isNewUser ? (
+          <li key={isPageLoading ? "id-loading" : "id-newUser"}>
             <button
               className={`chat-button pointer-events-none bg-vincent-950/20 opacity-50`}
-              aria-label={isLoading ? "Loading chats" : "Welcome message"}
+              aria-label={isPageLoading ? "Loading chats" : "Welcome message"}
             >
-              {isLoading ? "Loading..." : "Hello Duckies!"}
+              {isPageLoading ? "Loading..." : "Hello Duckies!"}
             </button>
           </li>
         ) : (
-          userChatsData
+          chatList
             .map((chat) => (
               <li key={chat.id}>
                 <button
                   onClick={() => {
-                    updateActiveChatId(chat.id);
+                    updateMainChatId(chat.id);
                     if (windowSize.width < 480) {
                       setIsFlapOpen(false);
                     }
@@ -42,7 +42,7 @@ export default function ChatHistory() {
                   }}
                   className={`chat-button smooth break-words transition hover:bg-petal/20 focus:bg-vincent-950/20 active:bg-none
                             ${
-                              activeChatId === chat.id && "bg-vincent-950/20 "
+                              mainChatId === chat.id && "bg-vincent-950/20 "
                             }`}
                   aria-label={`Open chat: ${chat.title || "Untitled"}`}
                 >

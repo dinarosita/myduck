@@ -4,20 +4,20 @@ import ChatIndexContext from "../../contexts/ChatIndexContext";
 import AddChat from "../Navigation/AddChat";
 
 export default function MessageHistory() {
-  const { isLoading, isNewUser } = useContext(ChatIndexContext);
+  const { isPageLoading, isNewUser } = useContext(ChatIndexContext);
   const [content, setContent] = useState(null);
 
-  const { chatMessages } = useContext(ChatRoomContext);
+  const { messageList } = useContext(ChatRoomContext);
   const containerRef = useRef();
 
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
     }
-  }, [chatMessages]);
+  }, [messageList]);
 
   useEffect(() => {
-    if (isLoading) {
+    if (isPageLoading) {
       setContent(null);
     } else {
       if (isNewUser) {
@@ -34,7 +34,7 @@ export default function MessageHistory() {
                  skyscroll
                 flex h-full min-h-80 flex-auto  flex-col  gap-2 overflow-y-scroll whitespace-pre-wrap bg-transparent pr-8 `}
           >
-            {chatMessages.map((msg) => (
+            {messageList.map((msg) => (
               <div
                 key={msg.id}
                 className="flex w-fit max-w-full flex-col  break-words rounded-r-3xl bg-petal/80 py-2 pl-2 pr-4 leading-tight"
@@ -46,7 +46,7 @@ export default function MessageHistory() {
         );
       }
     }
-  }, [isLoading, isNewUser, chatMessages]);
+  }, [isPageLoading, isNewUser, messageList]);
 
   return (
     <section className="pass-overflow h-full flex-auto bg-transparent/20 p-2 ">

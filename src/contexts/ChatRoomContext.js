@@ -7,18 +7,18 @@ import { DATABASE_URL } from "../config";
 const ChatRoomContext = createContext({
   chatId: null,
   chatMeta: {},
-  chatMessages: [],
-  setMessageHistory: () => {},
+  messageList: [],
+  setMessageList: () => {},
 });
 
 export function ChatRoomContextProvider(props) {
-  const { activeChatId, userChatsData } = useContext(ChatIndexContext);
-  const [chatMessages, setMessageHistory] = useState([]);
+  const { mainChatId, chatList } = useContext(ChatIndexContext);
+  const [messageList, setMessageList] = useState([]);
 
   useEffect(() => {
     const abortController = new AbortController();
 
-    fetch(`${DATABASE_URL}/messages/${activeChatId}.json`, {
+    fetch(`${DATABASE_URL}/messages/${mainChatId}.json`, {
       signal: abortController.signal,
     })
       .then((response) => {
@@ -34,7 +34,7 @@ export function ChatRoomContextProvider(props) {
           messages.push(message);
         }
 
-        setMessageHistory(messages);
+        setMessageList(messages);
       })
       .catch((error) => {
         console.log(error);
@@ -43,13 +43,13 @@ export function ChatRoomContextProvider(props) {
     return () => {
       abortController.abort();
     };
-  }, [activeChatId]);
+  }, [mainChatId]);
 
   const context = {
-    chatId: activeChatId,
-    chatMeta: userChatsData.find((chat) => chat.id === activeChatId),
-    chatMessages: chatMessages,
-    setMessageHistory: setMessageHistory,
+    chatId: mainChatId,
+    chatMeta: chatList.find((chat) => chat.id === mainChatId),
+    messageList: messageList,
+    setMessageList: setMessageList,
   };
 
   return (

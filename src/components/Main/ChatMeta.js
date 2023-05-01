@@ -3,7 +3,7 @@ import ChatRoomContext from "../../contexts/ChatRoomContext";
 import ChatIndexContext from "../../contexts/ChatIndexContext";
 
 export default function ChatMeta() {
-  const { isLoading, isNewUser } = useContext(ChatIndexContext);
+  const { isPageLoading, isNewUser } = useContext(ChatIndexContext);
   const { chatMeta } = useContext(ChatRoomContext);
   const [title, setTitle] = useState("");
   const [tag, setTag] = useState("");
@@ -15,7 +15,7 @@ export default function ChatMeta() {
   }
 
   useEffect(() => {
-    if (isLoading) {
+    if (isPageLoading) {
       setTitle("Loading Duck");
       setTag("Quack quack quack");
     } else {
@@ -29,11 +29,11 @@ export default function ChatMeta() {
         }
       }
     }
-  }, [isLoading, isNewUser, chatMeta]);
+  }, [isPageLoading, isNewUser, chatMeta]);
 
   return (
     <header
-      className={`blush-header min-h-16 ${(isLoading || (!isNewUser && !chatMeta)) && "text-opacity-30"}`}
+      className={`blush-header min-h-16 ${(isPageLoading || (!isNewUser && !chatMeta)) && "text-opacity-30"}`}
     >
       <h1>{title}</h1>
       <p className="tagline">{tag}</p>

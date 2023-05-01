@@ -110,4 +110,8 @@
   *:focus {
     @apply outline-none;
   }
+
+  .sandbox-button {
+    @apply border border-petal px-2 rounded-full;
+  }
 }

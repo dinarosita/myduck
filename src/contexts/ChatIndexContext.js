@@ -3,23 +3,23 @@ import React, { createContext, useEffect, useState } from "react";
 import { DATABASE_URL } from "../config";
 
 const ChatIndexContext = createContext({
-  isLoading: true,
-  activeChatId: null,
-  updateActiveChatId: () => {},
+  isPageLoading: true,
   isNewUser: false,
   setIsNewUser: () => {},
-  userChatsData: [],
-  setChatHistoryData: () => {},
+  chatList: [],
+  setChatList: () => {},
+  mainChatId: null,
+  updateMainChatId: () => {},
 });
 
 export function ChatIndexContextProvider(props) {
-  const [isLoading, setIsLoading] = useState(true);
-  const [activeChatId, setActiveChatId] = useState(null);
+  const [isPageLoading, setIsPageLoading] = useState(true);
+  const [mainChatId, setMainChatId] = useState(null);
   const [isNewUser, setIsNewUser] = useState(false);
-  const [userChatsData, setChatHistoryData] = useState([]);
+  const [chatList, setChatList] = useState([]);
 
   useEffect(() => {
-    setIsLoading(true);
+    setIsPageLoading(true);
     const abortController = new AbortController();
 
     fetch(`${DATABASE_URL}/chatMeta.json`, {
@@ -36,10 +36,12 @@ export function ChatIndexContextProvider(props) {
 
         if (!data) {
           setIsNewUser(true);
+          localStorage.setItem("storageChatId", null);
+
           console.log("New user");
         } else {
           setIsNewUser(false);
-          console.log("Chats available");
+          console.log(`Active user: ${Object.keys(data).length} chats`);
 
           for (const key in data) {
             const chat = {
@@ -49,40 +51,39 @@ export function ChatIndexContextProvider(props) {
 
             chats.push(chat);
           }
-          setChatHistoryData(chats);
+          setChatList(chats);
+          const storedChatId = localStorage.getItem("storageChatId");
 
-          const lastChatId = localStorage.getItem("activeChatId");
-
-          if (lastChatId && chats.some((chat) => chat.id === lastChatId)) {
-            setActiveChatId(lastChatId);
+          if (storedChatId && chats.some((chat) => chat.id === storedChatId)) {
+            setMainChatId(storedChatId);
           } else {
-            updateActiveChatId(chats[chats.length - 1].id);
+            updateMainChatId(chats[chats.length - 1].id);
           }
         }
-        setIsLoading(false);
+        setIsPageLoading(false);
       })
       .catch((error) => {
         console.log(error);
-        setIsLoading(false);
+        setIsPageLoading(false);
       });
     return () => {
       abortController.abort();
     };
   }, []);
 
-  function updateActiveChatId(newId) {
-    localStorage.setItem("activeChatId", newId);
-    setActiveChatId(newId);
+  function updateMainChatId(newId) {
+    localStorage.setItem("storageChatId", newId);
+    setMainChatId(newId);
   }
 
   const context = {
-    isLoading: isLoading,
-    userChatsData: userChatsData,
-    setChatHistoryData: setChatHistoryData,
-    activeChatId: activeChatId,
-    updateActiveChatId: updateActiveChatId,
-    isNewUser: isNewUser,
-    setIsNewUser: setIsNewUser,
+    isPageLoading,
+    isNewUser,
+    setIsNewUser,
+    chatList,
+    setChatList,
+    mainChatId,
+    updateMainChatId,
   };
 
   return (

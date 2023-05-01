@@ -36,7 +36,7 @@ export function useMessage() {
         if (callback) {
           callback(latestMessage);
         }
-        // setMessageHistory((prevList) => prevList.concat(latestMessage));
+        // setMessageList((prevList) => prevList.concat(latestMessage));
       });
   }
 

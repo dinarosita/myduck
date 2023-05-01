@@ -11,7 +11,7 @@ export default function AddChat(props) {
   const inputRef = useRef();
   const { postAddChat } = useChat();
   const windowSize = useWindowSize();
-  const { isLoading, isNewUser } = useContext(ChatIndexContext);
+  const { isPageLoading, isNewUser } = useContext(ChatIndexContext);
 
   function cancelAddChat(event) {
     event.preventDefault();
@@ -19,7 +19,7 @@ export default function AddChat(props) {
   }
 
   function handleSubmit(event) {
-    if (isLoading) {
+    if (isPageLoading) {
       return;
     }
     event.preventDefault();
@@ -40,7 +40,7 @@ export default function AddChat(props) {
       className={`flex h-28 w-full flex-none  flex-col items-center justify-center px-3 
       ${
         props.nav &&
-        (isLoading || isNewUser) &&
+        (isPageLoading || isNewUser) &&
         "pointer-events-none opacity-50"
       }
       ${props.welcome ? "gap-2" : "gap-1"}`}

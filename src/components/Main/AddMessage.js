@@ -8,9 +8,9 @@ import { useWindowSize } from "../../hooks/useWindowSize";
 import ChatIndexContext from "../../contexts/ChatIndexContext";
 
 export default function AddMessage() {
-  const { isLoading, isNewUser } = useContext(ChatIndexContext);
+  const { isPageLoading, isNewUser } = useContext(ChatIndexContext);
   const textareaRef = useRef();
-  const { chatId, setMessageHistory } = useContext(ChatRoomContext);
+  const { chatId, setMessageList } = useContext(ChatRoomContext);
   const [textvalue, setTextValue] = useState("");
   const { postAddMessage, updateLocalMessages } = useMessage();
   const windowSize = useWindowSize();
@@ -20,7 +20,7 @@ export default function AddMessage() {
   }
 
   function handleSubmit(event) {
-    if (isLoading || isNewUser) {
+    if (isPageLoading || isNewUser) {
       return;
     }
     event.preventDefault();
@@ -36,7 +36,7 @@ export default function AddMessage() {
 
     postAddMessage(chatId, messageContent, (messageId) => {
       updateLocalMessages(chatId, messageId, (latestMessage) => {
-        setMessageHistory((prevList) => prevList.concat(latestMessage));
+        setMessageList((prevList) => prevList.concat(latestMessage));
       });
       setTextValue("");
       if (windowSize.width > 480) {
@@ -48,7 +48,7 @@ export default function AddMessage() {
   return (
     <section
       className={`h-fit flex-none bg-transparent text-center ${
-        (isLoading || isNewUser) && "pointer-events-none opacity-50"
+        (isPageLoading || isNewUser) && "pointer-events-none opacity-50"
       }`}
     >
       <form className="relative h-fit h-full " style={{ lineHeight: 0 }}>
