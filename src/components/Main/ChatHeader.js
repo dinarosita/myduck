@@ -42,22 +42,22 @@ export default function ChatHeader() {
           <h1>{title}</h1>
         </div>
         <div>
-          <div className="tooltip-container">
+          {/* <div className="tooltip-container w-5"> */}
             <IconButton
               task="chatTitleEdit"
-              addButtonClass="align-bottom "
+              addButtonClass="align-bottom w-5"
               addIconClass="icon-chatheader  ml-auto"
             />
-            <div className="tooltip tooltip-chatheader">Edit chat title</div>
-          </div>
-          <div className="tooltip-container ">
+            {/* <div className="tooltip tooltip-chatheader">Edit chat title</div> */}
+          {/* </div> */}
+          {/* <div className="tooltip-container w-5"> */}
             <IconButton
               task="chatArchive"
-              addButtonClass="align-bottom "
+              addButtonClass="align-bottom w-5"
               addIconClass="icon-chatheader ml-auto"
             />
-            <div className="tooltip tooltip-chatheader">Archive chat</div>
-          </div>
+            {/* <div className="tooltip tooltip-chatheader">Archive chat</div> */}
+          {/* </div> */}
         </div>
       </div>
       <div className="tagline">{tag}</div>
