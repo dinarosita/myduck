@@ -121,6 +121,10 @@
   .icon-chatheader {
     @apply text-blossom-600 max-h-4
   }
+
+  .icon-msg {
+    @apply text-vincent-200 text-opacity-50  max-h-4
+  }
   
 
   .tooltip-container {
@@ -128,7 +132,14 @@
   }
 
   .tooltip {
-    @apply absolute top-6  left-1/2 transform -translate-x-1/2 hidden rounded-full px-3  text-xs text-petal border border-petal whitespace-nowrap bg-blossom-500 opacity-95 ;
+    @apply absolute;
+  }
+
+  .tooltip-chatheader {
+    @apply top-7 left-1/2 transform -translate-x-1/2 hidden rounded-full px-3  text-xs text-petal border border-petal whitespace-nowrap bg-blossom-500 opacity-95 ;
+  }
+  .tooltip-msg {
+    @apply top-1 left-5 hidden rounded-full px-3  text-xs text-vincent-700 border border-vincent-700 whitespace-nowrap bg-vincent-200 opacity-95 ;
   }
 
   .tooltip-container:hover .tooltip {

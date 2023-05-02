@@ -10,6 +10,8 @@ module.exports = {
         xs: "480px",
       },
       minHeight: {
+        8: "2rem",
+        12: "3rem",
         16: "4rem",
         80: "20rem",
       },

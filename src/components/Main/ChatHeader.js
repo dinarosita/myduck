@@ -48,7 +48,7 @@ export default function ChatHeader() {
               addButtonClass="align-bottom "
               addIconClass="icon-chatheader  ml-auto"
             />
-            <div className="tooltip">Edit chat title</div>
+            <div className="tooltip tooltip-chatheader">Edit chat title</div>
           </div>
           <div className="tooltip-container ">
             <IconButton
@@ -56,7 +56,7 @@ export default function ChatHeader() {
               addButtonClass="align-bottom "
               addIconClass="icon-chatheader ml-auto"
             />
-            <div className="tooltip">Archive chat</div>
+            <div className="tooltip tooltip-chatheader">Archive chat</div>
           </div>
         </div>
       </div>
