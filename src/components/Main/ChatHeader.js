@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import ChatIndexContext from "../../contexts/ChatIndexContext";
 import IconButton from "../Common/IconButton";
+import ConfirmationPopup from "../Common/ConfirmationPopUp";
 
 export default function ChatHeader() {
+  const [showConfirmation, setShowConfirmation] = useState(false)
   const { isPageLoading, isNewUser, mainChatMeta } =
     useContext(ChatIndexContext);
   const [title, setTitle] = useState("");
@@ -35,6 +37,10 @@ export default function ChatHeader() {
     }
   }, [isPageLoading, isNewUser, mainChatMeta]);
 
+  function handleDeleteClick() {
+    setShowConfirmation(true)
+  }
+
   return (
     <header
       className={`blush-header relative min-h-16 px-8 ${
@@ -47,12 +53,26 @@ export default function ChatHeader() {
         <IconButton
           task="editItem"
           addIconClass="icon-chatheader"
-        />
+        />        
         <IconButton
           task="archiveItem"
           addIconClass="icon-chatheader"
+          onClick={handleDeleteClick}
         />
       </div>
+      <div>
+      {showConfirmation && (
+        <ConfirmationPopup
+          onConfirm={() => {
+            setShowConfirmation(false);
+            // Handle the confirmation action here
+          }}
+          onCancel={() => setShowConfirmation(false)}
+          type="chatArchive"
+        />
+      )}
+      
+    </div>
     </header>
   );
 }
