@@ -28,11 +28,11 @@
     @apply flex h-fit w-full flex-none flex-col bg-petal pb-2 pt-1 text-center text-vincent-800;
   }
 
-  .blush-header > h1 {
+  .blush-header  h1 {
     @apply text-lg font-bold;
   }
 
-  .blush-header > .tagline {
+  .blush-header  .tagline {
     @apply text-sm;
   }
 
@@ -43,6 +43,11 @@
   .icon-container {
     @apply flex h-6 w-6 items-center justify-center;
   }
+
+  .icon-on-white {
+    @apply text-blossom-600
+  }
+
 
   .nonactive-button {
     @apply pointer-events-none text-petal/50 hover:text-petal/50  focus:text-petal/50 
@@ -113,5 +118,21 @@
 
   .sandbox-button {
     @apply border border-petal px-2 rounded-full;
+  }
+  
+  .tooltip-parent {
+    @apply relative
+  }
+
+  .tooltip-container {
+    @apply  inline-block;
+  }
+
+  .tooltip {
+    @apply absolute right-0 hidden rounded-lg px-2 py-0 text-xs text-blossom-600 border border-blossom-600 shadow-md whitespace-nowrap opacity-90;
+  }
+
+  .tooltip-container:hover .tooltip {
+    display: block;
   }
 }
