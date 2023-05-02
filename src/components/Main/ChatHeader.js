@@ -37,15 +37,15 @@ export default function ChatHeader() {
         (isPageLoading || (!isNewUser && !mainChatMeta)) && "text-opacity-30"
       }`}
     >
-      <div className="flex flex-row justify-center items-center gap-2 items-end justify-end">
+      <div className="flex flex-row justify-center items-center gap-4 items-end justify-end">
         <div>
           <h1>{title}</h1>
         </div>
-        <div>
+        <div className="flex flex-row gap-1">
           {/* <div className="tooltip-container w-5"> */}
             <IconButton
               task="chatTitleEdit"
-              addButtonClass="align-bottom w-5"
+              addButtonClass="align-bottom w-4"
               addIconClass="icon-chatheader  ml-auto"
             />
             {/* <div className="tooltip tooltip-chatheader">Edit chat title</div> */}
@@ -53,7 +53,7 @@ export default function ChatHeader() {
           {/* <div className="tooltip-container w-5"> */}
             <IconButton
               task="chatArchive"
-              addButtonClass="align-bottom w-5"
+              addButtonClass="align-bottom w-4"
               addIconClass="icon-chatheader ml-auto"
             />
             {/* <div className="tooltip tooltip-chatheader">Archive chat</div> */}
