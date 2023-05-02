@@ -8,10 +8,11 @@ export function useChat() {
   const { isNewUser, setIsNewUser, setChatList, updateNewChatMeta } =
     useContext(ChatIndexContext);
 
-  function postAddChat(title) {
+  function postNewChat(title) {
     const chatMeta = {
       title: title || null,
       createdAt: firebase.firestore.Timestamp.now(),
+      deleted: false,
     };
 
     return fetch(`${DATABASE_URL}/chatMeta.json`, {
@@ -25,14 +26,14 @@ export function useChat() {
       .then((data) => {
         const chatId = data.name;
         
-        updateLocalList(chatId);
+        updateLocalChatList(chatId);
         if (isNewUser) {
           setIsNewUser(false);
         } 
       });
   }
 
-  function updateLocalList(chatId) {
+  function updateLocalChatList(chatId) {
     return fetch(`${DATABASE_URL}/chatMeta/${chatId}.json`)
       .then((response) => response.json())
       .then((data) => {
@@ -46,6 +47,6 @@ export function useChat() {
   }
 
   return {
-    postAddChat
+    postNewChat
   };
 }

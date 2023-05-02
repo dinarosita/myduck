@@ -30,6 +30,7 @@ export default function ChatHistory() {
           </li>
         ) : (
           chatList
+            .filter((chat) => !chat.deleted)
             .map((chat) => (
               <li key={chat.id}>
                 <button
@@ -42,7 +43,8 @@ export default function ChatHistory() {
                   }}
                   className={`chat-button smooth break-words transition hover:bg-petal/20 focus:bg-vincent-950/20 active:bg-none
                             ${
-                              mainChatMeta.id === chat.id && "bg-vincent-950/20 "
+                              mainChatMeta.id === chat.id &&
+                              "bg-vincent-950/20 "
                             }`}
                   aria-label={`Open chat: ${chat.title || "Untitled chat"}`}
                 >

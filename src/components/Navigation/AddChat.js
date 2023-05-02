@@ -9,7 +9,7 @@ import ChatIndexContext from "../../contexts/ChatIndexContext";
 export default function AddChat(props) {
   const { setIsFlapOpen } = useContext(FlapContext);
   const inputRef = useRef();
-  const { postAddChat } = useChat();
+  const { postNewChat } = useChat();
   const windowSize = useWindowSize();
   const { isPageLoading, isNewUser } = useContext(ChatIndexContext);
 
@@ -25,7 +25,7 @@ export default function AddChat(props) {
     event.preventDefault();
     const title = inputRef.current.value;
     const sanitizedTitle = sanitizeInput(title);
-    postAddChat(sanitizedTitle).then(() => {
+    postNewChat(sanitizedTitle).then(() => {
       inputRef.current.value = "";
     });
     if (windowSize.width < 480) {
