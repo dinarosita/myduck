@@ -8,10 +8,14 @@ export default function ChatHeader() {
   const [title, setTitle] = useState("");
   const [tag, setTag] = useState("");
 
+  // function formatTimestamp(timestamp) {
+  //   const date = new Date(timestamp.seconds * 1000).toDateString();
+  //   const time = new Date(timestamp.seconds * 1000).toLocaleTimeString();
+  //   return `${date} at ${time}`;
+  // }
   function formatTimestamp(timestamp) {
     const date = new Date(timestamp.seconds * 1000).toDateString();
-    const time = new Date(timestamp.seconds * 1000).toLocaleTimeString();
-    return `${date} at ${time}`;
+    return `${date}`;
   }
 
   useEffect(() => {
@@ -33,34 +37,22 @@ export default function ChatHeader() {
 
   return (
     <header
-      className={`blush-header min-h-16 ${
+      className={`blush-header relative min-h-16 px-8 ${
         (isPageLoading || (!isNewUser && !mainChatMeta)) && "text-opacity-30"
       }`}
     >
-      <div className="flex flex-row justify-center items-center gap-4 items-end justify-end">
-        <div>
-          <h1>{title}</h1>
-        </div>
-        <div className="flex flex-row gap-1">
-          {/* <div className="tooltip-container w-5"> */}
-            <IconButton
-              task="chatTitleEdit"
-              addButtonClass="align-bottom w-4"
-              addIconClass="icon-chatheader  ml-auto"
-            />
-            {/* <div className="tooltip tooltip-chatheader">Edit chat title</div> */}
-          {/* </div> */}
-          {/* <div className="tooltip-container w-5"> */}
-            <IconButton
-              task="chatArchive"
-              addButtonClass="align-bottom w-4"
-              addIconClass="icon-chatheader ml-auto"
-            />
-            {/* <div className="tooltip tooltip-chatheader">Archive chat</div> */}
-          {/* </div> */}
-        </div>
-      </div>
+      <h1 className="">{title}</h1>
       <div className="tagline">{tag}</div>
+      <div className="absolute right-0 bottom-3 flex-col-center h-10">
+        <IconButton
+          task="editItem"
+          addIconClass="icon-chatheader"
+        />
+        <IconButton
+          task="archiveItem"
+          addIconClass="icon-chatheader"
+        />
+      </div>
     </header>
   );
 }

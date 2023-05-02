@@ -119,7 +119,7 @@
   }
 
   .icon-chatheader {
-    @apply text-vincent-600/50  max-h-4
+    @apply text-vincent-500/50  max-h-4
   }
 
   .icon-msg {
