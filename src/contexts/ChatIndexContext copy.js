@@ -51,6 +51,8 @@ export function ChatIndexContextProviderCopy(props) {
 
             chats.push(chat);
           }
+          console.log("marker")
+          console.log(`Active user with ${chats.length} chat${(chats.length > 1) && "s"}`)
           setChatList(chats);
           const storedChatId = localStorage.getItem("storageChatId");
 

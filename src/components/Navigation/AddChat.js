@@ -25,7 +25,6 @@ export default function AddChat(props) {
     event.preventDefault();
     const title = inputRef.current.value;
     const sanitizedTitle = sanitizeInput(title);
-    console.log(title, " into ", sanitizedTitle);
     postAddChat(sanitizedTitle).then(() => {
       inputRef.current.value = "";
     });

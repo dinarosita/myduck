@@ -44,9 +44,9 @@ export default function ChatHistory() {
                             ${
                               mainChatMeta.id === chat.id && "bg-vincent-950/20 "
                             }`}
-                  aria-label={`Open chat: ${chat.title || "Untitled"}`}
+                  aria-label={`Open chat: ${chat.title || "Untitled chat"}`}
                 >
-                  {chat.title || "Untitled"}
+                  {chat.title || "Untitled chat"}
                 </button>
               </li>
             ))

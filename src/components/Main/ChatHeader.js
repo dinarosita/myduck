@@ -22,7 +22,7 @@ export default function ChatHeader() {
         setTag("Start a new chat!");
       } else {
         if (mainChatMeta.id) {
-          setTitle(mainChatMeta.title ? mainChatMeta.title : "Untitled quack");
+          setTitle(mainChatMeta.title ? mainChatMeta.title : "Untitled chat");
           setTag(`Created: ${formatTimestamp(mainChatMeta.createdAt)}`);
         }
       }

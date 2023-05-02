@@ -42,6 +42,7 @@ export function MainChatContextProvider(props) {
         setIsMessageLoading(false);
       })
       .catch((error) => {
+        console.log("marker")
         console.log(error);
         setIsMessageLoading(false);
       });

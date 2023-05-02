@@ -28,10 +28,7 @@ export function useChat() {
         updateLocalList(chatId);
         if (isNewUser) {
           setIsNewUser(false);
-          console.log("New chat added. Chat is now available.");
-        } else {
-          console.log("New chat added. Chat list updated.");
-        }
+        } 
       });
   }
 

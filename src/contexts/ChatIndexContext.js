@@ -3,7 +3,7 @@ import { DATABASE_URL } from "../config";
 
 const ChatIndexContext = createContext({
   isPageLoading: true,
-  isNewuser: false,
+  isNewUser: false,
   setIsNewUser: () => {},
   chatList: [],
   setChatList: () => {},
@@ -14,7 +14,7 @@ const ChatIndexContext = createContext({
 
 export function ChatIndexContextProvider(props) {
   const [isPageLoading, setIsPageLoading] = useState(true);
-  const [isNewuser, setIsNewUser] = useState(false);
+  const [isNewUser, setIsNewUser] = useState(false);
   const [chatList, setChatList] = useState([]);
   const [mainChatMeta, setMainChatMeta] = useState({});
 
@@ -45,6 +45,8 @@ export function ChatIndexContextProvider(props) {
             };
             chats.push(chat)
           }
+          console.log(`Active user with ${chats.length} chat${(chats.length > 1) ? "s" : ""}`)
+
           setChatList(chats)
 
           const storedChatId = localStorage.getItem("storageChatId")
@@ -75,7 +77,7 @@ export function ChatIndexContextProvider(props) {
 
   const context = {
     isPageLoading,
-    isNewuser,
+    isNewUser,
     setIsNewUser,
     chatList,
     setChatList,
