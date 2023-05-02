@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import ChatIndexContext from "../../contexts/ChatIndexContext";
+import IconButton from "../Common/IconButton";
 
 export default function ChatHeader() {
-  const { isPageLoading, isNewUser, mainChatMeta } = useContext(ChatIndexContext);
+  const { isPageLoading, isNewUser, mainChatMeta } =
+    useContext(ChatIndexContext);
   const [title, setTitle] = useState("");
   const [tag, setTag] = useState("");
 
@@ -31,10 +33,16 @@ export default function ChatHeader() {
 
   return (
     <header
-      className={`blush-header min-h-16 ${(isPageLoading || (!isNewUser && !mainChatMeta)) && "text-opacity-30"}`}
+      className={`blush-header min-h-16 ${
+        (isPageLoading || (!isNewUser && !mainChatMeta)) && "text-opacity-30"
+      }`}
     >
       <h1>{title}</h1>
-      <p className="tagline">{tag}</p>
+      <div className="flex flex-row justify-center gap-2">
+        <div className="tagline">{tag}</div>
+        <div>|</div>
+        <IconButton task="chatDelete"  />
+        hellokitty</div>
     </header>
   );
 }

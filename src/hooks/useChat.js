@@ -12,7 +12,7 @@ export function useChat() {
     const chatMeta = {
       title: title || null,
       createdAt: firebase.firestore.Timestamp.now(),
-      deleted: false,
+      archived: false,
     };
 
     return fetch(`${DATABASE_URL}/chatMeta.json`, {

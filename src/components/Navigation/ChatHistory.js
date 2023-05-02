@@ -30,7 +30,7 @@ export default function ChatHistory() {
           </li>
         ) : (
           chatList
-            .filter((chat) => !chat.deleted)
+            .filter((chat) => !chat.archived)
             .map((chat) => (
               <li key={chat.id}>
                 <button
