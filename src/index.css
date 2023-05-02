@@ -44,9 +44,7 @@
     @apply flex h-6 w-6 items-center justify-center;
   }
 
-  .icon-on-white {
-    @apply text-blossom-600
-  }
+
 
 
   .nonactive-button {
@@ -119,17 +117,18 @@
   .sandbox-button {
     @apply border border-petal px-2 rounded-full;
   }
-  
-  .tooltip-parent {
-    @apply relative
+
+  .icon-chatheader {
+    @apply text-blossom-600 max-h-4
   }
+  
 
   .tooltip-container {
-    @apply  inline-block;
+    @apply relative inline-block;
   }
 
   .tooltip {
-    @apply absolute right-0 hidden rounded-lg px-2 py-0 text-xs text-blossom-600 border border-blossom-600 shadow-md whitespace-nowrap opacity-90;
+    @apply absolute top-6  left-1/2 transform -translate-x-1/2 hidden rounded-full px-3  text-xs text-petal border border-petal whitespace-nowrap bg-blossom-500 opacity-95 ;
   }
 
   .tooltip-container:hover .tooltip {
