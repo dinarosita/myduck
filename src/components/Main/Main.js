@@ -1,18 +1,18 @@
 import React from "react";
-import ChatMeta from "./ChatMeta";
 import MessageHistory from "./MessageHistory";
 import AddMessage from "./AddMessage";
-import { ChatRoomContextProvider } from "../../contexts/ChatRoomContext";
+import { MainChatContextProvider } from "../../contexts/MainChatContext";
+import ChatHeader from "./ChatHeader";
 
 export default function Main() {
   return (
-    <ChatRoomContextProvider>
+    <MainChatContextProvider>
       <main className="pass-overflow blush-frame flex flex-auto flex-col justify-between">
-        <ChatMeta />
+        <ChatHeader />
         <MessageHistory />
         <hr className="blush-separator" />
         <AddMessage />
       </main>
-    </ChatRoomContextProvider>
+    </MainChatContextProvider>
   );
 }

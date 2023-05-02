@@ -1,22 +1,22 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { DATABASE_URL } from "../config";
 
 const ChatIndexContext = createContext({
   isPageLoading: true,
-  isNewUser: false,
+  isNewuser: false,
   setIsNewUser: () => {},
   chatList: [],
   setChatList: () => {},
-  mainChatId: null,
-  updateMainChatId: () => {},
+  mainChatMeta: {},
+  updateMainChatMeta: () => {},
+  updateNewChatMeta: () => {},
 });
 
 export function ChatIndexContextProvider(props) {
   const [isPageLoading, setIsPageLoading] = useState(true);
-  const [mainChatId, setMainChatId] = useState(null);
-  const [isNewUser, setIsNewUser] = useState(false);
+  const [isNewuser, setIsNewUser] = useState(false);
   const [chatList, setChatList] = useState([]);
+  const [mainChatMeta, setMainChatMeta] = useState({});
 
   useEffect(() => {
     setIsPageLoading(true);
@@ -26,64 +26,62 @@ export function ChatIndexContextProvider(props) {
       signal: abortController.signal,
     })
       .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
+        if (!response) {
+          throw new Error("Chat list response not ok");
         }
         return response.json();
       })
       .then((data) => {
         const chats = [];
-
         if (!data) {
+          console.log("New user");
           setIsNewUser(true);
           localStorage.setItem("storageChatId", null);
-
-          console.log("New user");
         } else {
-          setIsNewUser(false);
-          console.log(`Active user: ${Object.keys(data).length} chats`);
-
           for (const key in data) {
             const chat = {
               id: key,
               ...data[key],
             };
-
-            chats.push(chat);
+            chats.push(chat)
           }
-          setChatList(chats);
-          const storedChatId = localStorage.getItem("storageChatId");
+          setChatList(chats)
 
-          if (storedChatId && chats.some((chat) => chat.id === storedChatId)) {
-            setMainChatId(storedChatId);
-          } else {
-            updateMainChatId(chats[chats.length - 1].id);
-          }
+          const storedChatId = localStorage.getItem("storageChatId")
+          const prevMeta = chats.find((chat) => chat.id === storedChatId)
+          const currentMeta = prevMeta ?? chats[chats.length - 1]
+
+          setMainChatMeta(currentMeta)
         }
-        setIsPageLoading(false);
+        setIsPageLoading(false)
       })
       .catch((error) => {
-        console.log(error);
-        setIsPageLoading(false);
-      });
-    return () => {
-      abortController.abort();
-    };
+        console.log(error)
+        setIsPageLoading(false)
+      })
+      return (() => {abortController.abort()})
   }, []);
 
-  function updateMainChatId(newId) {
+  function updateMainChatMeta(newId) {
+    const newMeta = chatList.find((chat) => chat.id === newId);
+    setMainChatMeta(newMeta);
     localStorage.setItem("storageChatId", newId);
-    setMainChatId(newId);
+  }
+
+  function updateNewChatMeta(newMeta) {
+    setMainChatMeta(newMeta)
+    localStorage.setItem("storageChatId", newMeta.id);
   }
 
   const context = {
     isPageLoading,
-    isNewUser,
+    isNewuser,
     setIsNewUser,
     chatList,
     setChatList,
-    mainChatId,
-    updateMainChatId,
+    mainChatMeta,
+    updateMainChatMeta,
+    updateNewChatMeta,
   };
 
   return (

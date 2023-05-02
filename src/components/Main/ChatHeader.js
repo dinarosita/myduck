@@ -1,10 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import ChatRoomContext from "../../contexts/ChatRoomContext";
 import ChatIndexContext from "../../contexts/ChatIndexContext";
 
-export default function ChatMeta() {
-  const { isPageLoading, isNewUser } = useContext(ChatIndexContext);
-  const { chatMeta } = useContext(ChatRoomContext);
+export default function ChatHeader() {
+  const { isPageLoading, isNewUser, mainChatMeta } = useContext(ChatIndexContext);
   const [title, setTitle] = useState("");
   const [tag, setTag] = useState("");
 
@@ -23,17 +21,17 @@ export default function ChatMeta() {
         setTitle("Welcome to MyDuck");
         setTag("Start a new chat!");
       } else {
-        if (chatMeta) {
-          setTitle(chatMeta.title ? chatMeta.title : "Untitled quack");
-          setTag(`Created: ${formatTimestamp(chatMeta.createdAt)}`);
+        if (mainChatMeta.id) {
+          setTitle(mainChatMeta.title ? mainChatMeta.title : "Untitled quack");
+          setTag(`Created: ${formatTimestamp(mainChatMeta.createdAt)}`);
         }
       }
     }
-  }, [isPageLoading, isNewUser, chatMeta]);
+  }, [isPageLoading, isNewUser, mainChatMeta]);
 
   return (
     <header
-      className={`blush-header min-h-16 ${(isPageLoading || (!isNewUser && !chatMeta)) && "text-opacity-30"}`}
+      className={`blush-header min-h-16 ${(isPageLoading || (!isNewUser && !mainChatMeta)) && "text-opacity-30"}`}
     >
       <h1>{title}</h1>
       <p className="tagline">{tag}</p>

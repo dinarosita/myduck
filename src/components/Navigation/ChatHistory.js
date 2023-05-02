@@ -12,8 +12,8 @@ export default function ChatHistory() {
     isPageLoading,
     isNewUser,
     chatList,
-    mainChatId,
-    updateMainChatId,
+    mainChatMeta,
+    updateMainChatMeta,
   } = useContext(ChatIndexContext);
 
   return (
@@ -34,7 +34,7 @@ export default function ChatHistory() {
               <li key={chat.id}>
                 <button
                   onClick={() => {
-                    updateMainChatId(chat.id);
+                    updateMainChatMeta(chat.id);
                     if (windowSize.width < 480) {
                       setIsFlapOpen(false);
                     }
@@ -42,7 +42,7 @@ export default function ChatHistory() {
                   }}
                   className={`chat-button smooth break-words transition hover:bg-petal/20 focus:bg-vincent-950/20 active:bg-none
                             ${
-                              mainChatId === chat.id && "bg-vincent-950/20 "
+                              mainChatMeta.id === chat.id && "bg-vincent-950/20 "
                             }`}
                   aria-label={`Open chat: ${chat.title || "Untitled"}`}
                 >

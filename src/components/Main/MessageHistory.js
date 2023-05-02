@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import ChatRoomContext from "../../contexts/ChatRoomContext";
+import MainChatContext from "../../contexts/MainChatContext";
 import ChatIndexContext from "../../contexts/ChatIndexContext";
 import AddChat from "../Navigation/AddChat";
 
@@ -7,7 +7,7 @@ export default function MessageHistory() {
   const { isPageLoading, isNewUser } = useContext(ChatIndexContext);
   const [content, setContent] = useState(null);
 
-  const { messageList } = useContext(ChatRoomContext);
+  const { messageList } = useContext(MainChatContext);
   const containerRef = useRef();
 
   useEffect(() => {

@@ -4,14 +4,14 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import ChatIndexContext from "./ChatIndexContext";
 import { DATABASE_URL } from "../config";
 
-const ChatRoomContext = createContext({
+const MainChatContext = createContext({
   chatId: null,
   chatMeta: {},
   messageList: [],
   setMessageList: () => {},
 });
 
-export function ChatRoomContextProvider(props) {
+export function MainChatContextProvider(props) {
   const { mainChatId, chatList } = useContext(ChatIndexContext);
   const [messageList, setMessageList] = useState([]);
 
@@ -53,10 +53,10 @@ export function ChatRoomContextProvider(props) {
   };
 
   return (
-    <ChatRoomContext.Provider value={context}>
+    <MainChatContext.Provider value={context}>
       {props.children}
-    </ChatRoomContext.Provider>
+    </MainChatContext.Provider>
   );
 }
 
-export default ChatRoomContext;
+export default MainChatContext;
