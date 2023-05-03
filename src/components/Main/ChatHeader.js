@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import ChatIndexContext from "../../contexts/ChatIndexContext";
-import IconButton from "../Common/IconButton";
+// import IconButton from "../Common/IconButton";
 import ConfirmationPopup from "../Common/ConfirmationPopUp";
+import ChatTitle from "./ChatTitle";
 
 export default function ChatHeader() {
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -10,11 +11,7 @@ export default function ChatHeader() {
   const [title, setTitle] = useState("");
   const [tag, setTag] = useState("");
 
-  // function formatTimestamp(timestamp) {
-  //   const date = new Date(timestamp.seconds * 1000).toDateString();
-  //   const time = new Date(timestamp.seconds * 1000).toLocaleTimeString();
-  //   return `${date} at ${time}`;
-  // }
+
   function formatTimestamp(timestamp) {
     const date = new Date(timestamp.seconds * 1000).toDateString();
     return `${date}`;
@@ -37,10 +34,6 @@ export default function ChatHeader() {
     }
   }, [isPageLoading, isNewUser, mainChatMeta]);
 
-  function handleDeleteClick() {
-    setShowConfirmation(true);
-  }
-
   return (
     <header
       className={`blush-header relative min-h-16 px-8 ${
@@ -48,16 +41,11 @@ export default function ChatHeader() {
       }`}
     >
       <div className="flex flex-row justify-center gap-2">
-        <h1 className="">{title}</h1>
-        <IconButton task="editItem" addButtonClass="h-4 w-4" addIconClass="icon-chatheader ml-auto" />
+        <ChatTitle title={title} />
       </div>
-      <div className="flex flex-row justify-center gap-2 align-bottom">
+      <div className="flex flex-row justify-center gap-2">
         <div className="tagline">{tag}</div>
-        <IconButton
-          task="archiveItem" addButtonClass="h-4 w-4"
-          addIconClass="icon-chatheader ml-auto leading-none"
-          onClick={handleDeleteClick}
-        />
+        
       </div>
       <div>
         {showConfirmation && (

@@ -8,10 +8,12 @@ import {
   CheckCircleIcon,
   XCircleIcon,
   TrashIcon,
+  PencilIcon,
   PencilSquareIcon,
   PaperAirplaneIcon,
   BookOpenIcon,
   ArchiveBoxArrowDownIcon,
+
 } from "@heroicons/react/24/outline";
 
 const iconMapping = {
@@ -25,6 +27,7 @@ const iconMapping = {
   chatDelete: TrashIcon,
   archiveItem: ArchiveBoxArrowDownIcon,
   editItem: PencilSquareIcon,
+  editChatTitle: PencilIcon,
   messageSubmit: PaperAirplaneIcon,
   messageEdit: PencilSquareIcon,
   messageDelete: TrashIcon,

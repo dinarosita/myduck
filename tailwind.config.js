@@ -13,6 +13,7 @@ module.exports = {
         8: "2rem",
         12: "3rem",
         16: "4rem",
+        60: "15rem",
         80: "20rem",
       },
       colors: {

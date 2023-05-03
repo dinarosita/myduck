@@ -11,7 +11,7 @@ export default function Content() {
   }
   return (
     <ChatIndexContextProvider>
-      <div className="w-effective pass-overflow px-2">
+      <div className="w-effective pass-overflow px-2  min-h-80">
         {/* RESPONSIVE SMARTPHONE < xs-480 - Overlay */}
         <div className={`pass-overflow relative xs:hidden `}>
           <div
