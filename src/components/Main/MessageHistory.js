@@ -45,11 +45,11 @@ export default function MessageHistory() {
                 </div>
                 <div className="flex-col-center gap-0 h-9">
                   <IconButton
-                    task="editItem"
+                    task="editItem" addButtonClass="h-4 w-4"
                     addIconClass="icon-msg align-bottom"
                   />
                   <IconButton
-                    task="archiveItem"
+                    task="archiveItem" addButtonClass="h-4 w-4"
                     addIconClass="icon-msg"
                   />
                 </div>

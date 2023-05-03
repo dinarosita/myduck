@@ -29,23 +29,16 @@
   }
 
   .blush-header  h1 {
-    @apply text-lg font-bold;
+    @apply text-lg font-bold ;
   }
 
-  .blush-header  .tagline {
-    @apply text-sm;
+  .blush-header .tagline {
+    @apply text-xs leading-loose;
   }
 
   .blush-button {
     @apply text-petal hover:text-transparent/40 focus:text-transparent/40 active:text-transparent/20;
   }
-
-  .icon-container {
-    @apply flex h-6 w-6 items-center justify-center;
-  }
-
-
-
 
   .nonactive-button {
     @apply pointer-events-none text-petal/50 hover:text-petal/50  focus:text-petal/50 

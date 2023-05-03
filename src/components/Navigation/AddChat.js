@@ -57,8 +57,8 @@ export default function AddChat(props) {
       />
       <input type="submit" hidden={true} />
       <div>
-        <IconButton task="chatCancel" onClick={cancelAddChat} />
-        <IconButton task="chatSubmit" onClick={handleSubmit} />
+        <IconButton task="chatCancel" onClick={cancelAddChat} addButtonClass="h-6 w-6" />
+        <IconButton task="chatSubmit" onClick={handleSubmit} addButtonClass="h-6 w-6" />
       </div>
     </form>
   );

@@ -74,7 +74,7 @@ export default function AddMessage() {
         <IconButton
           task="messageSubmit"
           onClick={handleSubmit}
-          addButtonClass={`absolute bottom-2 right-2`}
+          addButtonClass={`h-6 w-6 absolute bottom-2 right-2`}
         />
       </form>
     </section>

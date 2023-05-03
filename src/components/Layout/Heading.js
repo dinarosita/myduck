@@ -16,7 +16,7 @@ export default function Heading() {
             <IconButton
               onClick={handleNavMenu}
               task="navMenu"
-              addButtonClass="lg:nonactive-button "
+              addButtonClass="lg:nonactive-button h-6 w-6"
               addIconClass="lg:nonactive-button "
             />
           </div>
@@ -42,8 +42,8 @@ export default function Heading() {
         </div>
 
         <div className="flex flex-1 justify-end items-start gap-2">
-          <IconButton type="routing" page="about" />
-          <IconButton type="routing" page="sandbox" />
+          <IconButton type="routing" page="about" addButtonClass="h-6 w-6" />
+          <IconButton type="routing" page="sandbox" addButtonClass="h-6 w-6" />
         </div>
       </div>
     </div>

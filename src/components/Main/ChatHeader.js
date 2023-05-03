@@ -4,7 +4,7 @@ import IconButton from "../Common/IconButton";
 import ConfirmationPopup from "../Common/ConfirmationPopUp";
 
 export default function ChatHeader() {
-  const [showConfirmation, setShowConfirmation] = useState(false)
+  const [showConfirmation, setShowConfirmation] = useState(false);
   const { isPageLoading, isNewUser, mainChatMeta } =
     useContext(ChatIndexContext);
   const [title, setTitle] = useState("");
@@ -38,7 +38,7 @@ export default function ChatHeader() {
   }, [isPageLoading, isNewUser, mainChatMeta]);
 
   function handleDeleteClick() {
-    setShowConfirmation(true)
+    setShowConfirmation(true);
   }
 
   return (
@@ -47,32 +47,30 @@ export default function ChatHeader() {
         (isPageLoading || (!isNewUser && !mainChatMeta)) && "text-opacity-30"
       }`}
     >
-      <h1 className="">{title}</h1>
-      <div className="tagline">{tag}</div>
-      <div className="absolute right-0 bottom-3 flex-col-center h-10">
+      <div className="flex flex-row justify-center gap-2">
+        <h1 className="">{title}</h1>
+        <IconButton task="editItem" addButtonClass="h-4 w-4" addIconClass="icon-chatheader ml-auto" />
+      </div>
+      <div className="flex flex-row justify-center gap-2 align-bottom">
+        <div className="tagline">{tag}</div>
         <IconButton
-          task="editItem"
-          addIconClass="icon-chatheader"
-        />        
-        <IconButton
-          task="archiveItem"
-          addIconClass="icon-chatheader"
+          task="archiveItem" addButtonClass="h-4 w-4"
+          addIconClass="icon-chatheader ml-auto leading-none"
           onClick={handleDeleteClick}
         />
       </div>
       <div>
-      {showConfirmation && (
-        <ConfirmationPopup
-          onConfirm={() => {
-            setShowConfirmation(false);
-            // Handle the confirmation action here
-          }}
-          onCancel={() => setShowConfirmation(false)}
-          type="chatArchive"
-        />
-      )}
-      
-    </div>
+        {showConfirmation && (
+          <ConfirmationPopup
+            onConfirm={() => {
+              setShowConfirmation(false);
+              // Handle the confirmation action here
+            }}
+            onCancel={() => setShowConfirmation(false)}
+            type="chatArchive"
+          />
+        )}
+      </div>
     </header>
   );
 }

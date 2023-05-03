@@ -22,7 +22,7 @@ export default function Navigation() {
         <IconButton
           onClick={handleNavClose}
           task="navClose"
-          addButtonClass="lg:hidden"
+          addButtonClass="lg:hidden h-6 w-6"
         />
       </div>
       <hr className="blush-separator" />

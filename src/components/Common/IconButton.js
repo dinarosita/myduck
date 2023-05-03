@@ -48,7 +48,7 @@ export default function IconButton(props) {
   return (
     <button
       onClick={(event) => handleClick(event)}
-      className={`blush-button h-6 w-6 ${props.addButtonClass}`}
+      className={`blush-button  ${props.addButtonClass}`}
     >
       {IconComponent && (
         <IconComponent
