@@ -1,14 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { MockArrayContext } from "../pages/MockArrayContext";
+import useArray from "../hooks/useArray";
 
 export default function UsingUseArray() {
   const { mockArray, setMockArray } = useContext(MockArrayContext);
+  const { addItem } = useArray(setMockArray);
+  const nameRef = useRef();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    addItem({ id: Date.now(), name: nameRef.current.value, archived: false });
+    nameRef.current.value = "";
+  }
 
   return (
     <div className="flex-col-center">
       <h2>useArray</h2>
       <div className="sandbox">
-        <div>Student List</div>
+        <div className="font-bold ">Student List</div>
         <ul className="w-full space-y-1">
           {mockArray.length ? (
             mockArray.map((el) => (
@@ -20,7 +29,18 @@ export default function UsingUseArray() {
             </li>
           )}
         </ul>
-        <button className="sandbox-button">Add student</button>
+        <div className="mt-4 font-bold">New Student Form</div>
+        <form className="flex flex-row" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Student name..."
+            className="sandbox-input"
+            ref={nameRef}
+          />
+          <button type="submit" className="sandbox-button">
+            Submit
+          </button>
+        </form>
       </div>
     </div>
   );

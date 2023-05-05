@@ -1,8 +1,4 @@
-import { useState } from "react";
-
-export default function useArray(initialArray) {
-  const [array, setArray] = useState(initialArray);
-
+export default function useArray(setArray) {
   function addItem(element) {
     setArray((arr) => [...arr, element]);
   }
@@ -35,6 +31,5 @@ export default function useArray(initialArray) {
     });
   }
 
-  return { array, setArray, addItem, editItem, toggleArchived }
+  return { addItem, editItem, toggleArchived };
 }
-

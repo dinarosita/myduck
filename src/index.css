@@ -108,7 +108,7 @@
   }
 
   .sandbox-button {
-    @apply border border-petal px-2 rounded-full py-0.5 px-4 m-1 bg-petal/20 shadow hover:bg-transparent/20;
+    @apply border border-petal px-2 rounded-full py-0.5 px-4 m-1 bg-petal/20 shadow hover:bg-transparent/20 focus:bg-transparent/20;
   }
 
   .sandbox {
