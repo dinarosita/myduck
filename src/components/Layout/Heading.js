@@ -43,6 +43,7 @@ export default function Heading() {
 
         <div className="flex flex-1 justify-end items-start gap-2">
           <IconButton type="routing" page="about" addButtonClass="h-6 w-6" />
+          <IconButton type="routing" page="customHooks" addButtonClass="h-6 w-6" />
           <IconButton type="routing" page="sandbox" addButtonClass="h-6 w-6" />
         </div>
       </div>

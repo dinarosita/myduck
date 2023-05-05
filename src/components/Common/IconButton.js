@@ -13,6 +13,7 @@ import {
   PaperAirplaneIcon,
   BookOpenIcon,
   ArchiveBoxArrowDownIcon,
+  BoltIcon,
 
 } from "@heroicons/react/24/outline";
 
@@ -31,6 +32,7 @@ const iconMapping = {
   messageSubmit: PaperAirplaneIcon,
   messageEdit: PencilSquareIcon,
   messageDelete: TrashIcon,
+  customHooks: BoltIcon,
 };
 
 export default function IconButton(props) {

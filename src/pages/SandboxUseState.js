@@ -9,8 +9,8 @@ export default function SandboxUseState() {
     <div className="flex-col-center">
       <h2>useState</h2>
       <div
-        className={`flex-col-center my-2 w-80 rounded-lg border  border-petal p-4 bg-${
-          color ? "blossom-800/50" : "transparent"
+        className={`sandbox ${
+          color ? "bg-blossom-800/50" : "bg-transparent"
         } 
    gap-2
     
@@ -19,8 +19,9 @@ export default function SandboxUseState() {
         <input
           type="text"
           value={userInput}
+          placeholder="try me"
           onChange={(e) => setUserInput(e.target.value)}
-          className="w-full rounded-full p-1 text-center text-vincent-900"
+          className="sandbox-input"
         />
         <p>{count}</p>
         <section className="flex flex-row gap-2">
@@ -37,13 +38,15 @@ export default function SandboxUseState() {
             +
           </button>
           <button
-            onClick={() => setColor((prev) => !prev)}
+            onClick={() => {
+              console.log("color button clicked")
+              setColor((prev) => !prev)}}
             className="sandbox-button"
           >
             color
           </button>
         </section>
-        <p className="mt-2 h-8 w-full bg-transparent/10 p-1 text-center">
+        <p className="sandbox-display">
           {userInput}
         </p>
       </div>
