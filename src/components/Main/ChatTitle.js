@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useChat } from "../../hooks/useChat"
 import { useLongPress } from "use-long-press";
 
 export default function ChatTitle({ title, onTitleChange }) {
@@ -6,6 +7,7 @@ export default function ChatTitle({ title, onTitleChange }) {
   const [showContextMenu, setShowContextMenu] = useState(false);
   const inputRef = useRef();
   const contextMenuRef = useRef();
+  const {editChatTitle} = useChat();
 
   function handleContextMenu(e) {
     e.preventDefault();
@@ -21,7 +23,7 @@ export default function ChatTitle({ title, onTitleChange }) {
   function handleKeyDown(e) {
     if ((e.shiftKey && e.key === "F10") || e.key === "ContextMenu") {
       e.preventDefault();
-      setShowContextMenu(true);
+      setShowContextMenu(true)
     }
     if (e.key === "Enter") {
       setShowContextMenu(true)
@@ -44,7 +46,10 @@ export default function ChatTitle({ title, onTitleChange }) {
   }
 
   function confirmEditing() {
-    onTitleChange(inputRef.current.value);
+    const newTitle = inputRef.current.value.trim().replace(/\s+/g, ' ');
+    if (newTitle !== "" || newTitle === title){
+      onTitleChange(newTitle);
+    }
     setIsEditing(false);
   }
 
@@ -64,7 +69,7 @@ export default function ChatTitle({ title, onTitleChange }) {
           maxLength="50"
           defaultValue={title || ""}
           placeholder="Enter your chat title"
-          className="h-6 border-none bg-vincent-200/50  caret-vincent-800 w-full rounded-full text-sm"
+          className="h-6 border border-vincent-700 bg-vincent-200/50  caret-vincent-800 w-full rounded-full text-sm"
         />
         <button className="title-button" onClick={confirmEditing}>Confirm</button>
         <button  className="title-button"  onClick={cancelEditing}>Cancel</button>

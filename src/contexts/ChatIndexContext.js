@@ -88,7 +88,6 @@ export function ChatIndexContextProvider(props) {
 
   return (
     <ChatIndexContext.Provider value={context}>
-      {console.log(chatList)}
       {props.children}
     </ChatIndexContext.Provider>
   );

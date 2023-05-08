@@ -1,16 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import ChatIndexContext from "../../contexts/ChatIndexContext";
 // import IconButton from "../Common/IconButton";
-import ConfirmationPopup from "../Common/ConfirmationPopUp";
 import ChatTitle from "./ChatTitle";
+import { useChat } from "../../hooks/useChat";
 
 export default function ChatHeader() {
-  const [showConfirmation, setShowConfirmation] = useState(false);
   const { isPageLoading, isNewUser, mainChatMeta } =
     useContext(ChatIndexContext);
+  const { editChatTitle } = useChat();
   const [title, setTitle] = useState("");
   const [tag, setTag] = useState("");
-
 
   function formatTimestamp(timestamp) {
     const date = new Date(timestamp.seconds * 1000).toDateString();
@@ -34,6 +33,10 @@ export default function ChatHeader() {
     }
   }, [isPageLoading, isNewUser, mainChatMeta]);
 
+  function onTitleChange(newTitle) {
+    editChatTitle(mainChatMeta.id, newTitle);
+  }
+
   return (
     <header
       className={`blush-header relative min-h-16 px-8 ${
@@ -45,19 +48,6 @@ export default function ChatHeader() {
       </div>
       <div className="flex flex-row justify-center gap-2">
         <div className="tagline">{tag}</div>
-        
-      </div>
-      <div>
-        {showConfirmation && (
-          <ConfirmationPopup
-            onConfirm={() => {
-              setShowConfirmation(false);
-              // Handle the confirmation action here
-            }}
-            onCancel={() => setShowConfirmation(false)}
-            type="chatArchive"
-          />
-        )}
       </div>
     </header>
   );

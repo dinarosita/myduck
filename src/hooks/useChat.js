@@ -33,6 +33,7 @@ export function useChat() {
       });
   }
 
+
   function updateLocalChatList(chatId) {
     return fetch(`${DATABASE_URL}/chatMeta/${chatId}.json`)
       .then((response) => response.json())

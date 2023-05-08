@@ -55,13 +55,13 @@
   }
 
   .title-button {
-    @apply text-petal bg-blossom-300 rounded-full h-6 px-2 
+    @apply bg-blossom-300/50 text-blossom-700 border border-blossom-700 rounded-full h-6 px-2 
   }
 
   .title-button:hover,
   .title-button:active,
   .title-button:focus {
-    @apply bg-blossom-300/50 text-blossom-700 border border-blossom-700
+    @apply text-petal bg-blossom-500 border-blossom-600
   }
 
   .menu-box {
