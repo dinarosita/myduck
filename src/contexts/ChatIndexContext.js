@@ -9,6 +9,7 @@ const ChatIndexContext = createContext({
   setChatList: () => {},
   mainChatId: null,
   updateMainChatId: () => {},
+  findLastActiveId: () => {},
 });
 
 export function ChatIndexContextProvider(props) {
@@ -54,12 +55,12 @@ export function ChatIndexContextProvider(props) {
 
           const storedChatId = localStorage.getItem("storageChatId");
 
-          if (chats.some((chat) => chat.id === storedChatId)) {
-            setMainChatId(storedChatId)
+          if (chats.some((chat) => chat.id === storedChatId && chat.archived === false)) {
+            setMainChatId(storedChatId);
           } else {
-            updateMainChatId(chats[chats.length - 1].id)
+            const lastId = findLastActiveId(chats);
+            updateMainChatId(lastId);
           }
-
         }
         setIsPageLoading(false);
       })
@@ -72,11 +73,18 @@ export function ChatIndexContextProvider(props) {
     };
   }, []);
 
+  function findLastActiveId(chats) {
+    for (let i = chats.length - 1; i >= 0; i--) {
+      if (chats[i].archived === false) {
+        return chats[i].id;
+      }
+    }
+  }
+
   function updateMainChatId(newId) {
     setMainChatId(newId);
     localStorage.setItem("storageChatId", newId);
   }
-
 
   const context = {
     isPageLoading,
@@ -86,6 +94,7 @@ export function ChatIndexContextProvider(props) {
     setChatList,
     mainChatId,
     updateMainChatId,
+    findLastActiveId,
   };
 
   return (

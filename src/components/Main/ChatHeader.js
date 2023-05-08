@@ -2,12 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import ChatIndexContext from "../../contexts/ChatIndexContext";
 // import IconButton from "../Common/IconButton";
 import ChatTitle from "./ChatTitle";
-import { useChat } from "../../hooks/useChat";
+import { DATABASE_URL } from "../../config";
 
 export default function ChatHeader() {
-  const { isPageLoading, isNewUser, chatList, mainChatId } =
+  const { isPageLoading, isNewUser, chatList, setChatList, mainChatId, updateMainChatId, findLastActiveId } =
     useContext(ChatIndexContext);
-  const { editChatTitle } = useChat();
   const [title, setTitle] = useState("");
   const [tag, setTag] = useState("");
 
@@ -26,7 +25,7 @@ export default function ChatHeader() {
         setTag("Start a new chat!");
       } else {
         if (mainChatId) {
-          const mainChat = chatList.find((chat) => chat.id === mainChatId)
+          const mainChat = chatList.find((chat) => chat.id === mainChatId);
           setTitle(mainChat.title ? mainChat.title : "Untitled chat");
           setTag(`Created: ${formatTimestamp(mainChat.createdAt)}`);
         }
@@ -35,7 +34,68 @@ export default function ChatHeader() {
   }, [isPageLoading, isNewUser, chatList, mainChatId]);
 
   function onTitleChange(newTitle) {
-    editChatTitle(mainChatId, newTitle);
+    const updatedChatList = chatList.map((chat) => {
+      if (chat.id === mainChatId) {
+        return {
+          ...chat,
+          title: newTitle,
+        };
+      }
+      return chat;
+    });
+    setChatList(updatedChatList);
+    updateChatTitleInDatabase(mainChatId, newTitle)
+  }
+
+  function updateChatTitleInDatabase(chatId, newTitle) {
+    return fetch(`${DATABASE_URL}/chatMeta/${chatId}.json`, {
+      method: "PATCH",
+      body: JSON.stringify({ title: newTitle }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(() => {
+        console.log("Chat title updated in the database");
+      })
+      .catch((error) => {
+        console.error("Error updating chat title:", error);
+      });
+  }
+
+  function onChatArchive() {
+    const newList = chatList.map((chat) => {
+      if (chat.id === mainChatId) {
+        return {
+          ...chat,
+          archived: true,
+        };
+      }
+      return chat;
+    });
+    setChatList(newList);
+
+
+
+
+    updateMainChatId(findLastActiveId(newList))
+    archiveChatInDatabase(mainChatId)
+  }
+
+  function archiveChatInDatabase(chatId) {
+    return fetch(`${DATABASE_URL}/chatMeta/${chatId}.json`, {
+      method: "PATCH",
+      body: JSON.stringify({ archived: true }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(() => {
+        console.log("Chat archived in the database");
+      })
+      .catch((error) => {
+        console.error("Error archiving chat:", error);
+      });
   }
 
   return (
@@ -45,7 +105,7 @@ export default function ChatHeader() {
       }`}
     >
       <div className="flex flex-row justify-center gap-2">
-        <ChatTitle title={title} />
+        <ChatTitle title={title} onTitleChange={onTitleChange} onChatArchive={onChatArchive} />
       </div>
       <div className="flex flex-row justify-center gap-2">
         <div className="tagline">{tag}</div>
