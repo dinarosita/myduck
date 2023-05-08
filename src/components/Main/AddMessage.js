@@ -8,7 +8,7 @@ import { useWindowSize } from "../../hooks/useWindowSize";
 import ChatIndexContext from "../../contexts/ChatIndexContext";
 
 export default function AddMessage() {
-  const { isPageLoading, isNewUser, mainChatMeta } = useContext(ChatIndexContext);
+  const { isPageLoading, isNewUser, mainChatId } = useContext(ChatIndexContext);
   const textareaRef = useRef();
   const { setMessageList } = useContext(MainChatContext);
   const [textvalue, setTextValue] = useState("");
@@ -34,8 +34,8 @@ export default function AddMessage() {
       return;
     }
 
-    postAddMessage(mainChatMeta.id, messageContent, (messageId) => {
-      updateLocalMessages(mainChatMeta.id, messageId, (latestMessage) => {
+    postAddMessage(mainChatId, messageContent, (messageId) => {
+      updateLocalMessages(mainChatId, messageId, (latestMessage) => {
         setMessageList((prevList) => prevList.concat(latestMessage));
       });
       setTextValue("");

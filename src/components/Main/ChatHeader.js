@@ -5,7 +5,7 @@ import ChatTitle from "./ChatTitle";
 import { useChat } from "../../hooks/useChat";
 
 export default function ChatHeader() {
-  const { isPageLoading, isNewUser, mainChatMeta } =
+  const { isPageLoading, isNewUser, chatList, mainChatId } =
     useContext(ChatIndexContext);
   const { editChatTitle } = useChat();
   const [title, setTitle] = useState("");
@@ -25,22 +25,23 @@ export default function ChatHeader() {
         setTitle("Welcome to MyDuck");
         setTag("Start a new chat!");
       } else {
-        if (mainChatMeta.id) {
-          setTitle(mainChatMeta.title ? mainChatMeta.title : "Untitled chat");
-          setTag(`Created: ${formatTimestamp(mainChatMeta.createdAt)}`);
+        if (mainChatId) {
+          const mainChat = chatList.find((chat) => chat.id === mainChatId)
+          setTitle(mainChat.title ? mainChat.title : "Untitled chat");
+          setTag(`Created: ${formatTimestamp(mainChat.createdAt)}`);
         }
       }
     }
-  }, [isPageLoading, isNewUser, mainChatMeta]);
+  }, [isPageLoading, isNewUser, chatList, mainChatId]);
 
   function onTitleChange(newTitle) {
-    editChatTitle(mainChatMeta.id, newTitle);
+    editChatTitle(mainChatId, newTitle);
   }
 
   return (
     <header
       className={`blush-header relative min-h-16 px-8 ${
-        (isPageLoading || (!isNewUser && !mainChatMeta)) && "text-opacity-30"
+        (isPageLoading || (!isNewUser && !mainChatId)) && "text-opacity-30"
       }`}
     >
       <div className="flex flex-row justify-center gap-2">

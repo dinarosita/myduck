@@ -7,16 +7,15 @@ const ChatIndexContext = createContext({
   setIsNewUser: () => {},
   chatList: [],
   setChatList: () => {},
-  mainChatMeta: {},
-  updateMainChatMeta: () => {},
-  updateNewChatMeta: () => {},
+  mainChatId: null,
+  updateMainChatId: () => {},
 });
 
 export function ChatIndexContextProvider(props) {
   const [isPageLoading, setIsPageLoading] = useState(true);
   const [isNewUser, setIsNewUser] = useState(false);
   const [chatList, setChatList] = useState([]);
-  const [mainChatMeta, setMainChatMeta] = useState({});
+  const [mainChatId, setMainChatId] = useState(null);
 
   useEffect(() => {
     setIsPageLoading(true);
@@ -43,37 +42,41 @@ export function ChatIndexContextProvider(props) {
               id: key,
               ...data[key],
             };
-            chats.push(chat)
+            chats.push(chat);
           }
-          console.log(`Active user with ${chats.length} chat${(chats.length > 1) ? "s" : ""}`)
+          console.log(
+            `Active user with ${chats.length} chat${
+              chats.length > 1 ? "s" : ""
+            }`
+          );
 
-          setChatList(chats)
+          setChatList(chats);
 
-          const storedChatId = localStorage.getItem("storageChatId")
-          const prevMeta = chats.find((chat) => chat.id === storedChatId)
-          const currentMeta = prevMeta ?? chats[chats.length - 1]
+          const storedChatId = localStorage.getItem("storageChatId");
 
-          setMainChatMeta(currentMeta)
+          if (chats.some((chat) => chat.id === storedChatId)) {
+            setMainChatId(storedChatId)
+          } else {
+            updateMainChatId(chats[chats.length - 1].id)
+          }
+
         }
-        setIsPageLoading(false)
+        setIsPageLoading(false);
       })
       .catch((error) => {
-        console.log(error)
-        setIsPageLoading(false)
-      })
-      return (() => {abortController.abort()})
+        console.log(error);
+        setIsPageLoading(false);
+      });
+    return () => {
+      abortController.abort();
+    };
   }, []);
 
-  function updateMainChatMeta(newId) {
-    const newMeta = chatList.find((chat) => chat.id === newId);
-    setMainChatMeta(newMeta);
+  function updateMainChatId(newId) {
+    setMainChatId(newId);
     localStorage.setItem("storageChatId", newId);
   }
 
-  function updateNewChatMeta(newMeta) {
-    setMainChatMeta(newMeta)
-    localStorage.setItem("storageChatId", newMeta.id);
-  }
 
   const context = {
     isPageLoading,
@@ -81,9 +84,8 @@ export function ChatIndexContextProvider(props) {
     setIsNewUser,
     chatList,
     setChatList,
-    mainChatMeta,
-    updateMainChatMeta,
-    updateNewChatMeta,
+    mainChatId,
+    updateMainChatId,
   };
 
   return (
