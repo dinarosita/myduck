@@ -13,16 +13,16 @@ export default function AddChat(props) {
   const windowSize = useWindowSize();
   const { isPageLoading, isNewUser } = useContext(ChatIndexContext);
 
-  function cancelAddChat(event) {
-    event.preventDefault();
+  function cancelAddChat(e) {
+    e.preventDefault();
     inputRef.current.value = "";
   }
 
-  function handleSubmit(event) {
+  function handleSubmit(e) {
     if (isPageLoading) {
       return;
     }
-    event.preventDefault();
+    e.preventDefault();
     const title = inputRef.current.value;
     const sanitizedTitle = sanitizeInput(title);
     postNewChat(sanitizedTitle).then(() => {
@@ -53,10 +53,10 @@ export default function AddChat(props) {
         maxLength="50"
         ref={inputRef}
         placeholder="+ chat title"
-        className={`w-full rounded-full border-2 border-blossom-300 py-1 text-vincent-800 placeholder:text-vincent-700 hover:border-blossom-500 hover:placeholder:text-vincent-400 focus:border-blossom-500 focus:ring-0 max-w-md  ${props.welcome ? "text-center" : "text-left"}`}
+        className={`w-full rounded-full border-2 border-blossom-300 py-1 text-vincent-800 placeholder:text-vincent-700 hover:border-blossom-500 hover:placeholder:text-vincent-400 focus:border-blossom-500 f   ocus:ring-0 max-w-md  ${props.welcome ? "text-center" : "text-left"}`}
       />
       <input type="submit" hidden={true} />
-      <div>
+      <div>     
         <IconButton task="chatCancel" onClick={cancelAddChat} addButtonClass="h-6 w-6" />
         <IconButton task="chatSubmit" onClick={handleSubmit} addButtonClass="h-6 w-6" />
       </div>

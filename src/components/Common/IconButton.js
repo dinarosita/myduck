@@ -39,20 +39,20 @@ export default function IconButton(props) {
   const handleLinkClick = useLinkButtonLogic();
   const IconComponent = iconMapping[props.page || props.task];
 
-  const handleClick = (event) => {
+  const handleClick = (e) => {
     switch (props.type) {
       case "routing":
         handleLinkClick(`/myduck/${props.page}`);
         break;
       default:
-        props.onClick && props.onClick(event);
+        props.onClick && props.onClick(e);
         break;
     }
   };
 
   return (
     <button
-      onClick={(event) => handleClick(event)}
+      onClick={(e) => handleClick(e)}
       className={`blush-button  ${props.addButtonClass}`}
     >
       {IconComponent && (

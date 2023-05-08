@@ -54,6 +54,30 @@
     @apply w-full rounded-r-full px-2 py-1 text-left text-petal ring-0;
   }
 
+  .title-button {
+    @apply text-petal bg-blossom-300 rounded-full h-6 px-2 
+  }
+
+  .title-button:hover,
+  .title-button:active,
+  .title-button:focus {
+    @apply bg-blossom-300/50 text-blossom-700 border border-blossom-700
+  }
+
+  .menu-box {
+    @apply  p-0.5 gap-0.5 bg-blossom-500
+  }
+
+  .menu-button {
+    @apply border px-2 px-1 py-0.5 bg-blossom-100 text-blossom-700
+  }
+
+  .menu-button:hover,
+  .menu-button:active,
+  .menu-button:focus {
+    @apply  bg-blossom-200
+  }
+
   .skyscroll::-webkit-scrollbar {
     @apply w-2;
   }

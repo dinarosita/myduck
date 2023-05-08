@@ -15,15 +15,15 @@ export default function AddMessage() {
   const { postAddMessage, updateLocalMessages } = useMessage();
   const windowSize = useWindowSize();
 
-  function handleTextValue(event) {
-    setTextValue(event.target.value);
+  function handleTextValue(e) {
+    setTextValue(e.target.value);
   }
 
-  function handleSubmit(event) {
+  function handleSubmit(e) {
     if (isPageLoading || isNewUser) {
       return;
     }
-    event.preventDefault();
+    e.preventDefault();
 
     const rawMessageContent = textareaRef.current.value;
     const sanitizedMessageContent = sanitizeInput(rawMessageContent);
@@ -64,10 +64,10 @@ export default function AddMessage() {
           }}
           value={textvalue}
           onChange={handleTextValue}
-          onKeyDown={(event) => {
-            if (event.key === 13) {
-              event.preventDefault();
-              event.target.value += "\n";
+          onKeyDown={(e) => {
+            if (e.key === 13) {
+              e.preventDefault();
+              e.target.value += "\n";
             }
           }}
         />

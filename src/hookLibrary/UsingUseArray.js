@@ -11,6 +11,7 @@ export default function UsingUseArray() {
     e.preventDefault();
     addItem({ id: Date.now(), name: nameRef.current.value, archived: false });
     nameRef.current.value = "";
+    nameRef.current.focus();
   }
 
   return (
