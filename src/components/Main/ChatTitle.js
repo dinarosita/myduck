@@ -1,50 +1,22 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useLongPress } from "use-long-press";
+import React, { useRef, useState } from "react";
+import MenuWrapper from "../Common/MenuWrapper";
+import ContextMenu from "../Common/ContextMenu";
+import ArchiveModal from "../Common/ArchiveModal";
 
 export default function ChatTitle({ title, onTitleChange, onChatArchive }) {
   const [isEditing, setIsEditing] = useState(false);
-  const [showContextMenu, setShowContextMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
   const inputRef = useRef();
-  const contextMenuRef = useRef();
-  const [showArchiveConfirm, setShowArchiveConfirm] = useState(false);
+  const [showArchiveModal, setShowArchiveModal] = useState(false);
 
-  useEffect(() => {
-    window.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      window.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
-  function handleContextMenu(e) {
-    e.preventDefault();
-    setShowContextMenu(true);
-  }
-
-  function handleLongPress() {
-    setShowContextMenu(true);
-  }
-
-  const bind = useLongPress(handleLongPress);
-
-  function handleKeyDown(e) {
-    if ((e.shiftKey && e.key === "F10") || e.key === "ContextMenu") {
-      e.preventDefault();
-      setShowContextMenu(true);
-    }
-    if (e.key === "Enter") {
-      setShowContextMenu(true);
-    }
-  }
-
-  function handleClickOutside(e) {
-    if (contextMenuRef.current && !contextMenuRef.current.contains(e.target)) {
-      setShowContextMenu(false);
-    }
-  }
+  const menuItems = [
+    { text: "Edit Title", onClick: startEditing },
+    { text: "Archive Chat", onClick: showArchiveConfirmation },
+  ];
 
   function startEditing() {
     setIsEditing(true);
-    setShowContextMenu(false);
+    setShowMenu(false);
   }
 
   function cancelEditing() {
@@ -60,16 +32,14 @@ export default function ChatTitle({ title, onTitleChange, onChatArchive }) {
   }
 
   function handleArchive() {
-    onChatArchive()
-    setShowArchiveConfirm(false);
+    onChatArchive();
+    setShowArchiveModal(false);
   }
 
-  function handleArchiveCancel() {
-    setShowArchiveConfirm(false);
-  }
+
 
   function showArchiveConfirmation() {
-    setShowArchiveConfirm(true);
+    setShowArchiveModal(true);
   }
 
   if (isEditing) {
@@ -93,53 +63,25 @@ export default function ChatTitle({ title, onTitleChange, onChatArchive }) {
     );
   } else {
     return (
-      <div
-        {...bind()}
-        onKeyDown={handleKeyDown}
-        onContextMenu={handleContextMenu}
-        className="relative inline-block"
-      >
+      <MenuWrapper setShowMenu={setShowMenu}>
         <h1
           tabIndex="0"
           className="h-6 hover:text-blossom-500 focus:text-blossom-500 active:text-blossom-500"
         >
           {title || "Untitled Chat"}
         </h1>
-        {showContextMenu && (
-          <div
-            ref={contextMenuRef}
-            className="menu-box absolute left-1/2 top-1/2  flex  w-28 flex-col text-left text-sm"
-          >
-            <button tabIndex="0" className="menu-button" onClick={startEditing}>
-              Edit Title
-            </button>
-            <button
-              tabIndex="0"
-              className="menu-button"
-              onClick={showArchiveConfirmation}
-            >
-              Archive Chat
-            </button>
-          </div>
+        {showMenu && (
+          <ContextMenu menuItems={menuItems} setShowMenu={setShowMenu} />
         )}
-        {showArchiveConfirm && (
-          <div className="flex-col-center fixed left-0 top-0 z-20 h-full w-full bg-black/60">
-            <div className="m-auto h-fit w-fit rounded-3xl border-4 border-blossom-500 bg-petal py-4 px-8">
-              <p className="text-md font-bold text-blossom-600">
-                Please confirm to archive this chat:
-              </p>
-              <div className="flex flex-row justify-center gap-2 pt-2">
-                <button onClick={handleArchive} className="title-button">
-                  Confirm
-                </button>
-                <button onClick={handleArchiveCancel} className="title-button">
-                  Cancel
-                </button>
-              </div>
-            </div>
-          </div>
+        {showArchiveModal && (
+          <ArchiveModal
+            isVisible={showArchiveModal}
+            onConfirm={handleArchive}
+            setShowArchiveModal={setShowArchiveModal}
+            text="Please confirm to archive this chat:"
+          />
         )}
-      </div>
+      </MenuWrapper>
     );
   }
 }
