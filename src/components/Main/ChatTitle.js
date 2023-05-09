@@ -4,23 +4,23 @@ import ContextMenu from "../Common/ContextMenu";
 import ArchiveModal from "../Common/ArchiveModal";
 
 export default function ChatTitle({ title, onTitleChange, onChatArchive }) {
-  const [isEditing, setIsEditing] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+  const [showArchive, setShowArchive] = useState(false);
   const inputRef = useRef();
-  const [showArchiveModal, setShowArchiveModal] = useState(false);
 
   const menuItems = [
-    { text: "Edit Title", onClick: startEditing },
-    { text: "Archive Chat", onClick: showArchiveConfirmation },
+    { text: "Edit Title", onClick: handleEdit },
+    { text: "Archive Chat", onClick: handleArchive },
   ];
 
-  function startEditing() {
-    setIsEditing(true);
+  function handleEdit() {
+    setShowEdit(true);
     setShowMenu(false);
   }
 
   function cancelEditing() {
-    setIsEditing(false);
+    setShowEdit(false);
   }
 
   function confirmEditing() {
@@ -28,21 +28,19 @@ export default function ChatTitle({ title, onTitleChange, onChatArchive }) {
     if (newTitle !== "" || newTitle === title) {
       onTitleChange(newTitle);
     }
-    setIsEditing(false);
+    setShowEdit(false);
+  }
+
+  function confirmArchive() {
+    onChatArchive();
+    setShowArchive(false);
   }
 
   function handleArchive() {
-    onChatArchive();
-    setShowArchiveModal(false);
+    setShowArchive(true);
   }
 
-
-
-  function showArchiveConfirmation() {
-    setShowArchiveModal(true);
-  }
-
-  if (isEditing) {
+  if (showEdit) {
     return (
       <div className="flex w-full flex-row justify-center gap-1 text-sm">
         <input
@@ -73,12 +71,12 @@ export default function ChatTitle({ title, onTitleChange, onChatArchive }) {
         {showMenu && (
           <ContextMenu menuItems={menuItems} setShowMenu={setShowMenu} />
         )}
-        {showArchiveModal && (
+        {showArchive && (
           <ArchiveModal
-            isVisible={showArchiveModal}
-            onConfirm={handleArchive}
-            setShowArchiveModal={setShowArchiveModal}
-            text="Please confirm to archive this chat:"
+            isVisible={showArchive}
+            setIsVisible={setShowArchive}
+            onConfirm={confirmArchive}            
+            type="chat"
           />
         )}
       </MenuWrapper>
