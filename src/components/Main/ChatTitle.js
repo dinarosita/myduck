@@ -5,22 +5,22 @@ import ArchiveModal from "../Common/ArchiveModal";
 
 export default function ChatTitle({ title, onTitleChange, onChatArchive }) {
   const [showMenu, setShowMenu] = useState(false);
-  const [showEdit, setShowEdit] = useState(false);
-  const [showArchive, setShowArchive] = useState(false);
+  const [showEditMode, setShowEditMode] = useState(false);
+  const [showArchiveModal, setShowArchiveModal] = useState(false);
   const inputRef = useRef();
 
   const menuItems = [
-    { text: "Edit Title", onClick: handleEdit },
-    { text: "Archive Chat", onClick: handleArchive },
+    { text: "Edit Title", onClick: onEdit },
+    { text: "Archive Chat", onClick: onArchive },
   ];
 
-  function handleEdit() {
-    setShowEdit(true);
+  function onEdit() {
+    setShowEditMode(true);
     setShowMenu(false);
   }
 
   function cancelEditing() {
-    setShowEdit(false);
+    setShowEditMode(false);
   }
 
   function confirmEditing() {
@@ -28,19 +28,20 @@ export default function ChatTitle({ title, onTitleChange, onChatArchive }) {
     if (newTitle !== "" || newTitle === title) {
       onTitleChange(newTitle);
     }
-    setShowEdit(false);
+    setShowEditMode(false);
   }
 
   function confirmArchive() {
     onChatArchive();
-    setShowArchive(false);
+    setShowArchiveModal(false);
   }
 
-  function handleArchive() {
-    setShowArchive(true);
+  function onArchive() {
+    setShowArchiveModal(true);
+    setShowMenu(false);
   }
 
-  if (showEdit) {
+  if (showEditMode) {
     return (
       <div className="flex w-full flex-row justify-center gap-1 text-sm">
         <input
@@ -71,10 +72,10 @@ export default function ChatTitle({ title, onTitleChange, onChatArchive }) {
         {showMenu && (
           <ContextMenu menuItems={menuItems} setShowMenu={setShowMenu} />
         )}
-        {showArchive && (
+        {showArchiveModal && (
           <ArchiveModal
-            isVisible={showArchive}
-            setIsVisible={setShowArchive}
+            isVisible={showArchiveModal}
+            setIsVisible={setShowArchiveModal}
             onConfirm={confirmArchive}            
             type="chat"
           />
