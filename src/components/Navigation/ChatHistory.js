@@ -3,6 +3,7 @@ import FlapContext from "../../contexts/FlapContext";
 import ChatIndexContext from "../../contexts/ChatIndexContext";
 import { useNavigate } from "react-router-dom";
 import { useWindowSize } from "../../hooks/useWindowSize";
+import ArchivedChats from "./ArchivedChats";
 
 export default function ChatHistory({ isActiveOnly, setIsActiveOnly }) {
   const navigate = useNavigate();
@@ -36,7 +37,9 @@ export default function ChatHistory({ isActiveOnly, setIsActiveOnly }) {
                     }
                     navigate("/myduck");
                   }}
-                  className={`chat-button smooth break-words transition hover:bg-petal/20 focus:bg-vincent-950/20 active:bg-none ${mainChatId === chat.id && "bg-vincent-950/20"} ${chat.archived === true && "text-opacity-50"}
+                  className={`chat-button smooth break-words transition hover:bg-petal/20 focus:bg-vincent-950/20 active:bg-none ${
+                    mainChatId === chat.id && "bg-vincent-950/20"
+                  } ${chat.archived === true && "text-opacity-50"}
                             
                             `}
                   aria-label={`Open chat: ${chat.title || "Untitled chat"}`}
@@ -46,7 +49,9 @@ export default function ChatHistory({ isActiveOnly, setIsActiveOnly }) {
               </li>
             ))
             .reverse()
+            
         )}
+        <ArchivedChats />
       </ul>
     </div>
   );

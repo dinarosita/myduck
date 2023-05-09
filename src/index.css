@@ -24,6 +24,10 @@
     @apply blush-border border-x-0 border-b-0;
   }
 
+  .thin-separator {
+    @apply border-2 border-petal/30 border-x-0 border-b-0 w-full;
+  }
+
   .blush-header {
     @apply flex h-fit w-full flex-none flex-col bg-petal pb-2 pt-1 text-center text-vincent-800;
   }

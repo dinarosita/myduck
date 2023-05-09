@@ -74,10 +74,6 @@ export default function ChatHeader() {
       return chat;
     });
     setChatList(newList);
-
-
-
-
     updateMainChatId(findLastActiveId(newList))
     archiveChatInDatabase(mainChatId)
   }

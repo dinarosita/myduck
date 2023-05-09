@@ -4,6 +4,7 @@ import AddChat from "../Navigation/AddChat";
 import IconButton from "../Common/IconButton";
 import { useNavButtonLogic } from "../../hooks/useNavButtonLogic";
 import ChatIndexContext from "../../contexts/ChatIndexContext";
+// import ArchivedChats from "./ArchivedChats";
 
 export default function Navigation() {
   
@@ -31,7 +32,10 @@ export default function Navigation() {
       <hr className="blush-separator" />
 
       <ChatHistory isActiveOnly={isActiveOnly} setIsActiveOnly={setIsActiveOnly} />
+      {/* <ArchivedChats /> */}
+
       <hr className="blush-separator" />
+
       <AddChat nav />
     </nav>
   );
