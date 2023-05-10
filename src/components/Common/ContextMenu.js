@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
-export default function ContextMenu({ menuItems, setShowMenu }) {
+export default function ContextMenu({ menuItems, setShowMenu, setShowArchiveModal }) {
   const contextMenuRef = useRef();
 
   useEffect(() => {
@@ -10,6 +10,15 @@ export default function ContextMenu({ menuItems, setShowMenu }) {
     };
     // eslint-disable-next-line
   }, []);
+
+  function handleItemClick(item) {
+    setShowMenu(false);
+    if (item.type === "edit" && item.actionLayout) {
+      item.actionLayout();
+    } else if (item.type === "archive") {
+      setShowArchiveModal(true);
+    }
+  }
 
   function handleClickOutside(e) {
     if (contextMenuRef.current && !contextMenuRef.current.contains(e.target)) {
@@ -26,7 +35,7 @@ export default function ContextMenu({ menuItems, setShowMenu }) {
           key={index}
           tabIndex="0"
           className="menu-button"
-          onClick={item.onClick}
+          onClick={() => handleItemClick(item)}
         >
           {item.text}
         </button>

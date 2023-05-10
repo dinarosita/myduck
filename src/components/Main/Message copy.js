@@ -10,6 +10,7 @@ export default function Message({ id, message }) {
   const [showArchiveModal, setShowArchiveModal] = useState(false);
   const textareaRef = useRef();
 
+
   const menuItems = [
     { text: "Edit Message", onClick: onEdit },
     { text: "Archive Message", onClick: onArchive },
@@ -48,29 +49,25 @@ export default function Message({ id, message }) {
     );
   } else {
     return (
+      <MenuWrapper setShowMenu={setShowMenu}>
         <div
           key={id}
           className="flex w-fit max-w-full  flex-col break-words rounded-r-3xl bg-petal/80 py-2 pl-2 pr-4 leading-tight"
         >
           {message}
         </div>
+        {showMenu && (
+          <ContextMenu menuItems={menuItems} setShowMenu={setShowMenu} />
+        )}
+        {showArchiveModal && (
+          <ArchiveModal
+            isVisible={showArchiveModal}
+            setIsVisible={setShowArchiveModal}
+            onConfirm={confirmArchive}
+            type="message"
+          />
+        )}
+      </MenuWrapper>
     );
   }
 }
-{/* <MenuWrapper setShowMenu={setShowMenu}>
-  <div
-    key={id}
-    className="flex w-fit max-w-full  flex-col break-words rounded-r-3xl bg-petal/80 py-2 pl-2 pr-4 leading-tight"
-  >
-    {message}
-  </div>
-  {showMenu && <ContextMenu menuItems={menuItems} setShowMenu={setShowMenu} />}
-  {showArchiveModal && (
-    <ArchiveModal
-      isVisible={showArchiveModal}
-      setIsVisible={setShowArchiveModal}
-      onConfirm={confirmArchive}
-      type="message"
-    />
-  )}
-</MenuWrapper>; */}

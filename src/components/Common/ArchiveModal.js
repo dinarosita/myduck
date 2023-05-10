@@ -1,16 +1,12 @@
 import React from "react";
 
 export default function ArchiveModal({
-  isVisible,
-  setIsVisible,
+  setShowArchiveModal,
   onConfirm,
   type,
 }) {
   function handleCancel() {
-    setIsVisible(false);
-  }
-  if (!isVisible) {
-    return null;
+    setShowArchiveModal(false);
   }
   return (
     <div className="flex-col-center fixed left-0 top-0 z-20 h-full w-full bg-black/60">
