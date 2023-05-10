@@ -53,7 +53,7 @@ export default function ChatTitle({ title, onTitleChange, onChatArchive }) {
       <MenuWrapper setShowMenu={setShowMenu}>
         <h1
           tabIndex="0"
-          className="h-6 hover:text-blossom-500 focus:text-blossom-500 active:text-blossom-500"
+          className="h-7 hover:text-blossom-500 focus:text-blossom-500 active:text-blossom-500"
         >
           {title || "Untitled Chat"}
         </h1>

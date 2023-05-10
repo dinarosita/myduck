@@ -5,7 +5,7 @@ import almondBlossom from "../assets/images/gogh-almond-blossom-1024.jpg";
 
 export default function About() {
   return (
-    <div className="pass-overflow w-full bg-transparent p-2">
+    <div className="pass-overflow w-full bg-transparent px-2">
       <main className="w-effective blush-frame pass-overflow flex h-full flex-col text-vincent-800">
         <header className="blush-header">
           <h1>Welcome to MyDuck</h1>

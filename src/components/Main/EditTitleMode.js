@@ -17,7 +17,7 @@ export default function EditTitleMode({inputRef, title, confirmEdit, setShowEdit
           maxLength="50"
           defaultValue={title || ""}
           placeholder="Enter your chat title"
-          className="h-6 w-full rounded-full border  border-vincent-700 bg-vincent-200/50 text-sm caret-vincent-800"
+          className="h-7 w-full rounded-full border  border-vincent-700 bg-vincent-200/50 text-sm caret-vincent-800"
         />
         <button className="title-button" onClick={confirmEdit}>
           Confirm

@@ -8,7 +8,7 @@ import UsingUseArray from "../hookLibrary/UsingUseArray";
 export default function CustomHooks() {
   return (
     <MockArrayContextProvider>
-      <div className="pass-overflow w-full p-2">
+      <div className="pass-overflow w-full px-2">
         <main className="w-effective blush-frame pass-overflow flex h-full flex-col text-vincent-800">
           <header className="blush-header">
             <h1>Universal Custom Hooks</h1>
