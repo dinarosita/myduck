@@ -29,7 +29,13 @@
   }
 
   .blush-header {
-    @apply flex h-fit w-full flex-none flex-col bg-petal pb-2 pt-1 text-center text-vincent-800;
+    @apply flex h-fit w-full flex-none flex-col bg-petal pb-2 pt-1 text-center text-vincent-800
+  }
+
+  .blush-header:hover,
+  .blush-header:active,
+  .blush-header:focus {
+    @apply text-blossom-600
   }
 
   .blush-header  h1 {
@@ -159,6 +165,21 @@
     @apply text-vincent-200 text-opacity-50  max-h-4
   }
   
+  .menu-icon {
+     @apply h-4 text-blossom-600
+  }
+
+  .menu-icon:hover,
+  .menu-icon:active,
+  .menu-icon:focus {
+    @apply text-blossom-800 
+  }
+
+  .menu-container {
+    @apply absolute right-0 flex-col-center gap-2;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 
   .tooltip-container {
     @apply relative inline-block;

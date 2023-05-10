@@ -3,17 +3,43 @@ import ChatIndexContext from "../../contexts/ChatIndexContext";
 // import IconButton from "../Common/IconButton";
 import ChatTitle from "./ChatTitle";
 import { DATABASE_URL } from "../../config";
+import MenuWrapper from "../Common/MenuWrapper";
+import {
+  PencilSquareIcon,
+  ArchiveBoxArrowDownIcon,
+} from "@heroicons/react/24/outline";
 
 export default function ChatHeader() {
-  const { isPageLoading, isNewUser, chatList, setChatList, mainChatId, updateMainChatId, findLastActiveId } =
-    useContext(ChatIndexContext);
+  const {
+    isPageLoading,
+    isNewUser,
+    chatList,
+    setChatList,
+    mainChatId,
+    updateMainChatId,
+    findLastActiveId,
+  } = useContext(ChatIndexContext);
+
   const [title, setTitle] = useState("");
   const [tag, setTag] = useState("");
+  const [showEditMode, setShowEditMode] = useState(false);
 
-  function formatTimestamp(timestamp) {
-    const date = new Date(timestamp.seconds * 1000).toDateString();
-    return `${date}`;
-  }
+  const menuItems = [
+    {
+      type: "edit",
+      text: "Edit Title",
+      icon: PencilSquareIcon,
+      actionLayout: () => setShowEditMode(true),
+      confirmationFunction: null,
+    },
+    {
+      type: "archive",
+      text: "Archive Chat",
+      icon: ArchiveBoxArrowDownIcon,
+      actionLayout: null,
+      confirmationFunction: onChatArchive,
+    },
+  ];
 
   useEffect(() => {
     if (isPageLoading) {
@@ -33,6 +59,11 @@ export default function ChatHeader() {
     }
   }, [isPageLoading, isNewUser, chatList, mainChatId]);
 
+  function formatTimestamp(timestamp) {
+    const date = new Date(timestamp.seconds * 1000).toDateString();
+    return `${date}`;
+  }
+
   function onTitleChange(newTitle) {
     const updatedChatList = chatList.map((chat) => {
       if (chat.id === mainChatId) {
@@ -44,7 +75,7 @@ export default function ChatHeader() {
       return chat;
     });
     setChatList(updatedChatList);
-    updateChatTitleInDatabase(mainChatId, newTitle)
+    updateChatTitleInDatabase(mainChatId, newTitle);
   }
 
   function updateChatTitleInDatabase(chatId, newTitle) {
@@ -74,8 +105,8 @@ export default function ChatHeader() {
       return chat;
     });
     setChatList(newList);
-    updateMainChatId(findLastActiveId(newList))
-    archiveChatInDatabase(mainChatId)
+    updateMainChatId(findLastActiveId(newList));
+    archiveChatInDatabase(mainChatId);
   }
 
   function archiveChatInDatabase(chatId) {
@@ -95,17 +126,25 @@ export default function ChatHeader() {
   }
 
   return (
-    <header
-      className={`blush-header relative min-h-16 px-8 ${
-        (isPageLoading || (!isNewUser && !mainChatId)) && "text-opacity-30"
-      }`}
-    >
-      <div className="flex flex-row justify-center gap-2">
-        <ChatTitle title={title} onTitleChange={onTitleChange} onChatArchive={onChatArchive} />
-      </div>
-      <div className="flex flex-row justify-center gap-2">
-        <div className="tagline">{tag}</div>
-      </div>
-    </header>
+    <MenuWrapper menuItems={menuItems} showEditMode={showEditMode}>
+      <header
+        tabIndex="0"
+        className={`blush-header relative h-fit min-h-16 px-2 ${
+          (isPageLoading || (!isNewUser && !mainChatId)) && "text-opacity-30"
+        }`}
+      >
+        <div className="flex flex-row justify-center gap-2 px-6 ">
+          <ChatTitle
+            title={title}
+            onTitleChange={onTitleChange}
+            showEditMode={showEditMode}
+            setShowEditMode={setShowEditMode}
+          />
+        </div>
+        <div className="flex flex-row justify-center gap-2 px-6">
+          <div className="tagline">{tag}</div>
+        </div>
+      </header>
+    </MenuWrapper>
   );
 }

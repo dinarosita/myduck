@@ -3,7 +3,7 @@ import { useLongPress } from "use-long-press";
 import ContextMenu from "./ContextMenu";
 import ArchiveModal from "./ArchiveModal";
 
-export default function MenuWrapper({ menuItems, children }) {
+export default function MenuWrapper({ menuItems, showEditMode, children }) {
   const [showMenu, setShowMenu] = useState(false);
   const [showArchiveModal, setShowArchiveModal] = useState(false);
 
@@ -19,7 +19,7 @@ export default function MenuWrapper({ menuItems, children }) {
     if ((e.shiftKey && e.key === "F10") || e.key === "ContextMenu") {
       e.preventDefault();
       setShowMenu(true);
-    } else if (e.key === "Enter" && !showArchiveModal) {
+    } else if (e.key === "Enter" && !showArchiveModal && !showEditMode) {
       setShowMenu(true);
     }
   }
@@ -34,7 +34,7 @@ export default function MenuWrapper({ menuItems, children }) {
       {...bind()}
       onContextMenu={handleRightClick}
       onKeyDown={handleKeyDown}
-      className="relative inline-block"
+      className="relative inline-block "
     >
       {children}
       {showMenu && (

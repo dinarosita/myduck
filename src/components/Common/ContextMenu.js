@@ -1,6 +1,10 @@
 import React, { useEffect, useRef } from "react";
 
-export default function ContextMenu({ menuItems, setShowMenu, setShowArchiveModal }) {
+export default function ContextMenu({
+  menuItems,
+  setShowMenu,
+  setShowArchiveModal,
+}) {
   const contextMenuRef = useRef();
 
   useEffect(() => {
@@ -26,20 +30,21 @@ export default function ContextMenu({ menuItems, setShowMenu, setShowArchiveModa
     }
   }
   return (
-    <div
-      ref={contextMenuRef}
-      className="menu-box absolute left-1/2 top-1/2  flex  w-32 flex-col text-left text-sm"
-    >
-      {menuItems.map((item, index) => (
-        <button
-          key={index}
-          tabIndex="0"
-          className="menu-button"
-          onClick={() => handleItemClick(item)}
-        >
-          {item.text}
-        </button>
-      ))}
+    <div ref={contextMenuRef} className="menu-container">
+      {menuItems.map((item, index) => {
+        const Icon = item.icon;
+        return (
+          <button
+            key={index}
+            tabIndex="0"
+            className=""
+            onClick={() => handleItemClick(item)}
+          >
+            <Icon className="menu-icon" />
+            {/* {item.text} */}
+          </button>
+        );
+      })}
     </div>
   );
 }
