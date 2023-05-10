@@ -26,7 +26,7 @@ export default function ChatHeader() {
       } else {
         if (mainChatId) {
           const mainChat = chatList.find((chat) => chat.id === mainChatId);
-          setTitle(mainChat.title ? mainChat.title : "Untitled chat");
+          setTitle(mainChat.title ? mainChat.title : null);
           setTag(`Created: ${formatTimestamp(mainChat.createdAt)}`);
         }
       }

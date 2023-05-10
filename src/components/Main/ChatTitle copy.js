@@ -20,7 +20,9 @@ export default function ChatTitle({ title, onTitleChange, onChatArchive }) {
     setShowMenu(false);
   }
 
-
+  function cancelEdit() {
+    setShowEditMode(false);
+  }
 
   function confirmEdit() {
     const newTitle = inputRef.current.value.trim().replace(/\s+/g, " ");
@@ -42,7 +44,7 @@ export default function ChatTitle({ title, onTitleChange, onChatArchive }) {
 
   if (showEditMode) {
     return (
-      <EditTitleMode inputRef={inputRef} title={title} confirmEdit={confirmEdit} setShowEditMode={setShowEditMode}/>
+      <EditTitleMode inputRef={inputRef} title={title} confirmEdit={confirmEdit} cancelEdit={cancelEdit} />
     );
   } else {
     return (

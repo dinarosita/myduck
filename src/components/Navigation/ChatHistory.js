@@ -44,7 +44,7 @@ export default function ChatHistory({ isActiveOnly, setIsActiveOnly }) {
                             `}
                   aria-label={`Open chat: ${chat.title || "Untitled chat"}`}
                 >
-                  {chat.title || "Untitled chat"}
+                  {chat.title || "Untitled Chat"}
                 </button>
               </li>
             ))
