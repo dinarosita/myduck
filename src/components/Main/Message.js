@@ -2,17 +2,18 @@ import React, { useRef, useState } from "react";
 import MenuWrapper from "../Common/MenuWrapper";
 import ContextMenu from "../Common/ContextMenu";
 import ArchiveModal from "../Common/ArchiveModal";
-import EditTitleMode from "./EditTitleMode";
+import EditMessageMode from "./EditMessageMode";
 
-export default function ChatTitle({ title, onTitleChange, onChatArchive }) {
+export default function Message({ id, message }) {
   const [showMenu, setShowMenu] = useState(false);
   const [showEditMode, setShowEditMode] = useState(false);
   const [showArchiveModal, setShowArchiveModal] = useState(false);
-  const inputRef = useRef();
+  const textareaRef = useRef();
+
 
   const menuItems = [
-    { text: "Edit Title", onClick: onEdit },
-    { text: "Archive Chat", onClick: onArchive },
+    { text: "Edit Message", onClick: onEdit },
+    { text: "Archive Message", onClick: onArchive },
   ];
 
   function onEdit() {
@@ -20,41 +21,41 @@ export default function ChatTitle({ title, onTitleChange, onChatArchive }) {
     setShowMenu(false);
   }
 
-  function cancelEdit() {
-    setShowEditMode(false);
-  }
-
-  function confirmEdit() {
-    const newTitle = inputRef.current.value.trim().replace(/\s+/g, " ");
-    if (newTitle !== "" || newTitle === title) {
-      onTitleChange(newTitle);
-    }
-    setShowEditMode(false);
-  }
-
-  function confirmArchive() {
-    onChatArchive();
-    setShowArchiveModal(false);
-  }
-
   function onArchive() {
     setShowArchiveModal(true);
     setShowMenu(false);
   }
 
+  function confirmEdit() {
+    // const newTitle = inputRef.current.value.trim().replace(/\s+/g, " ");
+    // if (newTitle !== "" || newTitle === title) {
+    //   onTitleChange(newTitle);
+    // }
+    setShowEditMode(false);
+  }
+
+  function confirmArchive() {
+    // onChatArchive();
+    setShowArchiveModal(false);
+  }
   if (showEditMode) {
     return (
-      <EditTitleMode inputRef={inputRef} title={title} confirmEdit={confirmEdit} cancelEdit={cancelEdit} />
+      <EditMessageMode
+        textareaRef={textareaRef}
+        message={message}
+        confirmEdit={confirmEdit}
+        setShowEditMode={setShowEditMode}
+      />
     );
   } else {
     return (
       <MenuWrapper setShowMenu={setShowMenu}>
-        <h1
-          tabIndex="0"
-          className="h-6 hover:text-blossom-500 focus:text-blossom-500 active:text-blossom-500"
+        <div
+          key={id}
+          className="flex w-fit max-w-full  flex-col break-words rounded-r-3xl bg-petal/80 py-2 pl-2 pr-4 leading-tight"
         >
-          {title || "Untitled Chat"}
-        </h1>
+          {message}
+        </div>
         {showMenu && (
           <ContextMenu menuItems={menuItems} setShowMenu={setShowMenu} />
         )}
@@ -62,8 +63,8 @@ export default function ChatTitle({ title, onTitleChange, onChatArchive }) {
           <ArchiveModal
             isVisible={showArchiveModal}
             setIsVisible={setShowArchiveModal}
-            onConfirm={confirmArchive}            
-            type="chat"
+            onConfirm={confirmArchive}
+            type="message"
           />
         )}
       </MenuWrapper>

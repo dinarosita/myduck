@@ -19,7 +19,7 @@ export default function ContextMenu({ menuItems, setShowMenu }) {
   return (
     <div
       ref={contextMenuRef}
-      className="menu-box absolute left-1/2 top-1/2  flex  w-28 flex-col text-left text-sm"
+      className="menu-box absolute left-1/2 top-1/2  flex  w-32 flex-col text-left text-sm"
     >
       {menuItems.map((item, index) => (
         <button
