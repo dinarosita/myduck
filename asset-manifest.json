@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/myduck/static/css/main.4ef23175.css",
-    "main.js": "/myduck/static/js/main.bd7d4d4c.js",
+    "main.css": "/myduck/static/css/main.90c30ec6.css",
+    "main.js": "/myduck/static/js/main.4f67508a.js",
     "static/media/gogh-almond-blossom-1024.jpg": "/myduck/static/media/gogh-almond-blossom-1024.d067a4b0e46a54617bee.jpg",
     "index.html": "/myduck/index.html",
-    "main.4ef23175.css.map": "/myduck/static/css/main.4ef23175.css.map",
-    "main.bd7d4d4c.js.map": "/myduck/static/js/main.bd7d4d4c.js.map"
+    "main.90c30ec6.css.map": "/myduck/static/css/main.90c30ec6.css.map",
+    "main.4f67508a.js.map": "/myduck/static/js/main.4f67508a.js.map"
   },
   "entrypoints": [
-    "static/css/main.4ef23175.css",
-    "static/js/main.bd7d4d4c.js"
+    "static/css/main.90c30ec6.css",
+    "static/js/main.4f67508a.js"
   ]
 }
