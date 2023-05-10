@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 export default function EditTitleMode({inputRef, title, confirmEdit, setShowEditMode}) {
   
+  useEffect(() => {
+    inputRef.current.focus()
+  }, [inputRef])
 
   function cancelEdit() {
     setShowEditMode(false);

@@ -20,8 +20,6 @@ export default function ChatTitle({ title, onTitleChange, onChatArchive }) {
     setShowMenu(false);
   }
 
-
-
   function confirmEdit() {
     const newTitle = inputRef.current.value.trim().replace(/\s+/g, " ");
     if (newTitle !== "" || newTitle === title) {
@@ -30,19 +28,24 @@ export default function ChatTitle({ title, onTitleChange, onChatArchive }) {
     setShowEditMode(false);
   }
 
-  function confirmArchive() {
-    onChatArchive();
-    setShowArchiveModal(false);
-  }
-
   function onArchive() {
     setShowArchiveModal(true);
     setShowMenu(false);
   }
 
+  function confirmArchive() {
+    onChatArchive();
+    setShowArchiveModal(false);
+  }
+
   if (showEditMode) {
     return (
-      <EditTitleMode inputRef={inputRef} title={title} confirmEdit={confirmEdit} setShowEditMode={setShowEditMode}/>
+      <EditTitleMode
+        inputRef={inputRef}
+        title={title}
+        confirmEdit={confirmEdit}
+        setShowEditMode={setShowEditMode}
+      />
     );
   } else {
     return (
@@ -60,7 +63,7 @@ export default function ChatTitle({ title, onTitleChange, onChatArchive }) {
           <ArchiveModal
             isVisible={showArchiveModal}
             setIsVisible={setShowArchiveModal}
-            onConfirm={confirmArchive}            
+            onConfirm={confirmArchive}
             type="chat"
           />
         )}
