@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
-import ChatIndexContext from "../contexts/ChatIndexContext";
+import ChatContext from "../contexts/ChatContext";
 import { DATABASE_URL } from "../config";
 
 export function useChat() {
   const { isNewUser, setIsNewUser, setChatList, updateMainChatId } =
-    useContext(ChatIndexContext);
+    useContext(ChatContext);
 
   function postNewChat(title) {
     const chatMeta = {

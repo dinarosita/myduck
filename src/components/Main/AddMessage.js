@@ -1,16 +1,16 @@
 import React, { useContext, useRef, useState } from "react";
 import "firebase/compat/firestore";
-import MainChatContext from "../../contexts/MainChatContext";
+import MessageContext from "../../contexts/MessageContext";
 import IconButton from "../Common/IconButton";
 import { useMessage } from "../../hooks/useMessage";
 import { sanitizeInput } from "../../utils/sanitize";
 import { useWindowSize } from "../../hooks/useWindowSize";
-import ChatIndexContext from "../../contexts/ChatIndexContext";
+import ChatContext from "../../contexts/ChatContext";
 
 export default function AddMessage() {
-  const { isPageLoading, isNewUser, mainChatId } = useContext(ChatIndexContext);
+  const { isPageLoading, isNewUser, mainChatId } = useContext(ChatContext);
   const textareaRef = useRef();
-  const { setMessageList } = useContext(MainChatContext);
+  const { setMessageList } = useContext(MessageContext);
   const [textvalue, setTextValue] = useState("");
   const { postAddMessage, updateLocalMessages } = useMessage();
   const windowSize = useWindowSize();

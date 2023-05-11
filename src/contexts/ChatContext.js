@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { DATABASE_URL } from "../config";
 
-const ChatIndexContext = createContext({
+const ChatContext = createContext({
   isPageLoading: true,
   isNewUser: false,
   setIsNewUser: () => {},
@@ -12,7 +12,7 @@ const ChatIndexContext = createContext({
   findLastActiveId: () => {},
 });
 
-export function ChatIndexContextProvider(props) {
+export function ChatContextProvider(props) {
   const [isPageLoading, setIsPageLoading] = useState(true);
   const [isNewUser, setIsNewUser] = useState(false);
   const [chatList, setChatList] = useState([]);
@@ -98,10 +98,10 @@ export function ChatIndexContextProvider(props) {
   };
 
   return (
-    <ChatIndexContext.Provider value={context}>
+    <ChatContext.Provider value={context}>
       {props.children}
-    </ChatIndexContext.Provider>
+    </ChatContext.Provider>
   );
 }
 
-export default ChatIndexContext;
+export default ChatContext;

@@ -6,19 +6,16 @@ import {
   PencilSquareIcon,
   ArchiveBoxArrowDownIcon,
 } from "@heroicons/react/24/outline";
-import ChatIndexContext from "../../contexts/ChatIndexContext";
+import ChatContext from "../../contexts/ChatContext";
 
-export default function ChatMenuWrapper({
-  title,
-  children,
-}) {
+export default function ChatMenuWrapper({ title, children }) {
   const {
     chatList,
     setChatList,
     mainChatId,
     updateMainChatId,
     findLastActiveId,
-  } = useContext(ChatIndexContext);
+  } = useContext(ChatContext);
   const [showEditMode, setShowEditMode] = useState(false);
   const inputRef = useRef();
 

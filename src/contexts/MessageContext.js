@@ -1,15 +1,15 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import ChatIndexContext from "./ChatIndexContext";
+import ChatContext from "./ChatContext";
 import { DATABASE_URL } from "../config";
 
-const MainChatContext = createContext({
+const MessageContext = createContext({
   isMessageLoading: false,
   messageList: [],
   setMessageList: () => {},
 });
 
-export function MainChatContextProvider(props) {
-  const { mainChatId } = useContext(ChatIndexContext);
+export function MessageContextProvider(props) {
+  const { mainChatId } = useContext(ChatContext);
   const [isMessageLoading, setIsMessageLoading] = useState(false);
   const [messageList, setMessageList] = useState([]);
 
@@ -55,10 +55,10 @@ export function MainChatContextProvider(props) {
     setMessageList,
   };
   return (
-    <MainChatContext.Provider value={context}>
+    <MessageContext.Provider value={context}>
       {props.children}
-    </MainChatContext.Provider>
+    </MessageContext.Provider>
   );
 }
 
-export default MainChatContext;
+export default MessageContext;

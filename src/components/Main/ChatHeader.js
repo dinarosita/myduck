@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
-import ChatIndexContext from "../../contexts/ChatIndexContext";
+import ChatContext from "../../contexts/ChatContext";
 import ChatMenuWrapper from "./ChatMenuWrapper";
 import { formatDate } from "../../utils/timestamp";
 import { GREETINGS } from "../../constants/greetings";
 
 export default function ChatHeader() {
   const { isPageLoading, isNewUser, chatList, mainChatId } =
-    useContext(ChatIndexContext);
+    useContext(ChatContext);
   const [title, setTitle] = useState("");
-  const [tag, setTag] = useState("");
+  const [tagline, setTagline] = useState("");
 
   useEffect(() => {
     const greeting = GREETINGS.find((g) => {
@@ -19,11 +19,11 @@ export default function ChatHeader() {
 
     if (greeting) {
       setTitle(greeting.title);
-      setTag(greeting.tagline);
+      setTagline(greeting.tagline);
     } else if (mainChatId) {
       const mainChat = chatList.find((chat) => chat.id === mainChatId);
       setTitle(mainChat.title ? mainChat.title : null);
-      setTag(`Created: ${formatDate(mainChat.createdAt)}`);
+      setTagline(`Created: ${formatDate(mainChat.createdAt)}`);
     }
   }, [isPageLoading, isNewUser, chatList, mainChatId]);
 
@@ -38,7 +38,7 @@ export default function ChatHeader() {
           <h1>{title || "Untitled Chat"}</h1>
         </ChatMenuWrapper>
       </div>
-      <p className="tagline">{tag}</p>
+      <p className="tagline">{tagline}</p>
     </header>
   );
 }
