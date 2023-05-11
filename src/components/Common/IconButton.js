@@ -28,7 +28,7 @@ const iconMapping = {
   chatDelete: TrashIcon,
   archiveItem: ArchiveBoxArrowDownIcon,
   editItem: PencilSquareIcon,
-  editChatTitleMenu: PencilIcon,
+  editChatTitle: PencilIcon,
   messageSubmit: PaperAirplaneIcon,
   messageEdit: PencilSquareIcon,
   messageDelete: TrashIcon,

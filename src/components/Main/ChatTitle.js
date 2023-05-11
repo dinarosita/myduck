@@ -1,3 +1,4 @@
+
 import React, { useContext, useRef, useState } from "react";
 import EditTitleMode from "./EditTitleMode";
 import { DATABASE_URL } from "../../config";
@@ -8,7 +9,7 @@ import {
 } from "@heroicons/react/24/outline";
 import ChatIndexContext from "../../contexts/ChatIndexContext";
 
-export default function ChatTitleMenu({ title, onTitleChange }) {
+export default function ChatTitle({ title, onTitleChange }) {
   const {
     chatList,
     setChatList,
@@ -53,10 +54,10 @@ export default function ChatTitleMenu({ title, onTitleChange }) {
       return chat;
     });
     setChatList(updatedChatList);
-    updateChatTitleMenuInDatabase(mainChatId, newTitle);
+    updateChatTitleInDatabase(mainChatId, newTitle);
   }
 
-  function updateChatTitleMenuInDatabase(chatId, newTitle) {
+  function updateChatTitleInDatabase(chatId, newTitle) {
     return fetch(`${DATABASE_URL}/chatMeta/${chatId}.json`, {
       method: "PATCH",
       body: JSON.stringify({ title: newTitle }),

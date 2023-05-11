@@ -1,15 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import ChatIndexContext from "../../contexts/ChatIndexContext";
-import ChatTitleMenu from "./ChatTitleMenu";
-
+import ChatTitle from "./ChatTitle";
 
 export default function ChatHeader() {
-  const {
-    isPageLoading,
-    isNewUser,
-    chatList,
-    mainChatId,
-  } = useContext(ChatIndexContext);
+  const { isPageLoading, isNewUser, chatList, mainChatId } =
+    useContext(ChatIndexContext);
 
   const [title, setTitle] = useState("");
   const [tag, setTag] = useState("");
@@ -44,9 +39,7 @@ export default function ChatHeader() {
       }`}
     >
       <div className="flex flex-row justify-center gap-2 px-6 ">
-        <ChatTitleMenu
-          title={title}
-        />
+        <ChatTitle title={title} />
       </div>
       <div className="flex flex-row justify-center gap-2 px-6">
         <div className="tagline">{tag}</div>
