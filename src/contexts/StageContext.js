@@ -35,39 +35,10 @@ export function StageContextProvider(props) {
         return response.json();
       })
       .then((data) => {
-        const chats = [];
         if (!data) {
-          console.log("New user");
-          setIsNewUser(true);
-          localStorage.setItem("storageChatId", null);
+          handleNewUser()
         } else {
-          for (const key in data) {
-            const chat = {
-              id: key,
-              ...data[key],
-            };
-            chats.push(chat);
-          }
-          console.log(
-            `Active user with ${chats.length} chat${
-              chats.length > 1 ? "s" : ""
-            }`
-          );
-
-          setChatList(chats);
-
-          const storedChatId = localStorage.getItem("storageChatId");
-
-          if (
-            chats.some(
-              (chat) => chat.id === storedChatId && chat.archived === false
-            )
-          ) {
-            setMainChatId(storedChatId);
-          } else {
-            const lastId = findLastActiveId(chats);
-            updateMainChatId(lastId);
-          }
+          handleExistingUser(data)
         }
         setIsPageLoading(false);
       })
@@ -80,6 +51,43 @@ export function StageContextProvider(props) {
     };
     // eslint-disable-next-line
   }, []);
+
+  function handleNewUser() {
+    console.log("New user");
+    setIsNewUser(true);
+    localStorage.setItem("storageChatId", null);
+  }
+
+  function handleExistingUser(data) {
+    const chats = []
+    for (const key in data) {
+      const chat = {
+        id: key,
+        ...data[key],
+      };
+      chats.push(chat);
+    }
+    console.log(
+      `Active user with ${chats.length} chat${
+        chats.length > 1 ? "s" : ""
+      }`
+    );
+
+    setChatList(chats);
+
+    const storedChatId = localStorage.getItem("storageChatId");
+
+    if (
+      chats.some(
+        (chat) => chat.id === storedChatId && chat.archived === false
+      )
+    ) {
+      setMainChatId(storedChatId);
+    } else {
+      const lastId = findLastActiveId(chats);
+      updateMainChatId(lastId);
+    }
+  }
 
   const context = {
     isPageLoading,
