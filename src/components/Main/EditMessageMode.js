@@ -21,7 +21,7 @@ export default function EditMessageMode({
         maxLength="50"
         defaultValue={message}
         placeholder="Enter your message"
-        className=" w-full  border  border-vincent-700 bg-petal text-sm caret-vincent-800"
+        className=" w-full  border  border-vincent-700 bg-petal text-sm caret-navy"
       />
       <div className="flex flex=row gap-2 pt-1">
         <button className="title-button bg-petal" onClick={confirmEdit}>

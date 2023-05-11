@@ -6,8 +6,14 @@
   html {
     @apply text-charcoal;
   }
+
+  header {
+    @apply flex h-fit w-full flex-none flex-col bg-petal pb-2 pt-1 text-center text-navy gap-2 min-h-16;
+  }
+
+  h1,
   h2 {
-    @apply text-lg font-bold;
+    @apply text-lg font-bold  leading-tight;
   }
 }
 
@@ -25,25 +31,17 @@
   }
 
   .thin-separator {
-    @apply border-2 border-petal/30 border-x-0 border-b-0 w-full;
+    @apply w-full border-2 border-x-0 border-b-0 border-petal/30;
   }
 
-  .blush-header {
-    @apply flex h-fit w-full flex-none flex-col bg-petal pb-2 pt-1 text-center text-vincent-800
+  .chat-title:hover h1,
+  .chat-title:active h1,
+  .chat-title:focus h1 {
+    @apply text-navyhover;
   }
 
-  /* .blush-header:hover,
-  .blush-header:active,
-  .blush-header:focus {
-    @apply text-blossom-600
-  } */
-
-  .blush-header  h1 {
-    @apply text-lg font-bold ;
-  }
-
-  .blush-header .tagline {
-    @apply text-xs leading-loose;
+  header .tagline {
+    @apply text-xs;
   }
 
   .blush-button {
@@ -65,27 +63,27 @@
   }
 
   .title-button {
-    @apply bg-blossom-300/50 text-blossom-700 border border-blossom-700 rounded-full h-6 px-2 
+    @apply h-6 rounded-full border border-blossom-700 bg-blossom-300/50 px-2 text-blossom-700;
   }
 
   .title-button:hover,
   .title-button:active,
   .title-button:focus {
-    @apply text-petal bg-blossom-500 border-blossom-600
+    @apply border-navyhover bg-blossom-500 text-petal;
   }
 
   .menu-box {
-    @apply  p-0.5 gap-0.5 bg-blossom-500
+    @apply gap-0.5 bg-blossom-500 p-0.5;
   }
 
   .menu-button {
-    @apply border px-2 px-1 py-0.5 bg-blossom-100 text-blossom-700
+    @apply border bg-blossom-100 px-1 px-2 py-0.5 text-blossom-700;
   }
 
   .menu-button:hover,
   .menu-button:active,
   .menu-button:focus {
-    @apply  bg-blossom-200
+    @apply bg-blossom-200;
   }
 
   .skyscroll::-webkit-scrollbar {
@@ -100,9 +98,8 @@
     @apply rounded-full bg-vincent-300/50;
   }
 
-  
   .skinnyscroll::-webkit-scrollbar {
-    @apply w-2 ;
+    @apply w-2;
   }
 
   .skinnyscroll::-webkit-scrollbar-track {
@@ -142,67 +139,49 @@
   }
 
   .sandbox-button {
-    @apply border border-petal px-2 rounded-full py-0.5 px-4 m-1 bg-petal/20 shadow hover:bg-transparent/20 focus:bg-transparent/20;
+    @apply m-1 rounded-full border border-petal bg-petal/20 px-2 px-4 py-0.5 shadow hover:bg-transparent/20 focus:bg-transparent/20;
   }
 
   .sandbox {
-    @apply flex-col-center border border-petal rounded-xl p-4 gap-2 text-sm w-80;
+    @apply flex-col-center w-80 gap-2 rounded-xl border border-petal p-4 text-sm;
   }
 
   .sandbox-display {
-    @apply h-7 w-full bg-transparent/10 p-1 text-center ;
+    @apply h-7 w-full bg-transparent/10 p-1 text-center;
   }
 
   .sandbox-input {
-    @apply w-full rounded-full p-1 text-center text-vincent-900 placeholder-vincent-800/50 text-sm;
+    @apply w-full rounded-full p-1 text-center text-sm text-vincent-900 placeholder-navy/50;
   }
 
   .icon-chatheader {
-    @apply text-vincent-500/50  max-h-4
+    @apply max-h-4  text-vincent-500/50;
   }
 
   .icon-msg {
-    @apply text-vincent-200 text-opacity-50  max-h-4
+    @apply max-h-4 text-vincent-200  text-opacity-50;
   }
-  
+
   .menu-icon {
-     @apply h-4 text-blossom-600
+    @apply h-4 text-navyhover;
   }
 
   .menu-icon:hover,
   .menu-icon:active,
   .menu-icon:focus {
-    @apply text-blossom-800 
+    @apply text-blossom-800;
   }
 
   .chat-menu {
-    @apply absolute right-0 flex-col-center gap-2;
+    @apply flex-col-center absolute right-0 gap-2;
     top: 50%;
     transform: translate(-50%, -50%);
   }
 
-    .msg-menu {
-    @apply absolute right-0 flex-col-center gap-2;
+  .msg-menu {
+    @apply flex-col-center absolute right-0 gap-2;
     top: 50%;
     transform: translate(150%, -50%);
   }
 
-  .tooltip-container {
-    @apply relative inline-block;
-  }
-
-  .tooltip {
-    @apply absolute;
-  }
-
-  .tooltip-chatheader {
-    @apply top-7 left-1/2 transform -translate-x-1/2 hidden rounded-full px-3  text-xs text-petal border border-petal whitespace-nowrap bg-blossom-500 opacity-95 ;
-  }
-  .tooltip-msg {
-    @apply top-1 left-5 hidden rounded-full px-3  text-xs text-vincent-700 border border-vincent-700 whitespace-nowrap bg-vincent-200 opacity-95 ;
-  }
-
-  .tooltip-container:hover .tooltip {
-    display: block;
-  }
 }

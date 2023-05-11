@@ -6,7 +6,7 @@ export default function DeveloperCard() {
     <div className="flex flex-col gap-2  rounded-xl  px-4 pt-2 pb-2">
           <div className="flex flex-row items-end justify-start gap-2">
             <img className="h-10 px-2" src={duck} alt="rubber duck" />
-            <div className="">
+            <div>
               <p className="text-xs">Developed by:</p>
               <p className="titletext text-xl leading-none sm:text-left">
                 Codeyluwak

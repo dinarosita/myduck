@@ -9,8 +9,8 @@ export default function CustomHooks() {
   return (
     <MockArrayContextProvider>
       <div className="pass-overflow w-full px-2">
-        <main className="w-effective blush-frame pass-overflow flex h-full flex-col text-vincent-800">
-          <header className="blush-header">
+        <main className="w-effective blush-frame pass-overflow flex h-full flex-col text-navy">
+          <header>
             <h1>Universal Custom Hooks</h1>
             <p className="tagline">Hooks: the feather in every duck's cap.</p>
           </header>

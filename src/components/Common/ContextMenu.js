@@ -38,7 +38,7 @@ export default function ContextMenu({
           <button
             key={index}
             tabIndex="0"
-            className=""
+           
             onClick={() => handleItemClick(item)}
           >
             <Icon className="menu-icon" />

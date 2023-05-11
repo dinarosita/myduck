@@ -7,6 +7,7 @@ export default function ArchivedChats() {
 
   useEffect(() => {
     setIsArchive(archiveCheck(chatList));
+    // eslint-disable-next-line
   }, [chatList]);
 
   function archiveCheck(chats) {
@@ -23,7 +24,7 @@ export default function ArchivedChats() {
   return (
     <>
       <hr className="thin-separator" />
-      <div className="items-left px-2 text-blossom-200 font-bold">Archive</div>
+      <div className="items-left px-2 font-bold text-blossom-200">Archive</div>
     </>
   );
 }

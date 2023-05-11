@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import ChatIndexContext from "../../contexts/ChatIndexContext";
-import ChatTitle from "./ChatTitle";
+import ChatTitle from "./ChatTitleMenuWrapper";
 
 export default function ChatHeader() {
   const { isPageLoading, isNewUser, chatList, mainChatId } =
@@ -34,7 +34,7 @@ export default function ChatHeader() {
 
   return (
     <header
-      className={`blush-header relative h-fit min-h-16 px-2 ${
+      className={`relative h-fit min-h-16 px-2 ${
         (isPageLoading || (!isNewUser && !mainChatId)) && "text-opacity-30"
       }`}
     >

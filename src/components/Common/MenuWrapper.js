@@ -34,7 +34,8 @@ export default function MenuWrapper({ menuItems, showEditMode, contextClass, chi
       {...bind()}
       onContextMenu={handleRightClick}
       onKeyDown={handleKeyDown}
-      className="relative inline-block"
+      className="relative inline-block chat-title"
+      tabIndex="0" 
     >
       {children}
       {showMenu && (

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 export default function SandboxUseStateTiming() {
   const [arr, setArr] = useState([1, 2, 3]);
-  const [length, setLength] = useState();
+  // const [length, setLength] = useState();
   console.log("++++++++++++++++Rendering start+++++++++++++");
   console.log(arr);
 

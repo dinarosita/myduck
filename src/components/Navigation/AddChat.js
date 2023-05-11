@@ -53,7 +53,7 @@ export default function AddChat(props) {
         maxLength="50"
         ref={inputRef}
         placeholder="+ chat title"
-        className={`w-full rounded-full border-2 border-blossom-300 py-1 text-vincent-800 placeholder:text-vincent-700 hover:border-blossom-500 hover:placeholder:text-vincent-400 focus:border-blossom-500 f   ocus:ring-0 max-w-md  ${props.welcome ? "text-center" : "text-left"}`}
+        className={`w-full rounded-full border-2 border-blossom-300 py-1 text-navy placeholder:text-vincent-700 hover:border-blossom-500 hover:placeholder:text-vincent-400 focus:border-blossom-500 f   ocus:ring-0 max-w-md  ${props.welcome ? "text-center" : "text-left"}`}
       />
       <input type="submit" hidden={true} />
       <div>     

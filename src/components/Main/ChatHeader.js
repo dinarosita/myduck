@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import ChatIndexContext from "../../contexts/ChatIndexContext";
-import ChatTitle from "./ChatTitle";
 import ChatTitleMenuWrapper from "./ChatTitleMenuWrapper";
 
 export default function ChatHeader() {
@@ -35,16 +34,16 @@ export default function ChatHeader() {
 
   return (
     <header
-      className={`blush-header relative h-fit min-h-16 px-2 ${
+      className={`relative px-2 ${
         (isPageLoading || (!isNewUser && !mainChatId)) && "text-opacity-30"
       }`}
     >
       <div className="flex flex-row justify-center gap-2 px-6 ">
-        <ChatTitleMenuWrapper title={title} />
+        <ChatTitleMenuWrapper title={title}>
+          <h1>{title || "Untitled Chat"}</h1>
+        </ChatTitleMenuWrapper>
       </div>
-      <div className="flex flex-row justify-center gap-2 px-6">
-        <div className="tagline">{tag}</div>
-      </div>
+      <p className="tagline">{tag}</p>
     </header>
   );
 }
