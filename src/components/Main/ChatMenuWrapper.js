@@ -8,7 +8,7 @@ import {
 } from "@heroicons/react/24/outline";
 import ChatIndexContext from "../../contexts/ChatIndexContext";
 
-export default function ChatTitleMenuWrapper({
+export default function ChatMenuWrapper({
   title,
   children,
 }) {

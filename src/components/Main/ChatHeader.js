@@ -1,6 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
 import ChatIndexContext from "../../contexts/ChatIndexContext";
-import ChatTitleMenuWrapper from "./ChatTitleMenuWrapper";
+import ChatMenuWrapper from "./ChatMenuWrapper";
+
+const greetings = [
+  {
+    type: "pageLoading",
+    title: "Loading Duck",
+    tagline: "Quack quack quack",
+  },
+  {
+    type: "newUser",
+    title: "Welcome to MyDuck",
+    tagline: "Start a new chat!",
+  },
+];
 
 export default function ChatHeader() {
   const { isPageLoading, isNewUser, chatList, mainChatId } =
@@ -10,20 +23,18 @@ export default function ChatHeader() {
   const [tag, setTag] = useState("");
 
   useEffect(() => {
-    if (isPageLoading) {
-      setTitle("Loading Duck");
-      setTag("Quack quack quack");
-    } else {
-      if (isNewUser) {
-        setTitle("Welcome to MyDuck");
-        setTag("Start a new chat!");
-      } else {
-        if (mainChatId) {
-          const mainChat = chatList.find((chat) => chat.id === mainChatId);
-          setTitle(mainChat.title ? mainChat.title : null);
-          setTag(`Created: ${formatTimestamp(mainChat.createdAt)}`);
-        }
-      }
+    const greeting = greetings.find((g) => {
+      if (isPageLoading) return g.type === "pageLoading";
+      if (isNewUser) return g.type === "newUser";
+    });
+
+    if (greeting) {
+      setTitle(greeting.title);
+      setTag(greeting.tagline);
+    } else if (mainChatId) {
+      const mainChat = chatList.find((chat) => chat.id === mainChatId);
+      setTitle(mainChat.title ? mainChat.title : null);
+      setTag(`Created: ${formatTimestamp(mainChat.createdAt)}`);
     }
   }, [isPageLoading, isNewUser, chatList, mainChatId]);
 
@@ -39,9 +50,9 @@ export default function ChatHeader() {
       }`}
     >
       <div className="flex flex-row justify-center gap-2 px-6 ">
-        <ChatTitleMenuWrapper title={title}>
+        <ChatMenuWrapper title={title}>
           <h1>{title || "Untitled Chat"}</h1>
-        </ChatTitleMenuWrapper>
+        </ChatMenuWrapper>
       </div>
       <p className="tagline">{tag}</p>
     </header>

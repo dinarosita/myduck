@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import ChatIndexContext from "../../contexts/ChatIndexContext";
-import ChatTitle from "./ChatTitleMenuWrapper";
+import ChatTitle from "./ChatMenuWrapper";
 
 export default function ChatHeader() {
   const { isPageLoading, isNewUser, chatList, mainChatId } =
