@@ -2,19 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import ChatIndexContext from "../../contexts/ChatIndexContext";
 import ChatMenuWrapper from "./ChatMenuWrapper";
 import { formatDate } from "../../utils/timestamp";
-
-const greetings = [
-  {
-    type: "pageLoading",
-    title: "Loading Duck",
-    tagline: "Quack quack quack",
-  },
-  {
-    type: "newUser",
-    title: "Welcome to MyDuck",
-    tagline: "Start a new chat!",
-  },
-];
+import { GREETINGS } from "../../constants/greetings";
 
 export default function ChatHeader() {
   const { isPageLoading, isNewUser, chatList, mainChatId } =
@@ -23,7 +11,7 @@ export default function ChatHeader() {
   const [tag, setTag] = useState("");
 
   useEffect(() => {
-    const greeting = greetings.find((g) => {
+    const greeting = GREETINGS.find((g) => {
       if (isPageLoading) return g.type === "pageLoading";
       if (isNewUser) return g.type === "newUser";
       return false;
