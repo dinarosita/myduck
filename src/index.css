@@ -32,11 +32,11 @@
     @apply flex h-fit w-full flex-none flex-col bg-petal pb-2 pt-1 text-center text-vincent-800
   }
 
-  .blush-header:hover,
+  /* .blush-header:hover,
   .blush-header:active,
   .blush-header:focus {
     @apply text-blossom-600
-  }
+  } */
 
   .blush-header  h1 {
     @apply text-lg font-bold ;

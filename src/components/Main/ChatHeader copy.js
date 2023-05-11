@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import ChatIndexContext from "../../contexts/ChatIndexContext";
 import ChatTitle from "./ChatTitle";
-import ChatTitleMenuWrapper from "./ChatTitleMenuWrapper";
 
 export default function ChatHeader() {
   const { isPageLoading, isNewUser, chatList, mainChatId } =
@@ -40,7 +39,7 @@ export default function ChatHeader() {
       }`}
     >
       <div className="flex flex-row justify-center gap-2 px-6 ">
-        <ChatTitleMenuWrapper title={title} />
+        <ChatTitle title={title} />
       </div>
       <div className="flex flex-row justify-center gap-2 px-6">
         <div className="tagline">{tag}</div>
