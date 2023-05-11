@@ -126,7 +126,7 @@ export default function ChatHeader() {
   }
 
   return (
-    <MenuWrapper menuItems={menuItems} showEditMode={showEditMode}>
+    <MenuWrapper menuItems={menuItems} showEditMode={showEditMode} contextClass="chat-menu">
       <header
         tabIndex="0"
         className={`blush-header relative h-fit min-h-16 px-2 ${

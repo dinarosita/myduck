@@ -175,7 +175,13 @@
     @apply text-blossom-800 
   }
 
-  .menu-container {
+  .chat-menu {
+    @apply absolute right-0 flex-col-center gap-2;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+    .msg-menu {
     @apply absolute right-0 flex-col-center gap-2;
     top: 50%;
     transform: translate(-50%, -50%);

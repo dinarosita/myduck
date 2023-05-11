@@ -3,7 +3,7 @@ import { useLongPress } from "use-long-press";
 import ContextMenu from "./ContextMenu";
 import ArchiveModal from "./ArchiveModal";
 
-export default function MenuWrapper({ menuItems, showEditMode, children }) {
+export default function MenuWrapper({ menuItems, showEditMode, contextClass, children }) {
   const [showMenu, setShowMenu] = useState(false);
   const [showArchiveModal, setShowArchiveModal] = useState(false);
 
@@ -34,7 +34,7 @@ export default function MenuWrapper({ menuItems, showEditMode, children }) {
       {...bind()}
       onContextMenu={handleRightClick}
       onKeyDown={handleKeyDown}
-      className="relative inline-block "
+      className="relative inline-block"
     >
       {children}
       {showMenu && (
@@ -42,6 +42,7 @@ export default function MenuWrapper({ menuItems, showEditMode, children }) {
           menuItems={menuItems}
           setShowMenu={setShowMenu}
           setShowArchiveModal={setShowArchiveModal}
+          contextClass={contextClass}
         />
       )}
       {showArchiveModal && (
