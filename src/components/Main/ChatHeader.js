@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import ChatIndexContext from "../../contexts/ChatIndexContext";
 import ChatMenuWrapper from "./ChatMenuWrapper";
+import { formatDate } from "../../utils/timestamp";
 
 const greetings = [
   {
@@ -18,7 +19,6 @@ const greetings = [
 export default function ChatHeader() {
   const { isPageLoading, isNewUser, chatList, mainChatId } =
     useContext(ChatIndexContext);
-
   const [title, setTitle] = useState("");
   const [tag, setTag] = useState("");
 
@@ -35,14 +35,9 @@ export default function ChatHeader() {
     } else if (mainChatId) {
       const mainChat = chatList.find((chat) => chat.id === mainChatId);
       setTitle(mainChat.title ? mainChat.title : null);
-      setTag(`Created: ${formatTimestamp(mainChat.createdAt)}`);
+      setTag(`Created: ${formatDate(mainChat.createdAt)}`);
     }
   }, [isPageLoading, isNewUser, chatList, mainChatId]);
-
-  function formatTimestamp(timestamp) {
-    const date = new Date(timestamp.seconds * 1000).toDateString();
-    return `${date}`;
-  }
 
   return (
     <header
