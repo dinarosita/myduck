@@ -184,7 +184,7 @@
     .msg-menu {
     @apply absolute right-0 flex-col-center gap-2;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(150%, -50%);
   }
 
   .tooltip-container {

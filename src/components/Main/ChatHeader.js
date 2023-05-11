@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import ChatIndexContext from "../../contexts/ChatIndexContext";
-// import IconButton from "../Common/IconButton";
 import ChatTitle from "./ChatTitle";
 import { DATABASE_URL } from "../../config";
 import MenuWrapper from "../Common/MenuWrapper";
@@ -27,14 +26,12 @@ export default function ChatHeader() {
   const menuItems = [
     {
       type: "edit",
-      text: "Edit Title",
       icon: PencilSquareIcon,
       actionLayout: () => setShowEditMode(true),
       confirmationFunction: null,
     },
     {
       type: "archive",
-      text: "Archive Chat",
       icon: ArchiveBoxArrowDownIcon,
       actionLayout: null,
       confirmationFunction: onChatArchive,
