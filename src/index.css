@@ -40,6 +40,28 @@
     @apply text-navyhover;
   }
 
+  .menu-icon {
+    @apply h-4 text-navyhover;
+  }
+
+  .menu-icon:hover,
+  .menu-icon:active,
+  .menu-icon:focus {
+    @apply text-blossom-800;
+  }
+
+  .chat-menu {
+    @apply flex-col-center absolute right-0 gap-2;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .msg-menu {
+    @apply flex-col-center absolute right-0 gap-2;
+    top: 50%;
+    transform: translate(150%, -50%);
+  }
+  
   header .tagline {
     @apply text-xs;
   }
@@ -70,20 +92,6 @@
   .title-button:active,
   .title-button:focus {
     @apply border-navyhover bg-blossom-500 text-petal;
-  }
-
-  .menu-box {
-    @apply gap-0.5 bg-blossom-500 p-0.5;
-  }
-
-  .menu-button {
-    @apply border bg-blossom-100 px-1 px-2 py-0.5 text-blossom-700;
-  }
-
-  .menu-button:hover,
-  .menu-button:active,
-  .menu-button:focus {
-    @apply bg-blossom-200;
   }
 
   .skyscroll::-webkit-scrollbar {
@@ -154,34 +162,6 @@
     @apply w-full rounded-full p-1 text-center text-sm text-vincent-900 placeholder-navy/50;
   }
 
-  .icon-chatheader {
-    @apply max-h-4  text-vincent-500/50;
-  }
 
-  .icon-msg {
-    @apply max-h-4 text-vincent-200  text-opacity-50;
-  }
-
-  .menu-icon {
-    @apply h-4 text-navyhover;
-  }
-
-  .menu-icon:hover,
-  .menu-icon:active,
-  .menu-icon:focus {
-    @apply text-blossom-800;
-  }
-
-  .chat-menu {
-    @apply flex-col-center absolute right-0 gap-2;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .msg-menu {
-    @apply flex-col-center absolute right-0 gap-2;
-    top: 50%;
-    transform: translate(150%, -50%);
-  }
 
 }
