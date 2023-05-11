@@ -26,6 +26,7 @@ export default function ChatHeader() {
     const greeting = greetings.find((g) => {
       if (isPageLoading) return g.type === "pageLoading";
       if (isNewUser) return g.type === "newUser";
+      return false;
     });
 
     if (greeting) {
