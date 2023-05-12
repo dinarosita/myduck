@@ -2,14 +2,16 @@ import { useContext } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import ChatContext from "../contexts/ChatContext";
+import StageContext from "../contexts/StageContext";
 import { DATABASE_URL } from "../config";
 
-export function useChat() {
-  const { isNewUser, setIsNewUser, setChatList, updateMainChatId } =
-    useContext(ChatContext);
+export function useAddChat() {
+  const { setChatList, updateMainChatId } = useContext(ChatContext);
+  const { isNewUser, setIsNewUser, isDormantUser, setIsDormantUser } =
+    useContext(StageContext);
 
-  function postNewChat(title) {
-    const chatMeta = {
+  function runAddChat(title) {
+    const newChat = {
       title: title || null,
       createdAt: firebase.firestore.Timestamp.now(),
       archived: false,
@@ -17,24 +19,19 @@ export function useChat() {
 
     return fetch(`${DATABASE_URL}/chatMeta.json`, {
       method: "POST",
-      body: JSON.stringify(chatMeta),
+      body: JSON.stringify(newChat),
       headers: {
         "Content-Type": "application/json",
       },
     })
       .then((response) => response.json())
       .then((data) => {
-        const chatId = data.name;
-        
-        updateLocalChatList(chatId);
-        if (isNewUser) {
-          setIsNewUser(false);
-        } 
+        updateChatContext(data.name);
+        updateStageContext();
       });
   }
 
-
-  function updateLocalChatList(chatId) {
+  function updateChatContext(chatId) {
     return fetch(`${DATABASE_URL}/chatMeta/${chatId}.json`)
       .then((response) => response.json())
       .then((data) => {
@@ -47,7 +44,13 @@ export function useChat() {
       });
   }
 
+  function updateStageContext() {
+    if (isNewUser || isDormantUser) {
+      setIsNewUser(false);
+      setIsDormantUser(false);
+    }
+  }
   return {
-    postNewChat
+    runAddChat,
   };
 }

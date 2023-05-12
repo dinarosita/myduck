@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import ChatContext from "../../contexts/ChatContext";
+import StageContext from "../../contexts/StageContext";
 import ChatMenuWrapper from "./ChatMenuWrapper";
 import { formatDate } from "../../utils/timestamp";
 import { GREETINGS } from "../../constants/greetings";
 
 export default function ChatHeader() {
-  const { isPageLoading, isNewUser, chatList, mainChatId } =
-    useContext(ChatContext);
+  const { chatList, mainChatId } = useContext(ChatContext);
+  const { isPageLoading, isNewUser, isDormantUser } = useContext(StageContext);
   const [title, setTitle] = useState("");
   const [tagline, setTagline] = useState("");
 
@@ -14,6 +15,7 @@ export default function ChatHeader() {
     const greeting = GREETINGS.find((g) => {
       if (isPageLoading) return g.type === "pageLoading";
       if (isNewUser) return g.type === "newUser";
+      if (isDormantUser) return g.type === "dormantUser";
       return false;
     });
 
@@ -25,7 +27,7 @@ export default function ChatHeader() {
       setTitle(mainChat.title ? mainChat.title : null);
       setTagline(`Created: ${formatDate(mainChat.createdAt)}`);
     }
-  }, [isPageLoading, isNewUser, chatList, mainChatId]);
+  }, [isPageLoading, isNewUser, isDormantUser, chatList, mainChatId]);
 
   return (
     <header

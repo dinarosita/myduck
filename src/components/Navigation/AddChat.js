@@ -1,17 +1,17 @@
 import React, { useContext, useRef } from "react";
-import { useChat } from "../../hooks/useChat";
+import { useAddChat } from "../../hooks/useAddChat";
 import { sanitizeInput } from "../../utils/sanitize";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import FlapContext from "../../contexts/FlapContext";
 import IconButton from "../Common/IconButton";
-import ChatContext from "../../contexts/ChatContext";
+import StageContext from "../../contexts/StageContext";
 
 export default function AddChat(props) {
   const { setIsFlapOpen } = useContext(FlapContext);
+  const { isPageLoading, isNewUser } = useContext(StageContext);
   const inputRef = useRef();
-  const { postNewChat } = useChat();
+  const { runAddChat } = useAddChat();
   const windowSize = useWindowSize();
-  const { isPageLoading, isNewUser } = useContext(ChatContext);
 
   function cancelAddChat(e) {
     e.preventDefault();
@@ -25,7 +25,7 @@ export default function AddChat(props) {
     e.preventDefault();
     const title = inputRef.current.value;
     const sanitizedTitle = sanitizeInput(title);
-    postNewChat(sanitizedTitle).then(() => {
+    runAddChat(sanitizedTitle).then(() => {
       inputRef.current.value = "";
     });
     if (windowSize.width < 480) {
@@ -53,12 +53,22 @@ export default function AddChat(props) {
         maxLength="50"
         ref={inputRef}
         placeholder="+ chat title"
-        className={`w-full rounded-full border-2 border-blossom-300 py-1 text-navy placeholder:text-vincent-700 hover:border-blossom-500 hover:placeholder:text-vincent-400 focus:border-blossom-500 f   ocus:ring-0 max-w-md  ${props.welcome ? "text-center" : "text-left"}`}
+        className={`f ocus:ring-0 w-full max-w-md rounded-full border-2 border-blossom-300 py-1 text-navy placeholder:text-vincent-700 hover:border-blossom-500   hover:placeholder:text-vincent-400 focus:border-blossom-500  ${
+          props.welcome ? "text-center" : "text-left"
+        }`}
       />
       <input type="submit" hidden={true} />
-      <div>     
-        <IconButton task="chatCancel" onClick={cancelAddChat} addButtonClass="h-6 w-6" />
-        <IconButton task="chatSubmit" onClick={handleSubmit} addButtonClass="h-6 w-6" />
+      <div>
+        <IconButton
+          task="chatCancel"
+          onClick={cancelAddChat}
+          addButtonClass="h-6 w-6"
+        />
+        <IconButton
+          task="chatSubmit"
+          onClick={handleSubmit}
+          addButtonClass="h-6 w-6"
+        />
       </div>
     </form>
   );

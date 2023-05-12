@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import FlapContext from "../../contexts/FlapContext";
 import ChatContext from "../../contexts/ChatContext";
+import StageContext from "../../contexts/StageContext";
 import { useNavigate } from "react-router-dom";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import ArchivedChats from "./ArchivedChats";
@@ -9,8 +10,8 @@ export default function ChatHistory({ isActiveOnly, setIsActiveOnly }) {
   const navigate = useNavigate();
   const windowSize = useWindowSize();
   const { setIsFlapOpen } = useContext(FlapContext);
-  const { isPageLoading, isNewUser, chatList, mainChatId, updateMainChatId } =
-    useContext(ChatContext);
+  const { chatList, mainChatId, updateMainChatId } = useContext(ChatContext);
+  const { isPageLoading, isNewUser } = useContext(StageContext);
 
   return (
     <div className="items-left pass-overflow flex w-full flex-col gap-2 p-2">
@@ -49,7 +50,6 @@ export default function ChatHistory({ isActiveOnly, setIsActiveOnly }) {
               </li>
             ))
             .reverse()
-            
         )}
         <ArchivedChats />
       </ul>

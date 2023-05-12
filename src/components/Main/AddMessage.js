@@ -6,9 +6,11 @@ import { useMessage } from "../../hooks/useMessage";
 import { sanitizeInput } from "../../utils/sanitize";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import ChatContext from "../../contexts/ChatContext";
+import StageContext from "../../contexts/StageContext";
 
 export default function AddMessage() {
-  const { isPageLoading, isNewUser, mainChatId } = useContext(ChatContext);
+  const { mainChatId } = useContext(ChatContext);
+  const { isPageLoading, isNewUser } = useContext(StageContext);
   const textareaRef = useRef();
   const { setMessageList } = useContext(MessageContext);
   const [textvalue, setTextValue] = useState("");
