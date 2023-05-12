@@ -7,17 +7,17 @@ import {
   ArchiveBoxArrowDownIcon,
 } from "@heroicons/react/24/outline";
 import ChatContext from "../../contexts/ChatContext";
+import { useArchiveChat } from "../../hooks/useArchiveChat";
 
 export default function ChatMenuWrapper({ title, children }) {
   const {
     chatList,
     setChatList,
     mainChatId,
-    updateMainChatId,
-    findLastActiveId,
   } = useContext(ChatContext);
   const [showEditMode, setShowEditMode] = useState(false);
   const inputRef = useRef();
+  const { runArchiveChat } = useArchiveChat();
 
   const menuItems = [
     {
@@ -30,7 +30,7 @@ export default function ChatMenuWrapper({ title, children }) {
       type: "archive",
       icon: ArchiveBoxArrowDownIcon,
       actionLayout: null,
-      confirmationFunction: onChatArchive,
+      confirmationFunction: () => runArchiveChat(chatList, mainChatId),
     },
   ];
 
@@ -72,36 +72,36 @@ export default function ChatMenuWrapper({ title, children }) {
       });
   }
 
-  function onChatArchive() {
-    const newList = chatList.map((chat) => {
-      if (chat.id === mainChatId) {
-        return {
-          ...chat,
-          archived: true,
-        };
-      }
-      return chat;
-    });
-    setChatList(newList);
-    updateMainChatId(findLastActiveId(newList));
-    archiveChatInDatabase(mainChatId);
-  }
+  // function onChatArchive() {
+  //   const newList = chatList.map((chat) => {
+  //     if (chat.id === mainChatId) {
+  //       return {
+  //         ...chat,
+  //         archived: true,
+  //       };
+  //     }
+  //     return chat;
+  //   });
+  //   setChatList(newList);
+  //   updateMainChatId(findLastActiveId(newList));
+  //   archiveChatInDatabase(mainChatId);
+  // }
 
-  function archiveChatInDatabase(chatId) {
-    return fetch(`${DATABASE_URL}/chatMeta/${chatId}.json`, {
-      method: "PATCH",
-      body: JSON.stringify({ archived: true }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then(() => {
-        console.log("Chat archived in the database");
-      })
-      .catch((error) => {
-        console.error("Error archiving chat:", error);
-      });
-  }
+  // function archiveChatInDatabase(chatId) {
+  //   return fetch(`${DATABASE_URL}/chatMeta/${chatId}.json`, {
+  //     method: "PATCH",
+  //     body: JSON.stringify({ archived: true }),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //     .then(() => {
+  //       console.log("Chat archived in the database");
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error archiving chat:", error);
+  //     });
+  // }
 
   return (
     <MenuWrapper
