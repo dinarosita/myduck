@@ -8,9 +8,9 @@ export function useArchiveChat() {
   const { setChatList, updateMainChatId, findLastActiveId } = useContext(ChatContext);
   const { setIsDormantUser } = useContext(StageContext);
 
-  function runArchiveChat(chatList, mainChatId) {
-    const newList = chatList.map((chat) => {
-      if (chat.id === mainChatId) {
+  function runArchiveChat(chats, archivedId) {
+    const newList = chats.map((chat) => {
+      if (chat.id === archivedId) {
         return {
           ...chat,
           archived: true,
@@ -19,16 +19,16 @@ export function useArchiveChat() {
       return chat;
     });
 
-    archiveChatInDatabase(mainChatId);
+    archiveChatDatabase(archivedId);
     setChatList(newList);
-    const newChatId = findLastActiveId(newList)
-    if (!newChatId) {
+    const newId = findLastActiveId(newList)
+    if (!newId) {
       setIsDormantUser(true)
     }
-    updateMainChatId(newChatId);
+    updateMainChatId(newId);
   }
 
-  function archiveChatInDatabase(chatId) {
+  function archiveChatDatabase(chatId) {
     return fetch(`${DATABASE_URL}/chatMeta/${chatId}.json`, {
       method: "PATCH",
       body: JSON.stringify({ archived: true }),
