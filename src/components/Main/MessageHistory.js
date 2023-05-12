@@ -36,7 +36,7 @@ export default function MessageHistory() {
                 flex h-full flex-auto  flex-col  gap-2 overflow-y-scroll whitespace-pre-wrap bg-transparent pr-6 `}
           >
             {messageList.map((msg) => (
-              <Message id={msg.id} message={msg.message} />
+              <Message key={msg.id} id={msg.id} message={msg.message} />
             ))}
           </div>
         );

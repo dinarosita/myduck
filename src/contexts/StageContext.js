@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { DATABASE_URL } from "../config";
 import ChatContext from "./ChatContext";
+import { DATABASE_URL } from "../config";
 
 const StageContext = createContext({
   isPageLoading: true,
@@ -11,12 +11,8 @@ const StageContext = createContext({
 });
 
 export function StageContextProvider(props) {
-  const {
-    setChatList,
-    setMainChatId,
-    updateMainChatId,
-    findLastActiveId,
-  } = useContext(ChatContext);
+  const { setChatList, updateMainChatId, findLastActiveId } =
+    useContext(ChatContext);
   const [isPageLoading, setIsPageLoading] = useState(true);
   const [isNewUser, setIsNewUser] = useState(false);
   const [isDormantUser, setIsDormantUser] = useState(false);
@@ -36,9 +32,9 @@ export function StageContextProvider(props) {
       })
       .then((data) => {
         if (!data) {
-          handleNewUser()
+          handleNewUser();
         } else {
-          handleExistingUser(data)
+          handleRegularUser(data);
         }
         setIsPageLoading(false);
       })
@@ -55,38 +51,62 @@ export function StageContextProvider(props) {
   function handleNewUser() {
     console.log("New user");
     setIsNewUser(true);
-    localStorage.setItem("storageChatId", null);
+    updateMainChatId(null);
   }
 
-  function handleExistingUser(data) {
-    const chats = []
+  function handleRegularUser(data) {
+    const chats = [];
+    let activeChat = 0;
     for (const key in data) {
       const chat = {
         id: key,
         ...data[key],
       };
+      if (!chat.archived) {
+        activeChat++;
+      }
       chats.push(chat);
     }
-    console.log(
-      `Active user with ${chats.length} chat${
-        chats.length > 1 ? "s" : ""
-      }`
-    );
-
     setChatList(chats);
 
-    const storedChatId = localStorage.getItem("storageChatId");
-
-    if (
-      chats.some(
-        (chat) => chat.id === storedChatId && chat.archived === false
-      )
-    ) {
-      setMainChatId(storedChatId);
+    if (activeChat === 0) {
+      handleDormantUser(chats.length);
     } else {
-      const lastId = findLastActiveId(chats);
-      updateMainChatId(lastId);
+      handleActiveUser(chats, activeChat);
     }
+  }
+
+  function handleDormantUser(chatLength) {
+    console.log(
+      `Dormant user with ${chatLength} archived chat${
+        chatLength > 1 ? "s" : ""
+      }`
+    );
+    setIsDormantUser(true);
+    updateMainChatId(null);
+  }
+
+  function handleActiveUser(chats, activeChat) {
+    console.log(
+      `Active user with ${activeChat} active chat${activeChat > 1 ? "s" : ""}`
+    );
+
+    const validStoredId = validateStorageId(chats);
+    const mainId = validStoredId ? validStoredId : findLastActiveId(chats);
+    updateMainChatId(mainId);
+  }
+
+  function validateStorageId(chats) {
+    const storedId = localStorage.getItem("storageChatId");
+    if (!storedId) {
+      return null;
+    } else if (
+      chats.some((chat) => chat.id === storedId && chat.archived === false)
+    ) {
+      return storedId;
+    }
+    localStorage.setItem("storageChatId", null);
+    return null;
   }
 
   const context = {
