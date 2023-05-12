@@ -10,41 +10,53 @@ export function useAddChat() {
   const { isNewUser, setIsNewUser, isDormantUser, setIsDormantUser } =
     useContext(StageContext);
 
-  function runAddChat(title) {
+  async function runAddChat(title) {
     const newChat = {
       title: title || null,
       createdAt: firebase.firestore.Timestamp.now(),
       archived: false,
     };
 
-    return fetch(`${DATABASE_URL}/chatMeta.json`, {
-      method: "POST",
-      body: JSON.stringify(newChat),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .catch((error) => {
-        console.error("Network error:", error);
-      })
-      .then((response) => response.json())
-      .then((data) => {
-        updateChatContext(data.name);
-        updateStageContext();
+    try {
+      const response = await fetch(`${DATABASE_URL}/chatMeta.json`, {
+        method: "POST",
+        body: JSON.stringify(newChat),
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
+
+      if (!response.ok) {
+        throw new Error("HTTP error, status = " + response.status);
+      }
+
+      const data = await response.json();
+      await updateChatContext(data.name);
+      updateStageContext();
+    } catch (error) {
+      console.error("Error adding new chat:", error);
+    }
   }
 
-  function updateChatContext(chatId) {
-    return fetch(`${DATABASE_URL}/chatMeta/${chatId}.json`)
-      .then((response) => response.json())
-      .then((data) => {
-        const newMeta = {
-          id: chatId,
-          ...data,
-        };
-        setChatList((prevAllChats) => prevAllChats.concat(newMeta));
-        updateMainChatId(chatId);
-      });
+  async function updateChatContext(chatId) {
+    try {
+      const response = await fetch(`${DATABASE_URL}/chatMeta/${chatId}.json`);
+
+      if (!response.ok) {
+        throw new Error("HTTP error, status = " + response.status);
+      }
+
+      const data = await response.json();
+      const newMeta = {
+        id: chatId,
+        ...data,
+      };
+
+      setChatList((prevAllChats) => prevAllChats.concat(newMeta));
+      updateMainChatId(chatId);
+    } catch (error) {
+      console.error("Error updating chat context: ", error);
+    }
   }
 
   function updateStageContext() {

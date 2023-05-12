@@ -20,20 +20,27 @@ export function useEditChatTitle() {
     editTitleDatabase(editedId, newTitle);
   }
 
-  function editTitleDatabase(editedId, newTitle) {
-    return fetch(`${DATABASE_URL}/chatMeta/${editedId}.json`, {
-      method: "PATCH",
-      body: JSON.stringify({ title: newTitle }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then(() => {
-        console.log("Chat title updated in the database");
-      })
-      .catch((error) => {
-        console.error("Error updating chat title:", error);
-      });
+  async function editTitleDatabase(editedId, newTitle) {
+    try {
+      const response = await fetch(
+        `${DATABASE_URL}/chatMeta/${editedId}.json`,
+        {
+          method: "PATCH",
+          body: JSON.stringify({ title: newTitle }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("HTTP error, status = " + response.status);
+      }
+
+      console.log("Chat title updated in the database");
+    } catch (error) {
+      console.error("Error updating chat context: ", error);
+    }
   }
   return {
     runEditChatTitle,
