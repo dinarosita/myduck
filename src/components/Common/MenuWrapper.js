@@ -3,15 +3,17 @@ import { useLongPress } from "use-long-press";
 import ContextMenu from "./ContextMenu";
 import ArchiveModal from "./ArchiveModal";
 
-export default function MenuWrapper({ menuItems, showEditMode, className, children }) {
+export default function MenuWrapper({
+  menuItems,
+  showEditMode,
+  className,
+  children,
+}) {
   const [showMenu, setShowMenu] = useState(false);
   const [showArchiveModal, setShowArchiveModal] = useState(false);
 
-
   function handleRightClick(e) {
-    if (e) {
-      e.preventDefault();
-    }
+    e.preventDefault();
     setShowMenu(true);
   }
 
@@ -34,8 +36,8 @@ export default function MenuWrapper({ menuItems, showEditMode, className, childr
       {...bind()}
       onContextMenu={handleRightClick}
       onKeyDown={handleKeyDown}
-      className="inline-block chat-title"
-      tabIndex="0" 
+      className="chat-title inline-block"
+      tabIndex="0"
     >
       {children}
       {showMenu && (
@@ -48,8 +50,8 @@ export default function MenuWrapper({ menuItems, showEditMode, className, childr
       )}
       {showArchiveModal && (
         <ArchiveModal
-        setShowArchiveModal={setShowArchiveModal}
-        setShowMenu={setShowMenu}
+          setShowArchiveModal={setShowArchiveModal}
+          setShowMenu={setShowMenu}
           onConfirm={() => {
             menuItems
               .find((item) => item.type === "archive")
