@@ -21,31 +21,35 @@ export function StageContextProvider(props) {
     setIsPageLoading(true);
     const abortController = new AbortController();
 
-    fetch(`${DATABASE_URL}/chatMeta.json`, {
-      signal: abortController.signal,
-    })
-      .then((response) => {
-        if (!response) {
-          throw new Error("Chat list response not ok");
+    async function fetchData() {
+      try {
+        const response = await fetch(`${DATABASE_URL}/chatMeta.json`, {
+          signal: abortController.signal,
+        });
+
+        if (!response.ok) {
+          throw new Error("HTTP error, status = " + response.status);
         }
-        return response.json();
-      })
-      .then((data) => {
+
+        const data = await response.json();
+
         if (!data) {
           handleNewUser();
         } else {
           handleRegularUser(data);
         }
         setIsPageLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
+      } catch (error) {
+        console.error("Error loading chat list: ", error);
+      } finally {
         setIsPageLoading(false);
-      });
+      }
+    }
+
+    fetchData();
     return () => {
       abortController.abort();
-    };
-    // eslint-disable-next-line
+    }; // eslint-disable-next-line
   }, []);
 
   function handleNewUser() {

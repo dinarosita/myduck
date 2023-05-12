@@ -1,6 +1,6 @@
 import React, { useContext, useRef } from "react";
 import { MockArrayContext } from "../pages/MockArrayContext";
-import useArray from "../hooks/useArray";
+import useArray from "./useArray";
 
 export default function UsingUseArray() {
   const { mockArray, setMockArray } = useContext(MockArrayContext);
