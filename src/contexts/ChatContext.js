@@ -19,6 +19,7 @@ export function ChatContextProvider(props) {
         return chats[i].id;
       }
     }
+    return null
   }
 
   function updateMainChatId(newId) {

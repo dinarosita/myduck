@@ -42,6 +42,7 @@ export function useArchiveChat() {
       if (!response.ok) {
         throw new Error("HTTP error, status = " + response.status);
       }
+
       console.log("Chat archived in the database");
     } catch (error) {
       console.error("Error archiving chat:", error);

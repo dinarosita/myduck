@@ -31,11 +31,11 @@ export default function ChatHeader() {
 
   return (
     <header
-      className={`relative px-2 ${
+      className={`px-2 ${
         (isPageLoading || (!isNewUser && !mainChatId)) && "text-opacity-30"
       }`}
     >
-      <div className="flex flex-row justify-center gap-2 px-6 ">
+      <div className="flex flex-row justify-center gap-2 px-10 relative">
         <ChatMenuWrapper title={title}>
           <h1>{title || "Untitled Chat"}</h1>
         </ChatMenuWrapper>

@@ -44,7 +44,7 @@ export default function Message({ id, message }) {
         <MenuWrapper
           menuItems={menuItems}
           showEditMode={showEditMode}
-          contextClass="msg-menu"
+          className="msg-menu"
         >
           <div
             key={id}

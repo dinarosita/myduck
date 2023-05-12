@@ -41,7 +41,7 @@
   }
 
   .menu-icon {
-    @apply h-4 text-navyhover;
+    @apply text-navyhover;
   }
 
   .menu-icon:hover,
@@ -51,9 +51,8 @@
   }
 
   .chat-menu {
-    @apply flex-col-center absolute right-0 gap-2;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    @apply flex flex-row absolute right-0 top-0 gap-2;
+    /* transform: translate(0, 0); */
   }
 
   .msg-menu {

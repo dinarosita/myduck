@@ -3,7 +3,7 @@ import { useLongPress } from "use-long-press";
 import ContextMenu from "./ContextMenu";
 import ArchiveModal from "./ArchiveModal";
 
-export default function MenuWrapper({ menuItems, showEditMode, contextClass, children }) {
+export default function MenuWrapper({ menuItems, showEditMode, className, children }) {
   const [showMenu, setShowMenu] = useState(false);
   const [showArchiveModal, setShowArchiveModal] = useState(false);
 
@@ -34,7 +34,7 @@ export default function MenuWrapper({ menuItems, showEditMode, contextClass, chi
       {...bind()}
       onContextMenu={handleRightClick}
       onKeyDown={handleKeyDown}
-      className="relative inline-block chat-title"
+      className="inline-block chat-title"
       tabIndex="0" 
     >
       {children}
@@ -43,7 +43,7 @@ export default function MenuWrapper({ menuItems, showEditMode, contextClass, chi
           menuItems={menuItems}
           setShowMenu={setShowMenu}
           setShowArchiveModal={setShowArchiveModal}
-          contextClass={contextClass}
+          className={className}
         />
       )}
       {showArchiveModal && (

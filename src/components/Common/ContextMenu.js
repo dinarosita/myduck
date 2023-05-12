@@ -4,7 +4,7 @@ export default function ContextMenu({
   menuItems,
   setShowMenu,
   setShowArchiveModal,
-  contextClass,
+  className,
 }) {
   const contextMenuRef = useRef();
 
@@ -31,17 +31,17 @@ export default function ContextMenu({
     }
   }
   return (
-    <div ref={contextMenuRef} className={contextClass}>
+    <div ref={contextMenuRef} className={className}>
       {menuItems.map((item, index) => {
         const Icon = item.icon;
         return (
           <button
             key={index}
             tabIndex="0"
-           
+           className="menu-icon"
             onClick={() => handleItemClick(item)}
           >
-            <Icon className="menu-icon" />
+            <Icon  className="h-5" />
             {/* {item.text} */}
           </button>
         );

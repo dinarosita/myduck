@@ -20,7 +20,7 @@ module.exports = {
       colors: {
         charcoal: "#463325", // almond-900
         navy: "#256574", // vincent-800
-        navyhover: "#CC938A", // blossom-600
+        navyhover: "#D5A69F", // blossom-500
         daffodil: "#FCF8F8", // amber-200 - petal now
         petal: "#FCF8F8", // petal-50
         nonactive: "#BDE2EA", // vincent-200
