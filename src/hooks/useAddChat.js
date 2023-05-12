@@ -24,6 +24,9 @@ export function useAddChat() {
         "Content-Type": "application/json",
       },
     })
+      .catch((error) => {
+        console.error("Network error:", error);
+      })
       .then((response) => response.json())
       .then((data) => {
         updateChatContext(data.name);
