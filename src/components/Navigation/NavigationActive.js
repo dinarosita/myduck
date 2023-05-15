@@ -4,9 +4,9 @@ import ChatContext from "../../contexts/ChatContext";
 import StageContext from "../../contexts/StageContext";
 import { useNavigate } from "react-router-dom";
 import { useWindowSize } from "../../hooks/useWindowSize";
-import ArchivedChats from "./ArchivedChats";
+import NavigationArchive from "./NavigationArchive";
 
-export default function ChatHistory({ isActiveOnly, setIsActiveOnly }) {
+export default function NavigationActive() {
   const navigate = useNavigate();
   const windowSize = useWindowSize();
   const { setIsFlapOpen } = useContext(FlapContext);
@@ -27,7 +27,7 @@ export default function ChatHistory({ isActiveOnly, setIsActiveOnly }) {
           </li>
         ) : (
           chatList
-            .filter((chat) => (isActiveOnly ? !chat.archived : true))
+            .filter((chat) => !chat.archived)
             .map((chat) => (
               <li key={chat.id}>
                 <button
@@ -51,7 +51,6 @@ export default function ChatHistory({ isActiveOnly, setIsActiveOnly }) {
             ))
             .reverse()
         )}
-        <ArchivedChats />
       </ul>
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import ChatContext from "../../contexts/ChatContext";
 
-export default function ArchivedChats() {
+export default function NavigationArchive() {
   const { chatList } = useContext(ChatContext);
   const [isArchive, setIsArchive] = useState(false);
 
