@@ -16,7 +16,8 @@ import {
   BoltIcon,
   EyeIcon,
   ArchiveBoxIcon,
-
+  ChevronDoubleUpIcon,
+  ChevronDoubleDownIcon,
 } from "@heroicons/react/24/outline";
 
 const iconMapping = {
@@ -34,8 +35,8 @@ const iconMapping = {
   messageEdit: PencilSquareIcon,
   messageDelete: TrashIcon,
   customHooks: BoltIcon,
-  openArchive: ArchiveBoxIcon,
-  closeArchive: ArchiveBoxArrowDownIcon,
+  openArchive: ChevronDoubleUpIcon,
+  closeArchive: ChevronDoubleDownIcon,
 };
 
 export default function IconButton(props) {
@@ -58,11 +59,7 @@ export default function IconButton(props) {
       onClick={(e) => handleClick(e)}
       className={`blush-button  ${props.addButtonClass}`}
     >
-      {IconComponent && (
-        <IconComponent
-          className={`${props.addIconClass}`}
-        />
-      )}
+      {IconComponent && <IconComponent className={`${props.addIconClass}`} />}
     </button>
   );
 }

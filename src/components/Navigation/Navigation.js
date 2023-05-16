@@ -25,7 +25,7 @@ export default function Navigation() {
       <div className="flex flex-row items-center justify-between p-2 pl-3 ">
         <div
           className={`text-lg font-bold leading-none text-petal ${
-            (isPageLoading || isNewUser) && "text-opacity-40"
+            isPageLoading && "text-opacity-40"
           }`}
         >
           {isArchiveMode ? "Archive Mode" : "Chat history"}
@@ -37,13 +37,15 @@ export default function Navigation() {
         />
       </div>
       <hr className="blush-separator" />
-      {isAnyActive && (
-        <NavigationActive
-          isArchiveMode={isArchiveMode}
-          setIsArchiveMode={setIsArchiveMode}
-        />
-      )}
 
+      {isAnyActive && !isArchiveMode && (
+        <div className="items-left pass-overflow flex w-full flex-col justify-between gap-2 p-2 text-petal">
+          <NavigationActive
+            isArchiveMode={isArchiveMode}
+            setIsArchiveMode={setIsArchiveMode}
+          />{" "}
+        </div>
+      )}
       {isAnyArchive && (
         <>
           <hr className="thin-separator" />
@@ -53,6 +55,30 @@ export default function Navigation() {
           />
         </>
       )}
+
+      {/* {!isAnyActive && !isAnyArchive && (
+        <div className="items-left pass-overflow flex w-full flex-col gap-2 p-2 text-petal">
+          <p>New here? </p>
+          <p>Start your first chat.</p>
+        </div>
+      )}
+      {!isAnyActive && isAnyArchive && (
+        <div className="items-left pass-overflow flex w-full flex-col gap-2 p-2 text-petal">
+          <p>Your chats are all archived.</p>
+          <p>Either revive some or create a new one.</p>
+        </div>
+      )}
+
+
+      {isAnyArchive && (
+        <>
+          <hr className="thin-separator" />
+          <NavigationArchive
+            isArchiveMode={isArchiveMode}
+            setIsArchiveMode={setIsArchiveMode}
+          />
+        </>
+      )} */}
       <hr className="blush-separator" />
 
       <AddChat nav />
