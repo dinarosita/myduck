@@ -11,7 +11,6 @@ export default function Navigation() {
   const { chatList } = useContext(ChatContext);
   const { isPageLoading, isNewUser } = useContext(StageContext);
   const { handleNavClose } = useNavButtonLogic();
-  const [isArchiveMode, setIsArchiveMode] = useState(false);
   const [isAnyActive, setIsAnyActive] = useState(true);
   const [isAnyArchive, setIsAnyArchive] = useState(false);
 
@@ -28,7 +27,7 @@ export default function Navigation() {
             (isPageLoading || isNewUser) && "text-opacity-40"
           }`}
         >
-          {isArchiveMode ? "Archive Mode" : "Chat history"}
+          Chat history
         </div>
         <IconButton
           onClick={handleNavClose}
@@ -38,19 +37,13 @@ export default function Navigation() {
       </div>
       <hr className="blush-separator" />
       {isAnyActive && (
-        <NavigationActive
-          isArchiveMode={isArchiveMode}
-          setIsArchiveMode={setIsArchiveMode}
-        />
+        <NavigationActive />
       )}
 
       {isAnyArchive && (
         <>
           <hr className="thin-separator" />
-          <NavigationArchive
-            isArchiveMode={isArchiveMode}
-            setIsArchiveMode={setIsArchiveMode}
-          />
+          <NavigationArchive />
         </>
       )}
       <hr className="blush-separator" />

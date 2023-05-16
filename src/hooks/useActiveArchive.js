@@ -1,11 +1,10 @@
 export default function useActiveArchive() {
+  function isAnyActive() {
+    return chatList.some((chat) => chat.archive === false);
+  }
 
   function isAnyActive() {
-    return chatList.some(chat => chat.archive === false)
+    return chatList.some((chat) => chat.archive === true);
   }
-
-    function isAnyActive() {
-    return chatList.some(chat => chat.archive === true)
-  }
-  return { isAnyActive, isAnyArchive}
+  return { isAnyActive, isAnyArchive };
 }

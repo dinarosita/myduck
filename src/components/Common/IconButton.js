@@ -14,6 +14,8 @@ import {
   BookOpenIcon,
   ArchiveBoxArrowDownIcon,
   BoltIcon,
+  EyeIcon,
+  ArchiveBoxIcon,
 
 } from "@heroicons/react/24/outline";
 
@@ -26,13 +28,14 @@ const iconMapping = {
   chatSubmit: CheckCircleIcon,
   chatCancel: XCircleIcon,
   chatDelete: TrashIcon,
-  archiveItem: ArchiveBoxArrowDownIcon,
   editItem: PencilSquareIcon,
   editChatTitle: PencilIcon,
   messageSubmit: PaperAirplaneIcon,
   messageEdit: PencilSquareIcon,
   messageDelete: TrashIcon,
   customHooks: BoltIcon,
+  openArchive: ArchiveBoxIcon,
+  closeArchive: ArchiveBoxArrowDownIcon,
 };
 
 export default function IconButton(props) {

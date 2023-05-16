@@ -34,6 +34,10 @@
     @apply w-full border-2 border-x-0 border-b-0 border-petal/30;
   }
 
+  .fine-separator {
+    @apply w-full border border-x-0 border-b-0 border-petal/30;
+  }
+
   .chat-title:hover h1,
   .chat-title:active h1,
   .chat-title:focus h1 {
