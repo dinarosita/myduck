@@ -7,7 +7,7 @@ import ChatContext from "../../contexts/ChatContext";
 import NavigationArchive from "./NavigationArchive";
 
 export default function Navigation() {
-  const { chatList, isPageLoading, isNewUser } = useContext(ChatContext);
+  const { chatList, isPageLoading } = useContext(ChatContext);
   const { handleNavClose } = useNavButtonLogic();
   const [isArchiveMode, setIsArchiveMode] = useState(false);
   const [isAnyActive, setIsAnyActive] = useState(true);

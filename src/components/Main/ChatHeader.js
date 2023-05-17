@@ -5,15 +5,14 @@ import { formatDate } from "../../utils/timestamp";
 import { GREETINGS } from "../../constants/greetings";
 
 export default function ChatHeader() {
-  const { chatList, mainChatId, isPageLoading, isNewUser, isDormantUser } = useContext(ChatContext);
+  const { chatList, mainChatId, isPageLoading } = useContext(ChatContext);
   const [title, setTitle] = useState("");
   const [tagline, setTagline] = useState("");
 
   useEffect(() => {
     const greeting = GREETINGS.find((g) => {
       if (isPageLoading) return g.type === "pageLoading";
-      if (isNewUser) return g.type === "newUser";
-      if (isDormantUser) return g.type === "dormantUser";
+      if (!mainChatId) return g.type === "newUser";
       return false;
     });
 
@@ -25,15 +24,15 @@ export default function ChatHeader() {
       setTitle(mainChat.title ? mainChat.title : null);
       setTagline(`Created: ${formatDate(mainChat.createdAt)}`);
     }
-  }, [isPageLoading, isNewUser, isDormantUser, chatList, mainChatId]);
+  }, [isPageLoading, mainChatId, chatList]);
 
   return (
     <header
       className={`px-2 ${
-        (isPageLoading || (!isNewUser && !mainChatId)) && "text-opacity-30"
+        (isPageLoading || !mainChatId) && "text-opacity-30"
       }`}
     >
-      <div className="flex flex-row justify-center gap-2 px-10 relative">
+      <div className="relative flex flex-row justify-center gap-2 px-10">
         <ChatMenuWrapper title={title}>
           <h1>{title || "Untitled Chat"}</h1>
         </ChatMenuWrapper>

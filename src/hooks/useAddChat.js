@@ -5,7 +5,7 @@ import ChatContext from "../contexts/ChatContext";
 import { DATABASE_URL } from "../config";
 
 export function useAddChat() {
-  const { setChatList, updateMainChatId, isNewUser, setIsNewUser, isDormantUser, setIsDormantUser } = useContext(ChatContext);
+  const { setChatList, updateMainChatId } = useContext(ChatContext);
 
   async function runAddChat(title) {
     const newChat = {
@@ -29,7 +29,6 @@ export function useAddChat() {
 
       const data = await response.json();
       await updateChatContext(data.name);
-      updateStageContext();
     } catch (error) {
       console.error("Error adding new chat:", error);
     }
@@ -56,12 +55,6 @@ export function useAddChat() {
     }
   }
 
-  function updateStageContext() {
-    if (isNewUser || isDormantUser) {
-      setIsNewUser(false);
-      setIsDormantUser(false);
-    }
-  }
   return {
     runAddChat,
   };
