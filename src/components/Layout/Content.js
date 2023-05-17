@@ -3,7 +3,6 @@ import Navigation from "../Navigation/Navigation";
 import Main from "../Main/Main";
 import FlapContext from "../../contexts/FlapContext";
 import { ChatContextProvider } from "../../contexts/ChatContext";
-import { StageContextProvider } from "../../contexts/StageContext";
 
 export default function Content() {
   const { isFlapOpen, setIsFlapOpen } = useContext(FlapContext);
@@ -12,7 +11,6 @@ export default function Content() {
   }
   return (
     <ChatContextProvider>
-      <StageContextProvider>
         <div className="w-effective pass-overflow min-h-80  px-2">
           {/* RESPONSIVE SMARTPHONE < xs-480 - Overlay */}
           <div className={`pass-overflow relative xs:hidden `}>
@@ -61,7 +59,6 @@ export default function Content() {
             </div>
           </div>
         </div>
-      </StageContextProvider>
     </ChatContextProvider>
   );
 }

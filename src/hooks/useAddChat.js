@@ -2,13 +2,10 @@ import { useContext } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import ChatContext from "../contexts/ChatContext";
-import StageContext from "../contexts/StageContext";
 import { DATABASE_URL } from "../config";
 
 export function useAddChat() {
-  const { setChatList, updateMainChatId } = useContext(ChatContext);
-  const { isNewUser, setIsNewUser, isDormantUser, setIsDormantUser } =
-    useContext(StageContext);
+  const { setChatList, updateMainChatId, isNewUser, setIsNewUser, isDormantUser, setIsDormantUser } = useContext(ChatContext);
 
   async function runAddChat(title) {
     const newChat = {

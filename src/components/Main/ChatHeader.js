@@ -1,13 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import ChatContext from "../../contexts/ChatContext";
-import StageContext from "../../contexts/StageContext";
 import ChatMenuWrapper from "./ChatMenuWrapper";
 import { formatDate } from "../../utils/timestamp";
 import { GREETINGS } from "../../constants/greetings";
 
 export default function ChatHeader() {
-  const { chatList, mainChatId } = useContext(ChatContext);
-  const { isPageLoading, isNewUser, isDormantUser } = useContext(StageContext);
+  const { chatList, mainChatId, isPageLoading, isNewUser, isDormantUser } = useContext(ChatContext);
   const [title, setTitle] = useState("");
   const [tagline, setTagline] = useState("");
 

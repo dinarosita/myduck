@@ -4,11 +4,11 @@ import { sanitizeInput } from "../../utils/sanitize";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import FlapContext from "../../contexts/FlapContext";
 import IconButton from "../Common/IconButton";
-import StageContext from "../../contexts/StageContext";
+import ChatContext from "../../contexts/ChatContext";
 
 export default function AddChat(props) {
   const { setIsFlapOpen } = useContext(FlapContext);
-  const { isPageLoading, isNewUser } = useContext(StageContext);
+  const { isPageLoading, isNewUser } = useContext(ChatContext);
   const inputRef = useRef();
   const { runAddChat } = useAddChat();
   const windowSize = useWindowSize();

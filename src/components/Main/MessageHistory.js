@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import MessageContext from "../../contexts/MessageContext";
 import AddChat from "../Navigation/AddChat";
 import Message from "./Message";
-import StageContext from "../../contexts/StageContext";
+import ChatContext from "../../contexts/ChatContext";
 
 export default function MessageHistory() {
-  const { isPageLoading, isNewUser } = useContext(StageContext);
+  const { isPageLoading, isNewUser } = useContext(ChatContext);
   const [content, setContent] = useState(null);
 
   const { messageList } = useContext(MessageContext);

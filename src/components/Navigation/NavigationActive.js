@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import StageContext from "../../contexts/StageContext";
+import ChatContext from "../../contexts/ChatContext";
 import ChatList from "./ChatList";
 
 export default function NavigationActive() {
-  const { isPageLoading, isNewUser } = useContext(StageContext);
+  const { isPageLoading, isNewUser } = useContext(ChatContext);
 
   return (
     // <div className="items-left pass-overflow flex w-full flex-col gap-2 p-2">

@@ -3,13 +3,11 @@ import NavigationActive from "./NavigationActive";
 import AddChat from "../Navigation/AddChat";
 import IconButton from "../Common/IconButton";
 import { useNavButtonLogic } from "../../hooks/useNavButtonLogic";
-import StageContext from "../../contexts/StageContext";
 import ChatContext from "../../contexts/ChatContext";
 import NavigationArchive from "./NavigationArchive";
 
 export default function Navigation() {
-  const { chatList } = useContext(ChatContext);
-  const { isPageLoading, isNewUser } = useContext(StageContext);
+  const { chatList, isPageLoading, isNewUser } = useContext(ChatContext);
   const { handleNavClose } = useNavButtonLogic();
   const [isArchiveMode, setIsArchiveMode] = useState(false);
   const [isAnyActive, setIsAnyActive] = useState(true);

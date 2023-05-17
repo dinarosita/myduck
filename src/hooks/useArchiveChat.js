@@ -1,13 +1,11 @@
 import { useContext } from "react";
 import "firebase/compat/firestore";
 import ChatContext from "../contexts/ChatContext";
-import StageContext from "../contexts/StageContext";
 import { DATABASE_URL } from "../config";
 
 export function useArchiveChat() {
-  const { setChatList, updateMainChatId, findLastActiveId } =
+  const { setChatList, updateMainChatId, findLastActiveId, setIsDormantUser } =
     useContext(ChatContext);
-  const { setIsDormantUser } = useContext(StageContext);
 
   function runArchiveChat(chats, archivedId) {
     const newList = chats.map((chat) => {
