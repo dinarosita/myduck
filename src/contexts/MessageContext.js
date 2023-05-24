@@ -9,18 +9,18 @@ const MessageContext = createContext({
 });
 
 export function MessageContextProvider(props) {
-  const { mainChatId } = useContext(ChatContext);
+  const { mainId } = useContext(ChatContext);
   const [isMessageLoading, setIsMessageLoading] = useState(false);
   const [messageList, setMessageList] = useState([]);
 
   useEffect(() => {
-    if (!mainChatId) {
+    if (!mainId) {
       return
     }
     setIsMessageLoading(true);
     const abortController = new AbortController();
 
-    fetch(`${DATABASE_URL}/messages/${mainChatId}.json`, {
+    fetch(`${DATABASE_URL}/messages/${mainId}.json`, {
       signal: abortController.signal,
     })
       .then((response) => {
@@ -47,7 +47,7 @@ export function MessageContextProvider(props) {
         setIsMessageLoading(false);
       });
       return (() => {abortController.abort()})
-  }, [mainChatId]);
+  }, [mainId]);
 
   const context = {
     isMessageLoading,

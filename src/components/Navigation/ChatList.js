@@ -8,21 +8,21 @@ export default function ChatList({ archiveMode }) {
   const navigate = useNavigate();
   const windowSize = useWindowSize();
   const { setIsFlapOpen } = useContext(FlapContext);
-  const { chatList, mainChatId, updateMainChatId } = useContext(ChatContext);
-  return chatList
+  const { allChats, mainId, updateChatIds } = useContext(ChatContext);
+  return allChats
     .filter((chat) => (archiveMode ? chat.archived : !chat.archived))
     .map((chat) => (
       <li key={chat.id}>
         <button
           onClick={() => {
-            updateMainChatId(chat.id);
+            updateChatIds(chat.id);
             if (windowSize.width < 480) {
               setIsFlapOpen(false);
             }
             navigate("/myduck");
           }}
           className={`chat-button smooth break-words transition hover:bg-petal/20 focus:bg-vincent-950/20 active:bg-none ${
-            mainChatId === chat.id && "bg-vincent-950/20"
+            mainId === chat.id && "bg-vincent-950/20"
           } ${archiveMode && "text-blossom-200"}
                             
                             `}

@@ -7,16 +7,16 @@ import ChatContext from "../../contexts/ChatContext";
 import NavigationArchive from "./NavigationArchive";
 
 export default function Navigation() {
-  const { chatList, isPageLoading } = useContext(ChatContext);
+  const { allChats, isPageLoading } = useContext(ChatContext);
   const { handleNavClose } = useNavButtonLogic();
   const [isArchiveMode, setIsArchiveMode] = useState(false);
   const [isAnyActive, setIsAnyActive] = useState(true);
   const [isAnyArchive, setIsAnyArchive] = useState(false);
 
   useEffect(() => {
-    setIsAnyActive(chatList.some((chat) => chat.archived === false));
-    setIsAnyArchive(chatList.some((chat) => chat.archived === true));
-  }, [chatList]);
+    setIsAnyActive(allChats.some((chat) => chat.archived === false));
+    setIsAnyArchive(allChats.some((chat) => chat.archived === true));
+  }, [allChats]);
 
   return (
     <nav className="pass-overflow blush-frame relative flex flex-col rounded-l-none bg-gradient-to-br from-vincent-500/80 via-vincent-400 to-vincent-700 ">

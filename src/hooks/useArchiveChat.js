@@ -4,7 +4,7 @@ import ChatContext from "../contexts/ChatContext";
 import { DATABASE_URL } from "../config";
 
 export function useArchiveChat() {
-  const { setChatList, updateMainChatId, findLastActiveId, setIsDormantUser } =
+  const { setAllChats, updateChatIds, assignNewId, setIsDormantUser } =
     useContext(ChatContext);
 
   function runArchiveChat(chats, archivedId) {
@@ -19,12 +19,12 @@ export function useArchiveChat() {
     });
 
     archiveChatDatabase(archivedId);
-    setChatList(newList);
-    const newId = findLastActiveId(newList);
+    setAllChats(newList);
+    const newId = assignNewId(newList);
     if (!newId) {
       setIsDormantUser(true);
     }
-    updateMainChatId(newId);
+    updateChatIds(newId);
   }
 
   async function archiveChatDatabase(chatId) {

@@ -2,24 +2,24 @@ import { createContext, useEffect, useState } from "react";
 import { DATABASE_URL } from "../config";
 
 const ChatContext = createContext({
-  chatList: [],
+  allChats: [],
+  setAllChats: () => {},
   activeChats: [],
   archivedChats: [],
-  setChatList: () => {},
-  mainChatId: null,
-  setMainChatId: () => {},
-  updateMainChatId: () => {},
-  findLastActiveId: () => {},
+
+  mainId: null,
+  setMainId: () => {},
+  updateChatId: () => {},
+  getLastActiveId: () => {},
+
   isPageLoading: true,
-  isNewUser: false,
-  setIsNewUser: () => {},
 });
 
 export function ChatContextProvider(props) {
-  const [chatList, setChatList] = useState([]);
+  const [allChats, setAllChats] = useState([]);
   const [activeChats, setActiveChats] = useState([]);
   const [archivedChats, setArchivedChats] = useState([]);
-  const [mainChatId, setMainChatId] = useState(null);
+  const [mainId, setMainId] = useState(null);
   const [isPageLoading, setIsPageLoading] = useState(true);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export function ChatContextProvider(props) {
 
         const data = await response.json();
 
-        setChatLists(data);
+        processChatsData(data);
 
         setIsPageLoading(false);
       } catch (error) {
@@ -54,69 +54,75 @@ export function ChatContextProvider(props) {
     }; // eslint-disable-next-line
   }, []);
 
-  function setChatLists(data) {
-    const masterList = [];
-    const activeList = [];
-    const archivedList = [];
+  function processChatsData(data) {
+    const chats = [];
     for (const key in data) {
       const chat = {
         id: key,
         ...data[key],
       };
-      masterList.push(chat);
-      chat.archived ? archivedList.push(chat) : activeList.push(chat);
+      chats.push(chat);
     }
-    setChatList(masterList);
-    setActiveChats(activeList);
-    setArchivedChats(archivedList);
-    setInitialMainChatId(activeList)
-
+    setAllChats(chats);
+    assignChatValues(chats);
   }
 
-  function setInitialMainChatId(activeList) {
-    if (!activeList) {
-      updateMainChatId(null)
-    } else if (activeList) {
-      const storedId = localStorage.getItem("storageChatId")
-      const isValidId = activeList.some(chat => chat.id === storedId)
-      if (isValidId) {
-        updateMainChatId(storedId)
-      } else if (!isValidId) {
-        const lastActiveId = findLastActiveId(activeList)
-        updateMainChatId(lastActiveId)
-      }
+  function assignChatValues(allChats) {
+    const active = [];
+    const archived = [];
+    for (const chat of allChats) {
+      chat.archived ? archived.push(chat) : active.push(chat);
+    }
+    setActiveChats(active);
+    setArchivedChats(archived);
+    assignChatId(active);
+  }
+
+  function assignChatId(active) {
+    const id = determineMainId(active);
+    updateChatId(id)
+  }
+
+  function determineMainId(active) {
+    if (active) {
+      const storedId = localStorage.getItem("storageChatId");
+      const isValidId = active.some((chat) => chat.id === storedId);
+      return isValidId ? storedId : getLastActiveId(active);
+    } else {
+      return null;
     }
   }
 
-  function findLastActiveId(chats) {
-    for (let i = chats.length - 1; i >= 0; i--) {
-      if (chats[i].archived === false) {
-        return chats[i].id;
+  function getLastActiveId(active) {
+    for (let i = active.length - 1; i >= 0; i--) {
+      if (active[i].archived === false) {
+        return active[i].id;
       }
     }
     return null;
   }
 
-  function updateMainChatId(newId) {
-    setMainChatId(newId);
-    localStorage.setItem("storageChatId", newId);
+  function updateChatId(id) {
+    setMainId(id);
+    localStorage.setItem("storageChatId", id);
   }
 
   const context = {
-    chatList,
+    allChats,
+    setAllChats,
     activeChats,
     archivedChats,
-    setChatList,
-    mainChatId,
-    setMainChatId,
-    updateMainChatId,
-    findLastActiveId,
+
+    mainId,
+    setMainId,
+    updateChatId,
+    getLastActiveId,
+
     isPageLoading,
   };
   return (
     <ChatContext.Provider value={context}>
       {props.children}
-
     </ChatContext.Provider>
   );
 }

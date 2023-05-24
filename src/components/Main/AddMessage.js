@@ -8,7 +8,7 @@ import { useWindowSize } from "../../hooks/useWindowSize";
 import ChatContext from "../../contexts/ChatContext";
 
 export default function AddMessage() {
-  const { mainChatId, isPageLoading} = useContext(ChatContext);
+  const { mainId, isPageLoading} = useContext(ChatContext);
   const textareaRef = useRef();
   const { setMessageList } = useContext(MessageContext);
   const [textvalue, setTextValue] = useState("");
@@ -20,7 +20,7 @@ export default function AddMessage() {
   }
 
   function handleSubmit(e) {
-    if (isPageLoading || !mainChatId) {
+    if (isPageLoading || !mainId) {
       return;
     }
     e.preventDefault();
@@ -34,8 +34,8 @@ export default function AddMessage() {
       return;
     }
 
-    postAddMessage(mainChatId, messageContent, (messageId) => {
-      updateLocalMessages(mainChatId, messageId, (latestMessage) => {
+    postAddMessage(mainId, messageContent, (messageId) => {
+      updateLocalMessages(mainId, messageId, (latestMessage) => {
         setMessageList((prevList) => prevList.concat(latestMessage));
       });
       setTextValue("");
@@ -48,7 +48,7 @@ export default function AddMessage() {
   return (
     <section
       className={`h-fit flex-none bg-transparent text-center ${
-        (isPageLoading || !mainChatId) && "pointer-events-none opacity-50"
+        (isPageLoading || !mainId) && "pointer-events-none opacity-50"
       }`}
     >
       <form className="relative h-fit h-full " style={{ lineHeight: 0 }}>

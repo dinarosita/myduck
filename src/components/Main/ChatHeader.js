@@ -5,31 +5,31 @@ import { formatDate } from "../../utils/timestamp";
 import { GREETINGS } from "../../constants/greetings";
 
 export default function ChatHeader() {
-  const { chatList, mainChatId, isPageLoading } = useContext(ChatContext);
+  const { allChats, mainId, isPageLoading } = useContext(ChatContext);
   const [title, setTitle] = useState("");
   const [tagline, setTagline] = useState("");
 
   useEffect(() => {
     const greeting = GREETINGS.find((g) => {
       if (isPageLoading) return g.type === "pageLoading";
-      if (!mainChatId) return g.type === "newUser";
+      if (!mainId) return g.type === "newUser";
       return false;
     });
 
     if (greeting) {
       setTitle(greeting.title);
       setTagline(greeting.tagline);
-    } else if (mainChatId) {
-      const mainChat = chatList.find((chat) => chat.id === mainChatId);
+    } else if (mainId) {
+      const mainChat = allChats.find((chat) => chat.id === mainId);
       setTitle(mainChat.title ? mainChat.title : null);
       setTagline(`Created: ${formatDate(mainChat.createdAt)}`);
     }
-  }, [isPageLoading, mainChatId, chatList]);
+  }, [isPageLoading, mainId, allChats]);
 
   return (
     <header
       className={`px-2 ${
-        (isPageLoading || !mainChatId) && "text-opacity-30"
+        (isPageLoading || !mainId) && "text-opacity-30"
       }`}
     >
       <div className="relative flex flex-row justify-center gap-2 px-10">

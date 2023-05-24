@@ -4,16 +4,16 @@ import IconButton from "../Common/IconButton";
 import ChatList from "./ChatList";
 
 export default function NavigationArchive({ isArchiveMode, setIsArchiveMode }) {
-  const { chatList } = useContext(ChatContext);
+  const { allChats } = useContext(ChatContext);
   const [isArchive, setIsArchive] = useState(false);
 
   useEffect(() => {
-    setIsArchive(archiveCheck(chatList));
+    setIsArchive(archiveCheck(allChats));
     // eslint-disable-next-line
-  }, [chatList]);
+  }, [allChats]);
 
   function archiveCheck(chats) {
-    for (let i = chatList.length - 1; i >= 0; i--) {
+    for (let i = allChats.length - 1; i >= 0; i--) {
       if (chats[i].archived === true) {
         return true;
       }

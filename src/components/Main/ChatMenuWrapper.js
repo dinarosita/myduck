@@ -10,7 +10,7 @@ import { useArchiveChat } from "../../hooks/useArchiveChat";
 import { useEditChatTitle } from "../../hooks/useEditChatTitle";
 
 export default function ChatMenuWrapper({ title, children }) {
-  const { chatList, mainChatId } = useContext(ChatContext);
+  const { allChats, mainId } = useContext(ChatContext);
   const [showEditMode, setShowEditMode] = useState(false);
   const inputRef = useRef();
 
@@ -20,7 +20,7 @@ export default function ChatMenuWrapper({ title, children }) {
   function confirmEdit() {
     const newTitle = inputRef.current.value.trim().replace(/\s+/g, " ");
     if (newTitle !== "" || newTitle === title) {
-      runEditChatTitle(chatList, mainChatId, newTitle);
+      runEditChatTitle(allChats, mainId, newTitle);
     }
     setShowEditMode(false);
   }
@@ -36,7 +36,7 @@ export default function ChatMenuWrapper({ title, children }) {
       type: "archive",
       icon: ArchiveBoxArrowDownIcon,
       actionLayout: null,
-      confirmationFunction: () => runArchiveChat(chatList, mainChatId),
+      confirmationFunction: () => runArchiveChat(allChats, mainId),
     },
   ];
 

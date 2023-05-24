@@ -5,7 +5,7 @@ import Message from "./Message";
 import ChatContext from "../../contexts/ChatContext";
 
 export default function MessageHistory() {
-  const { isPageLoading, mainChatId } = useContext(ChatContext);
+  const { isPageLoading, mainId } = useContext(ChatContext);
   const [content, setContent] = useState(null);
 
   const { messageList } = useContext(MessageContext);
@@ -21,7 +21,7 @@ export default function MessageHistory() {
     if (isPageLoading) {
       setContent(null);
     } else {
-      if (!mainChatId) {
+      if (!mainId) {
         setContent(
           <div className="mx-auto flex h-full w-3/4 min-w-fit pt-8">
             <AddChat welcome />
@@ -42,7 +42,7 @@ export default function MessageHistory() {
         );
       }
     }
-  }, [isPageLoading, mainChatId, messageList]);
+  }, [isPageLoading, mainId, messageList]);
 
   return (
     <section className="pass-overflow h-full flex-auto bg-transparent/20 p-2 ">

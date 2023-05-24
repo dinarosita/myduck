@@ -5,7 +5,7 @@ import ChatContext from "../contexts/ChatContext";
 import { DATABASE_URL } from "../config";
 
 export function useAddChat() {
-  const { setChatList, updateMainChatId } = useContext(ChatContext);
+  const { setAllChats, updateChatIds } = useContext(ChatContext);
 
   async function runAddChat(title) {
     const newChat = {
@@ -48,8 +48,8 @@ export function useAddChat() {
         ...data,
       };
 
-      setChatList((prevAllChats) => prevAllChats.concat(newMeta));
-      updateMainChatId(chatId);
+      setAllChats((prevAllChats) => prevAllChats.concat(newMeta));
+      updateChatIds(chatId);
     } catch (error) {
       console.error("Error updating chat context: ", error);
     }
