@@ -33,7 +33,7 @@ export default function Heading() {
         </div>
 
         <div className=" flex justify-center text-xs font-bold uppercase text-vincent-700">
-          {isArchiveMode? (<div className="text-base bg-blossom-200 text-blossom-800 rounded-full px-4">ARCHIVE MODE</div>) : (<img
+          {isArchiveMode? (<div className="text-sm bg-blossom-200 text-blossom-800 rounded-full px-4">ARCHIVE MODE</div>) : (<img
               className="h-8 pr-1"
               src={duck}
               alt="rubber duck"
