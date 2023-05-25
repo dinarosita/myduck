@@ -8,14 +8,14 @@ export default function ChatList({ archiveMode }) {
   const navigate = useNavigate();
   const windowSize = useWindowSize();
   const { setIsFlapOpen } = useContext(FlapContext);
-  const { allChats, mainId, updateChatIds } = useContext(ChatContext);
+  const { allChats, mainId, updateMainIds } = useContext(ChatContext);
   return allChats
     .filter((chat) => (archiveMode ? chat.archived : !chat.archived))
     .map((chat) => (
       <li key={chat.id}>
         <button
           onClick={() => {
-            updateChatIds(chat.id);
+            updateMainIds(chat.id);
             if (windowSize.width < 480) {
               setIsFlapOpen(false);
             }
