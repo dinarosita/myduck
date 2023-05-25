@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import duck from "../../assets/logo/rubberduck4-yellow-512.png";
 import { useLinkButtonLogic } from "../../hooks/useLinkButtonLogic";
 import IconButton from "../Common/IconButton";
 import { useNavButtonLogic } from "../../hooks/useNavButtonLogic";
+import ChatContext from "../../contexts/ChatContext";
 
 export default function Heading() {
   const { handleNavMenu } = useNavButtonLogic();
   const handleLinkClick = useLinkButtonLogic();
+  const {isArchiveMode} = useContext(ChatContext)
 
   return (
     <div className="w-effective heading-fade-in flex-none px-2">
@@ -31,14 +33,15 @@ export default function Heading() {
         </div>
 
         <div className=" flex justify-center text-xs font-bold uppercase text-vincent-700">
-          
-            <img
+          {isArchiveMode? (<div className="text-base bg-blossom-200 text-blossom-800 rounded-full px-4">ARCHIVE MODE</div>) : (<img
               className="h-8 pr-1"
               src={duck}
               alt="rubber duck"
               width="32"
               height="32"
-            />
+            />)}
+          
+            
         </div>
 
         <div className="flex flex-1 justify-end items-start gap-2">

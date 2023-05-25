@@ -17,12 +17,16 @@ module.exports = {
         60: "15rem",
         80: "20rem",
       },
+      height: {
+        34: "8.5rem",
+      },
       colors: {
         charcoal: "#463325", // almond-900
         navy: "#256574", // vincent-800
         navyhover: "#D5A69F", // blossom-500
         daffodil: "#FCF8F8", // amber-200 - petal now
         petal: "#FCF8F8", // petal-50
+        woody: "#ffffff", //almond-200
         nonactive: "#BDE2EA", // vincent-200
         vincent: {
           50: "#F0F8FA",

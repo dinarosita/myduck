@@ -9,10 +9,14 @@ const ChatContext = createContext({
 
   mainId: null,
   setMainId: () => {},
+  determineMainId: () => {},
   updateMainId: () => {},
   getLastActiveId: () => {},
 
   isPageLoading: true,
+
+  isArchiveMode: false,
+  setIsArchiveMode: () => {},
 });
 
 export function ChatContextProvider(props) {
@@ -21,6 +25,7 @@ export function ChatContextProvider(props) {
   const [archivedChats, setArchivedChats] = useState([]);
   const [mainId, setMainId] = useState(null);
   const [isPageLoading, setIsPageLoading] = useState(true);
+  const [isArchiveMode, setIsArchiveMode] = useState(false)
 
   useEffect(() => {
     setIsPageLoading(true);
@@ -110,13 +115,18 @@ export function ChatContextProvider(props) {
     setAllChats,
     activeChats,
     archivedChats,
+    
 
     mainId,
     setMainId,
     updateMainId,
     getLastActiveId,
+    determineMainId,
 
     isPageLoading,
+
+  isArchiveMode,
+  setIsArchiveMode,
   };
   return (
     <ChatContext.Provider value={context}>

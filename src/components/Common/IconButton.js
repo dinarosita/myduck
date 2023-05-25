@@ -12,10 +12,7 @@ import {
   PencilSquareIcon,
   PaperAirplaneIcon,
   BookOpenIcon,
-  ArchiveBoxArrowDownIcon,
   BoltIcon,
-  EyeIcon,
-  ArchiveBoxIcon,
   ChevronDoubleUpIcon,
   ChevronDoubleDownIcon,
 } from "@heroicons/react/24/outline";

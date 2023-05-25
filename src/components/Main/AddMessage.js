@@ -47,11 +47,11 @@ export default function AddMessage() {
 
   return (
     <section
-      className={`h-fit flex-none bg-transparent text-center ${
+      className={` flex-none bg-transparent text-center ${
         (isPageLoading || !mainId) && "pointer-events-none opacity-50"
       }`}
     >
-      <form className="relative h-fit h-full " style={{ lineHeight: 0 }}>
+      <form className="relative " style={{ lineHeight: 0 }}>
         <textarea
           id="entry"
           ref={textareaRef}

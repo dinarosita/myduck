@@ -30,12 +30,20 @@
     @apply blush-border border-x-0 border-b-0;
   }
 
-  .thin-separator {
-    @apply w-full border-2 border-x-0 border-b-0 border-petal/30;
+  .wood-border {
+    @apply border-8 border-petal;
   }
 
-  .fine-separator {
-    @apply w-full border border-x-0 border-b-0 border-petal/30;
+  .wood-frame {
+    @apply wood-border rounded-3xl;
+  }
+
+  .wood-separator {
+    @apply wood-border border-x-0 border-b-0;
+  }
+
+  .thin-separator {
+    @apply w-full border-2 border-x-0 border-b-0 border-blossom-300/50;
   }
 
   .chat-title:hover h1,
