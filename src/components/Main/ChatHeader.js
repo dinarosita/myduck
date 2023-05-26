@@ -5,7 +5,7 @@ import { formatDate } from "../../utils/timestamp";
 import { GREETINGS } from "../../constants/greetings";
 
 export default function ChatHeader() {
-  const { allChats, mainId, isPageLoading } = useContext(ChatContext);
+  const { chatCollection, mainId, isPageLoading } = useContext(ChatContext);
   const [title, setTitle] = useState("");
   const [tagline, setTagline] = useState("");
 
@@ -20,11 +20,11 @@ export default function ChatHeader() {
       setTitle(greeting.title);
       setTagline(greeting.tagline);
     } else if (mainId) {
-      const mainChat = allChats.find((chat) => chat.id === mainId);
+      const mainChat = chatCollection.find((chat) => chat.id === mainId);
       setTitle(mainChat.title ? mainChat.title : null);
       setTagline(`Created: ${formatDate(mainChat.createdAt)}`);
     }
-  }, [isPageLoading, mainId, allChats]);
+  }, [isPageLoading, mainId, chatCollection]);
 
   return (
     <header

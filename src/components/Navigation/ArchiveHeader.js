@@ -3,10 +3,10 @@ import ChatContext from "../../contexts/ChatContext";
 import IconButton from "../Common/IconButton";
 
 export default function ArchiveHeader() {
-  const { archivedChats, isArchiveMode, setIsArchiveMode } =
+  const { archivedExist, isArchiveMode, setIsArchiveMode } =
     useContext(ChatContext);
 
-  if (archivedChats === 0) return <></>;
+  if (!archivedExist) return <></>;
 
   return (
     <>

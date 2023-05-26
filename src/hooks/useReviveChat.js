@@ -4,7 +4,7 @@ import ChatContext from "../contexts/ChatContext";
 import { DATABASE_URL } from "../config";
 
 export function useReviveChat() {
-  const { setAllChats, updateMainId } = useContext(ChatContext);
+  const { setChatCollection, updateIdStates } = useContext(ChatContext);
 
   function runReviveChat(chats, revivedId) {
     const newList = chats.map((chat) => {
@@ -18,9 +18,9 @@ export function useReviveChat() {
     });
 
     reviveChatDatabase(revivedId);
-    setAllChats(newList);
+    setChatCollection(newList);
     const newId = revivedId;
-    updateMainId(newId);
+    updateIdStates(newId);
   }
 
   async function reviveChatDatabase(chatId) {

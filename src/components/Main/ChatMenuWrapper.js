@@ -13,7 +13,7 @@ import { useReviveChat } from "../../hooks/useReviveChat";
 import { useEditChatTitle } from "../../hooks/useEditChatTitle";
 
 export default function ChatMenuWrapper({ title, children }) {
-  const { allChats, mainId, isArchiveMode } = useContext(ChatContext);
+  const { chatCollection, mainId, isArchiveMode } = useContext(ChatContext);
   const [showEditMode, setShowEditMode] = useState(false);
   const inputRef = useRef();
 
@@ -25,7 +25,7 @@ export default function ChatMenuWrapper({ title, children }) {
   function confirmEdit() {
     const newTitle = inputRef.current.value.trim().replace(/\s+/g, " ");
     if (newTitle !== "" || newTitle === title) {
-      runEditChatTitle(allChats, mainId, newTitle);
+      runEditChatTitle(chatCollection, mainId, newTitle);
     }
     setShowEditMode(false);
   }
@@ -39,7 +39,7 @@ export default function ChatMenuWrapper({ title, children }) {
         icon: ArrowUpTrayIcon,
         actionLayout: () => null,
         confirmationFunction: () => {
-          runReviveChat(allChats, mainId);
+          runReviveChat(chatCollection, mainId);
         },
       },
     ];
@@ -55,7 +55,7 @@ export default function ChatMenuWrapper({ title, children }) {
         type: "archive",
         icon: ArchiveBoxArrowDownIcon,
         actionLayout: null,
-        confirmationFunction: () => runArchiveChat(allChats, mainId),
+        confirmationFunction: () => runArchiveChat(chatCollection, mainId),
       },
     ];
   }

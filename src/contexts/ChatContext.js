@@ -2,30 +2,28 @@ import { createContext, useEffect, useState } from "react";
 import { DATABASE_URL } from "../config";
 
 const ChatContext = createContext({
-  allChats: [],
-  setAllChats: () => {},
-  activeChats: [],
-  archivedChats: [],
+  chatCollection: [],
+  setChatCollection: () => {},
+  activeExist: false,
+  archivedExist: false,
 
   mainId: null,
   setMainId: () => {},
-  determineMainId: () => {},
-  updateMainId: () => {},
+  updateIdStates: () => {},
   getLastActiveId: () => {},
 
   isPageLoading: true,
-
   isArchiveMode: false,
   setIsArchiveMode: () => {},
 });
 
 export function ChatContextProvider(props) {
-  const [allChats, setAllChats] = useState([]);
-  const [activeChats, setActiveChats] = useState([]);
-  const [archivedChats, setArchivedChats] = useState([]);
+  const [chatCollection, setChatCollection] = useState([]);
+  const [activeExist, setActiveExist] = useState(false);
+  const [archivedExist, setArchivedExist] = useState(false);
   const [mainId, setMainId] = useState(null);
   const [isPageLoading, setIsPageLoading] = useState(true);
-  const [isArchiveMode, setIsArchiveMode] = useState(false)
+  const [isArchiveMode, setIsArchiveMode] = useState(false);
 
   useEffect(() => {
     setIsPageLoading(true);
@@ -43,7 +41,7 @@ export function ChatContextProvider(props) {
 
         const data = await response.json();
 
-        setInitialValues(data);
+        processData(data);
         setIsPageLoading(false);
       } catch (error) {
         console.error("Error loading chat list: ", error);
@@ -55,79 +53,72 @@ export function ChatContextProvider(props) {
     fetchData();
     return () => {
       abortController.abort();
-    }; // eslint-disable-next-line
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function setInitialValues(data) {
+
+  function processData(data) {
     const chats = [];
+    let anyActive = false;
+    let anyArchived = false;
     for (const key in data) {
       const chat = {
         id: key,
         ...data[key],
       };
+      chat.archived ? (anyArchived = true) : (anyActive = true);
       chats.push(chat);
     }
-    setAllChats(chats);
-    assignChatValues(chats);
+    chats.sort((a, b) => b.createdAt.seconds - a.createdAt.seconds);
+
+    setChatCollection(chats);
+    setActiveExist(anyActive);
+    setArchivedExist(anyArchived);
+    updateIdStates(determineId(chats, anyActive));
   }
 
-  function assignChatValues(allChats) {
-    const active = [];
-    const archived = [];
-
-    for (const chat of allChats) {
-      chat.archived ? archived.push(chat) : active.push(chat);
-    }
-    
-    const id = determineMainId(active);
-    updateMainId(id);
-
-    setActiveChats(active);
-    setArchivedChats(archived);
-  }
-  
-  function determineMainId(active) {
-    if (active) {
-      const storedId = localStorage.getItem("storageMainId");
-      const isValidId = active.some((chat) => chat.id === storedId);
-      return isValidId ? storedId : getLastActiveId(active);
-    } else {
+  function determineId(chats, anyActive) {
+    if (!anyActive) {
       return null;
     }
+    const storedId = localStorage.getItem("persistedId") || null;
+    if (!storedId) return getLastActiveId(chats, anyActive);
+
+    const isStoredIdValid = validateActiveId(chats, storedId);
+    return isStoredIdValid ? storedId : getLastActiveId(chats, anyActive);
   }
 
-  function getLastActiveId(active) {
-    for (let i = active.length - 1; i >= 0; i--) {
-      if (active[i].archived === false) {
-        return active[i].id;
-      }
-    }
-    return null;
+  function getLastActiveId(chats, anyActive) {
+    if (!anyActive) return null;
+    return chats.find((chat) => !chat.archived).id;
   }
 
-  function updateMainId(id) {
+  function validateActiveId(chats, storedId) {
+    return chats.some((chat) => chat.id === storedId && !chat.archived);
+  }
+
+  function updateIdStates(id) {
     setMainId(id);
-    localStorage.setItem("storageMainId", id);
+    localStorage.setItem("persistedId", id);
   }
 
   const context = {
-    allChats,
-    setAllChats,
-    activeChats,
-    archivedChats,
-    
+    chatCollection,
+    setChatCollection,
+    activeExist,
+    archivedExist,
 
     mainId,
     setMainId,
-    updateMainId,
+    updateIdStates,
     getLastActiveId,
-    determineMainId,
 
     isPageLoading,
-
-  isArchiveMode,
-  setIsArchiveMode,
+    isArchiveMode,
+    setIsArchiveMode,
   };
+
   return (
     <ChatContext.Provider value={context}>
       {props.children}
