@@ -5,7 +5,7 @@ import Message from "./Message";
 import ChatContext from "../../contexts/ChatContext";
 
 export default function MessageHistory() {
-  const { isPageLoading, isArchiveMode, mainId } = useContext(ChatContext);
+  const { isPageLoading, isArchiveMode, mainId, archivedExist } = useContext(ChatContext);
   const [content, setContent] = useState(null);
 
   const { messageList } = useContext(MessageContext);
@@ -22,9 +22,10 @@ export default function MessageHistory() {
       setContent(null);
     } else {
       if (!mainId) {
+
         setContent(
           <div className="mx-auto flex h-full w-3/4 min-w-fit pt-8">
-            <AddChat welcome />
+            <AddChat welcome  />
           </div>
         );
       } else {

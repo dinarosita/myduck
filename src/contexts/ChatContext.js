@@ -57,6 +57,11 @@ export function ChatContextProvider(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    setActiveExist(chatCollection.some(chat => !chat.archived))
+    setArchivedExist(chatCollection.some(chat => chat.archived))
+  }, [chatCollection])
+
   function processData(data) {
     const chats = [];
     let anyActive = false;
@@ -96,7 +101,7 @@ export function ChatContextProvider(props) {
     isArchiveMode,
     setIsArchiveMode,
   };
-
+console.log(chatCollection)
   return (
     <ChatContext.Provider value={context}>
       {props.children}

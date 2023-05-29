@@ -5,7 +5,7 @@ import { formatDate } from "../../utils/timestamp";
 import { GREETINGS } from "../../constants/greetings";
 
 export default function ChatHeader() {
-  const { chatCollection, mainId, isPageLoading, isArchiveMode } =
+  const { chatCollection, mainId, isPageLoading, isArchiveMode, archivedExist } =
     useContext(ChatContext);
   const [title, setTitle] = useState("");
   const [tagline, setTagline] = useState("");
@@ -13,6 +13,7 @@ export default function ChatHeader() {
   useEffect(() => {
     const greeting = GREETINGS.find((g) => {
       if (isPageLoading) return g.type === "pageLoading";
+      if (!mainId && archivedExist) return g.type === "dormantUser";
       if (!mainId) return g.type === "newUser";
       return false;
     });
@@ -29,7 +30,7 @@ export default function ChatHeader() {
 
   return (
     <header
-      className={`px-2 ${(isPageLoading || !mainId) && "text-opacity-30"} ${
+      className={`px-2 ${isPageLoading && "text-opacity-30"} ${
         isArchiveMode && "text-opacity-60"
       }`}
     >

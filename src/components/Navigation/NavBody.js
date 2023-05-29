@@ -21,9 +21,11 @@ export default function NavBody() {
     );
   }
   return (
-    <div className={`pass-overflow flex flex-col text-petal $`}>
-    {activeExist && isArchiveMode && <ArchiveHeader />}
-      <div className={`items-left pass-overflow flex w-full flex-col justify-between gap-2 p-2  `}>
+    <div className={`pass-overflow $ flex flex-col text-petal`}>
+      {archivedExist && isArchiveMode && <ArchiveHeader />}
+      <div
+        className={`items-left pass-overflow flex w-full flex-col justify-between gap-2 p-2  `}
+      >
         <ChatList />
       </div>
       {archivedExist && !isArchiveMode && <ArchiveHeader />}

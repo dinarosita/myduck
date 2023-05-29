@@ -7,11 +7,11 @@ export const GREETINGS = [
   {
     type: "newUser",
     title: "Welcome to MyDuck",
-    tagline: "Start a new chat!",
+    tagline: "Get quacking...",
   },
   {
     type: "dormantUser",
-    title: "All of your chats are archived!",
-    tagline: "Revive your chats or start a new one!",
+    title: "Your chats are all archived",
+    tagline: "Revive some or start a new one",
   },
 ];

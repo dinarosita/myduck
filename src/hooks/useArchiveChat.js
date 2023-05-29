@@ -21,7 +21,7 @@ export function useArchiveChat() {
 
     archiveChatDatabase(chatId, archiving);
     setChatCollection(newList);
-    const nextMainId = archiving ? getLastActiveId(newList, activeExist) : chatId;
+    const nextMainId = archiving ? getLastActiveId(newList, newList.some(chat => !chat.archived)) : chatId;
     if (!archiving) {
       setIsArchiveMode(false)
     }

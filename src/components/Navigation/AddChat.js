@@ -45,7 +45,7 @@ export default function AddChat(props) {
       ${props.welcome ? "gap-2" : "gap-1"}`}
     >
       <label htmlFor="title" className="text-lg font-bold text-petal">
-        {props.welcome ? "Start your first chat!" : "New Chat"}
+        {props.welcome ? "Start a new chat:" : "New Chat"}
       </label>
       <input
         id="title"
