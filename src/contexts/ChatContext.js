@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { DATABASE_URL } from "../config";
+import { determineMainActiveId } from "../utils/chatIdManagement";
 
 const ChatContext = createContext({
   chatCollection: [],
@@ -10,7 +11,6 @@ const ChatContext = createContext({
   mainId: null,
   setMainId: () => {},
   updateIdStates: () => {},
-  getLastActiveId: () => {},
 
   isPageLoading: true,
   isArchiveMode: false,
@@ -57,7 +57,6 @@ export function ChatContextProvider(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
   function processData(data) {
     const chats = [];
     let anyActive = false;
@@ -75,27 +74,7 @@ export function ChatContextProvider(props) {
     setChatCollection(chats);
     setActiveExist(anyActive);
     setArchivedExist(anyArchived);
-    updateIdStates(determineId(chats, anyActive));
-  }
-
-  function determineId(chats, anyActive) {
-    if (!anyActive) {
-      return null;
-    }
-    const storedId = localStorage.getItem("persistedId") || null;
-    if (!storedId) return getLastActiveId(chats, anyActive);
-
-    const isStoredIdValid = validateActiveId(chats, storedId);
-    return isStoredIdValid ? storedId : getLastActiveId(chats, anyActive);
-  }
-
-  function getLastActiveId(chats, anyActive) {
-    if (!anyActive) return null;
-    return chats.find((chat) => !chat.archived).id;
-  }
-
-  function validateActiveId(chats, storedId) {
-    return chats.some((chat) => chat.id === storedId && !chat.archived);
+    updateIdStates(determineMainActiveId(chats, anyActive));
   }
 
   function updateIdStates(id) {
@@ -112,7 +91,6 @@ export function ChatContextProvider(props) {
     mainId,
     setMainId,
     updateIdStates,
-    getLastActiveId,
 
     isPageLoading,
     isArchiveMode,

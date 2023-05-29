@@ -8,7 +8,7 @@ export default function ChatList() {
   const navigate = useNavigate();
   const windowSize = useWindowSize();
   const { setIsFlapOpen } = useContext(FlapContext);
-  const { isArchiveMode, chatCollection, mainId, updateIdStates, setMainId } =
+  const { isArchiveMode, chatCollection, mainId, setMainId, updateIdStates } =
     useContext(ChatContext);
   return (
     <ul className="skyscroll flex h-full flex-col  items-start gap-1 overflow-y-auto pr-4">

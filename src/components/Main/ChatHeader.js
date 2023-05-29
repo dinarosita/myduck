@@ -5,7 +5,8 @@ import { formatDate } from "../../utils/timestamp";
 import { GREETINGS } from "../../constants/greetings";
 
 export default function ChatHeader() {
-  const { chatCollection, mainId, isPageLoading, isArchiveMode } = useContext(ChatContext);
+  const { chatCollection, mainId, isPageLoading, isArchiveMode } =
+    useContext(ChatContext);
   const [title, setTitle] = useState("");
   const [tagline, setTagline] = useState("");
 
@@ -28,13 +29,15 @@ export default function ChatHeader() {
 
   return (
     <header
-      className={`px-2 ${
-        (isPageLoading || !mainId) && "text-opacity-30"
-      } ${isArchiveMode && "text-opacity-60" }`}
+      className={`px-2 ${(isPageLoading || !mainId) && "text-opacity-30"} ${
+        isArchiveMode && "text-opacity-60"
+      }`}
     >
       <div className={`relative flex flex-row justify-center gap-2 px-10 `}>
         <ChatMenuWrapper title={title}>
-          <div className="text-blossom-600 font-bold text-sm pb-1">{isArchiveMode && "- READ ONLY -"}</div>
+          <div className="pb-1 text-sm font-bold text-blossom-600">
+            {isArchiveMode && "- READ ONLY -"}
+          </div>
           <h1>{title || "Untitled Chat"}</h1>
         </ChatMenuWrapper>
       </div>
