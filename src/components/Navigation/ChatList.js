@@ -26,7 +26,7 @@ export default function ChatList() {
               }}
               className={`chat-button smooth break-words transition hover:bg-petal/20 focus:bg-vincent-950/20 active:bg-none ${
                 mainId === chat.id && "bg-vincent-950/20"
-              } ${isArchiveMode && "text-blossom-200"}
+              }
                             
                             `}
               aria-label={`Open chat: ${chat.title || "Untitled chat"}`}

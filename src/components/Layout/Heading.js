@@ -4,16 +4,17 @@ import { useLinkButtonLogic } from "../../hooks/useLinkButtonLogic";
 import IconButton from "../Common/IconButton";
 import { useNavButtonLogic } from "../../hooks/useNavButtonLogic";
 import ChatContext from "../../contexts/ChatContext";
+import CloseArchiveMode from "../Common/CloseArchiveMode";
 
 export default function Heading() {
   const { handleNavMenu } = useNavButtonLogic();
   const handleLinkClick = useLinkButtonLogic();
-  const {isArchiveMode} = useContext(ChatContext)
+  const { isArchiveMode } = useContext(ChatContext);
 
   return (
     <div className="w-effective heading-fade-in flex-none px-2">
-      <div className="flex items-center h-10 justify-between px-2 ">
-        <div className="flex-row-center flex-1 gap-1 items-center">
+      <div className="flex h-10 items-center justify-between px-2 ">
+        <div className="flex-row-center flex-1 items-center gap-1">
           <div className="min-w-12 leading-none">
             <IconButton
               onClick={handleNavMenu}
@@ -33,20 +34,27 @@ export default function Heading() {
         </div>
 
         <div className=" flex justify-center text-xs font-bold uppercase text-vincent-700">
-          {isArchiveMode? (<div className="text-sm bg-blossom-200 text-blossom-800 rounded-full px-4">ARCHIVE MODE</div>) : (<img
+          {isArchiveMode ? (
+
+            <CloseArchiveMode />
+          ) : (
+            <img
               className="h-8 pr-1"
               src={duck}
               alt="rubber duck"
               width="32"
               height="32"
-            />)}
-          
-            
+            />
+          )}
         </div>
 
-        <div className="flex flex-1 justify-end items-start gap-2">
+        <div className="flex flex-1 items-start justify-end gap-2">
           <IconButton type="routing" page="about" addButtonClass="h-6 w-6" />
-          <IconButton type="routing" page="customHooks" addButtonClass="h-6 w-6" />
+          <IconButton
+            type="routing"
+            page="customHooks"
+            addButtonClass="h-6 w-6"
+          />
           <IconButton type="routing" page="sandbox" addButtonClass="h-6 w-6" />
         </div>
       </div>

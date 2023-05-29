@@ -43,7 +43,7 @@
   }
 
   .thin-separator {
-    @apply w-full border-2 border-x-0 border-b-0 border-blossom-300/50;
+    @apply w-full border-2 border-x-0 border-b-0 border-petal/50;
   }
 
   .chat-title:hover h1,
@@ -79,6 +79,14 @@
 
   .blush-button {
     @apply text-petal hover:text-transparent/40 focus:text-transparent/40 active:text-transparent/20;
+  }
+
+  .archive-mode {
+    @apply bg-blossom-500/50
+  }
+
+  .nonactive-component {
+    @apply pointer-events-none opacity-10;
   }
 
   .nonactive-button {

@@ -34,6 +34,7 @@ const iconMapping = {
   customHooks: BoltIcon,
   openArchive: ChevronDoubleUpIcon,
   closeArchive: ChevronDoubleDownIcon,
+  closeArchiveX:XMarkIcon,
 };
 
 export default function IconButton(props) {

@@ -40,7 +40,7 @@ export default function AddChat(props) {
       ${
         props.nav &&
         (isPageLoading || isArchiveMode || !mainId) &&
-        "pointer-events-none opacity-30"
+        "nonactive-component"
       }
       ${props.welcome ? "gap-2" : "gap-1"}`}
     >

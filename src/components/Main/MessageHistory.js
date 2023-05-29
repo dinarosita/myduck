@@ -5,7 +5,7 @@ import Message from "./Message";
 import ChatContext from "../../contexts/ChatContext";
 
 export default function MessageHistory() {
-  const { isPageLoading, mainId } = useContext(ChatContext);
+  const { isPageLoading, isArchiveMode, mainId } = useContext(ChatContext);
   const [content, setContent] = useState(null);
 
   const { messageList } = useContext(MessageContext);
@@ -45,7 +45,7 @@ export default function MessageHistory() {
   }, [isPageLoading, mainId, messageList]);
 
   return (
-    <section className="pass-overflow h-full flex-auto bg-transparent/20 p-2 ">
+    <section className={`pass-overflow h-full flex-auto  p-2  ${isArchiveMode ? "opacity-50" : "bg-transparent/20"} `}>
       {content}
     </section>
   );

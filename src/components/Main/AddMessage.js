@@ -8,7 +8,7 @@ import { useWindowSize } from "../../hooks/useWindowSize";
 import ChatContext from "../../contexts/ChatContext";
 
 export default function AddMessage() {
-  const { mainId, isPageLoading} = useContext(ChatContext);
+  const { mainId, isPageLoading, isArchiveMode} = useContext(ChatContext);
   const textareaRef = useRef();
   const { setMessageList } = useContext(MessageContext);
   const [textvalue, setTextValue] = useState("");
@@ -48,7 +48,7 @@ export default function AddMessage() {
   return (
     <section
       className={` flex-none bg-transparent text-center ${
-        (isPageLoading || !mainId) && "pointer-events-none opacity-50"
+        (isPageLoading || isArchiveMode || !mainId ) && "nonactive-component"
       }`}
     >
       <form className="relative " style={{ lineHeight: 0 }}>
