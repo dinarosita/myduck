@@ -20,7 +20,7 @@ export default function ContextMenu({
     setShowMenu(false);
     if (item.type === "edit" && item.actionLayout) {
       item.actionLayout();
-    } else if (item.type === "archive") {
+    } else if (item.type === "archive" || item.type === "revive") {
       setShowArchiveModal(true);
     }
   }

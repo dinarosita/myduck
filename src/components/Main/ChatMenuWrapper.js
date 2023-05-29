@@ -8,8 +8,6 @@ import EditTitleMode from "./EditTitleMode";
 import MenuWrapper from "../Common/MenuWrapper";
 import ChatContext from "../../contexts/ChatContext";
 import { useArchiveChat } from "../../hooks/useArchiveChat";
-import { useReviveChat } from "../../hooks/useReviveChat";
-
 import { useEditChatTitle } from "../../hooks/useEditChatTitle";
 
 export default function ChatMenuWrapper({ title, children }) {
@@ -18,8 +16,6 @@ export default function ChatMenuWrapper({ title, children }) {
   const inputRef = useRef();
 
   const { runArchiveChat } = useArchiveChat();
-  const { runReviveChat } = useReviveChat();
-
   const { runEditChatTitle } = useEditChatTitle();
 
   function confirmEdit() {
@@ -39,7 +35,7 @@ export default function ChatMenuWrapper({ title, children }) {
         icon: ArrowUpTrayIcon,
         actionLayout: () => null,
         confirmationFunction: () => {
-          runReviveChat(chatCollection, mainId);
+          runArchiveChat(chatCollection, mainId, false);
         },
       },
     ];
@@ -55,7 +51,7 @@ export default function ChatMenuWrapper({ title, children }) {
         type: "archive",
         icon: ArchiveBoxArrowDownIcon,
         actionLayout: null,
-        confirmationFunction: () => runArchiveChat(chatCollection, mainId),
+        confirmationFunction: () => runArchiveChat(chatCollection, mainId, true),
       },
     ];
   }

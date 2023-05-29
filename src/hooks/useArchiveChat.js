@@ -2,33 +2,37 @@ import { useContext } from "react";
 import "firebase/compat/firestore";
 import ChatContext from "../contexts/ChatContext";
 import { DATABASE_URL } from "../config";
+import {getLastActiveId} from "../utils/chatIdManagement"
 
 export function useArchiveChat() {
-  const { setChatCollection, updateIdStates, getLastActiveId } =
+  const { setChatCollection, updateIdStates, setIsArchiveMode } =
     useContext(ChatContext);
 
-  function runArchiveChat(chats, archivedId) {
+  function runArchiveChat(chats, chatId, archiving) {
     const newList = chats.map((chat) => {
-      if (chat.id === archivedId) {
+      if (chat.id === chatId) {
         return {
           ...chat,
-          archived: true,
+          archived: archiving? true : false,
         };
       }
       return chat;
     });
 
-    archiveChatDatabase(archivedId);
+    archiveChatDatabase(chatId, archiving);
     setChatCollection(newList);
-    const newId = getLastActiveId(newList);
+    const newId = archiving ? getLastActiveId(newList) : chatId;
+    if (!archiving) {
+      setIsArchiveMode(false)
+    }
     updateIdStates(newId);
   }
 
-  async function archiveChatDatabase(chatId) {
+  async function archiveChatDatabase(chatId, archiving) {
     try {
       const response = await fetch(`${DATABASE_URL}/chatMeta/${chatId}.json`, {
         method: "PATCH",
-        body: JSON.stringify({ archived: true }),
+        body: JSON.stringify({ archived:  archiving? true : false }),
         headers: {
           "Content-Type": "application/json",
         },

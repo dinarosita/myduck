@@ -54,11 +54,10 @@ export default function MenuWrapper({
           setShowMenu={setShowMenu}
           onConfirm={() => {
             menuItems
-              .find((item) => item.type === "archive")
+              .find((item) => item.type === "revive" || item.type === "archive")
               .confirmationFunction();
             setShowArchiveModal(false);
           }}
-          type="chat"
         />
       )}
     </div>
