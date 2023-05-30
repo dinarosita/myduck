@@ -5,7 +5,7 @@ import Message from "./Message";
 import ChatContext from "../../contexts/ChatContext";
 
 export default function MessageHistory() {
-  const { isPageLoading, isArchiveMode, mainId, archivedExist } = useContext(ChatContext);
+  const { isLoading, isArchiveMode, mainId } = useContext(ChatContext);
   const [content, setContent] = useState(null);
 
   const { messageList } = useContext(MessageContext);
@@ -18,7 +18,7 @@ export default function MessageHistory() {
   }, [messageList]);
 
   useEffect(() => {
-    if (isPageLoading) {
+    if (isLoading) {
       setContent(null);
     } else {
       if (!mainId) {
@@ -43,7 +43,7 @@ export default function MessageHistory() {
         );
       }
     }
-  }, [isPageLoading, mainId, messageList]);
+  }, [isLoading, mainId, messageList]);
 
   return (
     <section className={`pass-overflow h-full flex-auto  p-2  ${isArchiveMode ? "opacity-50" : "bg-transparent/20"} `}>

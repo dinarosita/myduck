@@ -1,32 +1,32 @@
 import { createContext, useEffect, useState } from "react";
 import { DATABASE_URL } from "../config";
-import { determineMainActiveId } from "../utils/chatIdManagement";
+import { getLastActiveId } from "../utils/chatIdManagement";
 
 const ChatContext = createContext({
-  chatCollection: [],
-  setChatCollection: () => {},
-  activeExist: false,
-  archivedExist: false,
+  chatArray: [],
+  setChatArray: () => {},
+  hasActive: false,
+  hasArchived: false,
 
   mainId: null,
   setMainId: () => {},
-  updateIdStates: () => {},
 
-  isPageLoading: true,
+  isLoading: true,
   isArchiveMode: false,
   setIsArchiveMode: () => {},
 });
 
 export function ChatContextProvider(props) {
-  const [chatCollection, setChatCollection] = useState([]);
-  const [activeExist, setActiveExist] = useState(false);
-  const [archivedExist, setArchivedExist] = useState(false);
+  const [chatArray, setChatArray] = useState([]);
+  const [hasActive, setHasActive] = useState(false);
+  const [hasArchived, setHasArchived] = useState(false);
   const [mainId, setMainId] = useState(null);
-  const [isPageLoading, setIsPageLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [isArchiveMode, setIsArchiveMode] = useState(false);
 
   useEffect(() => {
-    setIsPageLoading(true);
+    setIsLoading(true);
+    const persistedId = localStorage.getItem("persistedId");
     const abortController = new AbortController();
 
     async function fetchData() {
@@ -41,12 +41,12 @@ export function ChatContextProvider(props) {
 
         const data = await response.json();
 
-        processData(data);
-        setIsPageLoading(false);
+        processData(data, persistedId);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error loading chat list: ", error);
       } finally {
-        setIsPageLoading(false);
+        setIsLoading(false);
       }
     }
 
@@ -58,50 +58,58 @@ export function ChatContextProvider(props) {
   }, []);
 
   useEffect(() => {
-    setActiveExist(chatCollection.some(chat => !chat.archived))
-    setArchivedExist(chatCollection.some(chat => chat.archived))
-  }, [chatCollection])
+    setHasActive(chatArray.some((chat) => !chat.archived));
+    setHasArchived(chatArray.some((chat) => chat.archived));
+  }, [chatArray]);
 
-  function processData(data) {
+  useEffect(() => {
+    if (mainId && chatArray.some((chat) => chat.id === mainId && !chat.archived)) {
+      localStorage.setItem("persistedId", mainId);
+    }
+  }, [mainId, chatArray]);
+
+  function processData(data, persistedId) {
     const chats = [];
-    let anyActive = false;
-    let anyArchived = false;
     for (const key in data) {
       const chat = {
         id: key,
         ...data[key],
       };
-      chat.archived ? (anyArchived = true) : (anyActive = true);
       chats.push(chat);
     }
     chats.sort((a, b) => b.createdAt.seconds - a.createdAt.seconds);
 
-    setChatCollection(chats);
-    setActiveExist(anyActive);
-    setArchivedExist(anyArchived);
-    updateIdStates(determineMainActiveId(chats, anyActive));
+    setChatArray(chats);
+    initializeMainId(chats, persistedId);
   }
 
-  function updateIdStates(id) {
-    setMainId(id);
-    localStorage.setItem("persistedId", id);
+  function initializeMainId(chats, persistedId) {
+    if (!chats.some((chat) => !chat.archived)) {
+      setMainId(null);
+      localStorage.setItem("persistedId", null);
+    } else if (persistedId) {
+      chats.some((chat) => chat.id === persistedId && !chat.archived)
+        ? setMainId(persistedId)
+        : setMainId(getLastActiveId);
+    } else {
+      setMainId(getLastActiveId);
+    }
   }
 
   const context = {
-    chatCollection,
-    setChatCollection,
-    activeExist,
-    archivedExist,
+    chatArray,
+    setChatArray,
+    hasActive,
+    hasArchived,
 
     mainId,
     setMainId,
-    updateIdStates,
 
-    isPageLoading,
+    isLoading,
     isArchiveMode,
     setIsArchiveMode,
   };
-console.log(chatCollection)
+  console.log(chatArray);
   return (
     <ChatContext.Provider value={context}>
       {props.children}

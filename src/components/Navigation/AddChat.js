@@ -8,7 +8,7 @@ import ChatContext from "../../contexts/ChatContext";
 
 export default function AddChat(props) {
   const { setIsFlapOpen } = useContext(FlapContext);
-  const { isPageLoading, mainId, isArchiveMode } = useContext(ChatContext);
+  const { isLoading, mainId, isArchiveMode } = useContext(ChatContext);
   const inputRef = useRef();
   const { runAddChat } = useAddChat();
   const windowSize = useWindowSize();
@@ -19,7 +19,7 @@ export default function AddChat(props) {
   }
 
   function handleSubmit(e) {
-    if (isPageLoading) {
+    if (isLoading) {
       return;
     }
     e.preventDefault();
@@ -39,7 +39,7 @@ export default function AddChat(props) {
       className={`flex h-28 w-full flex-none  flex-col items-center justify-center px-3 
       ${
         props.nav &&
-        (isPageLoading || isArchiveMode || !mainId) &&
+        (isLoading || isArchiveMode || !mainId) &&
         "nonactive-component"
       }
       ${props.welcome ? "gap-2" : "gap-1"}`}

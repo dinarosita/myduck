@@ -7,21 +7,21 @@ import {
 import EditTitleMode from "./EditTitleMode";
 import MenuWrapper from "../Common/MenuWrapper";
 import ChatContext from "../../contexts/ChatContext";
-import { useArchiveChat } from "../../hooks/useArchiveChat";
+import { useArchiveReviveChat } from "../../hooks/useArchiveReviveChat";
 import { useEditChatTitle } from "../../hooks/useEditChatTitle";
 
 export default function ChatMenuWrapper({ title, children }) {
-  const { chatCollection, mainId, isArchiveMode } = useContext(ChatContext);
+  const { chatArray, mainId, isArchiveMode } = useContext(ChatContext);
   const [showEditMode, setShowEditMode] = useState(false);
   const inputRef = useRef();
 
-  const { runArchiveChat } = useArchiveChat();
+  const { runArchiveChat } = useArchiveReviveChat();
   const { runEditChatTitle } = useEditChatTitle();
 
   function confirmEdit() {
     const newTitle = inputRef.current.value.trim().replace(/\s+/g, " ");
     if (newTitle !== "" || newTitle === title) {
-      runEditChatTitle(chatCollection, mainId, newTitle);
+      runEditChatTitle(chatArray, mainId, newTitle);
     }
     setShowEditMode(false);
   }
@@ -35,7 +35,7 @@ export default function ChatMenuWrapper({ title, children }) {
         icon: ArrowUpTrayIcon,
         actionLayout: () => null,
         confirmationFunction: () => {
-          runArchiveChat(chatCollection, mainId, false);
+          runArchiveChat(chatArray, mainId, false);
         },
       },
     ];
@@ -51,7 +51,7 @@ export default function ChatMenuWrapper({ title, children }) {
         type: "archive",
         icon: ArchiveBoxArrowDownIcon,
         actionLayout: null,
-        confirmationFunction: () => runArchiveChat(chatCollection, mainId, true),
+        confirmationFunction: () => runArchiveChat(chatArray, mainId, true),
       },
     ];
   }

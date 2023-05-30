@@ -4,16 +4,16 @@ import ArchiveHeader from "./ArchiveHeader";
 import ChatList from "./ChatList";
 
 export default function NavBody() {
-  const { isPageLoading, isArchiveMode, activeExist, archivedExist } =
+  const { isLoading, isArchiveMode, hasActive, hasArchived } =
     useContext(ChatContext);
-  if (isPageLoading) {
+  if (isLoading) {
     return (
       <div className="items-left pass-overflow flex w-full flex-col justify-between gap-2 p-2 text-petal">
         Loading chats...
       </div>
     );
   }
-  if (!activeExist && !archivedExist) {
+  if (!hasActive && !hasArchived) {
     return (
       <div className="items-left pass-overflow flex w-full flex-col justify-between gap-2 p-2 text-petal">
         Waiting for your first chat!
@@ -22,13 +22,13 @@ export default function NavBody() {
   }
   return (
     <div className={`pass-overflow $ flex flex-col text-petal`}>
-      {archivedExist && isArchiveMode && <ArchiveHeader />}
+      {hasArchived && isArchiveMode && <ArchiveHeader />}
       <div
         className={`items-left pass-overflow flex w-full flex-col justify-between gap-2 p-2  `}
       >
         <ChatList />
       </div>
-      {archivedExist && !isArchiveMode && <ArchiveHeader />}
+      {hasArchived && !isArchiveMode && <ArchiveHeader />}
     </div>
   );
 }

@@ -2,20 +2,19 @@ import { useContext } from "react";
 import ChatContext from "../contexts/ChatContext";
 import { determineMainActiveId } from "../utils/chatIdManagement";
 
-export default function useArchiveMode() {
+export default function useToggleMode() {
   const {
-    chatCollection,
+    chatArray,
     setIsArchiveMode,
-    activeExist,
-    archivedExist,
+    hasActive,
+    hasArchived,
     setMainId,
-    updateIdStates,
   } = useContext(ChatContext);
 
   function switchToArchiveMode() {
-    if (archivedExist) {
+    if (hasArchived) {
       setIsArchiveMode(true);
-      setMainId(chatCollection.find((chat) => chat.archived).id);
+      setMainId(chatArray.find((chat) => chat.archived).id);
     } else {
       switchToNormalMode();
     }
@@ -23,7 +22,7 @@ export default function useArchiveMode() {
 
   function switchToNormalMode() {
     setIsArchiveMode(false);
-    updateIdStates(determineMainActiveId(chatCollection, activeExist));
+    setMainId(determineMainActiveId(chatArray, hasActive));
   }
 
   return { switchToArchiveMode, switchToNormalMode };

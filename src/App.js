@@ -9,12 +9,23 @@ import CustomHooks from "./pages/CustomHooks";
 export const PAGES = [
   { name: "MyDuck", path: "/myduck", element: <Content />, exact: true },
   { name: "About", path: "/myduck/about", element: <About />, exact: false },
-  { name: "Sandbox", path: "/myduck/sandbox", element: <Sandbox />, exact: false, },
-  { name: "customHooks", path: "/myduck/customHooks", element: <CustomHooks />, exact: false, },
-
+  {
+    name: "Sandbox",
+    path: "/myduck/sandbox",
+    element: <Sandbox />,
+    exact: false,
+  },
+  {
+    name: "customHooks",
+    path: "/myduck/customHooks",
+    element: <CustomHooks />,
+    exact: false,
+  },
 ];
 
+
 export default function App() {
+
   return (
     <Layout>
       <Routes>

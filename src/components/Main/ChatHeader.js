@@ -5,15 +5,15 @@ import { formatDate } from "../../utils/timestamp";
 import { GREETINGS } from "../../constants/greetings";
 
 export default function ChatHeader() {
-  const { chatCollection, mainId, isPageLoading, isArchiveMode, archivedExist } =
+  const { chatArray, mainId, isLoading, isArchiveMode, hasArchived } =
     useContext(ChatContext);
   const [title, setTitle] = useState("");
   const [tagline, setTagline] = useState("");
 
   useEffect(() => {
     const greeting = GREETINGS.find((g) => {
-      if (isPageLoading) return g.type === "pageLoading";
-      if (!mainId && archivedExist) return g.type === "dormantUser";
+      if (isLoading) return g.type === "pageLoading";
+      if (!mainId && hasArchived) return g.type === "dormantUser";
       if (!mainId) return g.type === "newUser";
       return false;
     });
@@ -22,15 +22,15 @@ export default function ChatHeader() {
       setTitle(greeting.title);
       setTagline(greeting.tagline);
     } else if (mainId) {
-      const mainChat = chatCollection.find((chat) => chat.id === mainId);
+      const mainChat = chatArray.find((chat) => chat.id === mainId);
       setTitle(mainChat.title ? mainChat.title : null);
       setTagline(`Created: ${formatDate(mainChat.createdAt)}`);
     }
-  }, [isPageLoading, mainId, chatCollection]);
+  }, [isLoading, mainId, chatArray, hasArchived]);
 
   return (
     <header
-      className={`px-2 ${isPageLoading && "text-opacity-30"} ${
+      className={`px-2 ${isLoading && "text-opacity-30"} ${
         isArchiveMode && "text-opacity-60"
       }`}
     >

@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import duck from "../../assets/logo/rubberduck4-yellow-512.png";
 import { useLinkButtonLogic } from "../../hooks/useLinkButtonLogic";
 import IconButton from "../Common/IconButton";
-import { useNavButtonLogic } from "../../hooks/useNavButtonLogic";
+import { useNavFlap } from "../../hooks/useNavFlap";
 import ChatContext from "../../contexts/ChatContext";
 import CloseArchiveMode from "../Common/CloseArchiveMode";
 
 export default function Heading() {
-  const { handleNavMenu } = useNavButtonLogic();
+  const { handleNavMenu } = useNavFlap();
   const handleLinkClick = useLinkButtonLogic();
   const { isArchiveMode } = useContext(ChatContext);
 

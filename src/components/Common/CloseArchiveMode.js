@@ -1,8 +1,8 @@
 import React from "react";
-import useArchiveMode from "../../hooks/useArchiveMode";
+import useToggleMode from "../../hooks/useToggleMode";
 
 export default function CloseArchiveMode() {
-  const { switchToNormalMode} = useArchiveMode()
+  const { switchToNormalMode} = useToggleMode()
 
   return (
     <div className="flex-col-center">

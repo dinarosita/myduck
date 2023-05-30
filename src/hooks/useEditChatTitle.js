@@ -4,7 +4,7 @@ import ChatContext from "../contexts/ChatContext";
 import { DATABASE_URL } from "../config";
 
 export function useEditChatTitle() {
-  const { setChatCollection } = useContext(ChatContext);
+  const { setChatArray } = useContext(ChatContext);
 
   function runEditChatTitle(chats, editedId, newTitle) {
     const newList = chats.map((chat) => {
@@ -16,7 +16,7 @@ export function useEditChatTitle() {
       }
       return chat;
     });
-    setChatCollection(newList);
+    setChatArray(newList);
     editTitleDatabase(editedId, newTitle);
   }
 

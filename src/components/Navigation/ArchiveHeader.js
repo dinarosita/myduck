@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 import ChatContext from "../../contexts/ChatContext";
 import IconButton from "../Common/IconButton";
-import useArchiveMode from "../../hooks/useArchiveMode";
+import useToggleMode from "../../hooks/useToggleMode";
 
 export default function ArchiveHeader() {
-  const { archivedExist, isArchiveMode } =
+  const { hasArchived, isArchiveMode } =
     useContext(ChatContext);
-    const { switchToArchiveMode, switchToNormalMode} = useArchiveMode()
+    const { switchToArchiveMode, switchToNormalMode} = useToggleMode()
 
-  if (!archivedExist) return <></>;
+  if (!hasArchived) return <></>;
 
   function handleArchiveMode(isArchiveMode) {
     if (isArchiveMode) {

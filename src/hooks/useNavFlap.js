@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FlapContext from "../contexts/FlapContext";
 
-export function useNavButtonLogic() {
+export function useNavFlap() {
   const { isFlapOpen, setIsFlapOpen } = useContext(FlapContext);
   const navigate = useNavigate();
   const location = useLocation();

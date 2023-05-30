@@ -1,5 +1,6 @@
 export function determineMainActiveId(chats, anyActive) {
-  if (!anyActive) {
+  if (!chats.some(chat => !chat.archived)) {
+    localStorage.setItem("persistedId", null);
     return null;
   }
   const storedId = localStorage.getItem("persistedId") || null;

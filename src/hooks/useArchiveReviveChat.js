@@ -4,8 +4,8 @@ import ChatContext from "../contexts/ChatContext";
 import { DATABASE_URL } from "../config";
 import {getLastActiveId} from "../utils/chatIdManagement"
 
-export function useArchiveChat() {
-  const { setChatCollection, updateIdStates, setIsArchiveMode, activeExist } =
+export function useArchiveReviveChat() {
+  const { setChatArray, setMainId, setIsArchiveMode } =
     useContext(ChatContext);
 
   function runArchiveChat(chats, chatId, archiving) {
@@ -20,12 +20,12 @@ export function useArchiveChat() {
     });
 
     archiveChatDatabase(chatId, archiving);
-    setChatCollection(newList);
+    setChatArray(newList);
     const nextMainId = archiving ? getLastActiveId(newList, newList.some(chat => !chat.archived)) : chatId;
     if (!archiving) {
       setIsArchiveMode(false)
     }
-    updateIdStates(nextMainId);
+    setMainId(nextMainId);
   }
 
   async function archiveChatDatabase(chatId, archiving) {

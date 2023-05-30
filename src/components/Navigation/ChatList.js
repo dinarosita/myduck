@@ -8,17 +8,17 @@ export default function ChatList() {
   const navigate = useNavigate();
   const windowSize = useWindowSize();
   const { setIsFlapOpen } = useContext(FlapContext);
-  const { isArchiveMode, chatCollection, mainId, setMainId, updateIdStates } =
+  const { isArchiveMode, chatArray, mainId, setMainId } =
     useContext(ChatContext);
   return (
     <ul className="skyscroll flex h-full flex-col  items-start gap-1 overflow-y-auto pr-4">
-      {chatCollection
+      {chatArray
         .filter((chat) => (isArchiveMode ? chat.archived : !chat.archived))
         .map((chat) => (
           <li key={chat.id}>
             <button
               onClick={() => {
-                isArchiveMode ? setMainId(chat.id) : updateIdStates(chat.id);
+                setMainId(chat.id);
                 if (windowSize.width < 480) {
                   setIsFlapOpen(false);
                 }
