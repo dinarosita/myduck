@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import MessageContext from "../../contexts/MessageContext";
-import AddChat from "../Navigation/AddChat";
+import AddChat from "../Modules/AddChat";
 import Message from "./Message";
 import ChatContext from "../../contexts/ChatContext";
 
@@ -33,7 +33,7 @@ export default function MessageHistory() {
           <div
             ref={containerRef}
             className={`
-                 skyscroll
+                 main-scroll
                 flex h-full flex-auto  flex-col  gap-2 overflow-y-scroll whitespace-pre-wrap bg-transparent pr-6 `}
           >
             {messageList.map((msg) => (

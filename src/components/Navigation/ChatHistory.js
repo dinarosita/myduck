@@ -4,14 +4,14 @@ import { useWindowSize } from "../../hooks/useWindowSize";
 import FlapContext from "../../contexts/FlapContext";
 import ChatContext from "../../contexts/ChatContext";
 
-export default function ChatList() {
+export default function ChatHistory() {
   const navigate = useNavigate();
   const windowSize = useWindowSize();
   const { setIsFlapOpen } = useContext(FlapContext);
   const { isArchiveMode, chatArray, mainId, setMainId } =
     useContext(ChatContext);
   return (
-    <ul className="skyscroll flex h-full flex-col  items-start gap-1 overflow-y-auto pr-4">
+    <ul className="main-scroll flex h-full flex-col  items-start gap-1 overflow-y-auto pr-4">
       {chatArray
         .filter((chat) => (isArchiveMode ? chat.archived : !chat.archived))
         .map((chat) => (

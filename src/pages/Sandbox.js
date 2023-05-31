@@ -6,7 +6,7 @@ import SandboxUseStateTiming from "./SandboxUseStateTiming";
 export default function Sandbox() {
   return (
     <div className="pass-overflow w-full px-2">
-      <main className="w-effective blush-frame pass-overflow flex h-full flex-col text-navy">
+      <main className="w-effective main-frame pass-overflow flex h-full flex-col text-navy">
         <header>
           <h1>Sandbox</h1>
           <p className="tagline">Come and play, ducks!</p>

@@ -6,14 +6,14 @@ import almondBlossom from "../assets/images/gogh-almond-blossom-1024.jpg";
 export default function About() {
   return (
     <div className="pass-overflow w-full bg-transparent px-2">
-      <main className="w-effective blush-frame pass-overflow flex h-full flex-col text-navy">
+      <main className="w-effective main-frame pass-overflow flex h-full flex-col text-navy">
         <header>
           <h1>Welcome to MyDuck</h1>
           <p className="tagline">Brainstorm with your inner rubber duck</p>
         </header>
         <section className="pass-overflow flex-auto bg-transparent/20 p-2 text-petal">
           <div
-            className="skyscroll
+            className="main-scroll
         flex h-full min-h-80 flex-auto  flex-col  gap-2 overflow-y-scroll whitespace-pre-wrap   bg-transparent pr-8 "
           >
             <Box title="About" noborder>
@@ -99,7 +99,7 @@ export default function About() {
             </Box>
           </div>
         </section>
-        <hr className="blush-separator" />
+        <hr className="main-separator" />
         <section className="border-none bg-transparent/20 text-petal">
           <DeveloperCard />
         </section>

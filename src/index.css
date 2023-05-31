@@ -18,31 +18,19 @@
 }
 
 @layer components {
-  .blush-border {
+  .main-border {
     @apply border-8 border-petal;
   }
 
-  .blush-frame {
-    @apply blush-border rounded-3xl;
+  .main-frame {
+    @apply main-border rounded-3xl;
   }
 
-  .blush-separator {
-    @apply blush-border border-x-0 border-b-0;
+  .main-separator {
+    @apply main-border border-x-0 border-b-0;
   }
 
-  .wood-border {
-    @apply border-8 border-petal;
-  }
-
-  .wood-frame {
-    @apply wood-border rounded-3xl;
-  }
-
-  .wood-separator {
-    @apply wood-border border-x-0 border-b-0;
-  }
-
-  .thin-separator {
+  .archive-separator {
     @apply w-full border-2 border-x-0 border-b-0 border-petal/50;
   }
 
@@ -77,7 +65,7 @@
     @apply text-xs;
   }
 
-  .blush-button {
+  .main-button {
     @apply text-petal hover:text-transparent/40 focus:text-transparent/40 active:text-transparent/20;
   }
 
@@ -113,27 +101,27 @@
     @apply border-navyhover bg-blossom-500 text-petal;
   }
 
-  .skyscroll::-webkit-scrollbar {
+  .main-scroll::-webkit-scrollbar {
     @apply w-2;
   }
 
-  .skyscroll::-webkit-scrollbar-track {
+  .main-scroll::-webkit-scrollbar-track {
     /* @apply bg-vincent-200; */
   }
 
-  .skyscroll::-webkit-scrollbar-thumb {
+  .main-scroll::-webkit-scrollbar-thumb {
     @apply rounded-full bg-vincent-300/50;
   }
 
-  .skinnyscroll::-webkit-scrollbar {
+  .msg-scroll::-webkit-scrollbar {
     @apply w-2;
   }
 
-  .skinnyscroll::-webkit-scrollbar-track {
+  .msg-scroll::-webkit-scrollbar-track {
     /* @apply bg-blossom-200; */
   }
 
-  .skinnyscroll::-webkit-scrollbar-thumb {
+  .msg-scroll::-webkit-scrollbar-thumb {
     @apply rounded-t-full bg-gradient-to-b from-vincent-300/50 to-blossom-300/50;
   }
 
@@ -180,7 +168,5 @@
   .sandbox-input {
     @apply w-full rounded-full p-1 text-center text-sm text-vincent-900 placeholder-navy/50;
   }
-
-
 
 }

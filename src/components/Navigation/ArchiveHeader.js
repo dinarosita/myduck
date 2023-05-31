@@ -19,7 +19,7 @@ export default function ArchiveHeader() {
   }
   return (
     <>
-      {!isArchiveMode && <hr className="thin-separator" />}
+      {!isArchiveMode && <hr className="archive-separator" />}
       <div
         className={`flex h-8 w-full cursor-pointer flex-row justify-left py-2 pl-2 pr-4 leading-none ${isArchiveMode && "font-bold"}`}
         onClick={() => handleArchiveMode(isArchiveMode)}
@@ -31,7 +31,7 @@ export default function ArchiveHeader() {
           addIconClass=""
         />
       </div>
-      {isArchiveMode && <hr className="thin-separator" />}
+      {isArchiveMode && <hr className="archive-separator" />}
     </>
   );
 }

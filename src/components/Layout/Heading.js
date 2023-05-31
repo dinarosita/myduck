@@ -26,7 +26,7 @@ export default function Heading() {
           <div className="flex-none">
             <button
               onClick={() => handleLinkClick("/myduck")}
-              className="blush-button flex items-center rounded-full px-2 text-lg font-bold uppercase tracking-wide text-daffodil "
+              className="main-button flex items-center rounded-full px-2 text-lg font-bold uppercase tracking-wide text-daffodil "
             >
               <div>MyDuck</div>
             </button>

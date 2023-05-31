@@ -55,7 +55,7 @@ export default function IconButton(props) {
   return (
     <button
       onClick={(e) => handleClick(e)}
-      className={`blush-button  ${props.addButtonClass}`}
+      className={`main-button  ${props.addButtonClass}`}
     >
       {IconComponent && <IconComponent className={`${props.addIconClass}`} />}
     </button>
