@@ -5,7 +5,7 @@ import {
   ArrowUpTrayIcon,
 } from "@heroicons/react/24/outline";
 import EditTitleMode from "./EditTitleMode";
-import MenuWrapper from "../Common/MenuWrapper";
+import MenuWrapper from "./MenuWrapper";
 import ChatContext from "../../contexts/ChatContext";
 import { useArchiveReviveChat } from "../../hooks/useArchiveReviveChat";
 import { useEditChatTitle } from "../../hooks/useEditChatTitle";

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
-import EditMessageMode from "./EditMessageMode";
-import MenuWrapper from "../Common/MenuWrapper";
+import EditMessageMode from "../Menu/EditMessageMode";
+import MenuWrapper from "../Menu/MenuWrapper"
 import {
   PencilSquareIcon,
   ArchiveBoxArrowDownIcon,

@@ -1,6 +1,6 @@
 import React from "react";
 import Box from "../components/Common/Box";
-import DeveloperCard from "../components/DeveloperCard/DeveloperCard";
+import DeveloperCard from "../components/Common/DeveloperCard/DeveloperCard";
 import almondBlossom from "../assets/images/gogh-almond-blossom-1024.jpg";
 
 export default function About() {

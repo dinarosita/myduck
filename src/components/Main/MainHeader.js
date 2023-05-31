@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import ChatContext from "../../contexts/ChatContext";
-import ChatMenuWrapper from "./ChatMenuWrapper";
+import ChatMenuWrapper from "../Menu/ChatMenuWrapper";
 import { formatDate } from "../../utils/timestamp";
 
 const GREETINGS = [
