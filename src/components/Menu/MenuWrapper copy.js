@@ -1,18 +1,44 @@
 import React, { useState } from "react";
+import { useLongPress } from "use-long-press";
 import ContextMenu from "./ContextMenu";
 import ArchiveModal from "./ArchiveModal";
-import RightClickTrigger from "./RightClickTrigger";
 
 export default function MenuWrapper({
   menuItems,
+  showEditMode,
   className,
   children,
 }) {
   const [showMenu, setShowMenu] = useState(false);
   const [showArchiveModal, setShowArchiveModal] = useState(false);
 
+  function handleRightClick(e) {
+    e.preventDefault();
+    setShowMenu(true);
+  }
+
+  function handleKeyDown(e) {
+    if ((e.shiftKey && e.key === "F10") || e.key === "ContextMenu") {
+      e.preventDefault();
+      setShowMenu(true);
+    } else if (e.key === "Enter" && !showArchiveModal && !showEditMode) {
+      setShowMenu(true);
+    }
+  }
+
+  function handleLongPress() {
+    setShowMenu(true);
+  }
+
+  const bind = useLongPress(handleLongPress);
   return (
-    <RightClickTrigger onTrigger={() => setShowMenu(true)}>
+    <div
+      {...bind()}
+      onContextMenu={handleRightClick}
+      onKeyDown={handleKeyDown}
+      className="chat-title inline-block"
+      tabIndex="0"
+    >
       {children}
       {showMenu && (
         <ContextMenu
@@ -34,6 +60,6 @@ export default function MenuWrapper({
           }}
         />
       )}
-    </RightClickTrigger>
+    </div>
   );
 }

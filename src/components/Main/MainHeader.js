@@ -51,7 +51,7 @@ export default function MainHeader() {
       return (
         <ChatMenuWrapper title={title}>
           <div className="pb-1 text-sm font-bold text-blossom-600">
-            {isArchiveMode && "- READ ONLY -"}
+            {isArchiveMode && "- READ AND REVIVE ONLY -"}
           </div>
           <h1>{title || "Untitled Chat"}</h1>
         </ChatMenuWrapper>

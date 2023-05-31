@@ -41,18 +41,18 @@ export default function Message({ id, message }) {
           setShowEditMode={setShowEditMode}
         />
       ) : (
-        <MenuWrapper
-          menuItems={menuItems}
-          showEditMode={showEditMode}
-          className="msg-menu"
-        >
+        // <MenuWrapper
+        //   menuItems={menuItems}
+        //   showEditMode={showEditMode}
+        //   className="msg-menu"
+        // >
           <div
             key={id}
             className="relative flex w-fit  max-w-full flex-col break-words rounded-r-3xl bg-petal/80 py-2 pl-2 pr-4 leading-tight"
           >
             {message}
           </div>
-        </MenuWrapper>
+        // </MenuWrapper>
       )}
     </>
   );
