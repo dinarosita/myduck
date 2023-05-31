@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import ChatContext from "../../contexts/ChatContext";
-import ArchiveHeader from "./ArchiveHeader";
-import ChatHistory from "./ChatHistory";
+import ArchiveMarker from "./ArchiveMarker";
+import ChatHistory from "../Modules/ChatHistory";
 
 export default function NavBody() {
   const { isLoading, isArchiveMode, hasActive, hasArchived } =
@@ -22,13 +22,13 @@ export default function NavBody() {
   }
   return (
     <div className={`pass-overflow $ flex flex-col text-petal`}>
-      {hasArchived && isArchiveMode && <ArchiveHeader />}
+      {hasArchived && isArchiveMode && <ArchiveMarker />}
       <div
         className={`items-left pass-overflow flex w-full flex-col justify-between gap-2 p-2  `}
       >
         <ChatHistory />
       </div>
-      {hasArchived && !isArchiveMode && <ArchiveHeader />}
+      {hasArchived && !isArchiveMode && <ArchiveMarker />}
     </div>
   );
 }

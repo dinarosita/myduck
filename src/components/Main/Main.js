@@ -1,19 +1,23 @@
 import React, { useContext } from "react";
-import MessageHistory from "./MessageHistory";
-import AddMessage from "../Modules/AddMessage";
+import ChatContext from "../../contexts/ChatContext";
 import { MessageContextProvider } from "../../contexts/MessageContext";
 import MainHeader from "./MainHeader";
-import ChatContext from "../../contexts/ChatContext";
+import MainBody from "./MainBody";
+import MainFooter from "./MainFooter";
 
 export default function Main() {
-  const {isArchiveMode} = useContext(ChatContext)
+  const { isArchiveMode } = useContext(ChatContext);
   return (
     <MessageContextProvider>
-      <main className={`pass-overflow main-frame flex flex-auto flex-col justify-between ${isArchiveMode && "archive-mode"}`}>
+      <main
+        className={`pass-overflow main-frame flex flex-auto flex-col justify-between ${
+          isArchiveMode && "archive-mode"
+        }`}
+      >
         <MainHeader />
-        <MessageHistory />
+        <MainBody />
         <hr className="main-separator" />
-        <AddMessage />
+        <MainFooter />
       </main>
     </MessageContextProvider>
   );

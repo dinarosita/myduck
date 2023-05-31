@@ -7,8 +7,8 @@ import { sanitizeInput } from "../../utils/sanitize";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import ChatContext from "../../contexts/ChatContext";
 
-export default function AddMessage() {
-  const { mainId, isLoading, isArchiveMode} = useContext(ChatContext);
+export default function AddMessageForm() {
+  const { mainId } = useContext(ChatContext);
   const textareaRef = useRef();
   const { setMessageList } = useContext(MessageContext);
   const [textvalue, setTextValue] = useState("");
@@ -20,9 +20,6 @@ export default function AddMessage() {
   }
 
   function handleSubmit(e) {
-    if (isLoading || !mainId) {
-      return;
-    }
     e.preventDefault();
 
     const rawMessageContent = textareaRef.current.value;
@@ -46,37 +43,31 @@ export default function AddMessage() {
   }
 
   return (
-    <section
-      className={` flex-none bg-transparent text-center ${
-        (isLoading || isArchiveMode || !mainId ) && "nonactive-component"
-      }`}
-    >
-      <form className="relative " style={{ lineHeight: 0 }}>
-        <textarea
-          id="entry"
-          ref={textareaRef}
-          maxLength="2000"
-          className={`msg-scroll h-28  max-h-60 w-full resize-y border-0 bg-transparent/20 text-white placeholder-vincent-50/80 caret-white hover:bg-transparent/50 
+    <form className="relative " style={{ lineHeight: 0 }}>
+      <textarea
+        id="entry"
+        ref={textareaRef}
+        maxLength="2000"
+        className={`msg-scroll h-28  max-h-60 w-full resize-y border-0 bg-transparent/20 text-white placeholder-vincent-50/80 caret-white hover:bg-transparent/50 
           `}
-          placeholder="+ message..."
-          style={{
-            minHeight: "60px",
-          }}
-          value={textvalue}
-          onChange={handleTextValue}
-          onKeyDown={(e) => {
-            if (e.key === 13) {
-              e.preventDefault();
-              e.target.value += "\n";
-            }
-          }}
-        />
-        <IconButton
-          task="messageSubmit"
-          onClick={handleSubmit}
-          addButtonClass={`h-6 w-6 absolute bottom-2 right-2`}
-        />
-      </form>
-    </section>
+        placeholder="+ message..."
+        style={{
+          minHeight: "60px",
+        }}
+        value={textvalue}
+        onChange={handleTextValue}
+        onKeyDown={(e) => {
+          if (e.key === 13) {
+            e.preventDefault();
+            e.target.value += "\n";
+          }
+        }}
+      />
+      <IconButton
+        task="messageSubmit"
+        onClick={handleSubmit}
+        addButtonClass={`h-6 w-6 absolute bottom-2 right-2`}
+      />
+    </form>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Navigation from "../Navigation/Navigation";
+import Nav from "../Navigation/Nav";
 import Main from "../Main/Main";
 import FlapContext from "../../contexts/FlapContext";
 
@@ -17,7 +17,7 @@ export default function Content() {
             ${isFlapOpen ? "translate-x-0" : "-translate-x-full"}
             absolute bottom-0 left-0 top-0 z-20`}
         >
-          <Navigation />
+          <Nav />
         </div>
 
         <div
@@ -36,7 +36,7 @@ export default function Content() {
             ${isFlapOpen ? "translate-x-0" : "-translate-x-full"}
             absolute bottom-0 left-0 top-0 z-20`}
         >
-          <Navigation />
+          <Nav />
         </div>
         <div
           className={`pass-overflow smooth relative transition-all  ${
@@ -50,7 +50,7 @@ export default function Content() {
       {/* RESPONSIVE LARGE  > lg-1024 - Permanent nav */}
       <div className={`pass-overflow hidden flex-row gap-2 lg:flex`}>
         <div className="w-72 flex-none">
-          <Navigation />
+          <Nav />
         </div>
         <div className="w-full flex-1">
           <Main />

@@ -4,11 +4,11 @@ import { sanitizeInput } from "../../utils/sanitize";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import FlapContext from "../../contexts/FlapContext";
 import IconButton from "../Common/IconButton";
-import ChatContext from "../../contexts/ChatContext";
+// import ChatContext from "../../contexts/ChatContext";
 
-export default function AddChat(props) {
+export default function AddChatForm(props) {
   const { setIsFlapOpen } = useContext(FlapContext);
-  const { isLoading, mainId, isArchiveMode } = useContext(ChatContext);
+  // const { isLoading, mainId, isArchiveMode } = useContext(ChatContext);
   const inputRef = useRef();
   const { runAddChat } = useAddChat();
   const windowSize = useWindowSize();
@@ -19,9 +19,6 @@ export default function AddChat(props) {
   }
 
   function handleSubmit(e) {
-    if (isLoading) {
-      return;
-    }
     e.preventDefault();
     const title = inputRef.current.value;
     const sanitizedTitle = sanitizeInput(title);
@@ -36,13 +33,7 @@ export default function AddChat(props) {
   return (
     <form
       onSubmit={handleSubmit}
-      className={`flex h-28 w-full flex-none  flex-col items-center justify-center px-3 
-      ${
-        props.nav &&
-        (isLoading || isArchiveMode || !mainId) &&
-        "nonactive-component"
-      }
-      ${props.welcome ? "gap-2" : "gap-1"}`}
+      className={`flex h-28 w-full flex-none  flex-col items-center justify-center px-3 ${props.welcome ? "gap-2" : "gap-1"}`}
     >
       <label htmlFor="title" className="text-lg font-bold text-petal">
         {props.welcome ? "Start a new chat:" : "New Chat"}

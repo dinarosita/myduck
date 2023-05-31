@@ -3,7 +3,7 @@ import IconButton from "../Common/IconButton";
 import { useNavFlap } from "../../hooks/useNavFlap";
 import ChatContext from "../../contexts/ChatContext";
 
-export default function NavTitle() {
+export default function NavHeader() {
   const { isLoading } = useContext(ChatContext);
   const { handleNavClose } = useNavFlap();
 
