@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import MessageHistory from "./MessageHistory";
 import AddMessage from "./AddMessage";
 import { MessageContextProvider } from "../../contexts/MessageContext";
-import ChatHeader from "./ChatHeader";
+import MainHeader from "./MainHeader";
 import ChatContext from "../../contexts/ChatContext";
 
 export default function Main() {
@@ -10,7 +10,7 @@ export default function Main() {
   return (
     <MessageContextProvider>
       <main className={`pass-overflow blush-frame flex flex-auto flex-col justify-between ${isArchiveMode && "archive-mode"}`}>
-        <ChatHeader />
+        <MainHeader />
         <MessageHistory />
         <hr className="blush-separator" />
         <AddMessage />
